@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_f418565adede5836b682b2376384d52ea8b51c94.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/user/android_develop_tools/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_9b75371271858e8a1646d5f14521852d8ad183cf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_543a2a5999cc34cde06c59bda250666ce63dbe51.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_95dc385aa1def8e1d911c6ac2f22eb2796a36b65.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_fec556fa6e8696a849c33d4cef33cc42901b8e59.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_a9fce5c78ecb0a1ee8720fc838889642f950eb5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_2574cb5e493787bac02ccf312edf13aca7fa4a3d.jar" />
+    </item>
+
+</items>
