@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.9.0/f824591a0016efbaeddb8300bee54832a1398cfa/okio-1.9.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/okio-1.9.0_0cc41e8b8525b8cec2add57289488d3c82ca6be0.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -39,6 +48,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/local/AndroidStudioProjects/MyFirstGitStory/app/libs/pinyin4j-2.5.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/pinyin4j-2.5.0_0d0753e060093253c36d7cb7734cfd6fbef653cf.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
         jumboMode="false"
         optimize="true"
@@ -54,6 +72,15 @@
         revision="23.0.2"
         sha1="5c5699834e9722f1c288fea2de82725d078ba127">
         <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_a9fce5c78ecb0a1ee8720fc838889642f950eb5e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/local/AndroidStudioProjects/MyFirstGitStory/app/build/intermediates/pre-dexed/debug/okhttp-3.4.1_3d3b706ec6c7e9487cae15023f936049d9763b93.jar" />
     </item>
     <item
         is-multidex="false"

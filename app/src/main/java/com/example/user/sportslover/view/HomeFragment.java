@@ -1,5 +1,6 @@
 package com.example.user.sportslover.view;
 
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -159,9 +160,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
     }
 
     private void viewPagerClickInit(){
-        /*view4.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+        view0.findViewById(R.id.weather_view).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {*/
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
