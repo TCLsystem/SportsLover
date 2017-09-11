@@ -8,8 +8,14 @@ import android.content.Intent.ShortcutIconResource;
 import android.database.Cursor;
 import android.net.Uri;
 
-import com.example.user.sportslover.R;
+//import com.example.user.sportslover.R;
 
+//<<<<<<< HEAD
+//import com.example.user.sportslover.R;
+//
+
+import com.tcl.cwz.supersports.R;
+//>>>>>>> 02f2d9f8e8117e8ca0fe5bbffa0760d07db13693
 
 /**
  * 创建删除快捷图标：需要权限: com.android.launcher.permission.INSTALL_SHORTCUT/com.android.launcher
