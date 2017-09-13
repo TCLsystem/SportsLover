@@ -101,4 +101,10 @@ public class RegisterActivity extends Activity {
         this.mCompositeSubscription.add(s);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
+    }
+
 }

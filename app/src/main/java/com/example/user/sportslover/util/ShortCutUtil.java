@@ -11,10 +11,10 @@ import android.net.Uri;
 //import com.example.user.sportslover.R;
 
 //<<<<<<< HEAD
-//import com.example.user.sportslover.R;
+import com.example.user.sportslover.R;
 //
 
-import com.tcl.cwz.supersports.R;
+//import com.tcl.cwz.supersports.R;
 //>>>>>>> 02f2d9f8e8117e8ca0fe5bbffa0760d07db13693
 
 /**

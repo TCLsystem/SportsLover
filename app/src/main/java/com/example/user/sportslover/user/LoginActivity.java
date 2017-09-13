@@ -128,4 +128,10 @@ public class LoginActivity extends BaseActivity{
         log("banker:" + (banker != null ? banker.toString() : "为null") + "\nmainCard:" + (mainCard != null ? mainCard.toString() : "为null"));
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.finish();
+    }
 }
