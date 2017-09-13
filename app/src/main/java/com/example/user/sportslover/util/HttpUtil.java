@@ -9,6 +9,9 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+
 /**
  * Http辅助类
  */
@@ -151,5 +154,11 @@ public class HttpUtil {
             }
         }
         return result;
+    }
+
+    public static void sendOkHttpRequest(String address, okhttp3.Callback callback){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(address).build();
+        client.newCall(request).enqueue(callback);
     }
 }

@@ -1,18 +1,23 @@
 package com.example.user.sportslover.view;
 
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.json.Weather;
+import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class WeatherActivity extends AppCompatActivity implements View.OnClickListener {
+public class WeatherActivity extends AppCompatActivity implements View.OnClickListener ,WeatherView {
 
     TextView responseText;
 
@@ -29,34 +34,29 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.net_request:
-                sendRequestWithOkHttp();
+                sendRequestWeather("CN101280301");
                 break;
             default:
                 break;
         }
     }
 
-    private void sendRequestWithOkHttp(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    OkHttpClient client = new OkHttpClient();
-                    Request request = new Request.Builder().url("http://guolin.tech/api/weather?cityid=CN101280301&key=8daba80f2e974e348bcf8e497d435083").build();
-                    Response response = client.newCall(request).execute();
-                    String responseData = response.body().string();
-                    showResponse(responseData);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+    private void sendRequestWeather(String weatherId){
+        WeatherPresenterImpl weatherPresenter = new WeatherPresenterImpl(this);
+        weatherPresenter.requestWeather(weatherId);
     }
-    private void showResponse(final String response){
+
+    @Override
+    public void showResponse(final Weather weather){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                responseText.setText(response);
+                responseText.setText(weather.basic.cityname + "\n"
+                        + weather.now.temperature + "C\n"
+                        + weather.now.more.info + "\n"
+                        + weather.aqi.city.aqi + "\n"
+                        + weather.suggestion.comfort.info + "\n"
+                        + weather.suggestion.sport.info);
             }
         });
     }
