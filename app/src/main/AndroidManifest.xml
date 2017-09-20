@@ -39,11 +39,6 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="e3r1MDaNfYdR11hKwSSXFtCI8gsyGjMz" />
 
-<<<<<<< HEAD
-        <!-- <activity android:name=".user.LoginActivity"> -->
-=======
-        <!--<activity android:name=".user.LoginActivity">-->
->>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,21 +48,13 @@
         </activity>
         <activity android:name=".view.WeatherActivity" />
         <activity android:name=".user.RegisterActivity" />
-<<<<<<< HEAD
-        <!-- <activity android:name=".MainActivity" /> -->
         <activity android:name=".user.LoginActivity" />
-=======
-        <!--<activity android:name=".MainActivity" />-->
-        <activity android:name=".user.LoginActivity" />
-        <activity android:name=".user.BaseActivity" />
->>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
-
-<<<<<<< HEAD
+        
         <activity android:name=".view.BaiduMapActivity" />
 
         <meta-data
@@ -84,9 +71,6 @@
         <activity android:name=".activity.DynamicDetailActivity" />
         <activity android:name=".activity.NewFriendActivity" />
         <activity android:name=".activity.settingActivity"></activity>
-=======
-        <activity android:name=".view.BaiduMapActivity"></activity>
->>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
     </application>
 
 </manifest>
