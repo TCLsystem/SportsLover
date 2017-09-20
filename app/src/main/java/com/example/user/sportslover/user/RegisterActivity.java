@@ -1,110 +1,76 @@
 package com.example.user.sportslover.user;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.model.Impl.SportModelImpl;
+import com.example.user.sportslover.model.UserModel;
+import com.example.user.sportslover.util.ToastUtil;
 
-import cn.bmob.v3.exception.BmobException;
-import cn.bmob.v3.listener.SaveListener;
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class RegisterActivity extends Activity {
 
-    private EditText getName,getPassword,getNumber;
-    private Button btnSign;
-    private CompositeSubscription mCompositeSubscription;
-    @Override
+
+    @Bind(R.id.register_back)
+    ImageView registerBack;
+    @Bind(R.id.register_name)
+    EditText registerName;
+    @Bind(R.id.register_password)
+    EditText registerPassword;
+    @Bind(R.id.register_btn)
+    Button registerBtn;
+
+    private String mPhone;
+    private UserModel mUserModel = new UserModel();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
-        getName=(EditText)findViewById(R.id.getName);
-        getPassword=(EditText)findViewById(R.id.getPassword);
-        getNumber=(EditText)findViewById(R.id.getNumber);
-        btnSign=(Button)findViewById(R.id.btnSign);
-        btnSign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Register();
-            }
-        });
+        ButterKnife.bind(this);
+        mPhone = getIntent().getStringExtra("phone");
     }
 
+    @OnClick({R.id.register_back, R.id.register_btn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.register_back:
+                finish();
+                break;
+            case R.id.register_btn:
+                if (!TextUtils.isEmpty(registerName.getText().toString()) && !TextUtils.isEmpty(registerPassword.getText().toString())) {
+                    User user = new User();
+                    user.setName(registerName.getText().toString());
+                    user.setPassword(registerPassword.getText().toString());
+                    user.setNumber(mPhone);
+                    mUserModel.onRegister(user, new SportModelImpl.BaseListener() {
+                        @Override
+                        public void getSuccess(Object o) {
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            finish();
+                        }
 
-    //返回到登录页面
-    public void ret(){
+                        @Override
+                        public void getFailure() {
 
-        Intent intent1 = new Intent();
-        intent1.setClass(RegisterActivity.this, LoginActivity.class);
-        RegisterActivity.this.startActivity(intent1);
-
-
-    }
-    @SuppressLint("UseValueOf")
-    //点击注册
-    public void Register(){
-
-        String name=getName.getText().toString();
-        final String password=getPassword.getText().toString();
-        final String number=getNumber.getText().toString();
-        if(name.equals("")||password.equals(""))
-        {
-            Toast.makeText(this, "帐号或密码不能为空", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(name.length()<6)
-        {
-            Toast.makeText(this, "帐号小于6位", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(number.length()==0)
-        {
-            Toast.makeText(this, "手机号不能为空", Toast.LENGTH_LONG).show();
-            return;
-        }
-        if(number.length()!=11)
-        {
-            Toast.makeText(this, "请输入11位有效号码", Toast.LENGTH_LONG).show();
-            return;
-        }
-        final User myuser = new User();
-        myuser.setUsername(name);
-        myuser.setPassword(password);
-        myuser.setNumber(number);
-        addSubscription(myuser.signUp(new SaveListener<User>() {
-            @Override
-            public void done(User s, BmobException e) {
-                if (e == null) {
-                    ret();
-                    Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_LONG).show();
+                        }
+                    });
                 } else {
-                    Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_LONG).show();
+                    ToastUtil.showLong(RegisterActivity.this, "请填写完整信息");
                 }
-            }
-        }));
-
-    }
-
-
-    private void addSubscription(Subscription s) {
-        if (this.mCompositeSubscription == null) {
-            this.mCompositeSubscription = new CompositeSubscription();
+                break;
         }
-        this.mCompositeSubscription.add(s);
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        this.finish();
-    }
-
 }

@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
-            android:text="走路"
+            android:text="健走"
             android:textColor="#000000"/>
 
     </LinearLayout>

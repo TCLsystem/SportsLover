@@ -1,42 +1,60 @@
 package com.example.user.sportslover.dto;
 
-import cn.bmob.v3.BmobUser;
+import java.io.Serializable;
+
+import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
- * Created by user on 17-9-11.
+ * 作者：GXL on 2016/8/3 0003
+ * 博客: http://blog.csdn.net/u014316462
+ * 作用：用户表
  */
+public class User extends BmobObject implements Serializable{
 
-public class User extends BmobUser {
+    //姓名
+    String Name;
+    //头像
+    BmobFile Photo;
+    //密码
+    String Password;
 
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private String password1;
-
-    public String getPassword() {
-        return password1;
-    }
-
-    private String number;
     public String getNumber() {
-        return number;
+        return Number;
     }
 
     public void setNumber(String number) {
-        this.number= number;
+        Number = number;
     }
 
+    //手机号码
+    String Number;
 
-    @Override
-    public String toString() {
-        return getUsername()+"\n"+getObjectId()+"\n"+"\n"+number+"\n"+getSessionToken()+"\n"+getEmailVerified();
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public BmobFile getPhoto() {
+        return Photo;
+    }
+
+    public void setPhoto(BmobFile photo) {
+        Photo = photo;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
+    }
+
+    public User() {
     }
 }
 

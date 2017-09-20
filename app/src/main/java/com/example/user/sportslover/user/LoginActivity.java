@@ -1,137 +1,88 @@
 package com.example.user.sportslover.user;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.user.sportslover.MainActivity;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.model.Impl.SportModelImpl;
+import com.example.user.sportslover.model.UserModel;
+import com.example.user.sportslover.util.ToastUtil;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import de.greenrobot.event.EventBus;
 
-import cn.bmob.v3.BmobUser;
-import cn.bmob.v3.exception.BmobException;
-import rx.Subscriber;
+public class LoginActivity extends Activity {
+    @Bind(R.id.login_back)
+    ImageView loginBack;
+    @Bind(R.id.login_register)
+    TextView loginRegister;
+    @Bind(R.id.login_btn)
+    Button loginBtn;
+    @Bind(R.id.login_uname)
+    EditText loginUname;
+    @Bind(R.id.login_pass)
+    EditText loginPass;
 
-public class LoginActivity extends BaseActivity{
-
-
-    private EditText etusername;
-    private EditText etpassword;
-    private Button login;
-    private Button sign;
+    private UserModel mUserModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-        initialize();
-        initView();
+        ButterKnife.bind(this);
+        mUserModel = new UserModel();
     }
 
-    private void initView() {
+    @OnClick({R.id.login_back, R.id.login_register, R.id.login_btn})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.login_back:
+                finish();
+                break;
+            case R.id.login_register:
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
+                break;
+            case R.id.login_btn:
+                if (!TextUtils.isEmpty(loginUname.getText().toString()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
+                    mUserModel.getUser(loginUname.getText().toString(), loginPass.getText().toString(), new SportModelImpl.BaseListener() {
+                        @Override
+                        public void getSuccess(Object o) {
+                            ToastUtil.showLong(LoginActivity.this, "登录成功");
+                            User user = (User) o;
+                            UserLocal userLocal = new UserLocal();
+                            userLocal.setName(user.getName());
+                            userLocal.setObjectId(user.getObjectId());
+                            userLocal.setNumber(user.getNumber());
+                            if (user.getPhoto() != null) {
+                                userLocal.setPhoto(user.getPhoto().getUrl());
+                            }
+                            mUserModel.putUserLocal(userLocal);
+                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                            EventBus.getDefault().post(new UserEventBus(userLocal));
+                            finish();
+                        }
 
-    }
-
-    private void initialize() {
-
-        etusername = (EditText) findViewById(R.id.et_username);
-        etpassword = (EditText) findViewById(R.id.et_password);
-        login = (Button) findViewById(R.id.login);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dlogin();
-            }
-        });
-        sign = (Button) findViewById(R.id.sign);
-        sign.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-
-    //登录点击
-    public void dlogin() {
-        String name = etusername.getText().toString();
-        String password = etpassword.getText().toString();
-
-
-        final User user = new User();
-        user.setUsername(name);
-        user.setPassword(password);
-        //login回调
-        /*user.login(new SaveListener<BmobUser>() {
-
-			@Override
-			public void done(BmobUser bmobUser, BmobException e) {
-				if(e==null){
-					toast(user.getUsername() + "登陆成功");
-					testGetCurrentUser();
-				}else{
-					loge(e);
-				}
-			}
-		});*/
-        //v3.5.0开始新增加的rx风格的Api
-        user.loginObservable(BmobUser.class).subscribe(new Subscriber<BmobUser>() {
-            @Override
-            public void onCompleted() {
-                log("----onCompleted----");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                loge(new BmobException(e));
-                Toast.makeText(LoginActivity.this,"用户名或密码错误",Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNext(BmobUser bmobUser) {
-                Intent intent1 = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent1);
-                toast(bmobUser.getUsername() + "登陆成功");
-                testGetCurrentUser();
-            }
-        });
-
-    }
-
-
-    private void testGetCurrentUser() {
-//		MyUser myUser = BmobUser.getCurrentUser(this, MyUser.class);
-//		if (myUser != null) {
-//			log("本地用户信息:objectId = " + myUser.getObjectId() + ",name = " + myUser.getUsername()
-//					+ ",age = "+ myUser.getAge());
-//		} else {
-//			toast("本地用户为null,请登录。");
-//		}
-        //V3.4.5版本新增加getObjectByKey方法获取本地用户对象中某一列的值
-        String username = (String) BmobUser.getObjectByKey("username");
-        Integer age = (Integer) BmobUser.getObjectByKey("age");
-        Boolean sex = (Boolean) BmobUser.getObjectByKey("sex");
-        JSONArray hobby = (JSONArray) BmobUser.getObjectByKey("hobby");
-        JSONArray cards = (JSONArray) BmobUser.getObjectByKey("cards");
-        JSONObject banker = (JSONObject) BmobUser.getObjectByKey("banker");
-        JSONObject mainCard = (JSONObject) BmobUser.getObjectByKey("mainCard");
-        log("username：" + username + ",\nage：" + age + ",\nsex：" + sex);
-        log("hobby:" + (hobby != null ? hobby.toString() : "为null") + "\ncards:" + (cards != null ? cards.toString() : "为null"));
-        log("banker:" + (banker != null ? banker.toString() : "为null") + "\nmainCard:" + (mainCard != null ? mainCard.toString() : "为null"));
-    }
-
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        this.finish();
+                        @Override
+                        public void getFailure() {
+                            ToastUtil.showLong(LoginActivity.this, "登录失败");
+                        }
+                    });
+                }
+                break;
+        }
     }
 }

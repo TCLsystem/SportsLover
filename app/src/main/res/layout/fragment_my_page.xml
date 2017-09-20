@@ -1,13 +1,164 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.user.sportslover.view.MyPageFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.sportslover.view.MyPageFragment">
+    android:scrollbars="none">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is MyPage Fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/normal_space"
+                android:text="个人中心"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/white"
+            android:padding="@dimen/normal_space">
+
+            <ImageView
+                android:id="@+id/UserPhoto"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@null"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_empty_dish" />
+
+            <TextView
+                android:id="@+id/loginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/UserPhoto"
+                android:drawableRight="@drawable/arrow_normal"
+                android:paddingLeft="@dimen/little_space"
+                android:text="点击登录"
+                android:textSize="16dp" />
+        </RelativeLayout>
+
+     <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:background="@color/white">
+            <TextView
+                android:layout_marginTop="1dp"
+                android:id="@+id/sportsClass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/wd_mycollect"
+                android:gravity="center_vertical"
+                android:text="运动等级"
+                android:textSize="16dp" />
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/pbClass"
+                android:max="100"
+                android:progress="8"
+                android:layout_marginRight="8dp"
+                android:progressDrawable="@drawable/progressbar"
+                android:visibility="visible"
+                style="@android:style/Widget.ProgressBar.Horizontal" >
+            </ProgressBar>
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/tvLV"
+             android:layout_marginLeft="16dp"
+             android:text="LV0"
+             android:background="@color/white"
+             android:textSize="16dp"/>
+    </LinearLayout>
+         <TextView
+             android:layout_marginTop="1dp"
+            android:id="@+id/motionRecord"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_mycollect"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="运动记录"
+            android:textSize="16dp" />
+
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/MyRecordRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_mycollect"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="我运动过的路线"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/myActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_publish"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="我的活动"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/seting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_settings"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="设置"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/guanyu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_lxb"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="关于"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+</ScrollView>

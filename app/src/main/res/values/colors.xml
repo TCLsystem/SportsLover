@@ -9,4 +9,12 @@
     <color name="transparent">#00000000</color>
     <color name="yellow_light">#ffefa717</color>
     <color name="white">#ffffffff</color>
+
+    <color name="normal_bg_color">#66E0DFE0</color>
+    <color name="normal_orange_color">#FF6633</color>
+    <color name="location_city_bg">#e1e1e0</color>
+
+    <color name="base_color_text_gray">#9fa0a0</color>
+    <color name="home_item_color_bg">#f4f6f6</color>
+    <color name="base_color_text_black">#3e3e39</color>
 </resources>

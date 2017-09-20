@@ -1,7 +1,6 @@
 package com.example.user.sportslover.view;
 
-import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -11,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.user.sportslover.MainActivity;
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.activity.NewFriendActivity;
 import com.example.user.sportslover.adapter.SportsFriendMemberListAdapter;
 import com.example.user.sportslover.dto.PersonDto;
 import com.example.user.sportslover.widget.CharacterParser;
@@ -52,20 +53,27 @@ public class ContactsFragment extends Fragment implements SideBar.OnTouchingLett
         // Inflate the layout for this fragment
         mainActivity = (MainActivity) getActivity();
         View view = inflater.inflate(R.layout.fragment_contacts, container, false);
-
         mListView = (ListView) view.findViewById(R.id.sports_friend_member);
         mSideBar = (SideBar) view.findViewById(R.id.sports_friend_sidrbar);
         mDialog = (TextView) view.findViewById(R.id.sports_friend_dialog);
         mSearchInput = (EditText) view.findViewById(R.id.sports_friend_member_search_input);
-
         mSideBar.setTextView(mDialog);
-        mSideBar.setOnTouchingLetterChangedListener(this);
+        LinearLayout layout_new = (LinearLayout) view.findViewById(R.id.layout_new);
+        layout_new.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                Intent intent = new Intent(getActivity(), NewFriendActivity.class);
+                intent.putExtra("from", "contact");
+                startActivity(intent);
+            }
+        });
+        mSideBar.setOnTouchingLetterChangedListener(this);
         initData();
 
         return view;
     }
-
     /**
      * 初始化数据
      */
@@ -133,6 +141,10 @@ public class ContactsFragment extends Fragment implements SideBar.OnTouchingLett
         mSearchInput.addTextChangedListener(this);
 
     }
+
+
+
+
 
     @Override
     public void onTouchingLetterChanged(String s) {
