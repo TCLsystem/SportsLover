@@ -218,7 +218,20 @@
         <dex dex="/local/Fundation/lvs/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-library-1.3_fe37a7abac58f621858827099179a71644cba3c8/classes.dex" />
     </item>
     <item
+<<<<<<< HEAD
         is-multidex="true"
+=======
+        is-multidex="false"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/BaiduLBS_Android.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a6278abebb24347606a40db7ae4df1dfed705374">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/pre-dexed/debug/BaiduLBS_Android_c1e944710ae768f2531543b8604717730debf1d6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+>>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
         jar="/home/user/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.1/2780d858273ce1bb90f6b12e1ef0d40f7741fca/converter-gson-2.0.1.jar"
         jumboMode="true"
         optimize="true"

@@ -1,11 +1,23 @@
 package com.example.user.sportslover.view;
+<<<<<<< HEAD
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+=======
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+>>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+<<<<<<< HEAD
+=======
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+>>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
 import android.widget.Toast;
 
 import com.baidu.location.BDLocation;
@@ -15,6 +27,10 @@ import com.baidu.location.LocationClientOption;
 import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatus;
+<<<<<<< HEAD
+=======
+import com.baidu.mapapi.map.MapStatusUpdate;
+>>>>>>> 3d97f8ebc69dc91e339e23c936669c61b5f11afc
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.MyLocationData;
