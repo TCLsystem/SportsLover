@@ -1,6 +1,7 @@
 package com.example.user.sportslover.view;
 
 import android.Manifest;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.Message;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.listener.MyOrientationListener;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -64,6 +67,7 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
     private TextView tvHours;
     private TextView tvMinutes;
     private TextView tvSeconds;
+    private TextView tvTarget;
     Button buttonTarget;
     Button buttonStart;
     Button buttonRoute;
@@ -106,9 +110,11 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
                 p1 = p2;
                 mLocationClient.requestLocation();
 
-                tvHours.setText(gSeconds/60/60+":");
-                tvMinutes.setText(gSeconds/60%60+":");
-                tvSeconds.setText(gSeconds%60+"");
+                tvHours.setText(timeFormat.format(gSeconds/60/60)+":");
+                tvMinutes.setText(timeFormat.format(gSeconds/60%60)+":");
+                tvSeconds.setText(timeFormat.format(gSeconds%60)+"");
+
+                progressCircle.setProgress((float)sum_distance/target*100f);
                 // }catch(Exception e){
                 // e.printStackTrace();
                 // }
@@ -118,9 +124,17 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
 
     };
 
+    private CircularRingPercentageView progressCircle;
+    private TuneWheelView tuneWheel;
+    private float target = 100000;
+    private DecimalFormat textFormat = new DecimalFormat("#0.0");
+    private DecimalFormat timeFormat = new DecimalFormat("#00.#");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON); setContentView(R.layout.main);
         mLocationClient = new LocationClient(getApplicationContext());
         BDAbstractLocationListener myListener = new BDAbstractLocationListener(){
             @Override
@@ -150,6 +164,15 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
         tvHours = (TextView) findViewById(R.id.tv_hours);
         tvMinutes = (TextView) findViewById(R.id.tv_minutes);
         tvSeconds = (TextView) findViewById(R.id.tv_seconds);
+        tvTarget = (TextView) findViewById(R.id.tv_target);
+        progressCircle = (CircularRingPercentageView) findViewById(R.id.progress);
+        tuneWheel = (TuneWheelView) findViewById(R.id.ruler);
+        tuneWheel.setValueChangeListener(new TuneWheelView.OnValueChangeListener(){
+            @Override
+            public void onValueChange(float value) {
+                target = value * 1000;
+            }
+        });
         initOritationListener();
         mapView = (MapView) findViewById(R.id.bmapView);
         baiduMap = mapView.getMap();
@@ -209,7 +232,7 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
         baiduMap.setMyLocationConfiguration(mConfig);
 
         //tvDistance.setText("现在走过的距离是："+sum_distance+"米");
-        tvDistance.setText(""+sum_distance+"米");
+        tvDistance.setText(""+textFormat.format(sum_distance)+"米");
     }
 
     private void requestLocation() {
@@ -314,6 +337,8 @@ public class BaiduMapActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.target0:
+                tvTarget.setText(textFormat.format(target/1000f) + "千米");
+                progressCircle.setTextTarget(target/1000);
                 break;
             case R.id.start0:
                 startTimer();
