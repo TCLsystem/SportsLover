@@ -59,5 +59,6 @@ dependencies {
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
     compile 'me.iwf.photopicker:PhotoPicker:0.1.8'
     compile 'com.android.support:multidex:'
+    compile 'com.github.castorflex.verticalviewpager:library:19.0.1'
     compile project(':xListView')
 }

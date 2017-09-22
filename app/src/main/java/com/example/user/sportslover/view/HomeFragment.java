@@ -170,7 +170,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
         view0.findViewById(R.id.begin_to_run).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), BaiduMapActivity.class);
+                Intent intent = new Intent(getActivity(), BeginSport.class);
                 startActivity(intent);
             }
         });

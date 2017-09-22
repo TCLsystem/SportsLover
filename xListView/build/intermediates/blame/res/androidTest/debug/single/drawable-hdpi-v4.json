@@ -1,18 +1,10 @@
 [
     {
-        "merged": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
-        "source": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
+        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xlistview_arrow.png",
+        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xlistview_arrow.png"
     },
     {
-        "merged": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xlistview_arrow.png",
-        "source": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xlistview_arrow.png"
-    },
-    {
-        "merged": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/xlistview_arrow.png",
-        "source": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/xlistview_arrow.png"
-    },
-    {
-        "merged": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
-        "source": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
+        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/drawable-hdpi-v4/ic_launcher.png"
     }
 ]
