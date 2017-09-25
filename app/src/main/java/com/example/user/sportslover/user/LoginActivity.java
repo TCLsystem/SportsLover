@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.user.sportslover.MainActivity;
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.activity.PhoneValidateActivity;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.util.ToastUtil;
@@ -21,7 +21,7 @@ import com.example.user.sportslover.util.ToastUtil;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import de.greenrobot.event.EventBus;
+import cn.bmob.v3.Bmob;
 
 public class LoginActivity extends Activity {
     @Bind(R.id.login_back)
@@ -42,6 +42,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
+        Bmob.initialize(this,"23fe35801c6ae4f698315d637955bb39");
         ButterKnife.bind(this);
         mUserModel = new UserModel();
     }
@@ -53,8 +54,10 @@ public class LoginActivity extends Activity {
                 finish();
                 break;
             case R.id.login_register:
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                finish();
+                String phone =  loginUname.getText().toString();
+                Intent intent = new Intent(LoginActivity.this,PhoneValidateActivity.class);
+                intent.putExtra("phone",phone);
+                startActivity(intent);
                 break;
             case R.id.login_btn:
                 if (!TextUtils.isEmpty(loginUname.getText().toString()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
@@ -62,17 +65,17 @@ public class LoginActivity extends Activity {
                         @Override
                         public void getSuccess(Object o) {
                             ToastUtil.showLong(LoginActivity.this, "登录成功");
-                            User user = (User) o;
-                            UserLocal userLocal = new UserLocal();
-                            userLocal.setName(user.getName());
-                            userLocal.setObjectId(user.getObjectId());
-                            userLocal.setNumber(user.getNumber());
-                            if (user.getPhoto() != null) {
-                                userLocal.setPhoto(user.getPhoto().getUrl());
-                            }
-                            mUserModel.putUserLocal(userLocal);
+//                            User user = (User) o;
+//                            UserLocal userLocal = new UserLocal();
+//                            userLocal.setName(user.getName());
+//                            userLocal.setObjectId(user.getObjectId());
+//                            userLocal.setNumber(user.getNumber());
+//                            if (user.getPhoto() != null) {
+//                                userLocal.setPhoto(user.getPhoto().getUrl());
+//                            }
+//                            mUserModel.putUserLocal(userLocal);
                             startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                            EventBus.getDefault().post(new UserEventBus(userLocal));
+                            //                           EventBus.getDefault().post(new UserEventBus(userLocal));
                             finish();
                         }
 

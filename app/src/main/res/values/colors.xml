@@ -17,6 +17,11 @@
     <color name="base_color_text_gray">#9fa0a0</color>
     <color name="home_item_color_bg">#f4f6f6</color>
     <color name="base_color_text_black">#3e3e39</color>
+    <color name="gray">#9fa0b7</color>
+
+
+
+
 
     <declare-styleable name="SeekCircle">
         <attr name="max" format="integer" value="100" />
