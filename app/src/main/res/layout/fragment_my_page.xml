@@ -89,6 +89,21 @@
              android:background="@color/white"
              android:textSize="16dp"/>
     </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="1dp"
+            android:id="@+id/motionGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/wd_mycollect"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="每周目标"
+            android:textSize="16dp" />
+
          <TextView
              android:layout_marginTop="1dp"
             android:id="@+id/motionRecord"
@@ -102,6 +117,7 @@
             android:padding="@dimen/normal_space"
             android:text="运动记录"
             android:textSize="16dp" />
+
 
 
         <TextView
@@ -120,7 +136,7 @@
 
         <TextView
             android:layout_marginTop="1dp"
-            android:id="@+id/myActivity"
+            android:id="@+id/myMotion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -134,7 +150,7 @@
 
         <TextView
             android:layout_marginTop="1dp"
-            android:id="@+id/seting"
+            android:id="@+id/setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -146,19 +162,6 @@
             android:text="设置"
             android:textSize="16dp" />
 
-        <TextView
-            android:layout_marginTop="1dp"
-            android:id="@+id/guanyu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawableLeft="@drawable/wd_lxb"
-            android:drawablePadding="@dimen/normal_space"
-            android:drawableRight="@drawable/arrow_normal"
-            android:gravity="center_vertical"
-            android:padding="@dimen/normal_space"
-            android:text="关于"
-            android:textSize="16dp" />
     </LinearLayout>
 
 </ScrollView>

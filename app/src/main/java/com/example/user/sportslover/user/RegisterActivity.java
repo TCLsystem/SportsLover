@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.dto.User;
-import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.util.ToastUtil;
 
 import butterknife.Bind;
@@ -35,8 +34,6 @@ public class RegisterActivity extends Activity {
     Button registerBtn;
 
     private String mPhone;
-    private UserModel mUserModel = new UserModel();
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -63,18 +60,6 @@ public class RegisterActivity extends Activity {
                     user.setPassword(password);
                     user.setNumber(mPhone);
                     Log.d("TAAAAAAAA",name+"  "+password+"   "+mPhone);
-//                    mUserModel.onRegister(user, new SportModelImpl.BaseListener() {
-//                        @Override
-//                        public void getSuccess(Object o) {
-//                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-//                            finish();
-//                        }
-//                        @Override
-//                        public void getFailure() {
-//
-//                        }
-//                    });
-
                     user.save(this, new SaveListener() {
                         @Override
                         public void onSuccess() {

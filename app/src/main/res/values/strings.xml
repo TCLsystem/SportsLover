@@ -15,6 +15,26 @@
 
 
     <string name="new_friends">新朋友</string>
+    <string name="close">关闭</string>
+
+
+
+
+
+
+    <string name="help_dialog_text">
+    <i>开发者：TCL云创科技有限公司2017届雏鹰</i>
+    \n
+    \n
+    <i>联系：zhijiao.li@tcl.com</i>
+    \n
+    \n
+    <b>SportsLover是一款运动类型的App,目前只开发Andaroid版本。</b>
+    <b>该App具有丰富的功能，针对不同类型的运动，进行运动规划，同时你还可以发布自己的活动以及参与别人发布的活动，兼具社交和运动的功能</b>
+    \n
+    \n
+    <b>有任何建议或者反馈可以随时联系开发团队</b>
+    </string>
 
 
 </resources>

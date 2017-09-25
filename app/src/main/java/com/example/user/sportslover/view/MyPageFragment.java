@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.RouteActivity;
@@ -32,10 +31,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.listener.BmobUpdateListener;
-import cn.bmob.v3.update.BmobUpdateAgent;
-import cn.bmob.v3.update.UpdateResponse;
-import cn.bmob.v3.update.UpdateStatus;
 import de.greenrobot.event.EventBus;
 import me.iwf.photopicker.PhotoPickerActivity;
 
@@ -55,17 +50,15 @@ public class MyPageFragment extends Fragment {
     @Bind(R.id.loginText)
     TextView loginText;
     @Bind(R.id.sportsClass)
-    TextView sendFood;
+    TextView sportsClass;
     @Bind(R.id.motionRecord)
-    TextView sendDynamic;
+    TextView motionRecord;
     @Bind(R.id.MyRecordRoute)
-    TextView love;
-    @Bind(R.id.myActivity)
-    TextView send;
-    @Bind(R.id.seting)
-    TextView update;
-    @Bind(R.id.guanyu)
-    TextView guanyu;
+    TextView MyRecordRoute;
+    @Bind(R.id.myMotion)
+    TextView myMotion;
+    @Bind(R.id.setting)
+    TextView setting;
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private DisplayImageOptions options;
 
@@ -113,7 +106,7 @@ public class MyPageFragment extends Fragment {
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick({R.id.UserPhoto, R.id.loginText, R.id.sportsClass, R.id.motionRecord, R.id.MyRecordRoute, R.id.myActivity, R.id.seting, R.id.guanyu})
+    @OnClick({R.id.UserPhoto, R.id.loginText, R.id.sportsClass, R.id.motionGoal,R.id.motionRecord, R.id.MyRecordRoute, R.id.myMotion, R.id.setting})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.UserPhoto:
@@ -132,6 +125,9 @@ public class MyPageFragment extends Fragment {
                 break;
             case R.id.sportsClass://运动等级
 
+                break;
+            case R.id.motionGoal://每周目标
+                startActivity(new Intent(getActivity(), motionRecordActivity.class));
                 break;
             //运动记录
             case R.id.motionRecord:
@@ -159,7 +155,7 @@ public class MyPageFragment extends Fragment {
                 startActivity(new Intent(getActivity(), RouteActivity.class));
                 break;
             //我的活动
-            case R.id.myActivity:
+            case R.id.myMotion:
   //              if (mUserModel.isLogin()) {
                     startActivity(new Intent(getActivity(), myDynamicActivity.class));
 //                } else {
@@ -167,23 +163,10 @@ public class MyPageFragment extends Fragment {
 //                }
                 break;
             //设置
-            case R.id.seting:
+            case R.id.setting:
                 startActivity(new Intent(getActivity(), settingActivity.class));
                 break;
-            //关于
-            case R.id.guanyu:
-                BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
-                    @Override
-                    public void onUpdateReturned(int updateStatus, UpdateResponse updateInfo) {
-                        if (updateStatus == UpdateStatus.No) {
-                            Toast.makeText(getActivity(), "版本无更新", Toast.LENGTH_SHORT).show();
-                        } else if (updateStatus == UpdateStatus.Yes) {
-                            BmobUpdateAgent.forceUpdate(getActivity());
-                        }
-                    }
-                });
-                BmobUpdateAgent.update(getActivity());
-                break;
+
         }
     }
 
