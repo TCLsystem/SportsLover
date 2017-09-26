@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.RouteActivity;
+import com.example.user.sportslover.activity.motionGoalActivity;
 import com.example.user.sportslover.activity.motionRecordActivity;
 import com.example.user.sportslover.activity.myDynamicActivity;
 import com.example.user.sportslover.activity.settingActivity;
@@ -127,7 +128,7 @@ public class MyPageFragment extends Fragment {
 
                 break;
             case R.id.motionGoal://每周目标
-                startActivity(new Intent(getActivity(), motionRecordActivity.class));
+                startActivity(new Intent(getActivity(), motionGoalActivity.class));
                 break;
             //运动记录
             case R.id.motionRecord:

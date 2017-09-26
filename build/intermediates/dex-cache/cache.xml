@@ -30,21 +30,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/local/Fundation/SPPPP/SportsLover/app/libs/pinyin4j-2.5.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="/local/Fundation/SPPPP/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/pinyin4j-2.5.0_e26760e77d9c71f1fb17a13f88469958884d61e4/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/user/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
         <dex dex="/local/Fundation/SPPPP/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/activeandroid-3.1.0-SNAPSHOT_a68c51a8c75690350769ee392b57d0e95ddbc513/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/Fundation/SPPPP/SportsLover/app/libs/pinyin4j-2.5.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="/local/Fundation/SPPPP/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/pinyin4j-2.5.0_e26760e77d9c71f1fb17a13f88469958884d61e4/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="24a65841825b6a90dfdfc099d4d38a062045fb80">
+        sha1="dc574fd05e978ae1bcbcfdf9740f8759e93826c7">
         <dex dex="/local/Fundation/SPPPP/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a8db2e43ea8acd6cd6f9d3893dc846abe5f905eb/classes.dex" />
     </item>
     <item
@@ -385,7 +385,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="0dfd1eb6d666555124df3760965c1a0d71c99b8e">
+        sha1="21d48364214e66551dc5460f55aee77058e3d4f2">
         <dex dex="/local/Fundation/SPPPP/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_9c758e80309916a8e0ed8d9422e3d1813ddfe0f5/classes.dex" />
     </item>
     <item

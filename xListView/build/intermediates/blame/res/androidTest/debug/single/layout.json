@@ -12,22 +12,6 @@
         "source": "/local/Fundation/SPPPP/SportsLover/xListView/build/intermediates/bundles/debug/res/layout/xlistview_footer.xml"
     },
     {
-        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/layout/xlistview_footer.xml",
-        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/layout/xlistview_footer.xml"
-    },
-    {
-        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/layout/xlistview_header.xml",
-        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/layout/xlistview_header.xml"
-    },
-    {
-        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/layout/list_item.xml",
-        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/layout/list_item.xml"
-    },
-    {
-        "merged": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/res/merged/androidTest/debug/layout/main.xml",
-        "source": "/local/AndroidStudioProjects/SportsLover.2017.09.21.2013.work/xListView/build/intermediates/bundles/debug/res/layout/main.xml"
-    },
-    {
         "merged": "/local/Fundation/SPPPP/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/layout/list_item.xml",
         "source": "/local/Fundation/SPPPP/SportsLover/xListView/build/intermediates/bundles/debug/res/layout/list_item.xml"
     }
