@@ -8,4 +8,5 @@ import com.example.user.sportslover.json.Weather;
 
 public interface WeatherPresenter {
     void requestWeather(final String weatherId);
+    void requestWeather(double longitude, double latitude);
 }

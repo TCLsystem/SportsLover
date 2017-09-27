@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,12 +21,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
 import com.example.user.sportslover.MainActivity;
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.application.BaseApplication;
+import com.example.user.sportslover.json.Weather;
+import com.example.user.sportslover.presenter.HomeRidingPresenterImpr;
+import com.example.user.sportslover.presenter.HomeRunningPresenterImpr;
+import com.example.user.sportslover.presenter.HomeWalkingPresenterImpr;
+import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment implements View.OnClickListener,HomeView {
+public class HomeFragment extends Fragment implements View.OnClickListener, HomeView, WeatherView {
 
     private ViewPager viewPager;
     private ArrayList<View> pageview;
@@ -37,6 +47,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
     private View view0;
     private View view1;
     private View view2;
+    private TextView textViewvp0;
+    private TextView textViewvp1;
+    private TextView textViewvp2;
+    private TextView tvRuningTotalMileages;
+    private TextView tvRuningCumulativeTime;
+    private TextView tvRuningAveragePace;
+    private TextView tvRuningCumulativeNumber;
+    private TextView tvWalkingTotalMileages;
+    private TextView tvWalkingCumulativeTime;
+    private TextView tvWalkingAveragePace;
+    private TextView tvWalkingCumulativeNumber;
+    private TextView tvRidingTotalMileages;
+    private TextView tvRidingCumulativeTime;
+    private TextView tvRidingAveragePace;
+    private TextView tvRidingCumulativeNumber;
+    private TextView tvRunningWeatherCondition;
+    private TextView tvWalkingWeatherCondition;
+    private TextView tvRidingWeatherCondition;
+    private ImageView ivRunningWeatherIcon;
+    private ImageView ivWalkingWeatherIcon;
+    private ImageView ivRidingWeatherIcon;
+    private CircularRingPercentageView progressCircleRunning;
+    private CircularRingPercentageView progressCircleWalking;
+    private CircularRingPercentageView progressCircleRiding;
+    private HomeRunningPresenterImpr homeRunningPresenterImpr;
+    private HomeWalkingPresenterImpr homeWalkingPresenterImpr;
+    private HomeRidingPresenterImpr homeRidingPresenterImpr;
+
+    private LocationClient locationClient;
+    private WeatherPresenterImpl weatherPresenterImpl;
+    private BaseApplication baseApplication;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,17 +87,50 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
         view0 = inflater.inflate(R.layout.viewpager0, null);
         view1 = inflater.inflate(R.layout.viewpager1, null);
         view2 = inflater.inflate(R.layout.viewpager2, null);
-        TextView textViewvp0 = (TextView) view.findViewById(R.id.viewpager0);
-        TextView textViewvp1= (TextView) view.findViewById(R.id.viewpager1);
-        TextView textViewvp2 = (TextView) view.findViewById(R.id.viewpager2);
+        textViewvp0 = (TextView) view.findViewById(R.id.viewpager0);
+        textViewvp1= (TextView) view.findViewById(R.id.viewpager1);
+        textViewvp2 = (TextView) view.findViewById(R.id.viewpager2);
         scrollbar = (ImageView) view.findViewById(R.id.scrollbar);
         textViewvp0.setOnClickListener(this);
         textViewvp1.setOnClickListener(this);
         textViewvp2.setOnClickListener(this);
+        homeRunningPresenterImpr = new HomeRunningPresenterImpr();
+        tvRunningWeatherCondition = (TextView) view0.findViewById(R.id.tv_weather_running_condition);
+        tvRuningTotalMileages = (TextView) view0.findViewById(R.id.tv_home_running_basic);
+        tvRuningCumulativeTime = (TextView) view0.findViewById(R.id.tv_home_running_cumulative_time);
+        tvRuningAveragePace = (TextView) view0.findViewById(R.id.tv_home_running_average_pace);
+        tvRuningCumulativeNumber = (TextView) view0.findViewById(R.id.tv_home_running_cumulative_number);
+        ivRunningWeatherIcon = (ImageView) view0.findViewById(R.id.iv_home_running_weather_icon);
+        homeWalkingPresenterImpr = new HomeWalkingPresenterImpr();
+        tvWalkingWeatherCondition = (TextView) view1.findViewById(R.id.tv_weather_walking_condition);
+        tvWalkingTotalMileages = (TextView) view1.findViewById(R.id.tv_home_walking_basic);
+        tvWalkingCumulativeTime = (TextView) view1.findViewById(R.id.tv_home_walking_cumulative_time);
+        tvWalkingAveragePace = (TextView) view1.findViewById(R.id.tv_home_walking_average_pace);
+        tvWalkingCumulativeNumber = (TextView) view1.findViewById(R.id.tv_home_walking_cumulative_number);
+        ivWalkingWeatherIcon = (ImageView) view1.findViewById(R.id.iv_home_walking_weather_icon);
+        homeRidingPresenterImpr = new HomeRidingPresenterImpr();
+        tvRidingWeatherCondition = (TextView) view2.findViewById(R.id.tv_weather_riding_condition);
+        tvRidingTotalMileages = (TextView) view2.findViewById(R.id.tv_home_riding_basic);
+        tvRidingCumulativeTime = (TextView) view2.findViewById(R.id.tv_home_riding_cumulative_time);
+        tvRidingAveragePace = (TextView) view2.findViewById(R.id.tv_home_riding_average_pace);
+        tvRidingCumulativeNumber = (TextView) view2.findViewById(R.id.tv_home_riding_cumulative_number);
+        ivRidingWeatherIcon = (ImageView) view2.findViewById(R.id.iv_home_riding_weather_icon);
+        refleshRidingTextViews();
+        refleshWalkingTextViews();
+        refleshRunningTextViews();
         pageview =new ArrayList<View>();
         pageview.add(view0);
         pageview.add(view1);
         pageview.add(view2);
+        progressCircleRunning = (CircularRingPercentageView) view0.findViewById(R.id.home_running_progress);
+        progressCircleRunning.setRoundWidth(15);
+        progressCircleRunning.setProgress(75f);
+        progressCircleWalking = (CircularRingPercentageView) view1.findViewById(R.id.home_walking_progress);
+        progressCircleWalking.setRoundWidth(15);
+        progressCircleWalking.setProgress(75f);
+        progressCircleRiding = (CircularRingPercentageView) view2.findViewById(R.id.home_riding_progress);
+        progressCircleRiding.setRoundWidth(15);
+        progressCircleRiding.setProgress(75f);
         PagerAdapter mPagerAdapter = new PagerAdapter(){
 
             @Override
@@ -95,7 +169,36 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
         matrix.postTranslate(offset, 0);
         scrollbar.setImageMatrix(matrix);
         viewPagerClickInit();
+        baseApplication = (BaseApplication) getActivity().getApplicationContext();
+        weatherPresenterImpl = new WeatherPresenterImpl(this);
+        locationClient = new LocationClient(getActivity().getApplicationContext());
+        BDAbstractLocationListener myListener = new BDAbstractLocationListener(){
+            @Override
+            public void onReceiveLocation(BDLocation bdLocation) {
+                if (bdLocation.getLocType() == BDLocation.TypeGpsLocation
+                        || bdLocation.getLocType() == BDLocation.TypeNetWorkLocation){
+                    getWeatherFromLocation(bdLocation);
+                }
+            }
+        };
+        locationClient.registerLocationListener(myListener);
+        locationClient.start();
         return view;
+    }
+
+    private void getWeatherFromLocation(BDLocation bdLocation) {
+        weatherPresenterImpl.requestWeather(bdLocation.getLongitude(), bdLocation.getLatitude());
+    }
+
+    @Override
+    public void showResponse(Weather weather) {
+        baseApplication.setGlobalWeather(weather);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                refleshWeatherCondition();
+            }
+        });
     }
 
     public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
@@ -109,6 +212,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
                     } else if (currIndex == 2) {
                         animation = new TranslateAnimation(two, 0, 0, 0);
                     }
+                    refleshRunningTextViews();
                     break;
                 case 1:
                     if (currIndex == 0) {
@@ -116,6 +220,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
                     } else if (currIndex == 2) {
                         animation = new TranslateAnimation(two, one, 0, 0);
                     }
+                    refleshWalkingTextViews();
                     break;
                 case 2:
                     if (currIndex == 0) {
@@ -123,6 +228,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
                     } else if (currIndex == 1) {
                         animation = new TranslateAnimation(one, two, 0, 0);
                     }
+                    refleshRidingTextViews();
                     break;
                 default:
                     break;
@@ -160,14 +266,54 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
     }
 
     private void viewPagerClickInit(){
-        view0.findViewById(R.id.weather_view).setOnClickListener(new View.OnClickListener() {
+        view0.findViewById(R.id.fl_home_running_weather).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                if (baseApplication.getGlobalWeather() != null){
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(getContext(), "Weather Information Invalid. Please try again later.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        view1.findViewById(R.id.fl_home_walking_weather).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (baseApplication.getGlobalWeather() != null){
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(getContext(), "Weather Information Invalid. Please try again later.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        view2.findViewById(R.id.fl_home_riding_weather).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (baseApplication.getGlobalWeather() != null){
+                    Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(getContext(), "Weather Information Invalid. Please try again later.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        view0.findViewById(R.id.fl_start_running).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BeginSport.class);
                 startActivity(intent);
             }
         });
-        view0.findViewById(R.id.begin_to_run).setOnClickListener(new View.OnClickListener() {
+        view1.findViewById(R.id.fl_start_walking).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), BeginSport.class);
+                startActivity(intent);
+            }
+        });
+        view2.findViewById(R.id.fl_start_riding).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BeginSport.class);
@@ -189,5 +335,56 @@ public class HomeFragment extends Fragment implements View.OnClickListener,HomeV
     @Override
     public void switch2ViewPager2(){
         viewPager.setCurrentItem(2);
+    }
+
+    private void refleshRunningTextViews(){
+        String html;
+        textViewvp0.setTextColor(0xff000000);
+        textViewvp1.setTextColor(0xff848484);
+        textViewvp2.setTextColor(0xff848484);
+        html = "Today<br><big><big><big><big><big>" + homeRunningPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvRuningTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
+        tvRuningCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRunningPresenterImpr.loadAveragePace()/60 + "’" + homeRunningPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        tvRuningAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvRuningCumulativeNumber.setText(Html.fromHtml(html));
+    }
+
+    private void refleshWalkingTextViews(){
+        String html;
+        textViewvp0.setTextColor(0xff848484);
+        textViewvp1.setTextColor(0xff000000);
+        textViewvp2.setTextColor(0xff848484);
+        html = "Today<br><big><big><big><big><big>" + homeWalkingPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvWalkingTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
+        tvWalkingCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeWalkingPresenterImpr.loadAveragePace()/60 + "’" + homeWalkingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        tvWalkingAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvWalkingCumulativeNumber.setText(Html.fromHtml(html));
+    }
+
+    private void refleshRidingTextViews(){
+        String html;
+        textViewvp0.setTextColor(0xff848484);
+        textViewvp1.setTextColor(0xff848484);
+        textViewvp2.setTextColor(0xff000000);
+        html = "Today<br><big><big><big><big><big>" + homeRidingPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvRidingTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
+        tvRidingCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRidingPresenterImpr.loadAveragePace()/60 + "’" + homeRidingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        tvRidingAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvRidingCumulativeNumber.setText(Html.fromHtml(html));
+    }
+
+    public void refleshWeatherCondition(){
+        tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
+        tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
+        tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
     }
 }

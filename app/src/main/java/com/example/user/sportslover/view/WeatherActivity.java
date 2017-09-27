@@ -1,62 +1,89 @@
 package com.example.user.sportslover.view;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.application.BaseApplication;
 import com.example.user.sportslover.json.Weather;
 import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class WeatherActivity extends AppCompatActivity implements View.OnClickListener ,WeatherView {
+public class WeatherActivity extends AppCompatActivity implements View.OnClickListener, WeatherView {
 
-    TextView responseText;
+    private ImageView ivBack;
+    private TextView tvWeatherCondition;
+    private TextView tvTemperature;
+    private TextView tvDate;
+    private TextView tvDetailInformation;
+    private BaseApplication baseApplication;
+    private WeatherPresenterImpl weatherPresenter;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    private String[] month = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.weather_layout);
-        responseText = (TextView) findViewById(R.id.request_show);
-        Button button = (Button) findViewById(R.id.net_request);
-        button.setOnClickListener(this);
+        tvWeatherCondition = (TextView) findViewById(R.id.tv_weather_basic_condition);
+        tvTemperature = (TextView) findViewById(R.id.tv_weather_basic_temperature);
+        tvDate = (TextView) findViewById(R.id.tv_weather_date);
+        tvDetailInformation = (TextView) findViewById(R.id.tv_weather_item_info);
+        ivBack = (ImageView) findViewById(R.id.weather_back);
+        baseApplication = (BaseApplication) getApplicationContext();
+        weatherPresenter = new WeatherPresenterImpl(this);
+        ivBack.setOnClickListener(this);
+        refleshWeather();
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.net_request:
-                sendRequestWeather("CN101280301");
+            case R.id.weather_back:
+                finish();
                 break;
             default:
                 break;
         }
     }
 
-    private void sendRequestWeather(String weatherId){
-        WeatherPresenterImpl weatherPresenter = new WeatherPresenterImpl(this);
-        weatherPresenter.requestWeather(weatherId);
+    private void refleshWeather(){
+        String html;
+        Date date = null;
+        tvWeatherCondition.setText(baseApplication.getGlobalWeather().now.more.info);
+        tvTemperature.setText(baseApplication.getGlobalWeather().now.temperature + "℃");
+        /*html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvRidingCumulativeNumber.setText(Html.fromHtml(html));*/
+        try {
+            date = dateFormat.parse(baseApplication.getGlobalWeather().basic.update.updateTime);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        html = month[date.getMonth()] +
+                "<br><big><big><big>" + date.getDate() + "</big></big></big>";
+        tvDate.setText(Html.fromHtml(html));
+        tvDate.setLineSpacing(0,1.0f);
+        html = "<big><big>" + baseApplication.getGlobalWeather().aqi.city.aqi + "</big></big><br>" +
+                "<big><big>" + baseApplication.getGlobalWeather().now.humility + "</big></big>%<br>" +
+                "<big><big>" + baseApplication.getGlobalWeather().now.wind.direction + "</big></big>";
+        tvDetailInformation.setText(Html.fromHtml(html));
+        tvDetailInformation.setLineSpacing(0,1.7f);
     }
 
     @Override
-    public void showResponse(final Weather weather){
+    public void showResponse(Weather weather) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                responseText.setText(weather.basic.cityname + "\n"
-                        + weather.now.temperature + "C\n"
-                        + weather.now.more.info + "\n"
-                        + weather.aqi.city.aqi + "\n"
-                        + weather.suggestion.comfort.info + "\n"
-                        + weather.suggestion.sport.info);
+                /*String weatherId = baseApplication.getGlobalWeather().basic.weatherId;
+                weatherPresenter.requestWeather(weatherId);*/
+                refleshWeather();
             }
         });
     }

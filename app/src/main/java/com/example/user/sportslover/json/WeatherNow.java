@@ -14,10 +14,20 @@ public class WeatherNow {
     @SerializedName("cond")
     public More more;
 
+    @SerializedName("hum")
+    public int humility;
+
     public class More{
 
         @SerializedName("txt")
         public String info;
 
+    }
+
+    public Wind wind;
+
+    public class Wind{
+        @SerializedName("dir")
+        public String direction;
     }
 }

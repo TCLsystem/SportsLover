@@ -10,11 +10,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baidu.location.BDAbstractLocationListener;
+import com.baidu.location.BDLocation;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.example.user.sportslover.application.BaseApplication;
+import com.example.user.sportslover.json.Weather;
+import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 import com.example.user.sportslover.view.ContactsFragment;
 import com.example.user.sportslover.view.HomeFragment;
 import com.example.user.sportslover.view.MainView;
 import com.example.user.sportslover.view.MyPageFragment;
 import com.example.user.sportslover.view.SportsEventFragment;
+import com.example.user.sportslover.view.WeatherView;
 
 public class MainActivity extends AppCompatActivity implements MainView,View.OnClickListener {
 
@@ -42,11 +50,9 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         initView();
         initEvent();
         initFragment(0);
-
     }
 
     private void initEvent() {
@@ -54,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         ll_contacts.setOnClickListener(this);
         ll_sportsEvent.setOnClickListener(this);
         ll_myPage.setOnClickListener(this);
-
     }
 
     private void initView() {
@@ -164,41 +169,42 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
 
     @Override
     public void restartBottom() {
-        iv_home.setImageResource(R.drawable.ic_launcher_down);
-        iv_contacts.setImageResource(R.drawable.ic_launcher_down);
-        iv_sportsEvent.setImageResource(R.drawable.ic_launcher_down);
-        iv_myPage.setImageResource(R.drawable.ic_launcher_down);
-        tv_home.setTextColor(0xffffffff);
-        tv_contacts.setTextColor(0xffffffff);
-        tv_sportsEvent.setTextColor(0xffffffff);
-        tv_myPage.setTextColor(0xffffffff);
+        iv_home.setImageResource(R.drawable.home_down);
+        iv_contacts.setImageResource(R.drawable.contact_down);
+        iv_sportsEvent.setImageResource(R.drawable.share_down);
+        iv_myPage.setImageResource(R.drawable.mirror_down);
+        tv_home.setTextColor(0xff848484);
+        tv_contacts.setTextColor(0xff848484);
+        tv_sportsEvent.setTextColor(0xff848484);
+        tv_myPage.setTextColor(0xff848484);
     }
 
     @Override
     public void switch2Home() {
-        iv_home.setImageResource(R.drawable.ic_launcher);
-        tv_home.setTextColor(0xff1B940A);
+        iv_home.setImageResource(R.drawable.home_up);
+        tv_home.setTextColor(0xff6ee4bc);
         initFragment(0);
     }
 
     @Override
     public void switch2Contacts() {
-        iv_contacts.setImageResource(R.drawable.ic_launcher);
-        tv_contacts.setTextColor(0xff1B940A);
+        iv_contacts.setImageResource(R.drawable.contact_up);
+        tv_contacts.setTextColor(0xff6ee4bc);
         initFragment(1);
     }
 
     @Override
     public void switch2SportsEvent() {
-        iv_sportsEvent.setImageResource(R.drawable.ic_launcher);
-        tv_sportsEvent.setTextColor(0xff1B940A);
+        iv_sportsEvent.setImageResource(R.drawable.share_up);
+        tv_sportsEvent.setTextColor(0xff6ee4bc);
         initFragment(2);
     }
 
     @Override
     public void switch2MyPage() {
-        iv_myPage.setImageResource(R.drawable.ic_launcher);
-        tv_myPage.setTextColor(0xff1B940A);
+        iv_myPage.setImageResource(R.drawable.mirror_up);
+        tv_myPage.setTextColor(0xff6ee4bc);
         initFragment(3);
     }
+
 }

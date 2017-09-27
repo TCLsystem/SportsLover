@@ -205,6 +205,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         tvSeconds = (TextView) view1.findViewById(R.id.tv_seconds);
         tvTarget = (TextView) view0.findViewById(R.id.tv_target);
         progressCircle = (CircularRingPercentageView) view0.findViewById(R.id.progress);
+        progressCircle.setRoundWidth(15);
         tuneWheel = (TuneWheelView) view0.findViewById(R.id.ruler);
         tuneWheel.setValueChangeListener(new TuneWheelView.OnValueChangeListener(){
             @Override
