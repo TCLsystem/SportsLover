@@ -4,20 +4,12 @@
     android:shape="oval"
     android:useLevel="false">
 
-    <size android:width="50dp"
-        android:height="50dp"/>
+    <size android:width="64dp"
+        android:height="64dp"/>
 
     <!-- 填充的颜色,渐变色 -->
     <gradient
-        android:startColor="#717a97"
-        android:endColor="#223158"
+        android:startColor="#5bc0e5"
+        android:endColor="#6ee4bc"
         android:angle="0" />
-    <!-- padding：Button里面的文字与Button边界的间隔 -->
-    <padding
-        android:left="10dp"
-        android:top="10dp"
-        android:right="10dp"
-        android:bottom="10dp"
-        />
-
 </shape>

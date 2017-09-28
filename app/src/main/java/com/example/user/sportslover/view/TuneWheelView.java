@@ -28,7 +28,7 @@ public class TuneWheelView extends View {
     }
 
     public static final int MOD_TYPE_HALF = 2;
-    public static final int MOD_TYPE_ONE = 10;
+    public static final int MOD_TYPE_ONE = 5;
 
     private static final int ITEM_HALF_DIVIDER = 40;
     private static final int ITEM_ONE_DIVIDER = 10;
@@ -36,10 +36,10 @@ public class TuneWheelView extends View {
     private static final int ITEM_MAX_HEIGHT = 50;
     private static final int ITEM_MIN_HEIGHT = 20;
 
-    private static final int TEXT_SIZE = 18;
+    private static final int TEXT_SIZE = 13;
 
     private float mDensity;
-    private int mValue = 50, mMaxValue = 100, mModType = MOD_TYPE_ONE, mLineDivider = ITEM_ONE_DIVIDER;
+    private int mValue = 0, mMaxValue = 100, mModType = MOD_TYPE_ONE, mLineDivider = ITEM_ONE_DIVIDER;
     // private int mValue = 50, mMaxValue = 500, mModType = MOD_TYPE_ONE,
     // mLineDivider = ITEM_ONE_DIVIDER;
 
@@ -138,6 +138,14 @@ public class TuneWheelView extends View {
         return mValue;
     }
 
+    public void setMaxValue(int maxValue){
+        mMaxValue = maxValue;
+        if (mValue > maxValue){
+            mValue = maxValue;
+        }
+        postInvalidate();
+    }
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         mWidth = getWidth();
@@ -151,7 +159,7 @@ public class TuneWheelView extends View {
 
         drawScaleLine(canvas);
         // drawWheel(canvas);
-        drawMiddleLine(canvas);
+        //drawMiddleLine(canvas);
     }
 
     /*private void drawWheel(Canvas canvas) {
@@ -170,10 +178,11 @@ public class TuneWheelView extends View {
 
         Paint linePaint = new Paint();
         linePaint.setStrokeWidth(2);
-        linePaint.setColor(Color.BLACK);
+        linePaint.setColor(Color.WHITE);
 
         TextPaint textPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
         textPaint.setTextSize(TEXT_SIZE * mDensity);
+        textPaint.setColor(Color.WHITE);
 
         int width = mWidth, drawCount = 0;
         float xPosition = 0, textWidth = Layout.getDesiredWidth("0", textPaint);
@@ -184,15 +193,15 @@ public class TuneWheelView extends View {
             xPosition = (width / 2 - mMove) + i * mLineDivider * mDensity;
             if (xPosition + getPaddingRight() < mWidth) {
                 if ((mValue + i) % mModType == 0) {
-                    canvas.drawLine(xPosition, getPaddingTop(), xPosition, mDensity * ITEM_MAX_HEIGHT - textWidth, linePaint);
-
+                    linePaint.setStrokeWidth(8);
+                    canvas.drawLine(xPosition, getHeight(), xPosition, getHeight() - 5  * textWidth, linePaint);
                     if (mValue + i <= mMaxValue) {
                         switch (mModType) {
                             case MOD_TYPE_HALF:
-                                canvas.drawText(String.valueOf((mValue + i) / 2) + "km", countLeftStart(mValue + i, xPosition, textWidth), getHeight() - textWidth, textPaint);
+                                canvas.drawText(String.valueOf((mValue + i) / 2), countLeftStart(mValue + i, xPosition, textWidth), getHeight() - textWidth, textPaint);
                                 break;
                             case MOD_TYPE_ONE:
-                                canvas.drawText(String.valueOf(mValue + i) + "km", xPosition - (textWidth * numSize / 2), getHeight() - textWidth, textPaint);
+                                canvas.drawText(String.valueOf((mValue + i)/5), xPosition - (textWidth * numSize / 2), getHeight() - 6 * textWidth, textPaint);
                                 break;
 
                             default:
@@ -201,22 +210,23 @@ public class TuneWheelView extends View {
                     }
                 } else {
                     //canvas.drawLine(xPosition, getPaddingTop(), xPosition, mDensity * ITEM_MIN_HEIGHT, linePaint);
-                    canvas.drawLine(xPosition, mDensity * ITEM_MAX_HEIGHT - textWidth, xPosition, (getPaddingTop() + mDensity * ITEM_MAX_HEIGHT) / 2, linePaint);
+                    linePaint.setStrokeWidth(4);
+                    canvas.drawLine(xPosition, getHeight() - 2.5f  * textWidth, xPosition, getHeight(), linePaint);
                 }
             }
 
             xPosition = (width / 2 - mMove) - i * mLineDivider * mDensity;
             if (xPosition > getPaddingLeft()) {
                 if ((mValue - i) % mModType == 0) {
-                    canvas.drawLine(xPosition, getPaddingTop(), xPosition, mDensity * ITEM_MAX_HEIGHT - textWidth, linePaint);
-
+                    linePaint.setStrokeWidth(8);
+                    canvas.drawLine(xPosition, getHeight(), xPosition, getHeight() - 5  * textWidth, linePaint);
                     if (mValue - i >= 0) {
                         switch (mModType) {
                             case MOD_TYPE_HALF:
-                                canvas.drawText(String.valueOf((mValue - i) / 2) + "km", countLeftStart(mValue - i, xPosition, textWidth), getHeight() - textWidth, textPaint);
+                                canvas.drawText(String.valueOf((mValue - i) / 2) , countLeftStart(mValue - i, xPosition, textWidth), getHeight() - textWidth, textPaint);
                                 break;
                             case MOD_TYPE_ONE:
-                                canvas.drawText(String.valueOf(mValue - i) + "km", xPosition - (textWidth * numSize / 2), getHeight() - textWidth, textPaint);
+                                canvas.drawText(String.valueOf((mValue - i)/5) , xPosition - (textWidth * numSize / 2), getHeight() - 6 * textWidth, textPaint);
                                 break;
 
                             default:
@@ -225,7 +235,8 @@ public class TuneWheelView extends View {
                     }
                 } else {
                     //canvas.drawLine(xPosition, getPaddingTop(), xPosition, mDensity * ITEM_MIN_HEIGHT, linePaint);
-                    canvas.drawLine(xPosition, mDensity * ITEM_MAX_HEIGHT - textWidth, xPosition, (getPaddingTop() + mDensity * ITEM_MAX_HEIGHT) / 2, linePaint);
+                    linePaint.setStrokeWidth(4);
+                    canvas.drawLine(xPosition, getHeight() - 2.5f  * textWidth, xPosition, getHeight(), linePaint);
                 }
             }
 

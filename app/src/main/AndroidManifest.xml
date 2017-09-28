@@ -54,6 +54,11 @@
             android:name="com.baidu.location.f"
             android:enabled="true"
             android:process=":remote" />
+        <service
+            android:name="com.baidu.trace.LBSTraceService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
 
         <meta-data
             android:name="AA_DB_NAME"
@@ -80,6 +85,15 @@
         <activity android:name=".activity.PhoneValidateActivity" />
         <activity android:name=".activity.makeGoal" />
         <activity android:name=".activity.personalDataActivity"></activity>
+
+        <service
+            android:name=".service.SportTrackService"
+            android:enabled="true"
+            android:exported="true"
+            >
+        </service>
+
+        <activity android:name=".view.SetSportTargetActivity"></activity>
     </application>
 
 </manifest>

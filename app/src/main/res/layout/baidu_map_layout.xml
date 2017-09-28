@@ -1,36 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/baidu_map_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!---->
-
-
-    <com.example.user.sportslover.view.CircularRingPercentageView
-        android:id="@+id/progress"
-        android:layout_width="180dp"
-        android:layout_height="180dp"
-        android:layout_gravity="center"
-        app:circleRoundWidth="18dp"
-        app:circleTextColor="#999999"
-        app:circleTextSize="8sp" />
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
 
     <RelativeLayout
-        android:orientation="horizontal"
-        android:id="@+id/ll_baidu_map"
+        android:id="@+id/rl_baidu_map"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp">
 
         <Button
-            android:id="@+id/target0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:id="@+id/target1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
             android:layout_toLeftOf="@+id/ll_baidu_map_buttons"
-            android:text="目标"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:text="Goal"
+            android:background="@drawable/rectanglar_white_shape_button"
             />
 
         <LinearLayout
@@ -41,60 +37,66 @@
             android:orientation="horizontal" >
 
             <Button
-                android:id="@+id/start0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/start1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_weight="1"
-                android:text="开始" />
+                android:text="Start"
+                android:background="@drawable/round_shape_button"/>
 
             <Button
-                android:id="@+id/pause0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/pause1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="暂停" />
+                android:text="暂停"
+                android:background="@drawable/round_shape_button"/>
 
             <Button
-                android:id="@+id/resume0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/stop1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="继续" />
+                android:text="停止"
+                android:background="@drawable/round_shape_button"/>
 
             <Button
-                android:id="@+id/stop0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/resume1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="停止" />
+                android:text="继续"
+                android:background="@drawable/round_shape_button"/>
 
         </LinearLayout>
 
         <Button
-            android:id="@+id/route0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:id="@+id/route1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
             android:layout_toRightOf="@+id/ll_baidu_map_buttons"
-            android:text="路径"/>
-
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:text="Route"
+            android:background="@drawable/rectanglar_white_shape_button"/>
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/iv_strech_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/strech_map"
+        android:visibility="gone"/>
 
-    <com.example.user.sportslover.view.TuneWheelView
-        android:id="@+id/ruler"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="center" />
-
-    <TextView
-        android:id = "@+id/tv_target"
-        android:layout_width = "fill_parent"
-        android:layout_height = "wrap_content"
-        android:text ="0千米"
-        android:textSize = "10dp"/>"
-
-</LinearLayout>
+</RelativeLayout>
