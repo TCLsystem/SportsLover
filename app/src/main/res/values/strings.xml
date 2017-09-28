@@ -46,5 +46,13 @@
     <string name="myActivity">my activity</string>
     <string name="settings">settings</string>
 
+    <!--personal data-->
+    <string name="profilePhoto">Profile photo</string>
+    <string name="Name">Name</string>
+    <string name="Gender">Gender</string>
+    <string name="Height">Height</string>
+    <string name="Weight">Weight</string>
+    <string name="Brithday">Brithday</string>
+
 
 </resources>
