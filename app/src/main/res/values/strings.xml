@@ -6,16 +6,17 @@
 
 
     <!-- 注册 -->
-    <string name="register_title">注册</string>
-    <string name="register_phone_default">输入手机号</string>
-    <string name="register_check_num_default">输入验证码</string>
-    <string name="register_get_check_num">获取验证码</string>
-    <string name="register_upass_default">需组合数字、字母或符号</string>
-    <string name="register_info">我已看过并同意SportsLover《用户使用协议》</string>
+    <string name="register_title">register</string>
+    <string name="register_phone_default">Please input phone number</string>
+    <string name="register_check_num_default">Please input check number</string>
+    <string name="register_get_check_num">Get check number</string>
+    <string name="register_upass_default">Need  combination of numbers, letters and symbols </string>
+    <string name="register_info">I have readed and agree the 《User agreement》of SportsLover</string>
 
 
-    <string name="new_friends">新朋友</string>
-    <string name="close">关闭</string>
+    <string name="new_friends">newFriends</string>
+    <string name="close">close</string>
+
 
 
 
@@ -35,6 +36,15 @@
     \n
     <b>有任何建议或者反馈可以随时联系开发团队</b>
     </string>
+
+
+    <!-- myFragment -->
+    <string name="personalData">personal data</string>
+    <string name="sportsRecords">records</string>
+    <string name="weeklyGoals">weekly goal</string>
+    <string name="myRoute">my route</string>
+    <string name="myActivity">my activity</string>
+    <string name="settings">settings</string>
 
 
 </resources>

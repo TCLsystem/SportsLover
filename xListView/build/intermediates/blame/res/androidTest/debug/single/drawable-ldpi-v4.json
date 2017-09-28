@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/local/Fundation/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/ic_launcher.png",
+        "source": "/local/Fundation/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-ldpi-v4/ic_launcher.png"
+    },
+    {
         "merged": "/local/Fundation/SPPPP/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-ldpi-v4/ic_launcher.png",
         "source": "/local/Fundation/SPPPP/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-ldpi-v4/ic_launcher.png"
     },

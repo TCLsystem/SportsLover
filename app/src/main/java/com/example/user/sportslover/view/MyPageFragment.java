@@ -52,6 +52,8 @@ public class MyPageFragment extends Fragment {
     TextView loginText;
     @Bind(R.id.sportsClass)
     TextView sportsClass;
+    @Bind(R.id.personalData)
+    TextView personalData;
     @Bind(R.id.motionRecord)
     TextView motionRecord;
     @Bind(R.id.MyRecordRoute)
@@ -107,7 +109,7 @@ public class MyPageFragment extends Fragment {
         EventBus.getDefault().unregister(this);
     }
 
-    @OnClick({R.id.UserPhoto, R.id.loginText, R.id.sportsClass, R.id.motionGoal,R.id.motionRecord, R.id.MyRecordRoute, R.id.myMotion, R.id.setting})
+    @OnClick({R.id.UserPhoto, R.id.loginText, R.id.sportsClass,R.id.personalData, R.id.motionGoal,R.id.motionRecord, R.id.MyRecordRoute, R.id.myMotion, R.id.setting})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.UserPhoto:
@@ -125,6 +127,9 @@ public class MyPageFragment extends Fragment {
              //   mUserFragmentPresenter.onLogin(getActivity());
                 break;
             case R.id.sportsClass://运动等级
+
+                break;
+            case R.id.personalData://运动等级
 
                 break;
             case R.id.motionGoal://每周目标
