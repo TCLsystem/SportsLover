@@ -13,7 +13,7 @@ import cn.bmob.v3.datatype.BmobFile;
 public class User extends BmobObject implements Serializable{
 
     //姓名
-    String Name;
+    String UserName;
     //头像
     BmobFile Photo;
     //密码
@@ -31,11 +31,11 @@ public class User extends BmobObject implements Serializable{
     String Number;
 
     public String getName() {
-        return Name;
+        return UserName;
     }
 
     public void setName(String name) {
-        Name = name;
+        UserName = name;
     }
 
     public BmobFile getPhoto() {

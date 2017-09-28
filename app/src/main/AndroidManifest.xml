@@ -39,7 +39,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="e3r1MDaNfYdR11hKwSSXFtCI8gsyGjMz" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".user.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +48,7 @@
         </activity>
         <activity android:name=".view.WeatherActivity" />
         <activity android:name=".user.RegisterActivity" />
-        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".MainActivity" />
 
         <service
             android:name="com.baidu.location.f"
@@ -61,6 +61,9 @@
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="5" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.example.user.sportslover.user.UserLocal" />
 
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"

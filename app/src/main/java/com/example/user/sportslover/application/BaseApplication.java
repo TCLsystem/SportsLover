@@ -3,8 +3,6 @@ package com.example.user.sportslover.application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.activeandroid.ActiveAndroid;
-import com.activeandroid.app.Application;
 import com.example.user.sportslover.json.Weather;
 
 ;
@@ -13,7 +11,7 @@ import com.example.user.sportslover.json.Weather;
  * Created by user on 17-9-16.
  */
 
-public class BaseApplication extends Application {
+public class BaseApplication extends com.activeandroid.app.Application {
 
     static Context sContext;
     private Weather globalWeather = null;
@@ -26,7 +24,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sContext = getApplicationContext();
-        ActiveAndroid.initialize(this);
+      //  ActiveAndroid.initialize(this);
     }
 
     @Override
@@ -38,7 +36,7 @@ public class BaseApplication extends Application {
     @Override
         public void onTerminate() {
             super.onTerminate();
-            ActiveAndroid.dispose();
+       //     ActiveAndroid.dispose();
         }
 
     public void setGlobalWeather(Weather weather){

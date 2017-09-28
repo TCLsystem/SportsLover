@@ -21,11 +21,16 @@ import com.example.user.sportslover.dto.User;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.presenter.UserFragmentPresenter;
+import com.example.user.sportslover.user.LoginActivity;
 import com.example.user.sportslover.user.UserEventBus;
 import com.example.user.sportslover.user.UserLocal;
 import com.example.user.sportslover.util.ToastUtil;
+import com.example.user.sportslover.widget.DialogBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.util.List;
 
@@ -34,6 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
 import me.iwf.photopicker.PhotoPickerActivity;
+import me.iwf.photopicker.utils.PhotoPickerIntent;
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -71,7 +77,7 @@ public class MyPageFragment extends Fragment {
     private UserFragmentPresenter mUserFragmentPresenter;
     private final int REQUEST_CODE = 0x01;
 
-    private UserModel mUserModel;
+    private UserModel mUserModel= new UserModel();;
 
     private Dialog mLoadingDialog;
     private Dialog mLoadingFinishDialog;
@@ -79,26 +85,24 @@ public class MyPageFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        mUserModel = new UserModel();
-//        Log.d("rhLog"," mUserModel.getUserLocal()--"+ mUserModel.getUserLocal());
-//        mUserLocal = mUserModel.getUserLocal();
+        mUserLocal = mUserModel.getUserLocal();
         View v = inflater.inflate(R.layout.fragment_my_page, container, false);
         ButterKnife.bind(this, v);
-//        de.greenrobot.event.EventBus.getDefault().register(this);
-//        mUserFragmentPresenter = new UserFragmentPresenter();
-//        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
-//        options = new DisplayImageOptions.Builder()
-//                .showStubImage(R.drawable.ic_empty_dish)
-//                .showImageForEmptyUri(R.drawable.ic_empty_dish)
-//                .showImageOnFail(R.drawable.ic_empty_dish).cacheInMemory()
-//                .cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
-//                .displayer(new FadeInBitmapDisplayer(300)).build();
-//        if (mUserLocal != null) {
-//            imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
-//            loginText.setText(mUserLocal.getName());
-//        }
-//        mLoadingDialog = DialogBuilder.createLoadingDialog(getActivity(), "正在上传图片");
-//        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(getActivity(), "上传完成");
+        de.greenrobot.event.EventBus.getDefault().register(this);
+        mUserFragmentPresenter = new UserFragmentPresenter();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
+        options = new DisplayImageOptions.Builder()
+                .showStubImage(R.drawable.ic_empty_dish)
+                .showImageForEmptyUri(R.drawable.ic_empty_dish)
+                .showImageOnFail(R.drawable.ic_empty_dish).cacheInMemory()
+                .cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
+                .displayer(new FadeInBitmapDisplayer(300)).build();
+        if (mUserLocal != null) {
+            imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
+            loginText.setText(mUserLocal.getName());
+        }
+        mLoadingDialog = DialogBuilder.createLoadingDialog(getActivity(), "正在上传图片");
+        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(getActivity(), "上传完成");
         return v;
     }
 
@@ -113,14 +117,14 @@ public class MyPageFragment extends Fragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.UserPhoto:
-//                if (mUserModel.isLogin()) {
-//                    final PhotoPickerIntent intent = new PhotoPickerIntent(getActivity());
-//                    intent.setPhotoCount(1);
-//                    intent.setShowCamera(true);
-//                    startActivityForResult(intent, REQUEST_CODE);
-//                } else {
-//                    startActivity(new Intent(getActivity(), LoginActivity.class));
-//                }
+                if (mUserModel.isLogin()) {
+                    final PhotoPickerIntent intent = new PhotoPickerIntent(getActivity());
+                    intent.setPhotoCount(1);
+                    intent.setShowCamera(true);
+                    startActivityForResult(intent, REQUEST_CODE);
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
                 ToastUtil.showShort(getActivity(),"设置个人信息");
                 break;
             case R.id.loginText:
@@ -129,7 +133,7 @@ public class MyPageFragment extends Fragment {
             case R.id.sportsClass://运动等级
 
                 break;
-            case R.id.personalData://运动等级
+            case R.id.personalData://设置个人信息
 
                 break;
             case R.id.motionGoal://每周目标
@@ -139,22 +143,6 @@ public class MyPageFragment extends Fragment {
             case R.id.motionRecord:
                 startActivity(new Intent(getActivity(), motionRecordActivity.class));
 
-
-//                if (mUserModel.isLogin()) {
-//                    mUserModel.getUser(mUserLocal.getObjectId(), new SportModelImpl.BaseListener() {
-//                        @Override
-//                        public void getSuccess(Object o) {
-//                            mUserFragmentPresenter.onSendDynamic(getActivity(), (User) o);
-//                        }
-//
-//                        @Override
-//                        public void getFailure() {
-//
-//                        }
-//                    });
-//                } else {
-//                    startActivity(new Intent(getActivity(), LoginActivity.class));
-//                }
                 break;
             //我运动过的路线
             case R.id.MyRecordRoute:
@@ -162,11 +150,11 @@ public class MyPageFragment extends Fragment {
                 break;
             //我的活动
             case R.id.myMotion:
-  //              if (mUserModel.isLogin()) {
+                if (mUserModel.isLogin()) {
                     startActivity(new Intent(getActivity(), myDynamicActivity.class));
-//                } else {
-//                    startActivity(new Intent(getActivity(), LoginActivity.class));
-//                }
+                } else {
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
                 break;
             //设置
             case R.id.setting:
