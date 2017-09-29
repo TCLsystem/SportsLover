@@ -56,5 +56,16 @@
     <string name="Brithday">Brithday</string>
     <string name="editeName">A good name can make your friend remember you better</string>
 
+    <!--sendDynamic-->
+    <string name="sendDynamic1">Public Activity (1/2)</string>
+    <string name="sendDynamic2">Public Activity (2/2)</string>
+    <string name="motionType">Sports Type</string>
+    <string name="publicTime">Public Time</string>
+    <string name="startTime">Start Time</string>
+    <string name="endTime">End Time</string>
+    <string name="place">Sports Place</string>
+    <string name="area">Sports Area</string>
+
+
 
 </resources>

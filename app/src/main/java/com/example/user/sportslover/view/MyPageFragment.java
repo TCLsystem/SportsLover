@@ -93,8 +93,6 @@ public class MyPageFragment extends Fragment {
             imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
             loginText.setText(mUserLocal.getName());
         }
-//        mLoadingDialog = DialogBuilder.createLoadingDialog(getActivity(), "正在上传图片");
-//        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(getActivity(), "上传完成");
         return v;
     }
 
@@ -169,45 +167,6 @@ public class MyPageFragment extends Fragment {
             loginText.setText(event.getmUser().getName());
         }
     }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        // 选择结果回调
-//        if (requestCode == REQUEST_CODE && data != null) {
-//            mLoadingDialog.show();
-//            List<String> pathList = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
-//            mUserModel.updateUserPhoto(pathList.get(0), mUserLocal.getObjectId(), new SportModelImpl.BaseListener() {
-//                @Override
-//                public void getSuccess(Object o) {
-//                    mLoadingDialog.dismiss();
-//                    mLoadingFinishDialog.show();
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            mLoadingFinishDialog.dismiss();
-//                        }
-//                    }, 500);
-//                    ToastUtil.showLong(getActivity(), "头像修改成功");
-//                    User user = (User) o;
-//                    imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
-//                    UserLocal userLocal = new UserLocal();
-//                    userLocal.setName(user.getName());
-//                    userLocal.setObjectId(user.getObjectId());
-//                    userLocal.setNumber(user.getNumber());
-//                    if (user.getPhoto() != null) {
-//                        userLocal.setPhoto(user.getPhoto().getUrl());
-//                    }
-//                    mUserModel.putUserLocal(userLocal);
-//                }
-//
-//                @Override
-//                public void getFailure() {
-//
-//                }
-//            });
-//        }
-//    }
 
     @Override
     public void onResume() {
