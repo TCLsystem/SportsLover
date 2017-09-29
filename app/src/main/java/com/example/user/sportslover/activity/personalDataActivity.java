@@ -2,8 +2,10 @@ package com.example.user.sportslover.activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -16,18 +18,32 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
+import com.example.user.sportslover.presenter.UserFragmentPresenter;
+import com.example.user.sportslover.user.UserEventBus;
 import com.example.user.sportslover.user.UserLocal;
+import com.example.user.sportslover.util.ToastUtil;
+import com.example.user.sportslover.widget.DialogBuilder;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.bmob.v3.listener.UpdateListener;
+import de.greenrobot.event.EventBus;
+import me.iwf.photopicker.PhotoPickerActivity;
+import me.iwf.photopicker.utils.PhotoPickerIntent;
 
 public class personalDataActivity extends AppCompatActivity {
     @Bind(R.id.iv_Changephoto)
@@ -62,17 +78,45 @@ public class personalDataActivity extends AppCompatActivity {
     private OptionsPickerView heightPvOptions;
     private ArrayList<String> optionsItems = new ArrayList<>();
     private ArrayList<String> heightOptionsItems = new ArrayList<>();
-    private UserLocal mUserLocal;
-    private UserModel mUserModel = new UserModel();
 
+
+
+    private ImageLoader imageLoader = ImageLoader.getInstance();
+    private DisplayImageOptions options;
+    private UserLocal mUserLocal;
+    private UserFragmentPresenter mUserFragmentPresenter;
+    private final int REQUEST_CODE = 0x01;
+
+    private UserModel mUserModel= new UserModel();
+
+    private Dialog mLoadingDialog;
+    private Dialog mLoadingFinishDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_data);
         mUserLocal = mUserModel.getUserLocal();
         ButterKnife.bind(this);
-        Name = getIntent().getStringExtra("name");
-        name.setText(Name);
+
+        de.greenrobot.event.EventBus.getDefault().register(this);
+        mUserFragmentPresenter = new UserFragmentPresenter();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(this));
+        options = new DisplayImageOptions.Builder()
+                .showStubImage(R.drawable.ic_empty_dish)
+                .showImageForEmptyUri(R.drawable.ic_empty_dish)
+                .showImageOnFail(R.drawable.ic_empty_dish).cacheInMemory()
+                .cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
+                .displayer(new FadeInBitmapDisplayer(300)).build();
+        if (mUserLocal != null) {
+            imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
+            name.setText(mUserLocal.getName());
+        }
+        mLoadingDialog = DialogBuilder.createLoadingDialog(this, "正在上传图片");
+        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(this, "上传完成");
+
+
+
+
 //        if(!mUserLocal.getBirthday().equals(""))
        birthday.setText(mUserLocal.getBirthday());
 //        if(!mUserLocal.getHeight().equals(""))
@@ -92,7 +136,10 @@ public class personalDataActivity extends AppCompatActivity {
 //                startActivity(intent);
                 break;
             case R.id.iv_Changephoto:
-
+                    final PhotoPickerIntent intent = new PhotoPickerIntent(personalDataActivity.this);
+                    intent.setPhotoCount(1);
+                    intent.setShowCamera(true);
+                    startActivityForResult(intent, REQUEST_CODE);
                 break;
             case R.id.Lname:
                editeName();
@@ -298,6 +345,77 @@ public class personalDataActivity extends AppCompatActivity {
         heightPvOptions.setPicker(heightOptionsItems);//添加数据源
     }
 
+
+
+
+
+
+
+    /**
+     //     * Eventbus的处理函数
+     //     *
+     //     * @param event
+     //     */
+    public void onEventMainThread(UserEventBus event) {
+        mUserLocal = event.getmUser();
+        if (mUserLocal != null) {
+            if (event.getmUser().getPhoto() != null) {
+                imageLoader.displayImage(event.getmUser().getPhoto(), UserPhoto, options);
+            }
+            name.setText(event.getmUser().getName());
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // 选择结果回调
+        if (requestCode == REQUEST_CODE && data != null) {
+            mLoadingDialog.show();
+            List<String> pathList = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
+            mUserModel.updateUserPhoto(pathList.get(0), mUserLocal.getObjectId(), new SportModelImpl.BaseListener() {
+                @Override
+                public void getSuccess(Object o) {
+                    mLoadingDialog.dismiss();
+                    mLoadingFinishDialog.show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mLoadingFinishDialog.dismiss();
+                        }
+                    }, 500);
+                    ToastUtil.showLong(personalDataActivity.this, "头像修改成功");
+                    User user = (User) o;
+                    imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
+                    UserLocal userLocal = new UserLocal();
+                    userLocal.setName(user.getName());
+                    userLocal.setObjectId(user.getObjectId());
+                    userLocal.setNumber(user.getNumber());
+                    if (user.getPhoto() != null) {
+                        userLocal.setPhoto(user.getPhoto().getUrl());
+                    }
+                    mUserModel.putUserLocal(userLocal);
+                }
+
+                @Override
+                public void getFailure() {
+
+                }
+            });
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -311,5 +429,13 @@ public class personalDataActivity extends AppCompatActivity {
             }
         });
         mUserLocal.save();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+        EventBus.getDefault().unregister(this);
     }
 }

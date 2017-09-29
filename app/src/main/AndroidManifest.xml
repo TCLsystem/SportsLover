@@ -39,7 +39,7 @@
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="e3r1MDaNfYdR11hKwSSXFtCI8gsyGjMz" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -84,16 +84,25 @@
         <activity android:name=".activity.motionGoalActivity" />
         <activity android:name=".activity.PhoneValidateActivity" />
         <activity android:name=".activity.makeGoal" />
-        <activity android:name=".activity.personalDataActivity"></activity>
+        <activity android:name=".activity.personalDataActivity" />
 
         <service
             android:name=".service.SportTrackService"
             android:enabled="true"
-            android:exported="true"
-            >
-        </service>
+            android:exported="true"></service>
 
-        <activity android:name=".view.SetSportTargetActivity"></activity>
+        <activity android:name=".view.SetSportTargetActivity" />
+        <activity android:name=".MainActivity"></activity>
+
+        <activity
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+
+
     </application>
 
 </manifest>

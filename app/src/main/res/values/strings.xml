@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">SportsLover</string>
     <string name="action_settings">Settings</string>
-    <string name="sports_friend_search_hint">搜索</string>
+    <string name="sports_friend_search_hint">Serch</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="start">Start</string>
 
 
     <!-- 注册 -->

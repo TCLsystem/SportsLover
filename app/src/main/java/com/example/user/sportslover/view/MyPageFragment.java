@@ -3,7 +3,6 @@ package com.example.user.sportslover.view;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,29 +17,21 @@ import com.example.user.sportslover.activity.motionRecordActivity;
 import com.example.user.sportslover.activity.myDynamicActivity;
 import com.example.user.sportslover.activity.personalDataActivity;
 import com.example.user.sportslover.activity.settingActivity;
-import com.example.user.sportslover.dto.User;
-import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.presenter.UserFragmentPresenter;
 import com.example.user.sportslover.user.LoginActivity;
 import com.example.user.sportslover.user.UserEventBus;
 import com.example.user.sportslover.user.UserLocal;
-import com.example.user.sportslover.util.ToastUtil;
-import com.example.user.sportslover.widget.DialogBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
-import java.util.List;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import de.greenrobot.event.EventBus;
-import me.iwf.photopicker.PhotoPickerActivity;
-import me.iwf.photopicker.utils.PhotoPickerIntent;
 
 ///**
 // * A simple {@link Fragment} subclass.
@@ -102,8 +93,8 @@ public class MyPageFragment extends Fragment {
             imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
             loginText.setText(mUserLocal.getName());
         }
-        mLoadingDialog = DialogBuilder.createLoadingDialog(getActivity(), "正在上传图片");
-        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(getActivity(), "上传完成");
+//        mLoadingDialog = DialogBuilder.createLoadingDialog(getActivity(), "正在上传图片");
+//        mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(getActivity(), "上传完成");
         return v;
     }
 
@@ -119,17 +110,12 @@ public class MyPageFragment extends Fragment {
         switch (view.getId()) {
             case R.id.UserPhoto:
                 if (mUserModel.isLogin()) {
-                    final PhotoPickerIntent intent = new PhotoPickerIntent(getActivity());
-                    intent.setPhotoCount(1);
-                    intent.setShowCamera(true);
-                    startActivityForResult(intent, REQUEST_CODE);
                 } else {
                     startActivity(new Intent(getActivity(), LoginActivity.class));
                 }
-                ToastUtil.showShort(getActivity(),"设置个人信息");
                 break;
             case R.id.loginText:
-             //   mUserFragmentPresenter.onLogin(getActivity());
+
                 break;
             case R.id.sportsClass://运动等级
 
@@ -183,45 +169,45 @@ public class MyPageFragment extends Fragment {
             loginText.setText(event.getmUser().getName());
         }
     }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        // 选择结果回调
-        if (requestCode == REQUEST_CODE && data != null) {
-            mLoadingDialog.show();
-            List<String> pathList = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
-            mUserModel.updateUserPhoto(pathList.get(0), mUserLocal.getObjectId(), new SportModelImpl.BaseListener() {
-                @Override
-                public void getSuccess(Object o) {
-                    mLoadingDialog.dismiss();
-                    mLoadingFinishDialog.show();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mLoadingFinishDialog.dismiss();
-                        }
-                    }, 500);
-                    ToastUtil.showLong(getActivity(), "头像修改成功");
-                    User user = (User) o;
-                    imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
-                    UserLocal userLocal = new UserLocal();
-                    userLocal.setName(user.getName());
-                    userLocal.setObjectId(user.getObjectId());
-                    userLocal.setNumber(user.getNumber());
-                    if (user.getPhoto() != null) {
-                        userLocal.setPhoto(user.getPhoto().getUrl());
-                    }
-                    mUserModel.putUserLocal(userLocal);
-                }
-
-                @Override
-                public void getFailure() {
-
-                }
-            });
-        }
-    }
+//
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        // 选择结果回调
+//        if (requestCode == REQUEST_CODE && data != null) {
+//            mLoadingDialog.show();
+//            List<String> pathList = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
+//            mUserModel.updateUserPhoto(pathList.get(0), mUserLocal.getObjectId(), new SportModelImpl.BaseListener() {
+//                @Override
+//                public void getSuccess(Object o) {
+//                    mLoadingDialog.dismiss();
+//                    mLoadingFinishDialog.show();
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            mLoadingFinishDialog.dismiss();
+//                        }
+//                    }, 500);
+//                    ToastUtil.showLong(getActivity(), "头像修改成功");
+//                    User user = (User) o;
+//                    imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
+//                    UserLocal userLocal = new UserLocal();
+//                    userLocal.setName(user.getName());
+//                    userLocal.setObjectId(user.getObjectId());
+//                    userLocal.setNumber(user.getNumber());
+//                    if (user.getPhoto() != null) {
+//                        userLocal.setPhoto(user.getPhoto().getUrl());
+//                    }
+//                    mUserModel.putUserLocal(userLocal);
+//                }
+//
+//                @Override
+//                public void getFailure() {
+//
+//                }
+//            });
+//        }
+//    }
 
     @Override
     public void onResume() {
