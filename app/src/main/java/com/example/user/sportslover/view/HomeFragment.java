@@ -191,12 +191,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
     @Override
-    public void showResponse(Weather weather) {
+    public void showResponse(final Weather weather) {
         baseApplication.setGlobalWeather(weather);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                refleshWeatherCondition();
+                if ("ok".equals(weather.status)){
+                    refleshWeatherCondition();}
             }
         });
     }
@@ -303,6 +304,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BeginSport.class);
+                intent.putExtra("sport_type", 0);
                 startActivity(intent);
             }
         });
@@ -310,6 +312,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BeginSport.class);
+                intent.putExtra("sport_type", 1);
                 startActivity(intent);
             }
         });
@@ -317,6 +320,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), BeginSport.class);
+                intent.putExtra("sport_type", 2);
                 startActivity(intent);
             }
         });
@@ -346,7 +350,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvRuningTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
         tvRuningCumulativeTime.setText(Html.fromHtml(html));
-        html = "<big><big><big>" + homeRunningPresenterImpr.loadAveragePace()/60 + "’" + homeRunningPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        html = "<big><big><big>" + homeRunningPresenterImpr.loadAveragePace()/60 + "’</big>" + homeRunningPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvRuningAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
         tvRuningCumulativeNumber.setText(Html.fromHtml(html));
@@ -361,7 +365,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvWalkingTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
         tvWalkingCumulativeTime.setText(Html.fromHtml(html));
-        html = "<big><big><big>" + homeWalkingPresenterImpr.loadAveragePace()/60 + "’" + homeWalkingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        html = "<big><big><big>" + homeWalkingPresenterImpr.loadAveragePace()/60 + "’</big>" + homeWalkingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvWalkingAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
         tvWalkingCumulativeNumber.setText(Html.fromHtml(html));
@@ -376,7 +380,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvRidingTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
         tvRidingCumulativeTime.setText(Html.fromHtml(html));
-        html = "<big><big><big>" + homeRidingPresenterImpr.loadAveragePace()/60 + "’" + homeRidingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big></big><br>Average<br>pace";
+        html = "<big><big><big>" + homeRidingPresenterImpr.loadAveragePace()/60 + "’</big>" + homeRidingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvRidingAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
         tvRidingCumulativeNumber.setText(Html.fromHtml(html));

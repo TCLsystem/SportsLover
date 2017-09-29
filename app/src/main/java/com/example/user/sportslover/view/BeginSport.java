@@ -1,18 +1,28 @@
 package com.example.user.sportslover.view;
 
 import android.Manifest;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.os.Binder;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +44,8 @@ import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.customview.MyVerticalViewPager;
 import com.example.user.sportslover.listener.MyOrientationListener;
+import com.example.user.sportslover.service.SportTrackService;
+import com.example.user.sportslover.util.MapUtil;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -46,6 +58,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     private ArrayList<View> pageview;
     private View view0;
     private View view1;
+    private int sportType;
 
     public LocationClient mLocationClient;
 
@@ -58,68 +71,70 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     private int mDirection = 100;
 
     private double sum_distance = 0;
-    private final double EARTH_RADIUS = 6378137.0;
+    private double remoteDistance = 0;
 
     private MyOrientationListener myOrientationListener;
 
-    private List<LatLng> pointstwo = new ArrayList<LatLng>();
-    private LatLng p1;
-    private LatLng p2;
+    private List<LatLng> points = new ArrayList<LatLng>();
+    private List<LatLng> remotePoints = new ArrayList<LatLng>();
+    private LatLng newPoint;
+    private TextView tvSportType;
     private TextView tvDistance;
     private TextView tvHours;
-    private TextView tvMinutes;
-    private TextView tvSeconds;
-    private TextView tvTarget;
-    Button buttonTarget;
-    Button buttonStart;
-    Button buttonRoute;
-    Button buttonPause;
-    Button buttonResume;
-    Button buttonStop;
+    ImageView ivLock;
+    ImageView ivMap;
+    Button buttonPause0;
+    Button buttonResume0;
+    Button buttonStop0;
+    Button buttonTarget1;
+    Button buttonStart1;
+    Button buttonRoute1;
+    Button buttonPause1;
+    Button buttonResume1;
+    Button buttonStop1;
+    ImageView ivStrechMap;
+    LinearLayout llBeginSportStatus;
 
     private Timer timer = new Timer();
     private TimerTask task;
     private int gSeconds = 0;
+    private long remoteSeconds = 0;
     private boolean timerValidFlag = false;
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
+            String html;
             // 调用相机回调接口由于MainActivity已经实现了回调接口，所以MainActivity.this即可
-
             if (msg.what == 1) {
-                // if(points.size()>3){
-                // pointstwo.add((LatLng)points.get(points.size()-3));
-                // pointstwo.add((LatLng)points.get(points.size()-2));
-                // pointstwo.add((LatLng)points.get(points.size()-1));
-                // }else{
-                // pointstwo.add((LatLng)points.get(count));
-                // }
-                // Log.d("points",""+points.get(points.size()-3).latitude);
-                // Log.d("points",""+points.get(points.size()-2).latitude);
-                // Log.d("points",""+points.get(points.size()-1).latitude);
-                pointstwo.add(p1);
-                pointstwo.add(p2);
-                // distance+=DistanceUtil. getDistance(p1, p2);
-                // LatLng llDot = new LatLng(p2.latitude,p2.longitude);
-                // try{
-                OverlayOptions ooDot = new DotOptions().center(p2).radius(6)
-                        .color(0xAAFF0000);
-                baiduMap.addOverlay(ooDot);
+                baiduMap.clear();
 
-                OverlayOptions ooPolyline = new PolylineOptions().width(4)
-                        .color(0xAAFF0000).points(pointstwo);
-                baiduMap.addOverlay(ooPolyline);
-                p1 = p2;
+                if (sportTrackServiceControlBinder.getCurrentPoint() != null){
+                    remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
+                }
+                //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
+                remotePoints = sportTrackServiceControlBinder.getPoints();
+                if (remotePoints.size() > 2){
+                    OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
+                    baiduMap.addOverlay(ooPolyline);
+                }
                 mLocationClient.requestLocation();
-
-                tvHours.setText(timeFormat.format(gSeconds/60/60)+":");
-                tvMinutes.setText(timeFormat.format(gSeconds/60%60)+":");
-                tvSeconds.setText(timeFormat.format(gSeconds%60)+"");
-
-                progressCircle.setProgress((float)sum_distance/target*100f);
-                // }catch(Exception e){
-                // e.printStackTrace();
-                // }
+                remoteSeconds = sportTrackServiceControlBinder.getSeconds();
+                html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
+                tvHours.setText(Html.fromHtml(html));
+                remoteDistance = sportTrackServiceControlBinder.getDistance();
+                if (target > 100){
+                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
+                } else {
+                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
+                }
+                tvDistance.setText(Html.fromHtml(html));
+                //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
+                if (target >= 100){
+                    progressCircle.setProgress((float)remoteDistance/target*100f);
+                } else {
+                    progressCircle.setProgress(100f);
+                }
+                //progressCircle.setProgress((float)sum_distance/target*100f);
 
             }
         }
@@ -127,10 +142,21 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     };
 
     private CircularRingPercentageView progressCircle;
-    private TuneWheelView tuneWheel;
-    private float target = 100000;
-    private DecimalFormat textFormat = new DecimalFormat("#0.0");
-    private DecimalFormat timeFormat = new DecimalFormat("#00.#");
+    private float target = 0;
+    private DecimalFormat textFormat = new DecimalFormat("#0.0000");
+    private DecimalFormat timeFormat = new DecimalFormat("#0.0000");
+    private MyVerticalViewPager myVerticalViewPager;
+    private SportTrackService.SportTrackServiceControlBinder sportTrackServiceControlBinder;
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            sportTrackServiceControlBinder = (SportTrackService.SportTrackServiceControlBinder) service;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,19 +169,35 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
             public void onReceiveLocation(BDLocation bdLocation) {
                 if (bdLocation.getLocType() == BDLocation.TypeGpsLocation
                         || bdLocation.getLocType() == BDLocation.TypeNetWorkLocation){
-                    drawTrack(bdLocation);
+                    //drawTrack(bdLocation);
                 }
             }
         };
         mLocationClient.registerLocationListener(myListener);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.begin_sport_layout);
-        view0 = getLayoutInflater().inflate(R.layout.baidu_map_layout, null);
-        view1 = getLayoutInflater().inflate(R.layout.show_map_pager, null);
+        tvSportType = (TextView) findViewById(R.id.sport_type);
+        Intent intent = getIntent();
+        sportType = intent.getIntExtra("sport_type", -1);
+        switch (sportType){
+            case 0:
+                tvSportType.setText("Running");
+                break;
+            case 1:
+                tvSportType.setText("Walking");
+                break;
+            case 2:
+                tvSportType.setText("Riding");
+                break;
+            default:
+                Log.d("Begin Sport", "Invalid sport type");
+        }
+        view0 = getLayoutInflater().inflate(R.layout.cicular_viewpager, null);
+        view1 = getLayoutInflater().inflate(R.layout.baidu_map_layout, null);
         pageview =new ArrayList<View>();
         pageview.add(view0);
         pageview.add(view1);
-        MyVerticalViewPager myVerticalViewPager = (MyVerticalViewPager) findViewById(R.id.verticalviewpager);
+        myVerticalViewPager = (MyVerticalViewPager) findViewById(R.id.verticalviewpager);
         PagerAdapter mPageAdapter = new PagerAdapter() {
             @Override
             public int getCount() {
@@ -175,46 +217,46 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
                 ((MyVerticalViewPager)arg0).addView(pageview.get(arg1));
                 return pageview.get(arg1);
             }
-
-            @Override
-            public float getPageWidth(int position) {
-                if (position == 0)
-                    return 0.8f;
-                else
-                    return super.getPageWidth(position);
-            }
         };
         myVerticalViewPager.setAdapter(mPageAdapter);
-        myVerticalViewPager.setCurrentItem(0);
-
-        buttonTarget = (Button) view0.findViewById(R.id.target0);
-        buttonStart = (Button) view0.findViewById(R.id.start0);
-        buttonRoute = (Button) view0.findViewById(R.id.route0);
-        buttonPause = (Button) view0.findViewById(R.id.pause0);
-        buttonResume = (Button) view0.findViewById(R.id.resume0);
-        buttonStop = (Button) view0.findViewById(R.id.stop0);
-        buttonTarget.setOnClickListener(this);
-        buttonStart.setOnClickListener(this);
-        buttonRoute.setOnClickListener(this);
-        buttonPause.setOnClickListener(this);
-        buttonResume.setOnClickListener(this);
-        buttonStop.setOnClickListener(this);
-        tvDistance = (TextView) view1.findViewById(R.id.distance);
-        tvHours = (TextView) view1.findViewById(R.id.tv_hours);
-        tvMinutes = (TextView) view1.findViewById(R.id.tv_minutes);
-        tvSeconds = (TextView) view1.findViewById(R.id.tv_seconds);
-        tvTarget = (TextView) view0.findViewById(R.id.tv_target);
+        myVerticalViewPager.setCurrentItem(1);
+        myVerticalViewPager.setScrollable(false);
+        llBeginSportStatus = (LinearLayout) findViewById(R.id.ll_begin_sport_status);
+        ivLock = (ImageView) view0.findViewById(R.id.circular_view_lock);
+        ivMap = (ImageView) view0.findViewById(R.id.cicular_view_show_map);
+        ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
+        buttonPause0 = (Button) view0.findViewById(R.id.pause0);
+        buttonResume0 = (Button) view0.findViewById(R.id.resume0);
+        buttonStop0 = (Button) view0.findViewById(R.id.stop0);
+        buttonTarget1 = (Button) view1.findViewById(R.id.target1);
+        buttonStart1 = (Button) view1.findViewById(R.id.start1);
+        buttonRoute1 = (Button) view1.findViewById(R.id.route1);
+        buttonPause1 = (Button) view1.findViewById(R.id.pause1);
+        buttonResume1 = (Button) view1.findViewById(R.id.resume1);
+        buttonStop1 = (Button) view1.findViewById(R.id.stop1);
+        ivLock.setOnClickListener(this);
+        ivMap.setOnClickListener(this);
+        ivStrechMap.setOnClickListener(this);
+        buttonPause0.setOnClickListener(this);
+        buttonResume0.setOnClickListener(this);
+        buttonStop0.setOnClickListener(this);
+        buttonTarget1.setOnClickListener(this);
+        buttonStart1.setOnClickListener(this);
+        buttonRoute1.setOnClickListener(this);
+        buttonPause1.setOnClickListener(this);
+        buttonResume1.setOnClickListener(this);
+        buttonStop1.setOnClickListener(this);
+        ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
+        tvDistance = (TextView) view0.findViewById(R.id.tv_distance);
+        tvHours = (TextView) findViewById(R.id.tv_begin_sport_cumulative_time);
         progressCircle = (CircularRingPercentageView) view0.findViewById(R.id.progress);
         progressCircle.setRoundWidth(15);
-        tuneWheel = (TuneWheelView) view0.findViewById(R.id.ruler);
-        tuneWheel.setValueChangeListener(new TuneWheelView.OnValueChangeListener(){
-            @Override
-            public void onValueChange(float value) {
-                target = value * 1000;
-            }
-        });
+        progressCircle.setProgress(75f);
+        progressCircle.setColors(new int[]{Color.WHITE, Color.WHITE});
+        progressCircle.setRoundBackgroundColor(Color.WHITE);
         initOritationListener();
         mapView = (MapView) view1.findViewById(R.id.bmapView);
+        mapView.showZoomControls(false);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
         List<String> permissionList = new ArrayList<>();
@@ -233,47 +275,63 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         } else {
             requestLocation();
         }
+        Intent startSportTrackService = new Intent(this, SportTrackService.class);
+        startService(startSportTrackService);
+        startTimer();
     }
 
+    private void remoteLocate(LatLng point){
+        MyLocationData locationData = new MyLocationData.Builder()
+                .direction(mDirection).latitude(point.latitude)
+                .longitude(point.longitude).build();
+        baiduMap.setMyLocationData(locationData);
+        MyLocationConfiguration mConfig = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, null);
+        baiduMap.setMyLocationConfiguration(mConfig);
+
+        if (isFirstLocate){
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(point).zoom(18f);
+            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            isFirstLocate = false;
+        } else {
+            float zoom = baiduMap.getMapStatus().zoom;
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(point).zoom(zoom);
+            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+        }
+    }
 
     private void drawTrack(BDLocation location){
 
-        if (isFirstLocate){
-            p1 = p2 = new LatLng(location.getLatitude(), location.getLongitude());
-            MapStatus.Builder builder = new MapStatus.Builder();
-            builder.target(p2).zoom(16f);
-            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            /*MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
-            baiduMap.animateMapStatus(update);
-            update = MapStatusUpdateFactory.zoomTo(16f);
-            baiduMap.animateMapStatus(update);*/
-            isFirstLocate = false;
-        } else {
-            LatLng p0 = p2;
-            p2 = new LatLng(location.getLatitude(), location.getLongitude());
-            if (timerValidFlag){
-                sum_distance = sum_distance + gps2m(p0.latitude,p0.longitude,p2.latitude,p2.longitude);
-                MapStatus.Builder builder = new MapStatus.Builder();
-                OverlayOptions ooDot = new DotOptions().center(p2).radius(6)
-                        .color(0xAAFF0000);
-                baiduMap.addOverlay(ooDot);
-                baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
-            }
-        }
-        /*MyLocationData.Builder locationBuilder = new MyLocationData.Builder();
-        locationBuilder.latitude(location.getLatitude());
-        locationBuilder.longitude(location.getLongitude());
-        MyLocationData locationData = locationBuilder.build();*/
         MyLocationData locationData = new MyLocationData.Builder()
                 .accuracy(location.getRadius())
                 .direction(mDirection).latitude(location.getLatitude())
                 .longitude(location.getLongitude()).build();
         baiduMap.setMyLocationData(locationData);
-        MyLocationConfiguration mConfig = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.NORMAL, true, null);
+        MyLocationConfiguration mConfig = new MyLocationConfiguration(MyLocationConfiguration.LocationMode.FOLLOWING, true, null);
         baiduMap.setMyLocationConfiguration(mConfig);
 
-        //tvDistance.setText("现在走过的距离是："+sum_distance+"米");
-        tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
+        if (isFirstLocate){
+            newPoint = new LatLng(location.getLatitude(), location.getLongitude());
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(newPoint).zoom(18f);
+            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+            isFirstLocate = false;
+            points.add(newPoint);
+        } else {
+            LatLng tmpPoint = newPoint;
+            newPoint = new LatLng(location.getLatitude(), location.getLongitude());
+            if (timerValidFlag){
+                double distance = MapUtil.gps2m(tmpPoint.latitude,tmpPoint.longitude,newPoint.latitude,newPoint.longitude);
+                sum_distance = sum_distance + distance;
+                if (distance > 10)
+                    points.add(newPoint);
+            }
+            float zoom = baiduMap.getMapStatus().zoom;
+            MapStatus.Builder builder = new MapStatus.Builder();
+            builder.target(newPoint).zoom(zoom);
+            baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+        }
     }
 
     private void requestLocation() {
@@ -290,30 +348,6 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         mLocationClient.setLocOption(option);
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode){
-            case 1:
-                if (grantResults.length > 0){
-                    for (int result : grantResults){
-                        if (result != PackageManager.PERMISSION_GRANTED){
-                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
-                            finish();
-                            return;
-                        }
-                    }
-                    requestLocation();
-                }else {
-                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-
     private void initOritationListener()
     {
         myOrientationListener = new MyOrientationListener(
@@ -328,30 +362,20 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
                 });
     }
 
-    private double gps2m(double lat_a, double lng_a, double lat_b, double lng_b) {
-        double radLat1 = (lat_a * Math.PI / 180.0);
-        double radLat2 = (lat_b * Math.PI / 180.0);
-        double a = radLat1 - radLat2;
-        double b = (lng_a - lng_b) * Math.PI / 180.0;
-        double s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2)
-                + Math.cos(radLat1) * Math.cos(radLat2)
-                * Math.pow(Math.sin(b / 2), 2)));
-        s = s * EARTH_RADIUS;
-        //s = Math.round(s * 10000) / 10000;
-        return 1.38*s;
-
-    }
-
     @Override
     protected void onStart() {
         super.onStart();
         myOrientationListener.start();
+        Intent bindIntent = new Intent(this, SportTrackService.class);
+        bindService(bindIntent, connection, BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
         myOrientationListener.stop();
+        sportTrackServiceControlBinder.pauseService();
+        unbindService(connection);
     }
 
     @Override
@@ -369,44 +393,97 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        pauseTimer();
         mLocationClient.stop();
         mapView.onDestroy();
         baiduMap.setMyLocationEnabled(false);
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1:
+                if (resultCode == RESULT_OK)
+                    target = data.getFloatExtra("target_return", 0f);
+                    Log.d("TAG", Float.toString(target));
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.target0:
-                tvTarget.setText(textFormat.format(target/1000f) + "千米");
-                progressCircle.setTextTarget(target/1000);
+            case R.id.circular_view_lock:
                 break;
-            case R.id.start0:
-                startTimer();
-                buttonStart.setVisibility(View.GONE);
-                buttonPause.setVisibility(View.VISIBLE);
-                buttonStop.setVisibility(View.VISIBLE);
+            case R.id.iv_strech_map:
+                myVerticalViewPager.setCurrentItem(0);
                 break;
-            case R.id.route0:
+            case R.id.cicular_view_show_map:
+                myVerticalViewPager.setCurrentItem(1);
+                break;
+            case R.id.target1:
+                Intent intent = new Intent(this, SetSportTargetActivity.class);
+                startActivityForResult(intent, 1);
+                break;
+            case R.id.start1:
+                timerValidFlag = true;
+                myVerticalViewPager.setCurrentItem(0);
+                sportTrackServiceControlBinder.startService();
+                llBeginSportStatus.setVisibility(View.VISIBLE);
+                buttonTarget1.setVisibility(View.GONE);
+                buttonRoute1.setVisibility(View.GONE);
+                buttonStart1.setVisibility(View.GONE);
+                buttonPause0.setVisibility(View.VISIBLE);
+                buttonPause1.setVisibility(View.VISIBLE);
+                ivStrechMap.setVisibility(View.VISIBLE);
+                myVerticalViewPager.setScrollable(true);
+                break;
+            case R.id.route1:
                 break;
             case R.id.pause0:
-                pauseTimer();
-                buttonPause.setVisibility(View.GONE);
-                buttonResume.setVisibility(View.VISIBLE);
+            case R.id.pause1:
+                timerValidFlag = false;
+                sportTrackServiceControlBinder.pauseService();
+                buttonPause0.setVisibility(View.GONE);
+                buttonPause1.setVisibility(View.GONE);
+                buttonResume0.setVisibility(View.VISIBLE);
+                buttonResume1.setVisibility(View.VISIBLE);
+                buttonStop0.setVisibility(View.VISIBLE);
+                buttonStop1.setVisibility(View.VISIBLE);
+                ivLock.setVisibility(View.GONE);
+                ivMap.setVisibility(View.GONE);
                 break;
             case R.id.resume0:
-                startTimer();
-                buttonPause.setVisibility(View.VISIBLE);
-                buttonResume.setVisibility(View.GONE);
+            case R.id.resume1:
+                timerValidFlag = true;
+                sportTrackServiceControlBinder.startService();
+                buttonPause0.setVisibility(View.VISIBLE);
+                buttonPause1.setVisibility(View.VISIBLE);
+                buttonResume0.setVisibility(View.GONE);
+                buttonResume1.setVisibility(View.GONE);
+                buttonStop0.setVisibility(View.GONE);
+                buttonStop1.setVisibility(View.GONE);
+                ivLock.setVisibility(View.VISIBLE);
+                ivMap.setVisibility(View.VISIBLE);
                 break;
             case R.id.stop0:
+            case R.id.stop1:
+                timerValidFlag = false;
+                sportTrackServiceControlBinder.pauseService();
+                remoteSeconds = 0;
                 gSeconds = 0;
                 sum_distance = 0;
-                pauseTimer();
-                buttonStart.setVisibility(View.VISIBLE);
-                buttonPause.setVisibility(View.GONE);
-                buttonResume.setVisibility(View.GONE);
-                buttonStop.setVisibility(View.GONE);
+                Intent stopSportTrackService = new Intent(this, SportTrackService.class);
+                stopService(stopSportTrackService);
+                buttonStart1.setVisibility(View.VISIBLE);
+                buttonPause0.setVisibility(View.GONE);
+                buttonPause1.setVisibility(View.GONE);
+                buttonResume0.setVisibility(View.GONE);
+                buttonResume1.setVisibility(View.GONE);
+                buttonStop0.setVisibility(View.GONE);
+                buttonStop1.setVisibility(View.GONE);
                 break;
             default:
                 break;
@@ -423,7 +500,8 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
                 @Override
                 public void run() {
                     // TODO Auto-generated method stub
-                    gSeconds++;
+                    if (timerValidFlag)
+                        gSeconds++;
                     Message message = new Message();
                     message.what = 1;
                     handler.sendMessage(message);
@@ -434,7 +512,6 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         if (timer != null && task != null) {
             try {
                 //task.cancel();
-                timerValidFlag = true;
                 timer.schedule(task, 1000, 1000);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -451,7 +528,6 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
             task.cancel();
             task = null;
         }
-        timerValidFlag = false;
     }
 
 }
