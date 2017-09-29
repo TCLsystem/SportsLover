@@ -84,6 +84,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/local/Fundation/SportsLover/app/libs/BaiduTraceSDK_v3_0_4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="01ed122098fe68551bcf851fdc6d16ee2b750f4e">
+        <dex dex="/local/Fundation/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduTraceSDK_v3_0_4_cca5952d21deb7dac13b62433d07773c0cf28c70/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/local/Fundation/SportsLover/app/libs/pinyin4j-2.5.0.jar"
         jumboMode="true"
         optimize="true"
@@ -178,7 +187,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="a082fc21e7317a8298197bbd9c9e7c76eaa3b2c3">
+        sha1="8e968b080339812f4f208eb24a57a7107b8843e2">
         <dex dex="/local/Fundation/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_4acf9f4faa36c0d989d73a7e4b6a61f3d4f04f7f/classes.dex" />
     </item>
     <item
@@ -205,7 +214,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="2e685868e341b01420d32c48a87ebe0914ddc45a">
+        sha1="b75aa1f3078455c6cb562415d7654243770d2ac4">
         <dex dex="/local/Fundation/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_3b4e7b827b4a9c08b2dbebffbe80451c8cac21a3/classes.dex" />
     </item>
     <item
@@ -225,6 +234,15 @@
         revision="23.0.2"
         sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
         <dex dex="/local/Fundation/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-22.2.0_ea96192876ad43e1f56b5c8b68f02c25f1b8e701/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/Fundation/SportsLover/app/libs/bos-android-sdk-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4d8935bd82163a43871e2907ebb4ef363ec4ab50">
+        <dex dex="/local/Fundation/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/bos-android-sdk-1.0.2_5694db7f22adf4623f7be41051baa7c69e9571b5/classes.dex" />
     </item>
     <item
         is-multidex="true"

@@ -18,6 +18,54 @@ public class User extends BmobObject implements Serializable{
     BmobFile Photo;
     //密码
     String Password;
+    //手机号码
+    String Number;
+
+    String Birthday;//生日
+
+    String Weight;//体重
+
+    String Height;//身高
+
+    String Sex ;//性别
+
+
+
+    public String getSex() {
+        return Sex;
+    }
+    public void setSex(String number) {
+        Sex = number;
+    }
+
+
+    public String getHeight() {
+        return Height;
+    }
+    public void setHeight(String number) {
+        Height = number;
+    }
+
+    public String getWeight() {
+        return Weight;
+    }
+    public void setWeight(String number) {
+        Weight = number;
+    }
+
+
+    public String getBirthday() {
+        return Birthday;
+    }
+    public void setBirthday(String number) {
+        Birthday = number;
+    }
+
+
+
+
+
+
 
     public String getNumber() {
         return Number;
@@ -27,8 +75,7 @@ public class User extends BmobObject implements Serializable{
         Number = number;
     }
 
-    //手机号码
-    String Number;
+
 
     public String getName() {
         return UserName;

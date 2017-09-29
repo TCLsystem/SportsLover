@@ -2,7 +2,6 @@ package com.example.user.sportslover.activity;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -10,14 +9,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.dto.User;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.user.UserLocal;
-import com.example.user.sportslover.view.MyPageFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ import java.util.Date;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.listener.UpdateListener;
 
 public class personalDataActivity extends AppCompatActivity {
     @Bind(R.id.iv_Changephoto)
@@ -43,9 +44,19 @@ public class personalDataActivity extends AppCompatActivity {
     TextView weight;
     @Bind(R.id.tv_birthday)
     TextView birthday;
-//    @Bind(R.id.et_name)
-//    EditText et_name;
+    @Bind(R.id.Lname)
+    LinearLayout Lname;
+    @Bind(R.id.Lgender)
+    LinearLayout Lgender;
+    @Bind(R.id.Lheight)
+    LinearLayout Lheight;
+    @Bind(R.id.Lweight)
+    LinearLayout Lweight;
+    @Bind(R.id.Lbirthday)
+    LinearLayout Lbirthday;
+
     String Name;
+    User user = new User();
     TimePickerView pvTime;
     private OptionsPickerView pvOptions;
     private OptionsPickerView heightPvOptions;
@@ -62,42 +73,46 @@ public class personalDataActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         Name = getIntent().getStringExtra("name");
         name.setText(Name);
-//        gender.setText(mUserLocal.getSex());
-//        height.setText(mUserLocal.getHeight());
-//        weight.setText(mUserLocal.getWeight());
-//        birthday.setText(mUserLocal.getBirthday());
+//        if(!mUserLocal.getBirthday().equals(""))
+       birthday.setText(mUserLocal.getBirthday());
+//        if(!mUserLocal.getHeight().equals(""))
+       height.setText(mUserLocal.getHeight());
+//        if(!mUserLocal.getWeight().equals(""))
+       weight.setText(mUserLocal.getWeight());
+//        if(!mUserLocal.getSex().equals(""))
+       gender.setText(mUserLocal.getSex());
     }
 
-    @OnClick({R.id.personal_back, R.id.iv_Changephoto, R.id.tv_name, R.id.tv_gender, R.id.tv_height, R.id.tv_weight, R.id.tv_birthday})
+    @OnClick({R.id.personal_back, R.id.iv_Changephoto, R.id.Lname, R.id.Lgender, R.id.Lheight, R.id.Lweight, R.id.Lbirthday})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.personal_back:
-                Intent intent = new Intent();
-                intent.setClass(personalDataActivity.this, MyPageFragment.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(personalDataActivity.this, MyPageFragment.class);
+//                startActivity(intent);
                 break;
             case R.id.iv_Changephoto:
 
                 break;
-            case R.id.tv_name:
+            case R.id.Lname:
                editeName();
                 //mUserLocal.setName(name.getText().toString());
                 break;
-            case R.id.tv_gender:
+            case R.id.Lgender:
                 change_sex();
                 break;
-            case R.id.tv_height:
+            case R.id.Lheight:
                 initHeightOptionPicker();
                 heightPvOptions.show();
               //  mUserLocal.setHeight(height.getText().toString());
                 break;
-            case R.id.tv_weight:
+            case R.id.Lweight:
                 initOptionPicker();
                 pvOptions.show();
               //  mUserLocal.setWeight(weight.getText().toString());
                 break;
             //运动记录
-            case R.id.tv_birthday:
+            case R.id.Lbirthday:
                 initTimePicker();
                 pvTime.show();
              //   mUserLocal.setBirthday(birthday.getText().toString());
@@ -122,6 +137,7 @@ public class personalDataActivity extends AppCompatActivity {
                 }else {//女
                     gender.setText("female");
                 }
+                user.setSex(gender.getText().toString());
                 mUserLocal.setSex(gender.getText().toString());
             }
         });
@@ -145,8 +161,13 @@ public class personalDataActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                      //  name.setText(et_name.getText());
-                        mUserLocal.setName(name.getText().toString());
+//                        EditText change_name = (EditText) findViewById(R.id.change_name);
+//                        change_name.setText(Name);
+//                        if(!TextUtils.isEmpty(change_name.getText().toString())) {
+//                            name.setText(change_name.getText());
+                            user.setName(name.getText().toString());
+                            mUserLocal.setName(name.getText().toString());
+//                        }
                     }
                 }).
                 setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -176,6 +197,7 @@ public class personalDataActivity extends AppCompatActivity {
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
                 birthday.setText(getTime(date));
+                user.setBirthday(birthday.getText().toString());
                 mUserLocal.setBirthday(birthday.getText().toString());
 
             }
@@ -210,6 +232,7 @@ public class personalDataActivity extends AppCompatActivity {
                 //返回的分别是三个级别的选中位置
                 String tx = optionsItems.get(options1);
                 weight.setText(tx+"Kg");
+                user.setWeight(weight.getText().toString());
                 mUserLocal.setWeight(weight.getText().toString());
             }
 
@@ -250,6 +273,7 @@ public class personalDataActivity extends AppCompatActivity {
                 //返回的分别是三个级别的选中位置
                 String tx = heightOptionsItems.get(options1);
                 height.setText(tx+"cm");
+                user.setHeight(height.getText().toString());
                 mUserLocal.setHeight(height.getText().toString());
             }
         })
@@ -277,6 +301,15 @@ public class personalDataActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        user.update(personalDataActivity.this,mUserLocal.getObjectId(), new UpdateListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+            @Override
+            public void onFailure(int i, String s) {
+            }
+        });
         mUserLocal.save();
     }
 }
