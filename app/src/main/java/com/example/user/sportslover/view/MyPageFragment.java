@@ -78,7 +78,7 @@ public class MyPageFragment extends Fragment {
     private UserFragmentPresenter mUserFragmentPresenter;
     private final int REQUEST_CODE = 0x01;
 
-    private UserModel mUserModel= new UserModel();;
+    private UserModel mUserModel= new UserModel();
 
     private Dialog mLoadingDialog;
     private Dialog mLoadingFinishDialog;
@@ -135,7 +135,11 @@ public class MyPageFragment extends Fragment {
 
                 break;
             case R.id.personalData://设置个人信息
-                startActivity(new Intent(getActivity(), personalDataActivity.class));
+                if (mUserLocal != null) {
+                    Intent intent = new Intent(getActivity(), personalDataActivity.class);
+                    intent.putExtra("name", mUserLocal.getName());
+                    startActivity(intent);
+                }
                 break;
             case R.id.motionGoal://每周目标
                 startActivity(new Intent(getActivity(), motionGoalActivity.class));

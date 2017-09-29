@@ -12,7 +12,7 @@
         android:background="@drawable/mybackground"
         android:orientation="horizontal">
         <ImageView
-            android:id="@+id/register_back"
+            android:id="@+id/personal_back"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="center_vertical"
@@ -69,7 +69,7 @@
             android:layout_marginRight="20dp"
             android:layout_marginLeft="200dp"
             android:layout_gravity="center"
-            android:text="zhijiao.li" />
+            android:text="TCLsys" />
 
     </LinearLayout>
 

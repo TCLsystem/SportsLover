@@ -53,6 +53,7 @@
     <string name="Height">Height</string>
     <string name="Weight">Weight</string>
     <string name="Brithday">Brithday</string>
+    <string name="editeName">A good name can make your friend remember you better</string>
 
 
 </resources>

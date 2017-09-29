@@ -27,6 +27,51 @@ public class UserLocal extends Model implements Serializable {
     //手机号码
     @Column(name = "Number")
     String Number;
+    //生日
+    @Column(name = "Birthday")
+    String Birthday;//生日
+
+    @Column(name = "Weight")
+    String Weight;//体重
+
+    @Column(name = "Height")
+    String Height;//身高
+
+     @Column(name = "Sex")
+    String Sex ;//性别
+
+
+
+    public String getSex() {
+        return Sex;
+    }
+    public void setSex(String number) {
+        Sex = number;
+    }
+
+
+    public String getHeight() {
+        return Height;
+    }
+    public void setHeight(String number) {
+        Height = number;
+    }
+
+    public String getWeight() {
+        return Weight;
+    }
+    public void setWeight(String number) {
+        Weight = number;
+    }
+
+
+    public String getBirthday() {
+        return Birthday;
+    }
+    public void setBirthday(String number) {
+        Birthday = number;
+    }
+
 
     public String getNumber() {
         return Number;

@@ -74,4 +74,6 @@ dependencies {
     compile name: 'SMSSDKGUI-2.1.1', ext: 'aar'
     compile files('libs/MobCommons-2016.0714.1402.jar')
     compile files('libs/MobTools-2016.0714.1402.jar')
+
+    compile 'com.contrarywind:Android-PickerView:3.2.5'
 }
