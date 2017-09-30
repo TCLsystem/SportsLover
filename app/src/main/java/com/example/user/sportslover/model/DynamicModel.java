@@ -4,8 +4,8 @@ import android.widget.Toast;
 
 import com.activeandroid.util.Log;
 import com.example.user.sportslover.application.BaseApplication;
-import com.example.user.sportslover.dto.DynamicItem;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.DynamicItem;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.Impl.DynamicModelImpl;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 

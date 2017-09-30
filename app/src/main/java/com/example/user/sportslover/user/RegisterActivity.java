@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.util.ToastUtil;
 
 import butterknife.Bind;

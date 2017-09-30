@@ -1,6 +1,6 @@
 package com.example.user.sportslover.view;
 
-import com.example.user.sportslover.dto.DynamicItem;
+import com.example.user.sportslover.bean.DynamicItem;
 
 import java.util.List;
 

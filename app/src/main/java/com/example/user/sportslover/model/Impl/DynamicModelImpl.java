@@ -1,6 +1,6 @@
 package com.example.user.sportslover.model.Impl;
 
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.User;
 
 /**
  * Created by user on 17-9-19.

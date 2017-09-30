@@ -1,6 +1,6 @@
 package com.example.user.sportslover.presenter;
 
-import com.example.user.sportslover.dto.DynamicItem;
+import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.model.DynamicModel;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.view.IDynamicFragment;

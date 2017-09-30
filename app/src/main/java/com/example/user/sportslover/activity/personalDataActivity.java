@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.presenter.UserFragmentPresenter;

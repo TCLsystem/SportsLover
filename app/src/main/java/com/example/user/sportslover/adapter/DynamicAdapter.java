@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.customview.FixedGridView;
-import com.example.user.sportslover.dto.DynamicItem;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.DynamicItem;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.view.RoundImageView;

@@ -3,7 +3,7 @@ package com.example.user.sportslover.model;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
 import com.example.user.sportslover.application.BaseApplication;
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.Impl.SportModelImpl;
 import com.example.user.sportslover.model.Impl.UserModelImpl;
 import com.example.user.sportslover.user.UserLocal;

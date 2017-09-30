@@ -3,7 +3,7 @@ package com.example.user.sportslover.presenter;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.user.sportslover.dto.User;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.user.LoginActivity;
 
