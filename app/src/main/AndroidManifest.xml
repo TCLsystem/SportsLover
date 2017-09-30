@@ -46,9 +46,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.WeatherActivity" />
-        <activity android:name=".user.RegisterActivity" />
-        <activity android:name=".user.LoginActivity" />
+        <activity android:name=".activity.WeatherActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
 
         <service
             android:name="com.baidu.location.f"
@@ -74,26 +74,26 @@
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".activity.RouteActivity" />
-        <activity android:name=".activity.myDynamicActivity" />
-        <activity android:name=".activity.motionRecordActivity" />
+        <activity android:name=".activity.MyDynamicActivity" />
+        <activity android:name=".activity.MotionRecordActivity" />
         <activity android:name=".activity.SendDynamicActivity" />
         <activity android:name=".activity.DynamicDetailActivity" />
         <activity android:name=".activity.NewFriendActivity" />
-        <activity android:name=".activity.settingActivity" />
-        <activity android:name=".view.BeginSport" />
-        <activity android:name=".activity.motionGoalActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.BeginSportActivity" />
+        <activity android:name=".activity.MotionGoalActivity" />
         <activity android:name=".activity.PhoneValidateActivity" />
-        <activity android:name=".activity.makeGoal" />
-        <activity android:name=".activity.personalDataActivity" />
+        <activity android:name=".activity.MakeGoal" />
+        <activity android:name=".activity.PersonalDataActivity" />
 
         <service
             android:name=".service.SportTrackService"
             android:enabled="true"
             android:exported="true"></service>
 
-        <activity android:name=".view.SetSportTargetActivity" />
-	<activity android:name=".view.FinishSport"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".activity.SetSportTargetActivity" />
+	<activity android:name=".activity.FinishSportActivity"></activity>
+        <activity android:name=".activity.MainActivity"></activity>
 
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"

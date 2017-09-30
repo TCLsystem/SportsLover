@@ -11,9 +11,9 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.customview.FixedGridView;
 import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.model.Impl.SportModelImpl;
-import com.example.user.sportslover.model.UserModel;
-import com.example.user.sportslover.view.RoundImageView;
+import com.example.user.sportslover.model.SportModelInter;
+import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.customview.RoundImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -95,7 +95,7 @@ public class DynamicAdapter extends BaseAdapter {
         }
         DynamicItem dynamicItem = mDatas.get(position);
         final ViewHolder viewHolder = holder;
-        new UserModel().getUser(dynamicItem.getWriter().getObjectId(), new SportModelImpl.BaseListener() {
+        new UserModelImpl().getUser(dynamicItem.getWriter().getObjectId(), new SportModelInter.BaseListener() {
             @Override
             public void getSuccess(Object o) {
                 User user = (User) o;
@@ -110,7 +110,7 @@ public class DynamicAdapter extends BaseAdapter {
         });
         viewHolder.write_date.setText(dynamicItem.getCreatedAt());
         holder.dynamic_text.setText(dynamicItem.getText());
-        holder.dynamic_photo.setAdapter(new DynamicPhotoAdapter(mContext,R.layout.dynamic_gridview_item,dynamicItem.getPhotoList()));
+        holder.dynamic_photo.setAdapter(new DynamicPhotoAdapter(mContext,R.layout.item_dynamic_gridview,dynamicItem.getPhotoList()));
         return convertView;
     }
 

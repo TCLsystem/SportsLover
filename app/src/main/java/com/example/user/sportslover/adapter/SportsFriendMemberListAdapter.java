@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.dto.PersonDto;
+import com.example.user.sportslover.bean.PersonItem;
 
 import java.util.List;
 
@@ -21,9 +21,9 @@ public class SportsFriendMemberListAdapter extends BaseAdapter implements Sectio
 
 	private Activity mActivity;
 
-	private List<PersonDto> list;
+	private List<PersonItem> list;
 
-	public SportsFriendMemberListAdapter(Activity mActivity, List<PersonDto> list) {
+	public SportsFriendMemberListAdapter(Activity mActivity, List<PersonItem> list) {
 		this.mActivity = mActivity;
 		this.list = list;
 	}
@@ -33,7 +33,7 @@ public class SportsFriendMemberListAdapter extends BaseAdapter implements Sectio
 	 * 
 	 * @param list
 	 */
-	public void updateListView(List<PersonDto> list) {
+	public void updateListView(List<PersonItem> list) {
 		this.list = list;
 		notifyDataSetChanged();
 	}
@@ -70,7 +70,7 @@ public class SportsFriendMemberListAdapter extends BaseAdapter implements Sectio
 			holder = (ViewHolder) convertView.getTag();
 		}
 
-		final PersonDto dto = list.get(position);
+		final PersonItem dto = list.get(position);
 
 		if (dto != null) {
 			// 根据position获取分类的首字母的Char ascii值

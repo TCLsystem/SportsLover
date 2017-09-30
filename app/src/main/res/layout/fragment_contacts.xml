@@ -124,7 +124,7 @@
             android:textSize="30.0dip"
             android:visibility="invisible" />
 
-        <com.example.user.sportslover.widget.SideBar
+        <com.example.user.sportslover.customview.SideBar
             android:id="@+id/sports_friend_sidrbar"
             android:layout_width="30dp"
             android:layout_height="fill_parent"

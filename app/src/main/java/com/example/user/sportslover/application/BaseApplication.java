@@ -3,7 +3,7 @@ package com.example.user.sportslover.application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
-import com.example.user.sportslover.json.Weather;
+import com.example.user.sportslover.bean.Weather;
 
 
 /**

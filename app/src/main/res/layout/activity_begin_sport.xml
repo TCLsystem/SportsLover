@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/begin_sport_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_begin_sport_background"
+    android:orientation="vertical"
+    tools:context="com.example.user.sportslover.activity.BeginSportActivity">
+
+    <RelativeLayout
+        android:id="@+id/beging_sport_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/beging_sport_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/sport_back"/>
+
+        <ImageView
+            android:id="@+id/beging_sport_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:src="@drawable/sport_setting"/>
+
+        <TextView
+            android:id="@+id/sport_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Running"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_begin_sport_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_begin_sport_average_pace"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="0.0\nAverage\npace"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_begin_sport_calories"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="0.0kcal\nCalories"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/tv_begin_sport_cumulative_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+            android:text="0.0h\nCumulative\ntime"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+
+    <com.example.user.sportslover.widget.MyVerticalViewPager
+        android:id="@+id/verticalviewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

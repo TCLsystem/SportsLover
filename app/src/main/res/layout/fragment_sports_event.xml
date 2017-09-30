@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.sportslover.view.SportsEventFragment">
+    tools:context="com.example.user.sportslover.fragment.SportsEventFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/dynamic_fragment_head"></include>
+    <include layout="@layout/item_dynamic_fragment_head"></include>
 
     <RelativeLayout
         android:id="@+id/loading"

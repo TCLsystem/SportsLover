@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.user.sportslover.MainActivity;
 import com.example.user.sportslover.R;
 
 public class StartActivity extends AppCompatActivity {

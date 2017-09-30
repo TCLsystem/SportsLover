@@ -4,7 +4,7 @@
     android:id="@+id/activity_make_goal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.user.sportslover.activity.makeGoal"
+    tools:context="com.example.user.sportslover.activity.MakeGoal"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"

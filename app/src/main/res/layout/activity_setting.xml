@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_setting"
-    tools:context="com.example.user.sportslover.activity.settingActivity"
+    tools:context="com.example.user.sportslover.activity.SettingActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/normal_bg_color"

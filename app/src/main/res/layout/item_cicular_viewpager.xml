@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_sport_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:background="@color/transparent">
+
+        <com.example.user.sportslover.customview.CircularRingPercentageView
+            android:id="@+id/progress"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            app:circleRoundWidth="5dp" />
+
+        <TextView
+            android:id="@+id/tv_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="0.00km\nTotol mileages"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="10dp"/>
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_cicular_view_buttons"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/circular_view_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/ll_cicular_view_buttons"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/lock_screen"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_cicular_view_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/pause0"
+                android:layout_width="106dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:text="Stop"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_rectanglar_gradient_button"/>
+
+            <Button
+                android:id="@+id/stop0"
+                android:layout_width="106dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:visibility="gone"
+                android:text="Finish"
+                android:textColor="@color/black"
+                android:background="@drawable/shape_rectanglar_white_button"/>
+
+            <Button
+                android:id="@+id/resume0"
+                android:layout_width="106dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:visibility="gone"
+                android:text="Go on"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_rectanglar_gradient_button"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/cicular_view_show_map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ll_cicular_view_buttons"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="80dp"
+            android:background="@drawable/show_map"/>
+    </RelativeLayout>
+
+    <!--<com.example.user.sportslover.customview.TuneWheelView
+        android:id="@+id/ruler"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id = "@+id/tv_target"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:text ="0千米"
+        android:textSize = "10dp"/>-->
+
+<!--    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/ll_baidu_map_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_hours"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:" />
+
+            <TextView
+                android:id="@+id/tv_minutes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:" />
+
+            <TextView
+                android:id="@+id/tv_seconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id = "@+id/distance"
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent"
+            android:text ="现在走过的距离是：0米"
+            android:textSize = "15dp"
+            android:layout_weight="1"/>
+    </LinearLayout>-->
+
+</RelativeLayout>

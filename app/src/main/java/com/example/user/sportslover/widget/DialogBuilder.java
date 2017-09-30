@@ -26,7 +26,7 @@ public class DialogBuilder {
      */
     public static Dialog createLoadingfinishDialog(Context context, String msg) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.loading_dialog, null);// 得到加载view
+        View v = inflater.inflate(R.layout.item_loading_dialog, null);// 得到加载view
         RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.dialog_view);// 加载布局
         TextView tipTextView = (TextView) v.findViewById(R.id.tipTextView);// 提示文字
         tipTextView.setText(msg);// 设置加载信息
@@ -46,7 +46,7 @@ public class DialogBuilder {
      */
     public static Dialog createLoadingDialog(Context context, String msg) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View v = inflater.inflate(R.layout.loading_dialog, null);// 得到加载view
+        View v = inflater.inflate(R.layout.item_loading_dialog, null);// 得到加载view
         RelativeLayout layout = (RelativeLayout) v.findViewById(R.id.dialog_view);// 加载布局
         // main.xml中的ImageView
         TextView tipTextView = (TextView) v.findViewById(R.id.tipTextView);// 提示文字

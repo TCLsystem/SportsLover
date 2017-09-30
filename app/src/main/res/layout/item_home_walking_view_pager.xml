@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/fl_home_walking_history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_home_walking_history_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_history_background_bak"/>
+
+        <ImageView
+            android:id="@+id/iv_home_walking_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="35px"
+            android:layout_marginTop="45px"
+            android:layout_gravity="right"
+            android:src="@drawable/home_history"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_home_walking_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/iv_home_walking_weather_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home_weather_background"/>
+
+        <ImageView
+            android:id="@+id/iv_home_walking_weather_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50px"
+            android:layout_marginTop="50px"
+            android:layout_gravity="left"
+            android:src="@drawable/weather_0"/>
+
+        <TextView
+            android:id="@+id/tv_weather_walking_condition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="177px"
+            android:layout_marginTop="82px"
+            android:text="30℃\nFine"
+            android:textColor="#ffffff"
+            android:textSize="27px"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_start_walking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp">
+
+        <ImageView
+            android:id="@+id/iv_start_walking_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5px"
+            android:src="@drawable/start_background"/>
+
+        <ImageView
+            android:id="@+id/iv_home_start_walking_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260px"
+            android:layout_marginBottom="30px"
+            android:layout_gravity="center"
+            android:src="@drawable/start_walking_icon"/>
+
+        <TextView
+            android:id="@+id/tv_home_start_walking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30px"
+            android:layout_marginRight="20px"
+            android:text="Start walking"
+            android:textColor="#ffffff"
+            android:textSize="60px"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_home_walking_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp">
+
+        <com.example.user.sportslover.customview.CircularRingPercentageView
+            android:id="@+id/home_walking_progress"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            app:circleRoundWidth="5dp" />
+
+        <TextView
+            android:id="@+id/tv_home_walking_basic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Today\n0.00km\nTotol mileages"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:lineSpacingExtra="10dp"/>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_home_walking_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/fl_home_walking_progress"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/tv_home_walking_cumulative_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0.0h\nCumulative\ntime"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_home_walking_average_pace"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0.0\nAverage\npace"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_home_walking_cumulative_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0.0\nCumulative\nnumber"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

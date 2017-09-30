@@ -4,15 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.model.UserModel;
-import com.example.user.sportslover.user.LoginActivity;
+import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.activity.LoginActivity;
 
 /**
  * Created by user on 17-9-16.
  */
 
     public class UserFragmentPresenter {
-        private UserModel mUserModel = new UserModel();
+        private UserModelImpl mUserModelImpl = new UserModelImpl();
 
         public UserFragmentPresenter() {
         }

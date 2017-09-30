@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/baidu_map_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_baidu_map"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp">
+
+        <Button
+            android:id="@+id/target1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_toLeftOf="@+id/ll_baidu_map_buttons"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:text="Goal"
+            android:background="@drawable/shape_rectanglar_white_button"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_baidu_map_buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/start1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:text="Start"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_round_gradient_button"/>
+
+            <Button
+                android:id="@+id/pause1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:text="Stop"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_round_gradient_button"/>
+
+            <Button
+                android:id="@+id/stop1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:text="Finish"
+                android:textColor="@color/black"
+                android:background="@drawable/shape_round_white_button"/>
+
+            <Button
+                android:id="@+id/resume1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:visibility="gone"
+                android:text="Go on"
+                android:textColor="@color/white"
+                android:background="@drawable/shape_round_gradient_button"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/route1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_toRightOf="@+id/ll_baidu_map_buttons"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:text="Route"
+            android:background="@drawable/shape_rectanglar_white_button"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_strech_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/strech_map"
+        android:visibility="gone"/>
+
+</RelativeLayout>

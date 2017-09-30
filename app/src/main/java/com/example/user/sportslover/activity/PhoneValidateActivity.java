@@ -14,8 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.model.UserModel;
-import com.example.user.sportslover.user.RegisterActivity;
+import com.example.user.sportslover.model.UserModelImpl;
 
 import java.util.HashMap;
 
@@ -40,7 +39,7 @@ public class PhoneValidateActivity extends AppCompatActivity {
     @Bind(R.id.register_phone)
     EditText registerPhone;
 
-    private UserModel mUserModel = new UserModel();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

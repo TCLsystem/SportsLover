@@ -1,14 +1,14 @@
 package com.example.user.sportslover.widget;
 
-import com.example.user.sportslover.dto.PersonDto;
+import com.example.user.sportslover.bean.PersonItem;
 
 import java.util.Comparator;
 
 
-public class PinyinComparator implements Comparator<PersonDto> {
+public class PinyinComparator implements Comparator<PersonItem> {
 
 	@Override
-	public int compare(PersonDto o1, PersonDto o2) {
+	public int compare(PersonItem o1, PersonItem o2) {
 		if (o1.getSortLetters().equals("☆")) {
 			return -1;
 		} else if (o2.getSortLetters().equals("☆")) {

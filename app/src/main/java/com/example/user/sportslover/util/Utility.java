@@ -1,8 +1,7 @@
 package com.example.user.sportslover.util;
 
-import com.example.user.sportslover.json.Weather;
+import com.example.user.sportslover.bean.Weather;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
