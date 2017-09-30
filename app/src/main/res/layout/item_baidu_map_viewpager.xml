@@ -57,7 +57,7 @@
                 android:textColor="@color/white"
                 android:background="@drawable/shape_round_gradient_button"/>
 
-            <Button
+            <com.example.user.sportslover.customview.LongClickButton
                 android:id="@+id/stop1"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
@@ -79,6 +79,16 @@
                 android:visibility="gone"
                 android:text="Go on"
                 android:textColor="@color/white"
+                android:background="@drawable/shape_round_gradient_button"/>
+
+            <ImageView
+                android:id="@+id/iv_lock1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:src="@drawable/lock_screen"
+                android:scaleType="centerInside"
+                android:visibility="gone"
                 android:background="@drawable/shape_round_gradient_button"/>
 
         </LinearLayout>

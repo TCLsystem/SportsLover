@@ -12,4 +12,10 @@
         android:height="32dp"/>
     <!-- android:radius 弧形的半径 -->
     <corners android:radius="16dp" />
+
+    <gradient
+        android:startColor="@color/white"
+        android:endColor="@color/white"
+        android:angle="0" />
+
 </shape>
