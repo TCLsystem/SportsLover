@@ -77,20 +77,22 @@ public class SportTrackService extends Service {
             if (response.status == 0){
                 LatestPoint point = response.getLatestPoint();
                 currentLatLng = MapUtil.convertTrace2Map(point.getLocation());
-                currentPoint = currentLatLng;
                 if (timerValidFlag) {
                     if (points.size() < 2){
                         points.add(currentLatLng);
                     }
                     else {
-                        double tmpDistance = MapUtil.gps2m(points.get(points.size()-1).latitude, points.get(points.size()-1).longitude,
-                                points.get(points.size()-2).latitude, points.get(points.size()-2).longitude);
+                        double tmpDistance = MapUtil.gps2m(currentPoint.latitude, currentPoint.longitude,
+                                currentLatLng.latitude, currentLatLng.longitude);
                         distance += tmpDistance;
-                        if (tmpDistance > 5){
+                        double tmpDistance2 = MapUtil.gps2m(points.get(points.size() - 1).latitude, points.get(points.size() - 1).longitude,
+                                currentLatLng.latitude, currentLatLng.longitude);
+                        if (tmpDistance2 > 5){
                             points.add(currentLatLng);
                         }
                     }
                 }
+                currentPoint = currentLatLng;
             }
         }
 

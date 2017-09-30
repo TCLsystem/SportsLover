@@ -1,25 +1,33 @@
 package com.example.user.sportslover.view;
 
 import android.Manifest;
+import android.annotation.TargetApi;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Binder;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,9 +50,16 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.application.BaseApplication;
 import com.example.user.sportslover.customview.MyVerticalViewPager;
+import com.example.user.sportslover.dto.SportInformation;
 import com.example.user.sportslover.listener.MyOrientationListener;
+import com.example.user.sportslover.model.CalculateCalories;
+import com.example.user.sportslover.model.CalculateCaloriesRiding;
+import com.example.user.sportslover.model.CalculateCaloriesRunning;
+import com.example.user.sportslover.model.CalculateCaloriesWalking;
 import com.example.user.sportslover.service.SportTrackService;
+import com.example.user.sportslover.util.ColorUtil;
 import com.example.user.sportslover.util.MapUtil;
 
 import java.text.DecimalFormat;
@@ -58,6 +73,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     private ArrayList<View> pageview;
     private View view0;
     private View view1;
+    private int currPage;
     private int sportType;
 
     public LocationClient mLocationClient;
@@ -81,6 +97,8 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     private TextView tvSportType;
     private TextView tvDistance;
     private TextView tvHours;
+    private TextView tvSportAveragePace;
+    private TextView tvCalories;
     ImageView ivLock;
     ImageView ivMap;
     Button buttonPause0;
@@ -93,56 +111,82 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
     Button buttonResume1;
     Button buttonStop1;
     ImageView ivStrechMap;
+    LinearLayout llBeginSportLayout;
     LinearLayout llBeginSportStatus;
 
     private Timer timer = new Timer();
     private TimerTask task;
     private int gSeconds = 0;
     private long remoteSeconds = 0;
+    private int averagePace= 0;
     private boolean timerValidFlag = false;
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
-            String html;
-            // 调用相机回调接口由于MainActivity已经实现了回调接口，所以MainActivity.this即可
-            if (msg.what == 1) {
-                baiduMap.clear();
+        String html;
+        // 调用相机回调接口由于MainActivity已经实现了回调接口，所以MainActivity.this即可
+        if (msg.what == 1) {
+            baiduMap.clear();
 
-                if (sportTrackServiceControlBinder.getCurrentPoint() != null){
-                    remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
-                }
-                //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
-                remotePoints = sportTrackServiceControlBinder.getPoints();
-                if (remotePoints.size() > 2){
-                    OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
-                    baiduMap.addOverlay(ooPolyline);
-                }
-                mLocationClient.requestLocation();
-                remoteSeconds = sportTrackServiceControlBinder.getSeconds();
-                html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
-                tvHours.setText(Html.fromHtml(html));
-                remoteDistance = sportTrackServiceControlBinder.getDistance();
-                if (target > 100){
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
-                } else {
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
-                }
-                tvDistance.setText(Html.fromHtml(html));
-                //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
-                if (target >= 100){
-                    progressCircle.setProgress((float)remoteDistance/target*100f);
-                } else {
-                    progressCircle.setProgress(100f);
-                }
-                //progressCircle.setProgress((float)sum_distance/target*100f);
-
+            if (sportTrackServiceControlBinder.getCurrentPoint() != null){
+                remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
             }
+            //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
+            remotePoints = sportTrackServiceControlBinder.getPoints();
+            if (remotePoints.size() > 2){
+                OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
+                baiduMap.addOverlay(ooPolyline);
+            }
+            mLocationClient.requestLocation();
+            remoteSeconds = sportTrackServiceControlBinder.getSeconds();
+            html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
+            tvHours.setText(Html.fromHtml(html));
+            remoteDistance = sportTrackServiceControlBinder.getDistance();
+            if (target > 100){
+                html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
+            } else {
+                html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
+            }
+            tvDistance.setText(Html.fromHtml(html));
+            //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
+
+            averagePace = (int)(remoteSeconds/remoteDistance*1000);
+            if (remoteDistance <= 0 || averagePace >= 599940){
+                averagePace = 599940;
+            }
+            html = "<big><big><big>" + averagePace/60 + "’</big>" + averagePace%60 + "”" +"</big></big><br>Average<br>pace";
+            tvSportAveragePace.setText(Html.fromHtml(html));
+
+            switch (currPage){
+                case 0:
+                    html = "<big><big><big>" + textFormat.format(calculateCalories.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                case 1:
+                    html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                default:
+                    break;
+            }
+
+            if (target >= 100){
+                progressCircle.setProgress((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                refleshBackgroundColors((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+            } else {
+                refleshBackgroundColors(0);
+                progressCircle.setProgress(100f);
+            }
+            //progressCircle.setProgress((float)sum_distance/target*100f);
+        }
         }
 
     };
 
     private CircularRingPercentageView progressCircle;
     private float target = 0;
+    private float weight = 60;
+    private CalculateCalories calculateCalories;
     private DecimalFormat textFormat = new DecimalFormat("#0.0000");
     private DecimalFormat timeFormat = new DecimalFormat("#0.0000");
     private MyVerticalViewPager myVerticalViewPager;
@@ -182,12 +226,15 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         switch (sportType){
             case 0:
                 tvSportType.setText("Running");
+                calculateCalories = new CalculateCaloriesRunning();
                 break;
             case 1:
                 tvSportType.setText("Walking");
+                calculateCalories = new CalculateCaloriesWalking();
                 break;
             case 2:
                 tvSportType.setText("Riding");
+                calculateCalories = new CalculateCaloriesRiding();
                 break;
             default:
                 Log.d("Begin Sport", "Invalid sport type");
@@ -221,6 +268,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         myVerticalViewPager.setAdapter(mPageAdapter);
         myVerticalViewPager.setCurrentItem(1);
         myVerticalViewPager.setScrollable(false);
+        myVerticalViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         llBeginSportStatus = (LinearLayout) findViewById(R.id.ll_begin_sport_status);
         ivLock = (ImageView) view0.findViewById(R.id.circular_view_lock);
         ivMap = (ImageView) view0.findViewById(R.id.cicular_view_show_map);
@@ -246,9 +294,12 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         buttonPause1.setOnClickListener(this);
         buttonResume1.setOnClickListener(this);
         buttonStop1.setOnClickListener(this);
+        llBeginSportLayout = (LinearLayout) findViewById(R.id.begin_sport_layout);
         ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
         tvDistance = (TextView) view0.findViewById(R.id.tv_distance);
         tvHours = (TextView) findViewById(R.id.tv_begin_sport_cumulative_time);
+        tvSportAveragePace = (TextView) findViewById(R.id.tv_begin_sport_average_pace);
+        tvCalories = (TextView) findViewById(R.id.tv_begin_sport_calories);
         progressCircle = (CircularRingPercentageView) view0.findViewById(R.id.progress);
         progressCircle.setRoundWidth(15);
         progressCircle.setProgress(75f);
@@ -275,6 +326,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         } else {
             requestLocation();
         }
+        refleshBackgroundColors(0);
         Intent startSportTrackService = new Intent(this, SportTrackService.class);
         startService(startSportTrackService);
         startTimer();
@@ -362,6 +414,34 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
                 });
     }
 
+    public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+        @Override
+        public void onPageSelected(int arg0) {
+            String html;
+            switch (arg0) {
+                case 0:
+                    html = "<big><big><big>" + textFormat.format(calculateCalories.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                case 1:
+                    html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                default:
+                    break;
+            }
+            currPage = arg0;
+        }
+
+        @Override
+        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int arg0) {
+        }
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -430,6 +510,7 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
             case R.id.start1:
                 timerValidFlag = true;
                 myVerticalViewPager.setCurrentItem(0);
+                currPage = 0 ;
                 sportTrackServiceControlBinder.startService();
                 llBeginSportStatus.setVisibility(View.VISIBLE);
                 buttonTarget1.setVisibility(View.GONE);
@@ -472,9 +553,6 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
             case R.id.stop1:
                 timerValidFlag = false;
                 sportTrackServiceControlBinder.pauseService();
-                remoteSeconds = 0;
-                gSeconds = 0;
-                sum_distance = 0;
                 Intent stopSportTrackService = new Intent(this, SportTrackService.class);
                 stopService(stopSportTrackService);
                 buttonStart1.setVisibility(View.VISIBLE);
@@ -484,6 +562,17 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
                 buttonResume1.setVisibility(View.GONE);
                 buttonStop0.setVisibility(View.GONE);
                 buttonStop1.setVisibility(View.GONE);
+                SportInformation sportInformation = new SportInformation();
+                sportInformation.setAveragePace(averagePace);
+                sportInformation.setCalories(calculateCalories.calculateCalories(weight, remoteSeconds, averagePace));
+                sportInformation.setCumulativeTime(remoteSeconds);
+                sportInformation.setSportProgress((remoteDistance/target > 1 || target < 100)?100f:((float)remoteDistance/target*100f));
+                sportInformation.setTotalMileages(remoteDistance);
+                sportInformation.setPoints(remotePoints);
+                Intent intent1 = new Intent(BeginSport.this, FinishSport.class);
+                intent1.putExtra("sport_information", sportInformation);
+                startActivity(intent1);
+                finish();
                 break;
             default:
                 break;
@@ -527,6 +616,80 @@ public class BeginSport extends AppCompatActivity implements View.OnClickListene
         if (task != null) {
             task.cancel();
             task = null;
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    private void refleshBackgroundColors(float localProcess){
+
+        int beginColorTop = 0xff5bc0e5;
+        int beginColorBottom = 0xff6ee4bc;
+        int endColorTop = 0xffff967a;
+        int endColorBottom = 0xfffcde6c;
+
+        GradientDrawable gradientDrawableBackground;
+        GradientDrawable gradientDrawableGradientButton;
+        GradientDrawable gradientDrawableWhiteButton;
+
+        @ColorInt int colors[] = new int[] {ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop),
+                ColorUtil.getProgressColor(localProcess, beginColorBottom, endColorBottom)};
+
+        gradientDrawableBackground = (GradientDrawable) llBeginSportLayout.getBackground();
+        gradientDrawableBackground.setColors(colors);
+        //llBeginSportLayout.setBackground(gradientDrawableBackground);
+
+        gradientDrawableGradientButton = (GradientDrawable) buttonStart1.getBackground();
+        gradientDrawableGradientButton.setColors(colors);
+        //buttonStart1.setBackground(gradientDrawableGradientButton);
+
+        gradientDrawableGradientButton = (GradientDrawable) buttonPause0.getBackground();
+        gradientDrawableGradientButton.setColors(colors);
+        //buttonPause0.setBackground(gradientDrawableGradientButton);
+
+        gradientDrawableGradientButton = (GradientDrawable) buttonPause1.getBackground();
+        gradientDrawableGradientButton.setColors(colors);
+        //buttonPause1.setBackground(gradientDrawableGradientButton);
+
+        gradientDrawableGradientButton = (GradientDrawable) buttonResume0.getBackground();
+        gradientDrawableGradientButton.setColors(colors);
+        //buttonResume0.setBackground(gradientDrawableGradientButton);
+
+        gradientDrawableGradientButton = (GradientDrawable) buttonResume1.getBackground();
+        gradientDrawableGradientButton.setColors(colors);
+        //buttonResume1.setBackground(gradientDrawableGradientButton);
+
+        gradientDrawableWhiteButton = (GradientDrawable) buttonStop0.getBackground();
+        gradientDrawableWhiteButton.setColor(Color.WHITE);
+        gradientDrawableWhiteButton.setStroke(4, ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop));
+        //buttonStop0.setBackground(gradientDrawableWhiteButton);
+
+        gradientDrawableWhiteButton = (GradientDrawable) buttonStop1.getBackground();
+        gradientDrawableWhiteButton.setColor(Color.WHITE);
+        gradientDrawableWhiteButton.setStroke(4, ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop));
+        //buttonStop1.setBackground(gradientDrawableWhiteButton);
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1:
+                if (grantResults.length > 0){
+                    for (int result : grantResults){
+                        if (result != PackageManager.PERMISSION_GRANTED){
+                            Toast.makeText(this, "必须同意所有权限才能使用本程序", Toast.LENGTH_SHORT).show();
+                            finish();
+                            return;
+                        }
+                    }
+                    requestLocation();
+                }else {
+                    Toast.makeText(this, "发生未知错误", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                break;
+            default:
+                break;
         }
     }
 

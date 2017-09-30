@@ -1,5 +1,7 @@
 package com.example.user.sportslover.util;
 
+import android.support.annotation.ColorInt;
+
 /**
  * 颜色工具类
  */
@@ -353,5 +355,16 @@ public final class ColorUtil {
      * 低光
      */
     public static final int LOWLIGHT = 0x33000000;
+
+    @ColorInt public static int getProgressColor(float progress, int beginColor, int endColor){
+        int rrb, ggb, bbb, rre, gge, bbe;
+        rrb = beginColor & 0xff;
+        ggb = (beginColor>>8) & 0xff;
+        bbb = (beginColor>>16) & 0xff;
+        rre = endColor & 0xff;
+        gge = (endColor>>8) & 0xff;
+        bbe = (endColor>>16) & 0xff;
+        return ((int)((rre-rrb)*progress/100.0 + rrb) + (((int)((gge-ggb)*progress/100.0 + ggb))<<8) + (((int)((bbe-bbb)*progress/100.0 + bbb))<<16) | 0xff<<24);
+    }
 
 }

@@ -42,7 +42,8 @@
                 android:layout_height="64dp"
                 android:layout_weight="1"
                 android:text="Start"
-                android:background="@drawable/round_shape_button"/>
+                android:textColor="@color/white"
+                android:background="@drawable/round_gradient_shape_button"/>
 
             <Button
                 android:id="@+id/pause1"
@@ -52,8 +53,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="暂停"
-                android:background="@drawable/round_shape_button"/>
+                android:text="Stop"
+                android:textColor="@color/white"
+                android:background="@drawable/round_gradient_shape_button"/>
 
             <Button
                 android:id="@+id/stop1"
@@ -63,8 +65,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="停止"
-                android:background="@drawable/round_shape_button"/>
+                android:text="Finish"
+                android:textColor="@color/black"
+                android:background="@drawable/round_white_shape_button"/>
 
             <Button
                 android:id="@+id/resume1"
@@ -74,8 +77,9 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:visibility="gone"
-                android:text="继续"
-                android:background="@drawable/round_shape_button"/>
+                android:text="Go on"
+                android:textColor="@color/white"
+                android:background="@drawable/round_gradient_shape_button"/>
 
         </LinearLayout>
 

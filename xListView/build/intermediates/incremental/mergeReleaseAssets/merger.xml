@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/local/Fundation/SportsLover/xListView/src/main/assets"/><source path="/local/Fundation/SportsLover/xListView/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/local/Fundation/SportsLover/xListView/src/release/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/local/AndroidStudioProjects/SportsLover/xListView/src/main/assets"/><source path="/local/AndroidStudioProjects/SportsLover/xListView/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/local/AndroidStudioProjects/SportsLover/xListView/src/release/assets"/></dataSet></merger>

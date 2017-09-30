@@ -92,6 +92,7 @@
             android:exported="true"></service>
 
         <activity android:name=".view.SetSportTargetActivity" />
+	<activity android:name=".view.FinishSport"></activity>
         <activity android:name=".MainActivity"></activity>
 
         <activity

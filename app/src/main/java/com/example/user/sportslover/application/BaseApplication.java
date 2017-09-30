@@ -5,7 +5,6 @@ import android.support.multidex.MultiDex;
 
 import com.example.user.sportslover.json.Weather;
 
-;
 
 /**
  * Created by user on 17-9-16.
