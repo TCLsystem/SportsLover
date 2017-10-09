@@ -12,9 +12,4 @@
         android:width="1dp"
         android:color="#5bc0e5"/>
 
-    <gradient
-        android:startColor="@color/white"
-        android:endColor="@color/white"
-        android:angle="0" />
-
 </shape>

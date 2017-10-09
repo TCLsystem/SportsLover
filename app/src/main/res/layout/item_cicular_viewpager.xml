@@ -42,15 +42,13 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/iv_lock0"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/circular_view_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/ll_cicular_view_buttons"
             android:layout_centerVertical="true"
             android:layout_marginRight="80dp"
-            android:src="@drawable/lock_screen"
-            android:scaleType="centerInside"
-            android:background="@color/white"
+            android:background="@drawable/lock_screen"
             />
 
         <LinearLayout
@@ -69,7 +67,7 @@
                 android:textColor="@color/white"
                 android:background="@drawable/shape_rectanglar_gradient_button"/>
 
-            <com.example.user.sportslover.customview.LongClickButton
+            <Button
                 android:id="@+id/stop0"
                 android:layout_width="106dp"
                 android:layout_height="42dp"

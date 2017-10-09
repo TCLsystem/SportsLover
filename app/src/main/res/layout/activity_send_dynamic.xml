@@ -25,14 +25,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/sendDynamic1"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="20dp"
             android:textColor="@color/white"
             android:textSize="@dimen/title_text_size"/>
         <TextView
-            android:id="@+id/public_next"
+            android:id="@+id/publish_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="10dp"
             android:layout_gravity="center_vertical"
             android:textColor="@color/white"
             android:padding="@dimen/normal_space"
@@ -66,34 +66,10 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/LPublic"
-        android:layout_marginTop="2dp"
-        android:layout_width="match_parent"
-        android:layout_height="130px"
-        android:orientation="horizontal"
-        android:background="@color/white">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/publicTime"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_publicTime"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="40dp"
-            android:layout_gravity="center"
-            android:text="2017-09-27" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/LStartTime"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="130px"
         android:orientation="horizontal"
@@ -143,7 +119,7 @@
 
     <LinearLayout
         android:id="@+id/LPlace"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="130px"
         android:orientation="horizontal"
@@ -188,7 +164,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="40dp"
             android:text="惠州市" />
-
     </LinearLayout>
 
 </LinearLayout>

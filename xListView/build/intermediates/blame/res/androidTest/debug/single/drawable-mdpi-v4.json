@@ -4,6 +4,10 @@
         "source": "/local/Fundation/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
     },
     {
+        "merged": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_launcher.png",
+        "source": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
+    },
+    {
         "merged": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_launcher.png",
         "source": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
     }

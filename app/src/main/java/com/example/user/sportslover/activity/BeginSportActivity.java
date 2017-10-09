@@ -23,7 +23,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -48,7 +47,6 @@ import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
-import com.example.user.sportslover.customview.LongClickButton;
 import com.example.user.sportslover.widget.MyVerticalViewPager;
 import com.example.user.sportslover.bean.SportInformationItem;
 import com.example.user.sportslover.bean.MyOrientationListener;
@@ -97,18 +95,17 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private TextView tvHours;
     private TextView tvSportAveragePace;
     private TextView tvCalories;
-    ImageView ivLock0;
-    ImageView ivLock1;
+    ImageView ivLock;
     ImageView ivMap;
     Button buttonPause0;
     Button buttonResume0;
-    LongClickButton buttonStop0;
+    Button buttonStop0;
     Button buttonTarget1;
     Button buttonStart1;
     Button buttonRoute1;
     Button buttonPause1;
     Button buttonResume1;
-    LongClickButton buttonStop1;
+    Button buttonStop1;
     ImageView ivStrechMap;
     LinearLayout llBeginSportLayout;
     LinearLayout llBeginSportStatus;
@@ -123,106 +120,60 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
 
         public void handleMessage(Message msg) {
         String html;
-        switch (msg.what){
-            case 1:
-                if (localProgress > 30)
-                    localProgress -= 10;
-                else
-                    localProgress = 0;
-                baiduMap.clear();
-                if (sportTrackServiceControlBinder.getCurrentPoint() != null){
-                    remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
-                }
-                //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
-                remotePoints = sportTrackServiceControlBinder.getPoints();
-                if (remotePoints.size() > 2){
-                    OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
-                    baiduMap.addOverlay(ooPolyline);
-                }
-                mLocationClient.requestLocation();
-                remoteSeconds = sportTrackServiceControlBinder.getSeconds();
-                html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
-                tvHours.setText(Html.fromHtml(html));
-                remoteDistance = sportTrackServiceControlBinder.getDistance();
-                if (target > 100){
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
-                } else {
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
-                }
-                tvDistance.setText(Html.fromHtml(html));
-                //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
+        // 调用相机回调接口由于MainActivity已经实现了回调接口，所以MainActivity.this即可
+        if (msg.what == 1) {
+            baiduMap.clear();
 
-                averagePace = (int)(remoteSeconds/remoteDistance*1000);
-                if (remoteDistance <= 0 || averagePace >= 599940){
-                    averagePace = 599940;
-                }
-                html = "<big><big><big>" + averagePace/60 + "’</big>" + averagePace%60 + "”" +"</big></big><br>Average<br>pace";
-                tvSportAveragePace.setText(Html.fromHtml(html));
+            if (sportTrackServiceControlBinder.getCurrentPoint() != null){
+                remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
+            }
+            //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
+            remotePoints = sportTrackServiceControlBinder.getPoints();
+            if (remotePoints.size() > 2){
+                OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
+                baiduMap.addOverlay(ooPolyline);
+            }
+            mLocationClient.requestLocation();
+            remoteSeconds = sportTrackServiceControlBinder.getSeconds();
+            html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
+            tvHours.setText(Html.fromHtml(html));
+            remoteDistance = sportTrackServiceControlBinder.getDistance();
+            if (target > 100){
+                html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
+            } else {
+                html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
+            }
+            tvDistance.setText(Html.fromHtml(html));
+            //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
 
-                switch (currPage){
-                    case 0:
-                        html = "<big><big><big>" + textFormat.format(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
-                        tvCalories.setText(Html.fromHtml(html));
-                        break;
-                    case 1:
-                        html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
-                        tvCalories.setText(Html.fromHtml(html));
-                        break;
-                    default:
-                        break;
-                }
+            averagePace = (int)(remoteSeconds/remoteDistance*1000);
+            if (remoteDistance <= 0 || averagePace >= 599940){
+                averagePace = 599940;
+            }
+            html = "<big><big><big>" + averagePace/60 + "’</big>" + averagePace%60 + "”" +"</big></big><br>Average<br>pace";
+            tvSportAveragePace.setText(Html.fromHtml(html));
 
-                if (target >= 100){
-                    progressCircle.setProgress((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                    refleshBackgroundColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                } else {
-                    refleshBackgroundColors(localProgress, 0);
-                    progressCircle.setProgress(100f);
-                }
-                break;
-            case 2:
-                timerValidFlag = false;
-                sportTrackServiceControlBinder.pauseService();
-                Intent stopSportTrackService = new Intent(BeginSportActivity.this, SportTrackService.class);
-                stopService(stopSportTrackService);
-                buttonStart1.setVisibility(View.VISIBLE);
-                buttonPause0.setVisibility(View.GONE);
-                buttonPause1.setVisibility(View.GONE);
-                buttonResume0.setVisibility(View.GONE);
-                buttonResume1.setVisibility(View.GONE);
-                buttonStop0.setVisibility(View.GONE);
-                buttonStop1.setVisibility(View.GONE);
-                SportInformationItem sportInformationItem = new SportInformationItem();
-                sportInformationItem.setAveragePace(averagePace);
-                sportInformationItem.setCalories(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace));
-                sportInformationItem.setCumulativeTime(remoteSeconds);
-                sportInformationItem.setSportProgress((remoteDistance/target > 1 || target < 100)?100f:((float)remoteDistance/target*100f));
-                sportInformationItem.setTotalMileages(remoteDistance);
-                sportInformationItem.setPoints(remotePoints);
-                Intent intent1 = new Intent(BeginSportActivity.this, FinishSportActivity.class);
-                intent1.putExtra("sport_information", sportInformationItem);
-                startActivity(intent1);
-                finish();
-                break;
-            case 3:
-                localProgress += 5;
-                if (localProgress < 100){
-                    if (target >= 100){
-                        refleshFinishColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                    } else {
-                        refleshFinishColors(localProgress, 0);
-                    }
-                }else {
-                    if (target >= 100){
-                        refleshFinishColors(0, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                    } else {
-                        refleshFinishColors(0, 0);
-                    }
-                    handler.sendEmptyMessageDelayed(2, 50);
-                }
-                break;
-            default:
-                break;
+            switch (currPage){
+                case 0:
+                    html = "<big><big><big>" + textFormat.format(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                case 1:
+                    html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
+                    tvCalories.setText(Html.fromHtml(html));
+                    break;
+                default:
+                    break;
+            }
+
+            if (target >= 100){
+                progressCircle.setProgress((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                refleshBackgroundColors((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+            } else {
+                refleshBackgroundColors(0);
+                progressCircle.setProgress(100f);
+            }
+            //progressCircle.setProgress((float)sum_distance/target*100f);
         }
         }
 
@@ -231,7 +182,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private CircularRingPercentageView progressCircle;
     private float target = 0;
     private float weight = 60;
-    private int localProgress = 0;
     private CalculateCaloriesInter calculateCaloriesInter;
     private DecimalFormat textFormat = new DecimalFormat("#0.0000");
     private DecimalFormat timeFormat = new DecimalFormat("#0.0000");
@@ -316,42 +266,30 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         myVerticalViewPager.setScrollable(false);
         myVerticalViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         llBeginSportStatus = (LinearLayout) findViewById(R.id.ll_begin_sport_status);
-        ivLock0 = (ImageView) view0.findViewById(R.id.iv_lock0);
-        ivLock1 = (ImageView) view1.findViewById(R.id.iv_lock1);
+        ivLock = (ImageView) view0.findViewById(R.id.circular_view_lock);
         ivMap = (ImageView) view0.findViewById(R.id.cicular_view_show_map);
         ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
         buttonPause0 = (Button) view0.findViewById(R.id.pause0);
         buttonResume0 = (Button) view0.findViewById(R.id.resume0);
-        buttonStop0 = (LongClickButton) view0.findViewById(R.id.stop0);
+        buttonStop0 = (Button) view0.findViewById(R.id.stop0);
         buttonTarget1 = (Button) view1.findViewById(R.id.target1);
         buttonStart1 = (Button) view1.findViewById(R.id.start1);
         buttonRoute1 = (Button) view1.findViewById(R.id.route1);
         buttonPause1 = (Button) view1.findViewById(R.id.pause1);
         buttonResume1 = (Button) view1.findViewById(R.id.resume1);
-        buttonStop1 = (LongClickButton) view1.findViewById(R.id.stop1);
-        ivLock0.setOnClickListener(this);
-        ivLock1.setOnClickListener(this);
+        buttonStop1 = (Button) view1.findViewById(R.id.stop1);
+        ivLock.setOnClickListener(this);
         ivMap.setOnClickListener(this);
         ivStrechMap.setOnClickListener(this);
         buttonPause0.setOnClickListener(this);
         buttonResume0.setOnClickListener(this);
-        buttonStop0.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
-            @Override
-            public void repeatAction() {
-                handler.sendEmptyMessage(3);
-            }
-        });
+        buttonStop0.setOnClickListener(this);
         buttonTarget1.setOnClickListener(this);
         buttonStart1.setOnClickListener(this);
         buttonRoute1.setOnClickListener(this);
         buttonPause1.setOnClickListener(this);
         buttonResume1.setOnClickListener(this);
-        buttonStop1.setLongClickRepeatListener(new LongClickButton.LongClickRepeatListener() {
-            @Override
-            public void repeatAction() {
-                handler.sendEmptyMessage(3);
-            }
-        });
+        buttonStop1.setOnClickListener(this);
         llBeginSportLayout = (LinearLayout) findViewById(R.id.begin_sport_layout);
         ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
         tvDistance = (TextView) view0.findViewById(R.id.tv_distance);
@@ -384,7 +322,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         } else {
             requestLocation();
         }
-        refleshBackgroundColors(0, 0);
+        refleshBackgroundColors(0);
         Intent startSportTrackService = new Intent(this, SportTrackService.class);
         startService(startSportTrackService);
         startTimer();
@@ -553,18 +491,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.iv_lock0:
-            case R.id.iv_lock1:
-                if (buttonPause0.getVisibility() == View.VISIBLE){
-                    buttonPause0.setVisibility(View.GONE);
-                    buttonPause1.setVisibility(View.GONE);
-                    ivLock1.setVisibility(View.VISIBLE);
-                }
-                else if (buttonPause0.getVisibility() == View.GONE){
-                    buttonPause0.setVisibility(View.VISIBLE);
-                    buttonPause1.setVisibility(View.VISIBLE);
-                    ivLock1.setVisibility(View.GONE);
-                }
+            case R.id.circular_view_lock:
                 break;
             case R.id.iv_strech_map:
                 myVerticalViewPager.setCurrentItem(0);
@@ -602,7 +529,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 buttonResume1.setVisibility(View.VISIBLE);
                 buttonStop0.setVisibility(View.VISIBLE);
                 buttonStop1.setVisibility(View.VISIBLE);
-                ivLock0.setVisibility(View.GONE);
+                ivLock.setVisibility(View.GONE);
                 ivMap.setVisibility(View.GONE);
                 break;
             case R.id.resume0:
@@ -615,8 +542,33 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 buttonResume1.setVisibility(View.GONE);
                 buttonStop0.setVisibility(View.GONE);
                 buttonStop1.setVisibility(View.GONE);
-                ivLock0.setVisibility(View.VISIBLE);
+                ivLock.setVisibility(View.VISIBLE);
                 ivMap.setVisibility(View.VISIBLE);
+                break;
+            case R.id.stop0:
+            case R.id.stop1:
+                timerValidFlag = false;
+                sportTrackServiceControlBinder.pauseService();
+                Intent stopSportTrackService = new Intent(this, SportTrackService.class);
+                stopService(stopSportTrackService);
+                buttonStart1.setVisibility(View.VISIBLE);
+                buttonPause0.setVisibility(View.GONE);
+                buttonPause1.setVisibility(View.GONE);
+                buttonResume0.setVisibility(View.GONE);
+                buttonResume1.setVisibility(View.GONE);
+                buttonStop0.setVisibility(View.GONE);
+                buttonStop1.setVisibility(View.GONE);
+                SportInformationItem sportInformationItem = new SportInformationItem();
+                sportInformationItem.setAveragePace(averagePace);
+                sportInformationItem.setCalories(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace));
+                sportInformationItem.setCumulativeTime(remoteSeconds);
+                sportInformationItem.setSportProgress((remoteDistance/target > 1 || target < 100)?100f:((float)remoteDistance/target*100f));
+                sportInformationItem.setTotalMileages(remoteDistance);
+                sportInformationItem.setPoints(remotePoints);
+                Intent intent1 = new Intent(BeginSportActivity.this, FinishSportActivity.class);
+                intent1.putExtra("sport_information", sportInformationItem);
+                startActivity(intent1);
+                finish();
                 break;
             default:
                 break;
@@ -664,7 +616,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void refleshBackgroundColors(int finishProgress, float localProcess){
+    private void refleshBackgroundColors(float localProcess){
 
         int beginColorTop = 0xff5bc0e5;
         int beginColorBottom = 0xff6ee4bc;
@@ -673,6 +625,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
 
         GradientDrawable gradientDrawableBackground;
         GradientDrawable gradientDrawableGradientButton;
+        GradientDrawable gradientDrawableWhiteButton;
 
         @ColorInt int colors[] = new int[] {ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop),
                 ColorUtil.getProgressColor(localProcess, beginColorBottom, endColorBottom)};
@@ -700,35 +653,17 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         gradientDrawableGradientButton = (GradientDrawable) buttonResume1.getBackground();
         gradientDrawableGradientButton.setColors(colors);
         //buttonResume1.setBackground(gradientDrawableGradientButton);
-        refleshFinishColors(finishProgress, localProcess);
-    }
-
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-    private void refleshFinishColors(int finishProgress, float localProcess){
-
-        int beginColorTop = 0xff5bc0e5;
-        int beginColorBottom = 0xff6ee4bc;
-        int endColorTop = 0xffff967a;
-        int endColorBottom = 0xfffcde6c;
-
-
-        @ColorInt int colors[] = new int[] {ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop),
-                ColorUtil.getProgressColor(localProcess, beginColorBottom, endColorBottom)};
-
-        @ColorInt int colors2[] = new int[] {ColorUtil.getProgressColor(finishProgress, Color.WHITE, colors[0]),
-                ColorUtil.getProgressColor(finishProgress, Color.WHITE, colors[1])};
-
-        GradientDrawable gradientDrawableWhiteButton;
 
         gradientDrawableWhiteButton = (GradientDrawable) buttonStop0.getBackground();
-        gradientDrawableWhiteButton.setColors(colors2);
+        gradientDrawableWhiteButton.setColor(Color.WHITE);
         gradientDrawableWhiteButton.setStroke(4, ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop));
         //buttonStop0.setBackground(gradientDrawableWhiteButton);
 
         gradientDrawableWhiteButton = (GradientDrawable) buttonStop1.getBackground();
-        gradientDrawableWhiteButton.setColors(colors2);
+        gradientDrawableWhiteButton.setColor(Color.WHITE);
         gradientDrawableWhiteButton.setStroke(4, ColorUtil.getProgressColor(localProcess, beginColorTop, endColorTop));
         //buttonStop1.setBackground(gradientDrawableWhiteButton);
+
     }
 
     @Override
@@ -753,7 +688,5 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
-
-
 
 }

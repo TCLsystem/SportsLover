@@ -65,10 +65,10 @@
             android:value="SportsLover.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="5" />
+            android:value="6" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.example.user.sportslover.user.UserLocal" />
+            android:value="com.example.user.sportslover.bean.UserLocal" />
 
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
@@ -89,21 +89,21 @@
         <service
             android:name=".service.SportTrackService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
         <activity android:name=".activity.SetSportTargetActivity" />
-	<activity android:name=".activity.FinishSportActivity"></activity>
-        <activity android:name=".activity.MainActivity"></activity>
-
+        <activity android:name=".activity.FinishSportActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-
-
+        <activity android:name=".activity.SendDynamicActivity2" />
+        <activity android:name=".activity.PrivacyActivity" />
+        <activity android:name=".activity.AccountManagement" />
+        <activity android:name=".activity.SportsSettings"></activity>
     </application>
 
 </manifest>

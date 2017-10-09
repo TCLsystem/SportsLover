@@ -3,34 +3,34 @@
     android:layout_width="match_parent"
     android:layout_height="40dp"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@drawable/mybackground"
     >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
         >
+
+
+        <Spinner
+           android:layout_marginLeft="120px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/myspinner"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:entries="@array/spingarr"
+            />
         <ImageView
             android:id="@+id/publish"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginRight="12dp"
             android:layout_centerVertical="true"
             android:src="@drawable/publish"
             />
-
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="运动圈"
-            android:textSize="18dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            />
-
-
     </RelativeLayout>
 
 </LinearLayout>

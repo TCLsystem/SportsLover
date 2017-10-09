@@ -57,15 +57,36 @@
     <string name="editeName">A good name can make your friend remember you better</string>
 
     <!--sendDynamic-->
-    <string name="sendDynamic1">Public Activity (1/2)</string>
-    <string name="sendDynamic2">Public Activity (2/2)</string>
-    <string name="motionType">Sports Type</string>
-    <string name="publicTime">Public Time</string>
-    <string name="startTime">Start Time</string>
-    <string name="endTime">End Time</string>
-    <string name="place">Sports Place</string>
-    <string name="area">Sports Area</string>
+    <string name="sendDynamic1">Create Activities (1/2)</string>
+    <string name="sendDynamic2">Create Activities(2/2)</string>
+    <string name="motionType">Activity Type</string>
+    <string name="startTime">Activity Time</string>
+    <string name="endTime">Application Deadline</string>
+    <string name="place">Activity Location</string>
+    <string name="area">Area of Promotion</string>
+    <string name="send">Send</string>
+    <string name="activityName">Activity Name:</string>
+    <string name="inputActivity">Please enter the activity name</string>
+    <string name="activityContent">Activity Content:</string>
+    <string name="inputContent">Please enter the activity content</string>
+
+    <string-array name="spingarr">
+        <item>All Activity</item>
+        <item>Posted Activity</item>
+        <item>Apply Activity</item>
+    </string-array>
 
 
+    <!--settings-->
+    <string name="account">Account Management</string>
+    <string name="privacySettings">Privacy Settings</string>
+    <string name="sportsSettings">Sports Settings</string>
+    <string name="informExercise">Inform Exercise</string>
+    <string name="dailyNotification">Daily notification</string>
+    <string name="clean">Wipe Cache</string>
+    <string name="about">About</string>
+    <string name="updates">Updates</string>
+    <string name="dgender">Display my gender</string>
+    <string name="dlocation">Display my location</string>
 
 </resources>

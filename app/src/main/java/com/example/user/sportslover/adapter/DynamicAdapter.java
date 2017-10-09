@@ -8,12 +8,11 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.customview.FixedGridView;
 import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.customview.FixedGridView;
 import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
-import com.example.user.sportslover.customview.RoundImageView;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -84,7 +83,7 @@ public class DynamicAdapter extends BaseAdapter {
         if (convertView == null) {
             convertView = mInflater.inflate(mLayoutRes, null);
             holder = new ViewHolder();
-            holder.write_photo = (RoundImageView) convertView.findViewById(R.id.write_photo);
+           // holder.write_photo = (RoundImageView) convertView.findViewById(R.id.write_photo);
             holder.write_name = (TextView) convertView.findViewById(R.id.write_name);
             holder.write_date = (TextView) convertView.findViewById(R.id.write_date);
             holder.dynamic_text = (TextView) convertView.findViewById(R.id.dynamic_text);
@@ -99,7 +98,7 @@ public class DynamicAdapter extends BaseAdapter {
             @Override
             public void getSuccess(Object o) {
                 User user = (User) o;
-                imageLoader.displayImage(user.getPhoto().getUrl(), viewHolder.write_photo, options);
+              //  imageLoader.displayImage(user.getPhoto().getUrl(), viewHolder.write_photo, options);
                 viewHolder.write_name.setText(user.getName());
             }
 
@@ -109,13 +108,13 @@ public class DynamicAdapter extends BaseAdapter {
             }
         });
         viewHolder.write_date.setText(dynamicItem.getCreatedAt());
-        holder.dynamic_text.setText(dynamicItem.getText());
+        holder.dynamic_text.setText(dynamicItem.getDetail());
         holder.dynamic_photo.setAdapter(new DynamicPhotoAdapter(mContext,R.layout.item_dynamic_gridview,dynamicItem.getPhotoList()));
         return convertView;
     }
 
     private final class ViewHolder {
-        RoundImageView write_photo;
+      //  RoundImageView write_photo;
         TextView write_name;
         TextView write_date;
         TextView dynamic_text;

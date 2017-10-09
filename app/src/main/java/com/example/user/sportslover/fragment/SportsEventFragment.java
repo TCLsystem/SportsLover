@@ -11,10 +11,10 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.DynamicDetailActivity;
+import com.example.user.sportslover.activity.LoginActivity;
 import com.example.user.sportslover.activity.SendDynamicActivity;
 import com.example.user.sportslover.adapter.DynamicAdapter;
 import com.example.user.sportslover.bean.DynamicItem;
@@ -22,7 +22,6 @@ import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.DynamicFragmentPresenter;
-import com.example.user.sportslover.activity.LoginActivity;
 import com.example.user.sportslover.util.NetUtil;
 
 import java.util.ArrayList;
@@ -44,8 +43,8 @@ import me.maxwin.view.XListView;
 public class SportsEventFragment extends Fragment implements IDynamicFragment, XListView.IXListViewListener {
         @Bind(R.id.publish)
         ImageView publish;
-        @Bind(R.id.title)
-        TextView title;
+//        @Bind(R.id.title)
+//        TextView title;
         @Bind(R.id.xListView)
         XListView xListView;
         @Bind(R.id.loading)
@@ -57,7 +56,7 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
         private DynamicAdapter mAdapter;
         private List<DynamicItem> mList = new ArrayList<>();
 
-        private UserModelImpl mUserModelImpl = new UserModelImpl();
+        private UserModelImpl mUserModel = new UserModelImpl();
 
         private List<DynamicItem> mDynamicList;
 
@@ -101,56 +100,56 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
             ButterKnife.unbind(this);
         }
 
-        @OnClick(R.id.publish)
-        public void onClick() {
-            if (new UserModelImpl().isLogin()) {
-                mUserModelImpl.getUser(mUserModelImpl.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
-                    @Override
-                    public void getSuccess(Object o) {
-                        User user = (User) o;
-                        Intent intent = new Intent(getActivity(), SendDynamicActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putSerializable("User", user);
-                        intent.putExtras(bundle);
-                        getActivity().startActivity(intent);
-                    }
+    @OnClick(R.id.publish)
+    public void onClick() {
+        if (new UserModelImpl().isLogin()) {
+            mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
+                @Override
+                public void getSuccess(Object o) {
+                    User user = (User) o;
+                    Intent intent = new Intent(getActivity(), SendDynamicActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("User", user);
+                    intent.putExtras(bundle);
+                    getActivity().startActivity(intent);
+                }
 
-                    @Override
-                    public void getFailure() {
+                @Override
+                public void getFailure() {
 
-                    }
-                });
-            } else {
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-            }
-        }
-
-        @Override
-        public void onLoadMore(List<DynamicItem> list) {
-
-        }
-
-        @Override
-        public void onRefresh(List<DynamicItem> list) {
-            mDynamicList = list;
-            loading.setVisibility(View.GONE);
-            tip.setVisibility(View.GONE);
-            xListView.setVisibility(View.VISIBLE);
-            xListView.stopRefresh();
-            mAdapter.setDatas(list);
-            mAdapter.notifyDataSetChanged();
-        }
-
-        @Override
-        public void onRefresh() {
-            mPresenter.onRefresh();
-        }
-
-        @Override
-        public void onLoadMore() {
-
+                }
+            });
+        } else {
+            startActivity(new Intent(getActivity(), LoginActivity.class));
         }
     }
+
+    @Override
+    public void onLoadMore(List<DynamicItem> list) {
+
+    }
+
+    @Override
+    public void onRefresh(List<DynamicItem> list) {
+        mDynamicList = list;
+        loading.setVisibility(View.GONE);
+        tip.setVisibility(View.GONE);
+        xListView.setVisibility(View.VISIBLE);
+        xListView.stopRefresh();
+        mAdapter.setDatas(list);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.onRefresh();
+    }
+
+    @Override
+    public void onLoadMore() {
+
+    }
+}
 
 
 
