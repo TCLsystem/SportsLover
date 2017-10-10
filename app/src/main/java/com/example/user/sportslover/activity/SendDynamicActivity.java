@@ -45,6 +45,8 @@ public class SendDynamicActivity extends Activity {
     LinearLayout lStartTime;
     @Bind(R.id.LEndTime)
     LinearLayout lEndTime;
+    @Bind(R.id.LApplicationDeadline)
+    LinearLayout lDeadline;
     @Bind(R.id.LPlace)
     LinearLayout lPlace;
     @Bind(R.id.LArea)
@@ -61,6 +63,9 @@ public class SendDynamicActivity extends Activity {
     TextView tv_startTime;
     @Bind(R.id.tv_endTime)
     TextView tv_endTime;
+    @Bind(R.id.tv_applicationDeadline)
+    TextView tv_applicationDeadline;
+
     @Bind(R.id.tv_type)
     TextView tv_type;
     @Bind(R.id.tv_place)
@@ -103,7 +108,7 @@ public class SendDynamicActivity extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.publish_next, R.id.personal_back,R.id.LType,R.id.LStartTime,R.id.LEndTime,R.id.LPlace,R.id.LArea})
+    @OnClick({R.id.publish_next, R.id.personal_back,R.id.LType,R.id.LStartTime,R.id.LEndTime,R.id.LApplicationDeadline,R.id.LPlace,R.id.LArea})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.personal_back:
@@ -122,28 +127,27 @@ public class SendDynamicActivity extends Activity {
                 type.add("Riding");
                 initOptionPicker(type,tv_type,"Activity Type");
                 pvOptions.show();
-                dynamicItem.setSportsType(tv_type.getText().toString());
                 break;
             case R.id.LStartTime:
-                initTimePicker(tv_startTime,"Activity Time");
+                initTimePicker(tv_startTime,"Activity Start Time");
                 pvTime.show();
-                dynamicItem.setStartTime(tv_startTime.getText().toString());
                 break;
             case R.id.LEndTime:
-                initTimePicker(tv_endTime,"Application Deadline");
+                initTimePicker1(tv_endTime,"Activity End Time");
                 pvTime.show();
-                dynamicItem.setStartTime(tv_endTime.getText().toString());
+                break;
+            case R.id.LApplicationDeadline:
+                initTimePicker2(tv_applicationDeadline,"Application Deadline");
+                pvTime.show();
                 break;
             case R.id.LPlace:
                 if (isLoaded){
-                    pvOptionsCity.show();
-                    dynamicItem.setPlace(tv_place.getText().toString());
+                    ShowPickerView();
                 }else {
                   //  Toast.makeText(JsonDataActivity.this,"Please waiting until the data is parsed",Toast.LENGTH_SHORT).show();
                 }
                 break;
-            case R.id.LArea:
-                dynamicItem.setArea(tv_area.getText().toString());
+            default:
                 break;
 
 
@@ -151,16 +155,12 @@ public class SendDynamicActivity extends Activity {
     }
 
 
-
-
-
-
     private void initTimePicker(final TextView textView, String title) {
         //控制时间范围(如果不设置范围，则使用默认时间1900-2100年，此段代码可注释)
         //因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
         Calendar selectedDate = Calendar.getInstance();
         Calendar startDate = Calendar.getInstance();
-        startDate.set(2017, 0, 23, 00, 00);
+        startDate.set(2017, 0, 01, 00, 00);
         Calendar endDate = Calendar.getInstance();
         endDate.set(2017, 11, 31,23,59);
         //时间选择器
@@ -168,7 +168,8 @@ public class SendDynamicActivity extends Activity {
             @Override
             public void onTimeSelect(Date date, View v) {//选中事件回调
                 // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
-                textView.setText(getTime(date));
+                tv_startTime.setText(getTime(date));
+                dynamicItem.setStartTime(date);
             }
         })
                 .setSubmitText("Ok")//确定按钮文字
@@ -187,8 +188,82 @@ public class SendDynamicActivity extends Activity {
                 .build();
     }
 
+
+
+    private void initTimePicker1(final TextView textView, String title) {
+        //控制时间范围(如果不设置范围，则使用默认时间1900-2100年，此段代码可注释)
+        //因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(2017, 0, 01, 00, 00);
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2017, 11, 31,23,59);
+        //时间选择器
+        pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
+                tv_endTime.setText(getTime(date));
+                dynamicItem.setEndtTime(date);
+            }
+        })
+                .setSubmitText("Ok")//确定按钮文字
+                .setCancelText("Cancel")//取消按钮文字
+                //年月日时分秒 的显示与否，不设置则默认全部显示
+                .setType(new boolean[]{false, true, true, true, true, false})
+                .setLabel("", "", "", "", "", "")
+                .isCenterLabel(false)
+                .setDividerColor(Color.DKGRAY)
+                .setContentSize(21)
+                .setDate(selectedDate)
+                .setTitleText(title)
+                .setRangDate(startDate, endDate)
+                .setBackgroundId(0x00FFFFFF) //设置外部遮罩颜色
+                .setDecorView(null)
+                .build();
+    }
+
+
+
+    private void initTimePicker2(final TextView textView, String title) {
+        //控制时间范围(如果不设置范围，则使用默认时间1900-2100年，此段代码可注释)
+        //因为系统Calendar的月份是从0-11的,所以如果是调用Calendar的set方法来设置时间,月份的范围也要是从0-11
+        Calendar selectedDate = Calendar.getInstance();
+        Calendar startDate = Calendar.getInstance();
+        startDate.set(2017, 0, 01, 00, 00);
+        Calendar endDate = Calendar.getInstance();
+        endDate.set(2017, 11, 31,23,59);
+        //时间选择器
+        pvTime = new TimePickerView.Builder(this, new TimePickerView.OnTimeSelectListener() {
+            @Override
+            public void onTimeSelect(Date date, View v) {//选中事件回调
+                // 这里回调过来的v,就是show()方法里面所添加的 View 参数，如果show的时候没有添加参数，v则为null
+                tv_applicationDeadline.setText(getTime(date));
+                dynamicItem.setApplicationDeadline(date);
+            }
+        })
+                .setSubmitText("Ok")//确定按钮文字
+                .setCancelText("Cancel")//取消按钮文字
+                //年月日时分秒 的显示与否，不设置则默认全部显示
+                .setType(new boolean[]{false, true, true, true, true, false})
+                .setLabel("", "", "", "", "", "")
+                .isCenterLabel(false)
+                .setDividerColor(Color.DKGRAY)
+                .setContentSize(21)
+                .setDate(selectedDate)
+                .setTitleText(title)
+                .setRangDate(startDate, endDate)
+                .setBackgroundId(0x00FFFFFF) //设置外部遮罩颜色
+                .setDecorView(null)
+                .build();
+    }
+
+
+
+
+
     private String getTime(Date date) {//可根据需要自行截取数据显示
-        SimpleDateFormat format = new SimpleDateFormat("YYYY.MM.dd   HH:SS");
+        SimpleDateFormat format = new SimpleDateFormat("YYYY.MM.dd  HH:SS");
         return format.format(date);
     }
 
@@ -201,7 +276,8 @@ public class SendDynamicActivity extends Activity {
             public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
                 String tx = optionsItems.get(options1);
-                textView.setText(tx);
+                tv_type.setText(tx);
+                dynamicItem.setSportsType(tv_type.getText().toString());
             }
 
         })
@@ -272,6 +348,9 @@ public class SendDynamicActivity extends Activity {
                         options3Items.get(options1).get(options2).get(options3);
                         tv_place.setText(tx);
                         tv_area.setText(options2Items.get(options1).get(options2));
+                        dynamicItem.setPlace(tv_place.getText().toString());
+                        dynamicItem.setArea(tv_area.getText().toString());
+
                // Toast.makeText(JsonDataActivity.this,tx,Toast.LENGTH_SHORT).show();
             }
         })
@@ -285,6 +364,7 @@ public class SendDynamicActivity extends Activity {
         /*pvOptions.setPicker(options1Items);//一级选择器
         pvOptions.setPicker(options1Items, options2Items);//二级选择器*/
         pvOptionsCity.setPicker(options1Items, options2Items,options3Items);//三级选择器
+        pvOptionsCity.show();
     }
 
     private void initJsonData() {//解析数据

@@ -39,7 +39,7 @@ public class RegisterActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
         Bmob.initialize(this,"23fe35801c6ae4f698315d637955bb39");
-        mPhone = getIntent().getStringExtra("phone");
+      //  mPhone = getIntent().getStringExtra("phone");
         Log.d("TAAAAAAA",mPhone);
         ButterKnife.bind(this);
     }
@@ -58,7 +58,7 @@ public class RegisterActivity extends Activity {
                     User user = new User();
                     user.setName(name);
                     user.setPassword(password);
-                    user.setNumber(mPhone);
+                 //   user.setNumber(mPhone);
                     Log.d("TAAAAAAAA",name+"  "+password+"   "+mPhone);
                     user.save(this, new SaveListener() {
                         @Override

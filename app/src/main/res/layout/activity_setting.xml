@@ -169,7 +169,7 @@
         android:layout_marginTop="1dp"
         android:id="@+id/about"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="63dp"
         android:background="@color/white"
         android:drawablePadding="@dimen/normal_space"
         android:drawableRight="@drawable/arrow_normal"

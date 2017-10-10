@@ -8,10 +8,10 @@
 
     <!-- 注册 -->
     <string name="register_title">register</string>
-    <string name="register_phone_default">Please input phone number</string>
-    <string name="register_check_num_default">Please input check number</string>
+    <string name="register_phone_default">Please input</string>
+    <string name="register_check_num_default">Please input code</string>
     <string name="register_get_check_num">Get check number</string>
-    <string name="register_upass_default">Need  combination of numbers, letters and symbols </string>
+    <string name="register_upass_default">your old password</string>
     <string name="register_info">I have readed and agree the 《User agreement》of SportsLover</string>
 
 
@@ -60,8 +60,9 @@
     <string name="sendDynamic1">Create Activities (1/2)</string>
     <string name="sendDynamic2">Create Activities(2/2)</string>
     <string name="motionType">Activity Type</string>
-    <string name="startTime">Activity Time</string>
-    <string name="endTime">Application Deadline</string>
+    <string name="startTime">Activity Start Time</string>
+    <string name="endTime">Activity End Time</string>
+    <string name="deadline">Application Deadline</string>
     <string name="place">Activity Location</string>
     <string name="area">Area of Promotion</string>
     <string name="send">Send</string>
@@ -88,5 +89,20 @@
     <string name="updates">Updates</string>
     <string name="dgender">Display my gender</string>
     <string name="dlocation">Display my location</string>
-
+    <string name="tide">Tide to the phone number</string>
+    <string name="Cellphone">Cell-phone Number</string>
+    <string name="tips">After you add your phone number,you can login directly with your phone number and password</string>
+    <string name="tideother">Tied to other accounts</string>
+    <string name="wechat">WeChat</string>
+    <string name="weibo">Weibo</string>
+    <string name="QQ">QQ</string>
+    <string name="facebook">Facebook</string>
+    <string name="tips2">When you bind a third party account,you can login directly</string>
+    <string name="logout">Logout</string>
+    
+    
+    <!--添加手机号-->
+    <string name="phone_number">Phone Number</string>
+    <string name="verification">Verification Code</string>
+    <string name="password">Password</string>
 </resources>

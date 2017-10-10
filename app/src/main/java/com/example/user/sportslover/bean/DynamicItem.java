@@ -1,6 +1,7 @@
 package com.example.user.sportslover.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
@@ -36,9 +37,11 @@ public class DynamicItem extends BmobObject implements Serializable {
     //作者上传图片集合
     public BmobFile Poster;
 
-    public String StartTime;
+    public Date ApplicationDeadline;
 
-    public String EndTime;
+    public Date StartTime;
+
+    public Date EndTime;
 
     public String Place;
 
@@ -73,14 +76,19 @@ public class DynamicItem extends BmobObject implements Serializable {
         Poster = poster;
     }
 
-    public  String getStartTime(){return StartTime;}
-    public void  setStartTime(String startTime) {
+    public  Date getStartTime(){return StartTime;}
+    public void  setStartTime(Date startTime) {
         StartTime = startTime;
     }
 
-    public  String getEndTime(){return EndTime;}
-    public void  setEndtTime(String endTime) {
+    public  Date getEndTime(){return EndTime;}
+    public void  setEndtTime(Date endTime) {
         EndTime = endTime;
+    }
+
+    public  Date getApplicationDeadline(){return ApplicationDeadline;}
+    public void  setApplicationDeadline(Date applicationDeadline) {
+        ApplicationDeadline = applicationDeadline;
     }
 
     public String getPlace() {return Place;}
