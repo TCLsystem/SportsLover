@@ -47,13 +47,13 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:background="@drawable/shape_rectanglar_background">
 
-        <com.baidu.mapapi.map.MapView
-            android:id="@+id/finish_sport_map"
+        <ImageView
+            android:id="@+id/iv_finish_sport_map"
             android:layout_height="150dp"
             android:layout_width="300dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
-            android:clickable="true"/>
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:id="@+id/ll_baidu_map_buttons"

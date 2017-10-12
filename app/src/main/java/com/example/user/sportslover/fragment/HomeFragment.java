@@ -23,6 +23,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.activity.SportHistoryActivity;
 import com.example.user.sportslover.activity.WeatherActivity;
 import com.example.user.sportslover.activity.WeatherView;
 import com.example.user.sportslover.application.BaseApplication;
@@ -298,6 +299,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 } else{
                     Toast.makeText(getContext(), "Weather Information Invalid. Please try again later.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        view0.findViewById(R.id.fl_home_running_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        view1.findViewById(R.id.fl_home_walking_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        view2.findViewById(R.id.fl_home_riding_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
             }
         });
         view0.findViewById(R.id.fl_start_running).setOnClickListener(new View.OnClickListener() {

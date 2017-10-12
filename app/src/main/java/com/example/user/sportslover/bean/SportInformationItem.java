@@ -1,5 +1,6 @@
 package com.example.user.sportslover.bean;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -19,6 +20,7 @@ public class SportInformationItem implements Parcelable {
     private int averagePace;
     private float calories;
     private List<LatLng> points;
+    private Bitmap bitmap;
 
     public SportInformationItem(){}
 
@@ -29,6 +31,8 @@ public class SportInformationItem implements Parcelable {
         averagePace = in.readInt();
         calories = in.readFloat();
         points = in.createTypedArrayList(LatLng.CREATOR);
+        bitmap = in.readParcelable(Bitmap.class.getClassLoader());
+        //bitmap = Bitmap.CREATOR.createFromParcel(in);
     }
 
     @Override
@@ -39,6 +43,8 @@ public class SportInformationItem implements Parcelable {
         dest.writeInt(averagePace);
         dest.writeFloat(calories);
         dest.writeTypedList(points);
+        dest.writeParcelable(bitmap, flags);
+        //bitmap.writeToParcel(dest, 0);
     }
 
     @Override
@@ -62,12 +68,20 @@ public class SportInformationItem implements Parcelable {
         return averagePace;
     }
 
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
     public float getCalories() {
         return calories;
     }
 
     public long getCumulativeTime() {
         return cumulativeTime;
+    }
+
+    public List<LatLng> getPoints() {
+        return points;
     }
 
     public float getSportProgress() {
@@ -78,12 +92,12 @@ public class SportInformationItem implements Parcelable {
         return totalMileages;
     }
 
-    public List<LatLng> getPoints() {
-        return points;
-    }
-
     public void setAveragePace(int averagePace) {
         this.averagePace = averagePace;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public void setCalories(float calories) {
@@ -94,17 +108,15 @@ public class SportInformationItem implements Parcelable {
         this.cumulativeTime = cumulativeTime;
     }
 
-    public void setTotalMileages(double totalMileages) {
-        this.totalMileages = totalMileages;
+    public void setPoints(List<LatLng> points) {
+        this.points = points;
     }
 
     public void setSportProgress(float sportProgress) {
         this.sportProgress = sportProgress;
     }
 
-    public void setPoints(List<LatLng> points) {
-        this.points = points;
+    public void setTotalMileages(double totalMileages) {
+        this.totalMileages = totalMileages;
     }
-
-
 }

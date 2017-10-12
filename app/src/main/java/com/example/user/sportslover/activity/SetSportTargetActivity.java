@@ -22,12 +22,12 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
     private TuneWheelView tuneWheel;
     private CircularRingPercentageView progressCircle;
     private TextView tvTarget;
-    Button buttonRunning;
-    Button buttonWalking;
-    Button buttonRiding;
-    ImageView ivSetTargetBack;
-    Drawable drawableClicked;
-    Drawable drawableUnclicked;
+    private Button buttonRunning;
+    private Button buttonWalking;
+    private Button buttonRiding;
+    private ImageView ivSetTargetBack;
+    private Drawable drawableClicked;
+    private Drawable drawableUnclicked;
     private float target;
 
     @Override
@@ -49,17 +49,18 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
         progressCircle.setColors(new int[]{Color.WHITE, Color.WHITE});
         progressCircle.setRoundBackgroundColor(Color.WHITE);
         buttonRunning = (Button) findViewById(R.id.set_target_type_running);
-        buttonRunning.setOnClickListener(this);
+        //buttonRunning.setOnClickListener(this);
         buttonWalking = (Button) findViewById(R.id.set_target_type_walking);
-        buttonWalking.setOnClickListener(this);
+        //buttonWalking.setOnClickListener(this);
         buttonRiding = (Button) findViewById(R.id.set_target_type_riding);
-        buttonRiding.setOnClickListener(this);
+        //buttonRiding.setOnClickListener(this);
         ivSetTargetBack = (ImageView) findViewById(R.id.set_target_back);
         ivSetTargetBack.setOnClickListener(this);
         drawableClicked = buttonRunning.getBackground();
         drawableUnclicked = buttonWalking.getBackground();
         tvTarget = (TextView) findViewById(R.id.tv_target);
         refleshView();
+        setButtonFromIntent(getIntent().getIntExtra("sport_type", -1));
     }
 
     private void refleshView(){
@@ -127,5 +128,39 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
         intent.putExtra("target_return", target);
         setResult(RESULT_OK, intent);
         super.onBackPressed();
+    }
+
+    private void setButtonFromIntent(int sportType){
+        switch (sportType){
+            case 0:
+                initButtons();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    buttonRunning.setBackground(drawableClicked);
+                }
+                buttonRunning.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+                buttonRunning.setTextColor(Color.BLACK);
+                tuneWheel.setMaxValue(100);
+                break;
+            case 1:
+                initButtons();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    buttonWalking.setBackground(drawableClicked);
+                }
+                buttonWalking.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+                buttonWalking.setTextColor(Color.BLACK);
+                tuneWheel.setMaxValue(100);
+                break;
+            case 2:
+                initButtons();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    buttonRiding.setBackground(drawableClicked);
+                }
+                buttonRiding.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
+                buttonRiding.setTextColor(Color.BLACK);
+                tuneWheel.setMaxValue(200);
+                break;
+            default:
+                break;
+        }
     }
 }

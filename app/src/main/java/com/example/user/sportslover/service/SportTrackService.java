@@ -92,6 +92,7 @@ public class SportTrackService extends Service {
                         }
                     }
                 }
+                //points.add(new LatLng(currentLatLng.latitude + 0.01, currentLatLng.longitude + 0.01));
                 currentPoint = currentLatLng;
             }
         }

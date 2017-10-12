@@ -103,7 +103,14 @@
         <activity android:name=".activity.SendDynamicActivity2" />
         <activity android:name=".activity.PrivacyActivity" />
         <activity android:name=".activity.AccountManagement" />
-        <activity android:name=".activity.SportsSettings"></activity>
+        <activity android:name=".activity.SportsSettings"/>
+        <activity android:name=".activity.SportSettingActivity" />
+        <activity android:name=".activity.SportMapSettingsActivity" />
+        <activity android:name=".activity.SportVibrateSettingsActivity" />
+        <activity android:name=".activity.SportHistoryActivity" />
+        <activity android:name=".activity.SportRouteSettingActivity" />
+        <activity android:name=".activity.SportRouteMyRouteActitvity" />
+        <activity android:name=".activity.SportRouteRecommendedActivity"/>
     </application>
 
 </manifest>

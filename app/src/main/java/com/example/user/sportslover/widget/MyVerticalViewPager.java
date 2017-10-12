@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ListView;
 
 import com.baidu.mapapi.map.MapView;
 
@@ -31,7 +32,7 @@ public class MyVerticalViewPager extends VerticalViewPager {
 
     @Override
     protected boolean canScroll(View v, boolean checkV, int dy, int x, int y) {
-        if (v != this && v instanceof MapView)
+        if (v != this && (v instanceof MapView || v instanceof ListView))
             return true;
         return super.canScroll(v, checkV, dy, x, y);
     }

@@ -42,13 +42,15 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/circular_view_lock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/iv_lock0"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_toLeftOf="@+id/ll_cicular_view_buttons"
             android:layout_centerVertical="true"
-            android:layout_marginRight="80dp"
-            android:background="@drawable/lock_screen"
+            android:layout_marginRight="60dp"
+            android:src="@drawable/lock_screen"
+            android:scaleType="centerInside"
+            android:background="@color/white"
             />
 
         <LinearLayout
@@ -67,7 +69,7 @@
                 android:textColor="@color/white"
                 android:background="@drawable/shape_rectanglar_gradient_button"/>
 
-            <Button
+            <com.example.user.sportslover.customview.LongClickButton
                 android:id="@+id/stop0"
                 android:layout_width="106dp"
                 android:layout_height="42dp"
@@ -91,6 +93,16 @@
                 android:textColor="@color/white"
                 android:background="@drawable/shape_rectanglar_gradient_button"/>
 
+            <ImageView
+                android:id="@+id/iv_unlock0"
+                android:layout_width="106dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:src="@drawable/lock_screen"
+                android:scaleType="centerInside"
+                android:background="@drawable/shape_rectanglar_white_button"/>
+
         </LinearLayout>
 
         <ImageView
@@ -99,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/ll_cicular_view_buttons"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="80dp"
+            android:layout_marginLeft="60dp"
             android:background="@drawable/show_map"/>
     </RelativeLayout>
 
