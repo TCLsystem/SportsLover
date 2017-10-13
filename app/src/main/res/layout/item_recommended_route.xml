@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_item_recommend_route_view"
+    android:layout_width="200dp" android:layout_height="100dp"
+    android:layout_marginTop="20dp" android:layout_marginBottom="20dp"
+    android:layout_marginLeft="5dp" android:layout_marginRight="5dp">
+
+    <ImageView
+        android:id="@+id/sport_route_recommended_item_background_green"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rectanglar_gradient_button"/>
+
+    <ImageView
+        android:id="@+id/sport_route_recommended_item_background_white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/shape_rectanglar_white_button"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/sport_route_recommended_distance"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:text="@string/action_settings"/>
+
+    <TextView
+        android:id="@+id/sport_route_recommended_line"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/sport_route_recommended_distance"
+        android:layout_width="50dp"
+        android:layout_height="1dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/sport_route_recommended_place"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/sport_route_recommended_line"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="15dp"
+        android:text="@string/action_settings"/>
+
+    <TextView
+        android:id="@+id/sport_route_recommended_complete"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:textAlignment="textEnd"
+        android:gravity="end"
+        android:text="@string/action_settings"/>
+
+    <ImageView
+        android:id="@+id/sport_route_recommended_selected"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_on_selected"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/sport_route_recommended_selected_white"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ic_on_selected_white"
+        android:visibility="gone"/>
+
+</RelativeLayout>

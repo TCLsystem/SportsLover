@@ -29,6 +29,18 @@
             android:background="@drawable/shape_rectanglar_white_button"
             />
 
+        <ImageView
+            android:id="@+id/iv_lock1"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_toLeftOf="@+id/ll_baidu_map_buttons"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/lock_screen"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            android:background="@drawable/shape_rectanglar_white_button" />
+
         <LinearLayout
             android:id="@+id/ll_baidu_map_buttons"
             android:layout_width="wrap_content"
@@ -50,14 +62,12 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:visibility="gone"
                 android:text="Stop"
+                android:visibility="gone"
                 android:textColor="@color/white"
                 android:background="@drawable/shape_round_gradient_button"/>
 
-            <Button
+            <com.example.user.sportslover.customview.LongClickButton
                 android:id="@+id/stop1"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
@@ -81,6 +91,16 @@
                 android:textColor="@color/white"
                 android:background="@drawable/shape_round_gradient_button"/>
 
+            <ImageView
+                android:id="@+id/iv_unlock1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_weight="1"
+                android:src="@drawable/lock_screen"
+                android:scaleType="centerInside"
+                android:visibility="gone"
+                android:background="@drawable/shape_round_gradient_button"/>
+
         </LinearLayout>
 
         <Button
@@ -100,7 +120,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:src="@drawable/strech_map"
+        android:layout_marginRight="40dp"
+        android:src="@drawable/ic_scroll_down"
         android:visibility="gone"/>
 
 </RelativeLayout>

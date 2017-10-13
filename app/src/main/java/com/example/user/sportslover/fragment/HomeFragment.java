@@ -23,6 +23,7 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.activity.SportHistoryActivity;
 import com.example.user.sportslover.activity.WeatherActivity;
 import com.example.user.sportslover.activity.WeatherView;
 import com.example.user.sportslover.application.BaseApplication;
@@ -300,6 +301,27 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
                 }
             }
         });
+        view0.findViewById(R.id.fl_home_running_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        view1.findViewById(R.id.fl_home_walking_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+        view2.findViewById(R.id.fl_home_riding_history).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SportHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
         view0.findViewById(R.id.fl_start_running).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -387,8 +409,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
     public void refleshWeatherCondition(){
-        tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
-        tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
-        tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
+        tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
+        tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
+        tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
     }
 }

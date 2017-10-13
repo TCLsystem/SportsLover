@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sport_setting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.user.sportslover.activity.SportVibrateSettingsActivity"
+    android:background="@drawable/shape_begin_sport_background">
+
+    <RelativeLayout
+        android:id="@+id/sport_vibrate_settings_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/sport_vibrate_settings_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="25dp"
+            android:src="@drawable/sport_back"/>
+
+        <TextView
+            android:id="@+id/tv_sport_vibrate_settings_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="Settings"
+            android:textColor="@color/white"
+            android:textSize="20dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+
+            <TextView
+                android:id="@+id/tv_vibration_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Vibration Remind"
+                android:textSize="16dp" />
+            <ToggleButton
+                android:id="@+id/tgl_vibration_switch"
+                android:background="@drawable/selector_btn_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:textOn=""
+                android:textOff=""
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_sport_settings_vibration_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="Vibrate dis"
+            android:textSize="16dp"
+            android:textColor="@color/gray"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_sport_settings_vibration_first"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:drawableRight="@drawable/arrow_normal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="0.5km"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_sport_settings_vibration_second"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="1km"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_sport_settings_vibration_third"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="2km"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_sport_settings_vibration_forth"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="5km"
+            android:textSize="16dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

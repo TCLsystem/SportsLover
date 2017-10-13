@@ -1,11 +1,19 @@
 package com.example.user.sportslover.activity;
 
+import android.annotation.TargetApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.baidu.mapapi.SDKInitializer;
@@ -20,6 +28,9 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.bean.SportInformationItem;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class FinishSportActivity extends AppCompatActivity implements View.OnClickListener {
@@ -51,24 +62,9 @@ public class FinishSportActivity extends AppCompatActivity implements View.OnCli
         TextView tvCumulativeTime = (TextView) findViewById(R.id.tv_finish_sport_cumulative_time);
         html = "<big><big><big>" + sportInformationItem.getCumulativeTime()/60/60 +"</big></big></big> h<br>Cumulative<br>time";
         tvCumulativeTime.setText(Html.fromHtml(html));
-        MapView mapView = (MapView) findViewById(R.id.finish_sport_map);
-        BaiduMap baiduMap = mapView.getMap();
-        mapView.showZoomControls(false);
-        if (sportInformationItem.getPoints().size() >= 2){
-            OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(sportInformationItem.getPoints());
-            baiduMap.addOverlay(ooPolyline);
-        }
-        double lat = 0, lng = 0;
-        for (int i = 0; i < sportInformationItem.getPoints().size(); i++){
-            lat += sportInformationItem.getPoints().get(i).latitude;
-            lng += sportInformationItem.getPoints().get(i).longitude;
-        }
-        lat /= sportInformationItem.getPoints().size();
-        lng /= sportInformationItem.getPoints().size();
-        LatLng centerPoint = new LatLng(lat, lng);
-        MapStatus.Builder builder = new MapStatus.Builder();
-        builder.target(centerPoint).zoom(15f);
-        baiduMap.animateMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()));
+        ImageView ivFinishSportMap = (ImageView) findViewById(R.id.iv_finish_sport_map);
+        Bitmap bitmap = BitmapFactory.decodeFile("/data/data/com.example.user.sportslover/files/test.png");
+        ivFinishSportMap.setImageBitmap(bitmap);
         Button buttonCollectMap = (Button) findViewById(R.id.finish_sport_collect_map);
         Button buttonFinish = (Button) findViewById(R.id.finish_sport_finish);
         buttonCollectMap.setOnClickListener(this);
@@ -86,5 +82,17 @@ public class FinishSportActivity extends AppCompatActivity implements View.OnCli
             default:
                 break;
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GradientDrawable drawable = (GradientDrawable)findViewById(R.id.finish_sport_layout).getBackground();
+        drawable.setColors(new int[]{0xff5bc0e5, 0xff6ee4bc});
+        GradientDrawable drawable1 = (GradientDrawable) findViewById(R.id.finish_sport_finish).getBackground();
+        drawable1.setColors(new int[]{0xff5bc0e5, 0xff6ee4bc});
+        GradientDrawable drawable2 = (GradientDrawable)findViewById(R.id.finish_sport_collect_map).getBackground();
+        drawable2.setStroke(4, 0xff5bc0e5);
     }
 }

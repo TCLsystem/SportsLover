@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/transparent">
+
+    <LinearLayout
+        android:id="@+id/ll_set_target_running_type"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:id="@+id/set_target_type_running"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Running"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:background="@drawable/shape_rectanglar_white_button"
+            />
+
+        <Button
+            android:id="@+id/set_target_type_walking"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Walking"
+            android:textAlignment="center"
+            android:textSize="13dp"
+            android:textColor="@color/white"
+            android:background="@color/transparent"
+            />
+
+        <Button
+            android:id="@+id/set_target_type_riding"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Riding"
+            android:textAlignment="center"
+            android:textSize="13dp"
+            android:textColor="@color/white"
+            android:background="@color/transparent"
+            />
+
+    </LinearLayout>
+
+    <com.example.user.sportslover.customview.ScrollViewDragHelperWeek
+        android:id="@+id/scroll_view_drag_helper_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/px2dp_42"
+        android:paddingRight="@dimen/px2dp_42"
+        android:layout_marginTop="@dimen/px2dp_42"
+        android:background="@color/transparent"
+        android:visibility="gone">
+        
+        <com.example.user.sportslover.customview.ScrollBarPicWeek
+            android:id="@+id/scroll_bar_pic_week"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px2dp_515"
+            android:background="@color/transparent"/>
+    </com.example.user.sportslover.customview.ScrollViewDragHelperWeek>
+
+    <com.example.user.sportslover.customview.ScrollViewDragHelperMonth
+        android:id="@+id/scroll_view_drag_helper_month"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/px2dp_42"
+        android:paddingRight="@dimen/px2dp_42"
+        android:layout_marginTop="@dimen/px2dp_42"
+        android:background="@color/transparent">
+
+        <com.example.user.sportslover.customview.ScrollBarPicMonth
+            android:id="@+id/scroll_bar_pic_month"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px2dp_515"
+            android:background="@color/transparent"
+            />
+    </com.example.user.sportslover.customview.ScrollViewDragHelperMonth>
+
+</LinearLayout>

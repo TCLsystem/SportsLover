@@ -84,7 +84,7 @@
             android:id="@+id/iv_home_start_running_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="260px"
+            android:layout_marginLeft="250px"
             android:layout_marginBottom="30px"
             android:layout_gravity="center"
             android:src="@drawable/start_running_icon"/>

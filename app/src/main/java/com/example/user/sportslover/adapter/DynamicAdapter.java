@@ -84,7 +84,7 @@ public class DynamicAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder = null;
         if (convertView == null) {
-            convertView = mInflater.inflate(mLayoutRes, null);
+            convertView = LayoutInflater.from(mContext).inflate(mLayoutRes, null);
             holder = new ViewHolder();
             holder.write_photo = (RoundImageView) convertView.findViewById(R.id.write_photo);
             holder.write_name = (TextView) convertView.findViewById(R.id.write_name);

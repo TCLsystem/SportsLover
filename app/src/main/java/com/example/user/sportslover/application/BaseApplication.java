@@ -14,13 +14,14 @@ public class BaseApplication extends com.activeandroid.app.Application {
 
     static Context sContext;
     private Weather globalWeather = null;
+    private float globalSportVibrationSetting = 0;
+    private int globalSportMapSetting = 0;
     public static Context getmContext() {
             return sContext;
         }
-
-
     @Override
     public void onCreate() {
+
         super.onCreate();
         sContext = getApplicationContext();
       //  ActiveAndroid.initialize(this);
@@ -44,6 +45,22 @@ public class BaseApplication extends com.activeandroid.app.Application {
 
     public Weather getGlobalWeather(){
         return globalWeather;
+    }
+
+    public void setGlobalSportVibrationSetting(float globalSportVibrationSetting) {
+        this.globalSportVibrationSetting = globalSportVibrationSetting;
+    }
+
+    public void setGlobalSportMapSetting(int globalSportMapSetting) {
+        this.globalSportMapSetting = globalSportMapSetting;
+    }
+
+    public int getGlobalSportMapSetting() {
+        return globalSportMapSetting;
+    }
+
+    public float getGlobalSportVibrationSetting() {
+        return globalSportVibrationSetting;
     }
 }
 
