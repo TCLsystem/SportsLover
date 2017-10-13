@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.DynamicDetailActivity;
-import com.example.user.sportslover.activity.LoginActivity;
 import com.example.user.sportslover.activity.SendDynamicActivity;
 import com.example.user.sportslover.adapter.DynamicAdapter;
 import com.example.user.sportslover.bean.DynamicItem;
@@ -45,6 +44,9 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
         ImageView publish;
 //        @Bind(R.id.title)
 //        TextView title;
+
+//        @Bind(R.id.publish)
+//        ImageButton publish;
         @Bind(R.id.xListView)
         XListView xListView;
         @Bind(R.id.loading)
@@ -52,57 +54,57 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
         @Bind(R.id.tip)
         LinearLayout tip;
 
-        private DynamicFragmentPresenter mPresenter;
-        private DynamicAdapter mAdapter;
-        private List<DynamicItem> mList = new ArrayList<>();
+    private DynamicFragmentPresenter mPresenter;
+    private DynamicAdapter mAdapter;
+    private List<DynamicItem> mList = new ArrayList<>();
 
-        private UserModelImpl mUserModel = new UserModelImpl();
+    private UserModelImpl mUserModel = new UserModelImpl();
 
-        private List<DynamicItem> mDynamicList;
+    private List<DynamicItem> mDynamicList;
 
 
-        @Nullable
-        @Override
-        public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.fragment_sports_event, container, false);
-            ButterKnife.bind(this, view);
-            mPresenter = new DynamicFragmentPresenter(this);
-            mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_listviewother, mList);
-            xListView.setAdapter(mAdapter);
-            xListView.setPullRefreshEnable(true);
-            xListView.setPullLoadEnable(false);
-            xListView.setXListViewListener(this);
+    @Nullable
+    @Override
+    public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_sports_event, container, false);
+        ButterKnife.bind(this, view);
+        mPresenter = new DynamicFragmentPresenter(this);
+        mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
+        xListView.setAdapter(mAdapter);
+        xListView.setPullRefreshEnable(true);
+        xListView.setPullLoadEnable(false);
+        xListView.setXListViewListener(this);
+        mPresenter.onRefresh();
+        if (NetUtil.checkNet(getActivity())) {
             mPresenter.onRefresh();
-            if (NetUtil.checkNet(getActivity())) {
-                mPresenter.onRefresh();
-            } else {
-                loading.setVisibility(View.GONE);
-                tip.setVisibility(View.VISIBLE);
-                xListView.setVisibility(View.GONE);
+        } else {
+            loading.setVisibility(View.GONE);
+            tip.setVisibility(View.VISIBLE);
+            xListView.setVisibility(View.GONE);
+        }
+        xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DynamicItem item = mDynamicList.get(position-1);
+                Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                Bundle bundle = new Bundle();
+                item.getCreatedAt();
+                bundle.putSerializable("DYNAMIC", item);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
-            xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    DynamicItem item = mDynamicList.get(position-1);
-                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("DYNAMIC", item);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                }
-            });
-            return view;
-        }
+        });
+        return view;
+    }
 
-        @Override
-        public void onDestroyView() {
-            super.onDestroyView();
-            ButterKnife.unbind(this);
-        }
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
 
     @OnClick(R.id.publish)
     public void onClick() {
-        if (new UserModelImpl().isLogin()) {
             mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
                 @Override
                 public void getSuccess(Object o) {
@@ -119,9 +121,6 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
 
                 }
             });
-        } else {
-            startActivity(new Intent(getActivity(), LoginActivity.class));
-        }
     }
 
     @Override

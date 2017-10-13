@@ -68,6 +68,30 @@
 
 
     <LinearLayout
+        android:id="@+id/LMile"
+        android:layout_width="match_parent"
+        android:layout_height="130px"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mile"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_mile"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_gravity="center"
+            android:text="15km" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:id="@+id/LStartTime"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

@@ -75,6 +75,36 @@ public class DynamicModelImpr implements DynamicModelInter {
      *
      * @param dynamicitem
      */
+//    public void sendDynamicItem(final String path, final DynamicItem dynamicitem, final SportModelInter.BaseListener listener) {
+//
+//        final BmobFile bmobFile = new BmobFile(new File(path));
+//        bmobFile.upload(BaseApplication.getmContext(), new UploadFileListener() {
+//            @Override
+//            public void onSuccess() {
+//                dynamicitem.setPoster(bmobFile);
+//                dynamicitem.save(BaseApplication.getmContext(), new SaveListener() {
+//                    @Override
+//                    public void onSuccess() {
+//                        listener.getSuccess(null);
+//                        Toast.makeText(BaseApplication.getmContext(), "上传成功", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(int i, String s) {
+//                        Toast.makeText(BaseApplication.getmContext(), "上传失败"+s+i, Toast.LENGTH_LONG).show();
+//                        listener.getFailure();
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onFailure(int i, String s) {
+//
+//            }
+//        });
+ //   }
+
+
     public void sendDynamicItem(final DynamicItem dynamicitem, final SportModelInter.BaseListener listener) {
         if (dynamicitem.getPhotoList().size() != 0) {
             final String[] array = new String[dynamicitem.getPhotoList().size()];
@@ -132,5 +162,5 @@ public class DynamicModelImpr implements DynamicModelInter {
 
     }
 
-
 }
+

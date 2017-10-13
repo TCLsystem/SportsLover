@@ -60,7 +60,7 @@ public class DynamicPhotoChooseAdapter extends BaseAdapter {
         ViewHolder viewHolder = null;
         if (convertView == null) {
             viewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.dynamic_gridview_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.item_dynamic_gridview, null);
             viewHolder.imageView = (ImageView) convertView.findViewById(R.id.image);
             convertView.setTag(viewHolder);
         } else {

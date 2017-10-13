@@ -19,7 +19,7 @@ import java.util.List;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
- * Created by user on 17-9-19.
+ * Created by user on 17-10-13.
  */
 public class DynamicPhotoAdapter extends BaseAdapter {
 

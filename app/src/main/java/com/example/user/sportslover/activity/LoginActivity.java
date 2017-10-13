@@ -70,6 +70,10 @@ public class LoginActivity extends Activity {
                             userLocal.setName(user.getName());
                             userLocal.setObjectId(user.getObjectId());
                             userLocal.setNumber(user.getNumber());
+                            userLocal.setWeight(user.getWeight());
+                            userLocal.setBirthday(user.getBirthday());
+                            userLocal.setHeight(user.getHeight());
+                            userLocal.setSex(user.getSex());
                             if (user.getPhoto() != null) {
                                 userLocal.setPhoto(user.getPhoto().getUrl());
                             }

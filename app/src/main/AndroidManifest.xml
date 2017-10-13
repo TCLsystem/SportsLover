@@ -100,7 +100,8 @@
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".activity.SendDynamicActivity2" />
+        <activity android:name=".activity.SendDynamicActivity2"
+            android:configChanges="orientation" />
         <activity android:name=".activity.PrivacyActivity" />
         <activity android:name=".activity.AccountManagement" />
         <activity android:name=".activity.SportsSettings"></activity>

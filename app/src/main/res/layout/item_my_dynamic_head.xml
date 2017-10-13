@@ -5,22 +5,46 @@
     android:layout_height="40dp"
     android:background="@drawable/mybackground">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
         >
+        <ImageView
+            android:id="@+id/iv_myDynamic_back"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_back"/>
 
     <TextView
-        android:id="@+id/title"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/tv_my_posted"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="my publish"
+        android:text="Posted"
         android:textSize="18dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_gravity="center"
         />
+        <TextView
+            android:id="@+id/tv_my_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply"
+            android:textSize="18dp"
+            android:layout_marginLeft="80dp"
+            android:layout_gravity="center"
+         />
+        <TextView
+            android:id="@+id/tv_dynamic_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textSize="18dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="80dp"/>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>

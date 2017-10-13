@@ -73,8 +73,9 @@
 
     <string-array name="spingarr">
         <item>All Activity</item>
-        <item>Posted Activity</item>
-        <item>Apply Activity</item>
+        <item>Running Activity</item>
+        <item>Walking Activity</item>
+        <item>Riding Activity</item>
     </string-array>
 
 

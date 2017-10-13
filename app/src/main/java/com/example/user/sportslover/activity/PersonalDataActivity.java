@@ -114,16 +114,9 @@ public class PersonalDataActivity extends AppCompatActivity {
         mLoadingDialog = DialogBuilder.createLoadingDialog(this, "正在上传图片");
         mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(this, "上传完成");
 
-
-
-
-//        if(!mUserLocal.getBirthday().equals(""))
        birthday.setText(mUserLocal.getBirthday());
-//        if(!mUserLocal.getHeight().equals(""))
        height.setText(mUserLocal.getHeight());
-//        if(!mUserLocal.getWeight().equals(""))
        weight.setText(mUserLocal.getWeight());
-//        if(!mUserLocal.getSex().equals(""))
        gender.setText(mUserLocal.getSex());
     }
 
@@ -131,9 +124,7 @@ public class PersonalDataActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.personal_back:
-//                Intent intent = new Intent();
-//                intent.setClass(personalDataActivity.this, MyPageFragment.class);
-//                startActivity(intent);
+                finish();
                 break;
             case R.id.iv_Changephoto:
                     final PhotoPickerIntent intent = new PhotoPickerIntent(PersonalDataActivity.this);

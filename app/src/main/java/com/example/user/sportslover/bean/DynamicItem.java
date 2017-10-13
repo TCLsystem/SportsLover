@@ -43,9 +43,20 @@ public class DynamicItem extends BmobObject implements Serializable {
 
     public Date EndTime;
 
+    public String Meil;
+
     public String Place;
 
     public String Area;
+
+    public List<String> ParticipantName;
+
+    public List<String> getParticipantName() {
+        return ParticipantName;
+    }
+    public void setParticipantName(List<String> participantName) {
+        ParticipantName = participantName;
+    }
 
     public String getUserName() {
         return UserName;
@@ -89,6 +100,11 @@ public class DynamicItem extends BmobObject implements Serializable {
     public  Date getApplicationDeadline(){return ApplicationDeadline;}
     public void  setApplicationDeadline(Date applicationDeadline) {
         ApplicationDeadline = applicationDeadline;
+    }
+
+    public String getMeil() {return Meil;}
+    public void setMeil(String meil){
+        Meil = meil;
     }
 
     public String getPlace() {return Place;}

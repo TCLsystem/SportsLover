@@ -7,9 +7,19 @@ import com.example.user.sportslover.R;
 
 public class RouteActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_route);
+
+
     }
+
+
+
+
+
+
+
 }

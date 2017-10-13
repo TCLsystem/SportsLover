@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -16,13 +14,12 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.bean.CityJsonBean;
 import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.util.GetJsonDataUtil;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
+import com.lljjcoder.city_20170724.CityPickerView;
+import com.lljjcoder.city_20170724.bean.CityBean;
+import com.lljjcoder.city_20170724.bean.DistrictBean;
+import com.lljjcoder.city_20170724.bean.ProvinceBean;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,6 +38,8 @@ public class SendDynamicActivity extends Activity {
     TextView next;
     @Bind(R.id.LType)
     LinearLayout lType;
+    @Bind(R.id.LMile)
+    LinearLayout lMile;
     @Bind(R.id.LStartTime)
     LinearLayout lStartTime;
     @Bind(R.id.LEndTime)
@@ -51,21 +50,14 @@ public class SendDynamicActivity extends Activity {
     LinearLayout lPlace;
     @Bind(R.id.LArea)
     LinearLayout lArea;
-//    @Bind(R.id.send)
-//    TextView send;
-//    @Bind(R.id.edit_activity_name)
-//    EditText et_activity_name;
-//    @Bind(R.id.edit_content)
-//    EditText et_content;
-//    @Bind(R.id.gridView)
-//    GridView gridView;
     @Bind(R.id.tv_startTime)
     TextView tv_startTime;
     @Bind(R.id.tv_endTime)
     TextView tv_endTime;
     @Bind(R.id.tv_applicationDeadline)
     TextView tv_applicationDeadline;
-
+    @Bind(R.id.tv_mile)
+    TextView tv_mile;
     @Bind(R.id.tv_type)
     TextView tv_type;
     @Bind(R.id.tv_place)
@@ -87,7 +79,7 @@ public class SendDynamicActivity extends Activity {
     private OptionsPickerView pvOptions;
     private OptionsPickerView pvOptionsCity;
     private ArrayList<String> type = new ArrayList<String>();
-    private ArrayList<CityJsonBean> options1Items = new ArrayList<>();
+    private ArrayList<String> mile = new ArrayList<String>();
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
     private Thread thread;
@@ -108,7 +100,7 @@ public class SendDynamicActivity extends Activity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.publish_next, R.id.personal_back,R.id.LType,R.id.LStartTime,R.id.LEndTime,R.id.LApplicationDeadline,R.id.LPlace,R.id.LArea})
+    @OnClick({R.id.publish_next, R.id.personal_back,R.id.LType,R.id.LMile,R.id.LStartTime,R.id.LEndTime,R.id.LApplicationDeadline,R.id.LPlace,R.id.LArea})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.personal_back:
@@ -128,6 +120,13 @@ public class SendDynamicActivity extends Activity {
                 initOptionPicker(type,tv_type,"Activity Type");
                 pvOptions.show();
                 break;
+
+            case R.id.LMile:
+               for(int i=1;i<50;i++)
+               {mile.add(String.valueOf(i));}
+                initOptionPicker2(mile,tv_mile,"Activity Mile");
+                pvOptions.show();
+                break;
             case R.id.LStartTime:
                 initTimePicker(tv_startTime,"Activity Start Time");
                 pvTime.show();
@@ -141,11 +140,10 @@ public class SendDynamicActivity extends Activity {
                 pvTime.show();
                 break;
             case R.id.LPlace:
-                if (isLoaded){
-                    ShowPickerView();
-                }else {
-                  //  Toast.makeText(JsonDataActivity.this,"Please waiting until the data is parsed",Toast.LENGTH_SHORT).show();
-                }
+
+                break;
+            case R.id.LArea:
+                showpick();
                 break;
             default:
                 break;
@@ -258,10 +256,6 @@ public class SendDynamicActivity extends Activity {
                 .build();
     }
 
-
-
-
-
     private String getTime(Date date) {//可根据需要自行截取数据显示
         SimpleDateFormat format = new SimpleDateFormat("YYYY.MM.dd  HH:SS");
         return format.format(date);
@@ -302,146 +296,89 @@ public class SendDynamicActivity extends Activity {
         pvOptions.setPicker(optionsItems);//添加数据源
     }
 
+    private void initOptionPicker2(final ArrayList<String> optionsItems , final TextView textView ,String title) {//条件选择器初始化
 
 
-
-    private Handler mHandler = new Handler() {
-        public void handleMessage(Message msg) {
-            switch (msg.what) {
-                case MSG_LOAD_DATA:
-                    if (thread==null){//如果已创建就不再重新创建子线程了
-
-   //                     Toast.makeText(JsonDataActivity.this,"Begin Parse Data",Toast.LENGTH_SHORT).show();
-                        thread = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                // 写子线程中的操作,解析省市区数据
-                                initJsonData();
-                            }
-                        });
-                        thread.start();
-                    }
-                    break;
-
-                case MSG_LOAD_SUCCESS:
-   //                 Toast.makeText(JsonDataActivity.this,"Parse Succeed",Toast.LENGTH_SHORT).show();
-                    isLoaded = true;
-                    break;
-
-                case MSG_LOAD_FAILED:
-    //                Toast.makeText(JsonDataActivity.this,"Parse Failed",Toast.LENGTH_SHORT).show();
-                    break;
-
-            }
-        }
-    };
-
-
-    private void ShowPickerView() {// 弹出选择器
-
-        pvOptionsCity = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
+        pvOptions = new OptionsPickerView.Builder(this, new OptionsPickerView.OnOptionsSelectListener() {
             @Override
-            public void onOptionsSelect(int options1, int options2, int options3, View v) {
+            public void onOptionsSelect(int options1, int option2, int options3, View v) {
                 //返回的分别是三个级别的选中位置
-                String tx = options1Items.get(options1).getPickerViewText()+
-                        options2Items.get(options1).get(options2)+
-                        options3Items.get(options1).get(options2).get(options3);
-                        tv_place.setText(tx);
-                        tv_area.setText(options2Items.get(options1).get(options2));
-                        dynamicItem.setPlace(tv_place.getText().toString());
-                        dynamicItem.setArea(tv_area.getText().toString());
-
-               // Toast.makeText(JsonDataActivity.this,tx,Toast.LENGTH_SHORT).show();
+                String tx = optionsItems.get(options1);
+                tv_mile.setText(tx+"km");
+                dynamicItem.setMeil(tv_mile.getText().toString());
             }
-        })
 
-                .setTitleText("Activity Location")
-                .setDividerColor(Color.BLACK)
-                .setTextColorCenter(Color.BLACK) //设置选中项文字颜色
-                .setContentTextSize(20)
+        })
+                .setSubmitText("Ok")//确定按钮文字
+                .setCancelText("Cancel")//取消按钮文字
+                .setTitleText(title)//标题
+                .setSubCalSize(18)//确定和取消文字大小
+                .setTitleSize(20)//标题文字大小
+                .setTitleColor(Color.BLACK)//标题文字颜色
+                .setSubmitColor(Color.BLACK)//确定按钮文字颜色
+                .setCancelColor(Color.BLACK)//取消按钮文字颜色
+                .setTitleBgColor(0xfffffbfa)//标题背景颜色 Night mode
+                .setBgColor(0xfffffbfa)//滚轮背景颜色 Night mode
+                .setContentTextSize(18)//滚轮文字大小
+                .setLinkage(false)//设置是否联动，默认true
+//                .setLabels("kg","Kg","kg")//设置选择的三级单位
+                .setCyclic(false,false,false)//循环与否
+                .setSelectOptions(1,1,1)  //设置默认选中项
+                .setOutSideCancelable(false)//点击外部dismiss default true
                 .build();
 
-        /*pvOptions.setPicker(options1Items);//一级选择器
-        pvOptions.setPicker(options1Items, options2Items);//二级选择器*/
-        pvOptionsCity.setPicker(options1Items, options2Items,options3Items);//三级选择器
-        pvOptionsCity.show();
+        pvOptions.setPicker(optionsItems);//添加数据源
     }
 
-    private void initJsonData() {//解析数据
 
-        /**
-         * 注意：assets 目录下的Json文件仅供参考，实际使用可自行替换文件
-         * 关键逻辑在于循环体
-         *
-         * */
-        String JsonData = new GetJsonDataUtil().getJson(this,"province.json");//获取assets目录下的json文件数据
+    private  void showpick()
+    {
+        CityPickerView cityPicker = new CityPickerView.Builder(SendDynamicActivity.this)
+                .textSize(20)
+                .title("地址选择")
+                .backgroundPop(0xa0000000)
+                .titleBackgroundColor("#234Dfa")
+                .titleTextColor("#000000")
+                .backgroundPop(0xa0000000)
+                .confirTextColor("#000000")
+                .cancelTextColor("#000000")
+                .province("江苏省")
+                .city("常州市")
+                .district("天宁区")
+                .textColor(Color.parseColor("#000000"))
+                .provinceCyclic(true)
+                .cityCyclic(false)
+                .districtCyclic(false)
+                .visibleItemsCount(7)
+                .itemPadding(10)
+                .onlyShowProvinceAndCity(false)
+                .build();
+        cityPicker.show();
 
-        ArrayList<CityJsonBean> jsonBean = parseData(JsonData);//用Gson 转成实体
-
-        /**
-         * 添加省份数据
-         *
-         * 注意：如果是添加的JavaBean实体，则实体类需要实现 IPickerViewData 接口，
-         * PickerView会通过getPickerViewText方法获取字符串显示出来。
-         */
-        options1Items = jsonBean;
-
-        for (int i=0;i<jsonBean.size();i++){//遍历省份
-            ArrayList<String> CityList = new ArrayList<>();//该省的城市列表（第二级）
-            ArrayList<ArrayList<String>> Province_AreaList = new ArrayList<>();//该省的所有地区列表（第三极）
-
-            for (int c=0; c<jsonBean.get(i).getCityList().size(); c++){//遍历该省份的所有城市
-                String CityName = jsonBean.get(i).getCityList().get(c).getName();
-                CityList.add(CityName);//添加城市
-
-                ArrayList<String> City_AreaList = new ArrayList<>();//该城市的所有地区列表
-
-                //如果无地区数据，建议添加空字符串，防止数据为null 导致三个选项长度不匹配造成崩溃
-                if (jsonBean.get(i).getCityList().get(c).getArea() == null
-                        ||jsonBean.get(i).getCityList().get(c).getArea().size()==0) {
-                    City_AreaList.add("");
-                }else {
-
-                    for (int d=0; d < jsonBean.get(i).getCityList().get(c).getArea().size(); d++) {//该城市对应地区所有数据
-                        String AreaName = jsonBean.get(i).getCityList().get(c).getArea().get(d);
-
-                        City_AreaList.add(AreaName);//添加该城市所有地区数据
-                    }
-                }
-                Province_AreaList.add(City_AreaList);//添加该省所有地区数据
+        //监听方法，获取选择结果
+        cityPicker.setOnCityItemClickListener(new CityPickerView.OnCityItemClickListener() {
+            @Override
+            public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
+                //返回结果
+                //ProvinceBean 省份信息
+                //CityBean     城市信息
+                //DistrictBean 区县信息
+                tv_area.setText(district.getPinYin()+ ","+ city.getPinYin() +","+ province.getPinYin());
+                dynamicItem.setArea(district.getPinYin()+ ","+ city.getPinYin() +","+ province.getPinYin());
+                tv_place.setText(district.getPinYin());
+                dynamicItem.setPlace(district.getPinYin());
             }
 
-            /**
-             * 添加城市数据
-             */
-            options2Items.add(CityList);
+            @Override
+            public void onCancel() {
 
-            /**
-             * 添加地区数据
-             */
-            options3Items.add(Province_AreaList);
-        }
-
-        mHandler.sendEmptyMessage(MSG_LOAD_SUCCESS);
-
-    }
-
-
-    public ArrayList<CityJsonBean> parseData(String result) {//Gson 解析
-        ArrayList<CityJsonBean> detail = new ArrayList<>();
-        try {
-            JSONArray data = new JSONArray(result);
-            Gson gson = new Gson();
-            for (int i = 0; i < data.length(); i++) {
-                CityJsonBean entity = gson.fromJson(data.optJSONObject(i).toString(), CityJsonBean.class);
-                detail.add(entity);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            mHandler.sendEmptyMessage(MSG_LOAD_FAILED);
-        }
-        return detail;
+        });
+
     }
+
+
+
 
 
 

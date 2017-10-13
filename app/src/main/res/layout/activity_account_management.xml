@@ -63,12 +63,11 @@
         <Button
             android:id="@+id/btn_account"
             android:layout_width="93dp"
-            android:layout_height="36dp"
+            android:layout_height="28dp"
             android:layout_gravity="center_horizontal"
             android:background="@drawable/btn_add"
             android:checked="false"
-            android:layout_marginLeft="80dp"
-            android:layout_weight="0.07" />
+            android:layout_marginLeft="80dp" />
     </LinearLayout>
 
 

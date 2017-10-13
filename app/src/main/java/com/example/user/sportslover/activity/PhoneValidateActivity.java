@@ -49,26 +49,6 @@ public class PhoneValidateActivity extends AppCompatActivity {
         SMSSDK.initSDK(this, "2128cfa210e50", "28520707ebc842ff5b741911627bf55a");
         ButterKnife.bind(this);
 
-//        eh = new EventHandler() {
-//            @Override
-//            public void afterEvent(int event, int result, Object data) {
-//
-//                if (result == SMSSDK.RESULT_COMPLETE) {
-//                    //回调完成
-//                    if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-//                        Intent intent = new Intent(PhonevalidActivity.this, RegisterActivity.class);
-//                        intent.putExtra("phone", registerPhone.getText().toString());
-//                        startActivity(intent);
-//                        finish();
-//                    } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {
-//                    } else if (event == SMSSDK.RESULT_ERROR) {
-//                    }
-//                } else {
-//                    ((Throwable) data).printStackTrace();
-//                }
-//            }
-//        };
-        //      SMSSDK.registerEventHandler(eh); //注册短信回调
         //注册回调
         SMSSDK.registerEventHandler(eventHandler);
     }
@@ -80,31 +60,6 @@ public class PhoneValidateActivity extends AppCompatActivity {
                 finish();
                 break;
             case R.id.register_get_check_pass:
-//                if (StringUtil.isMobileNO(registerPhone.getText().toString())) {
-//                    mUserModel.isPhoneRegister(registerPhone.getText().toString(), new SportModelImpl.BaseListener() {
-//                        @Override
-//                        public void getSuccess(Object o) {
-//                            ToastUtil.showLong(PhonevalidActivity.this, "当前手机号码已注册，请直接登录");
-//                            startActivity(new Intent(PhonevalidActivity.this, LoginActivity.class));
-//                        }
-//
-//                        @Override
-//                        public void getFailure() {
-//                            SMSSDK.getVerificationCode("86", registerPhone.getText().toString());
-//                            CountDownButtonHelper countDownButtonHelper = new CountDownButtonHelper(registerGetCheckPass, "获取验证码", 60, 1);
-//                            countDownButtonHelper.start();
-//                            countDownButtonHelper.setOnFinishListener(new CountDownButtonHelper.OnFinishListener() {
-//                                @Override
-//                                public void finish() {
-//                                    registerGetCheckPass.setEnabled(true);
-//                                }
-//                            });
-//                        }
-//                    });
-//                } else {
-//                    ToastUtil.showLong(PhonevalidActivity.this, "手机号码格式不正确");
-//                }
-
                 String phone = registerPhone.getText().toString().trim();
                 if (TextUtils.isEmpty(phone)) {
                     Toast.makeText(PhoneValidateActivity.this, "手机号码不能为空", Toast.LENGTH_SHORT).show();

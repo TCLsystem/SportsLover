@@ -7,10 +7,6 @@ import com.example.user.sportslover.R;
 
 public class AccountManagement extends AppCompatActivity {
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

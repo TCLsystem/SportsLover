@@ -21,15 +21,15 @@ public class FixedGridView extends GridView {
         super(context, attrs, defStyleAttr);
     }
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        //MeasureSpec.AT_MOST的意思就是wrap_content
-        //Integer.MAX_VALUE >> 2 是使用最大值的意思,也就表示的无边界模式
-        //Integer.MAX_VALUE >> 2 此处表示是福布局能够给他提供的大小
-        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
-                MeasureSpec.AT_MOST);
-        super.onMeasure(widthMeasureSpec, expandSpec);
-    }
+//    @Override
+//    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+//        //MeasureSpec.AT_MOST的意思就是wrap_content
+//        //Integer.MAX_VALUE >> 2 是使用最大值的意思,也就表示的无边界模式
+//        //Integer.MAX_VALUE >> 2 此处表示是福布局能够给他提供的大小
+//        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,
+//                MeasureSpec.AT_MOST);
+//        super.onMeasure(widthMeasureSpec, expandSpec);
+//    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
