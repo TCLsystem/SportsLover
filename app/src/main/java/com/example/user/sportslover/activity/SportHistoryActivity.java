@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -64,6 +65,8 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
     private Button buttonWalking;
     private Button buttonRiding;
     private ImageView ivSetTargetBack;
+    private ImageView ivScrollUp;
+    private ImageView ivScrollDown;
     private Drawable drawableClicked;
     private Drawable drawableUnclicked;
     private ListView selectButtonItem;
@@ -86,6 +89,8 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
         tvTotalDistance = (TextView) view1.findViewById(R.id.tv_history_total_distance);
         tvTotalCalories = (TextView) view1.findViewById(R.id.tv_history_total_calories);
         tvTotalCumulativeTime = (TextView) view1.findViewById(R.id.tv_history_total_cumulative_time);
+        ivScrollUp = (ImageView) view1.findViewById(R.id.history_scroll_up);
+        ivScrollDown = (ImageView) view1.findViewById(R.id.history_scroll_down);
         scrollViewDragHelperWeek = (ScrollViewDragHelperWeek) view0.findViewById(R.id.scroll_view_drag_helper_week);
         scrollViewDragHelperMonth = (ScrollViewDragHelperMonth) view0.findViewById(R.id.scroll_view_drag_helper_month);
         scrollBarPicWeek = (ScrollBarPicWeek) view0.findViewById(R.id.scroll_bar_pic_week);
@@ -126,13 +131,14 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
             @Override
             public float getPageWidth(int position) {
                 if (position == 0)
-                    return 0.8f;
+                    return 0.77f;
                 else
                     return super.getPageWidth(position);
             }
         };
         myVerticalViewPager.setAdapter(mPageAdapter);
         myVerticalViewPager.setCurrentItem(0);
+        myVerticalViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
         listviewAdapter = new SportHistoryDataAdapter(SportHistoryActivity.this, R.layout.item_history_data, sportHistoryDataBeanList);
         ListView listView = (ListView) view1.findViewById(R.id.lv_history_data);
         listView.setAdapter(listviewAdapter);
@@ -314,5 +320,34 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
                 break;
         }
         return new SportHistoryPresenterRunningWeekImpr();
+    }
+
+
+    public class MyOnPageChangeListener implements ViewPager.OnPageChangeListener {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int arg0) {
+            switch (arg0) {
+                case 0:
+                    ivScrollUp.setVisibility(View.VISIBLE);
+                    ivScrollDown.setVisibility(View.GONE);
+                    break;
+                case 1:
+                    ivScrollUp.setVisibility(View.GONE);
+                    ivScrollDown.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
     }
 }

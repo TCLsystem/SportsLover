@@ -409,8 +409,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     }
 
     public void refleshWeatherCondition(){
-        tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
-        tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
-        tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + baseApplication.getGlobalWeather().now.more.info);
+        tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
+        tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
+        tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
     }
 }

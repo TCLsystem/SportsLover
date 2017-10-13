@@ -32,7 +32,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -132,7 +131,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private ImageView ivStrechMap;
     private RelativeLayout rlBeginSportLayout;
     private LinearLayout llBeginSportStatus;
-    private ProgressBar progressBar;
+    private RelativeLayout rlProgressBar;
 
     private Timer timer = new Timer();
     private TimerTask task;
@@ -141,6 +140,17 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private long remoteSeconds = 0;
     private int averagePace= 0;
     private boolean timerValidFlag = false;
+    private CircularRingPercentageView progressCircle;
+    private float target = 0;
+    private float weight = 60;
+    private int localProgress = 0;
+    private float vibratedDistance = 0;
+    private CalculateCaloriesInter calculateCaloriesInter;
+    private DecimalFormat textFormat = new DecimalFormat("#0.0000");
+    private DecimalFormat timeFormat = new DecimalFormat("#0.0000");
+    private MyVerticalViewPager myVerticalViewPager;
+    private Intent intentSetSportTarget;
+    private SportTrackService.SportTrackServiceControlBinder sportTrackServiceControlBinder;
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -212,6 +222,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                     }
                 break;
             case 2:
+                rlProgressBar.setVisibility(View.VISIBLE);
                 timerValidFlag = false;
                 sportTrackServiceControlBinder.pauseService();
                 Intent stopSportTrackService = new Intent(BeginSportActivity.this, SportTrackService.class);
@@ -257,6 +268,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                         Intent intent1 = new Intent(BeginSportActivity.this, FinishSportActivity.class);
                         intent1.putExtra("sport_information", sportInformationItem);
                         startActivity(intent1);
+                        rlProgressBar.setVisibility(View.GONE);
                         finish();
                     }
                 });
@@ -292,18 +304,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         }
 
     };
-
-    private CircularRingPercentageView progressCircle;
-    private float target = 0;
-    private float weight = 60;
-    private int localProgress = 0;
-    private float vibratedDistance = 0;
-    private CalculateCaloriesInter calculateCaloriesInter;
-    private DecimalFormat textFormat = new DecimalFormat("#0.0000");
-    private DecimalFormat timeFormat = new DecimalFormat("#0.0000");
-    private MyVerticalViewPager myVerticalViewPager;
-    private Intent intentSetSportTarget;
-    private SportTrackService.SportTrackServiceControlBinder sportTrackServiceControlBinder;
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
@@ -432,9 +432,10 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 handler.sendEmptyMessage(3);
             }
         });
-        progressBar = (ProgressBar) findViewById(R.id.begin_sport_progress_bar);
-        progressBar.setVisibility(View.GONE);
+
         rlBeginSportLayout = (RelativeLayout) findViewById(R.id.begin_sport_layout);
+        rlProgressBar = (RelativeLayout) findViewById(R.id.rl_begin_sport_progress_bar);
+        rlProgressBar.setVisibility(View.GONE);
         ivStrechMap = (ImageView) view1.findViewById(R.id.iv_strech_map);
         tvDistance = (TextView) view0.findViewById(R.id.tv_distance);
         tvHours = (TextView) findViewById(R.id.tv_begin_sport_cumulative_time);

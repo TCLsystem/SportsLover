@@ -7,6 +7,23 @@
     tools:context="com.example.user.sportslover.activity.WeatherActivity">
 
     <ImageView
+        android:id="@+id/iv_weather_image_orange"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/weather_image_orange"/>
+
+    <ImageView
+        android:id="@+id/iv_weather_image_blue"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/weather_image_blue"
+        android:visibility="gone"/>
+
+    <ImageView
         android:id="@+id/weather_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,14 +43,25 @@
         android:layout_alignStart="@+id/tv_weather_basic_condition" />
 
     <ImageView
-        android:id="@+id/iv_weather_detail_background"
+        android:id="@+id/iv_weather_detail_background_orange"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/weather_background"
+        android:src="@drawable/weather_background_orange"
         android:layout_marginBottom="31dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:id="@+id/iv_weather_detail_background_blue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/weather_background_blue"
+        android:layout_marginBottom="31dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_weather_basic_condition"

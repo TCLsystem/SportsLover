@@ -1,121 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:background="@color/white">
+    android:layout_height="match_parent" android:background="@color/transparent">
+
+    <RelativeLayout
+        android:id="@+id/ll_history_scroll_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <ImageView
+            android:id="@+id/history_scroll_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_scroll_up"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"/>
+
+        <ImageView
+            android:id="@+id/history_scroll_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_scroll_down"
+            android:layout_marginRight="40dp"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/ll_history_status"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/tv_history_total_distance"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:text="0.0km\nDistance"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            />
-
-        <TextView
-            android:id="@+id/tv_history_total_calories"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="0.0kcal\nCalories"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            />
-
-        <TextView
-            android:id="@+id/tv_history_total_cumulative_time"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_weight="1"
-            android:text="0.0h\nCumulative\ntime"
-            android:textAlignment="center"
-            android:textSize="15dp"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_weight="4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/line"
-            android:layout_width="fill_parent"
-            android:layout_height="1px"
-            android:background="@drawable/bg_cut_line"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_below="@+id/ll_history_scroll_hint">
 
         <LinearLayout
+            android:id="@+id/ll_history_status"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_vertical">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="2">
 
             <TextView
+                android:id="@+id/tv_history_total_distance"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Distance"
+                android:gravity="center_vertical"
+                android:text="0.0km\nDistance"
                 android:textAlignment="center"
-                android:gravity="center_vertical"/>
+                android:textSize="15dp"
+                />
 
             <TextView
+                android:id="@+id/tv_history_total_calories"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Calories"
+                android:text="0.0kcal\nCalories"
                 android:textAlignment="center"
-                android:gravity="center_vertical"/>
+                android:textSize="15dp"
+                />
 
             <TextView
+                android:id="@+id/tv_history_total_cumulative_time"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="Cumulative\ntime"
+                android:text="0.0h\nCumulative\ntime"
                 android:textAlignment="center"
-                android:gravity="center_vertical"/>
+                android:textSize="15dp"
+                />
 
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/lv_history_data"
+        <LinearLayout
+            android:layout_weight="9"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:background="@drawable/bg_cut_line"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Distance"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Calories"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cumulative\ntime"
+                    android:textAlignment="center"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lv_history_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

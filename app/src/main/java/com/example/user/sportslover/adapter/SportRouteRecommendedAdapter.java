@@ -33,6 +33,7 @@ public class SportRouteRecommendedAdapter extends RecyclerView.Adapter<SportRout
         private ImageView greenBackground;
         private ImageView whiteBackground;
         private ImageView ivOnSelect;
+        private ImageView ivOnSelectWhite;
         private TextView distance;
         private TextView place;
         private TextView completed;
@@ -43,9 +44,11 @@ public class SportRouteRecommendedAdapter extends RecyclerView.Adapter<SportRout
             greenBackground = (ImageView) itemView.findViewById(R.id.sport_route_recommended_item_background_green);
             whiteBackground = (ImageView) itemView.findViewById(R.id.sport_route_recommended_item_background_white);
             ivOnSelect = (ImageView) itemView.findViewById(R.id.sport_route_recommended_selected);
+            ivOnSelectWhite = (ImageView) itemView.findViewById(R.id.sport_route_recommended_selected_white);
             distance = (TextView) itemView.findViewById(R.id.sport_route_recommended_distance);
             place = (TextView) itemView.findViewById(R.id.sport_route_recommended_place);
             completed = (TextView) itemView.findViewById(R.id.sport_route_recommended_complete);
+            this.myItemClickListener = myItemClickListener;
         }
     }
 
@@ -81,9 +84,16 @@ public class SportRouteRecommendedAdapter extends RecyclerView.Adapter<SportRout
         holder.place.setText(routeItem.getPlace());
         holder.completed.setText("0 people have completed");
         if (routeItemList.get(position).isSelected()){
-            holder.ivOnSelect.setVisibility(View.VISIBLE);
+            if (position % 2 == 0){
+                holder.ivOnSelect.setVisibility(View.GONE);
+                holder.ivOnSelectWhite.setVisibility(View.VISIBLE);
+            } else {
+                holder.ivOnSelect.setVisibility(View.VISIBLE);
+                holder.ivOnSelectWhite.setVisibility(View.GONE);
+            }
         } else {
             holder.ivOnSelect.setVisibility(View.GONE);
+            holder.ivOnSelectWhite.setVisibility(View.GONE);
         }
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
