@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/ll_baidu_map_time"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_hours"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:" />
+
+            <TextView
+                android:id="@+id/tv_minutes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00:" />
+
+            <TextView
+                android:id="@+id/tv_seconds"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="00" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id = "@+id/distance"
+            android:layout_width = "match_parent"
+            android:layout_height = "match_parent"
+            android:text ="现在走过的距离是：0米"
+            android:textSize = "15dp"
+            android:layout_weight="1"/>"
+    </LinearLayout>
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clickable="true"
+        android:layout_weight="4"/>
+
+</LinearLayout>

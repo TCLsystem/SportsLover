@@ -18,7 +18,6 @@ import com.example.user.sportslover.util.ToastUtil;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.v3.Bmob;
 import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends Activity {
@@ -32,15 +31,17 @@ public class RegisterActivity extends Activity {
     EditText registerPassword;
     @Bind(R.id.register_btn)
     Button registerBtn;
-
+    @Bind(R.id.register_password_again)
+    EditText registerPasswordAgain;
     private String mPhone;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_register);
-        Bmob.initialize(this,"23fe35801c6ae4f698315d637955bb39");
-      //  mPhone = getIntent().getStringExtra("phone");
-        Log.d("TAAAAAAA",mPhone);
+        //Bmob.initialize(this, "23fe35801c6ae4f698315d637955bb39");
+        // mPhone = getIntent().getStringExtra("phone");
+        // Log.d("TAAAAAAA", mPhone);
         ButterKnife.bind(this);
     }
 
@@ -53,27 +54,37 @@ public class RegisterActivity extends Activity {
                 break;
             case R.id.register_btn:
                 String name = registerName.getText().toString();
-                String password =registerPassword.getText().toString();
-                if (!name.equals("")&& !password.equals("")&&!mPhone.equals("")) {
-                    User user = new User();
-                    user.setName(name);
-                    user.setPassword(password);
-                 //   user.setNumber(mPhone);
-                    Log.d("TAAAAAAAA",name+"  "+password+"   "+mPhone);
-                    user.save(this, new SaveListener() {
-                        @Override
-                        public void onSuccess() {
-                            // TODO Auto-generated method stub
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                            Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
-                        }
-                        @Override
-                        public void onFailure(int code, String msg) {
-                            // TODO Auto-generated method stub
-                            Toast.makeText(RegisterActivity.this,"注册失败",Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                String password = registerPassword.getText().toString();
+                String passwordAgain = registerPasswordAgain.getText().toString();
+                //if (!name.equals("")&& !password.equals("")&&!mPhone.equals("")) {
+                if (!name.equals("") && !password.equals("") && !passwordAgain.equals("")) {
+                    if (!passwordAgain.equals(password)) {
+                        ToastUtil.showLong(RegisterActivity.this, "密码不一致");
+                    } else {
+                        User user = new User();
+                        user.setName(name);
+                        user.setPassword(password);
+                        //   user.setNumber(mPhone);
+                        Log.d("TAAAAAAAA", name + "  " + password + "   " + mPhone);
+                        user.save(this, new SaveListener() {
+                            @Override
+                            public void onSuccess() {
+                                // TODO Auto-generated method stub
+                                startActivity(new Intent(RegisterActivity.this, LoginActivity
+                                        .class));
 
+                                Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+
+                            @Override
+                            public void onFailure(int code, String msg) {
+                                // TODO Auto-generated method stub
+                                Toast.makeText(RegisterActivity.this, "注册失败", Toast.LENGTH_SHORT)
+                                        .show();
+                            }
+                        });
+                    }
                 } else {
                     ToastUtil.showLong(RegisterActivity.this, "请填写完整信息");
                 }

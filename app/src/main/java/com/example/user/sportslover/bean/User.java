@@ -1,8 +1,10 @@
 package com.example.user.sportslover.bean;
 
+import com.example.user.sportslover.db.NewFriend;
+
 import java.io.Serializable;
 
-import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
@@ -10,7 +12,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * 博客: http://blog.csdn.net/u014316462
  * 作用：用户表
  */
-public class User extends BmobObject implements Serializable{
+public class User extends BmobUser implements Serializable {
 
     //姓名
     String UserName;
@@ -27,13 +29,15 @@ public class User extends BmobObject implements Serializable{
 
     String Height;//身高
 
-    String Sex ;//性别
+    String Sex;//性别
 
-
+    public User() {
+    }
 
     public String getSex() {
         return Sex;
     }
+
     public void setSex(String sex) {
         Sex = sex;
     }
@@ -42,6 +46,7 @@ public class User extends BmobObject implements Serializable{
     public String getHeight() {
         return Height;
     }
+
     public void setHeight(String height) {
         Height = height;
     }
@@ -49,6 +54,7 @@ public class User extends BmobObject implements Serializable{
     public String getWeight() {
         return Weight;
     }
+
     public void setWeight(String number) {
         Weight = number;
     }
@@ -57,10 +63,10 @@ public class User extends BmobObject implements Serializable{
     public String getBirthday() {
         return Birthday;
     }
+
     public void setBirthday(String birthday) {
         Birthday = birthday;
     }
-
 
 
     public String getNumber() {
@@ -72,11 +78,11 @@ public class User extends BmobObject implements Serializable{
     }
 
     public String getName() {
-        return UserName;
+        return this.UserName;
     }
 
     public void setName(String name) {
-        UserName = name;
+        this.UserName = name;
     }
 
     public BmobFile getPhoto() {
@@ -88,14 +94,24 @@ public class User extends BmobObject implements Serializable{
     }
 
     public String getPassword() {
-        return Password;
+        return this.Password;
     }
 
-    public void setPassword(String password) {
-        Password = password;
+
+    private String avatar;
+
+    public User(NewFriend friend) {
+        setObjectId(friend.getUid());
+        setUsername(friend.getName());
+        setAvatar(friend.getAvatar());
     }
 
-    public User() {
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
 

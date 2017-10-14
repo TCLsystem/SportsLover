@@ -1,9 +1,7 @@
 package com.example.user.sportslover.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -12,20 +10,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.base.BaseActivity;
 import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.bean.UserEventBus;
-import com.example.user.sportslover.bean.UserLocal;
-import com.example.user.sportslover.model.SportModelInter;
+import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.model.UserModelImpl;
-import com.example.user.sportslover.util.ToastUtil;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.v3.Bmob;
-import de.greenrobot.event.EventBus;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends BaseActivity {
     @Bind(R.id.login_back)
     ImageView loginBack;
     @Bind(R.id.login_register)
@@ -44,7 +43,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-        Bmob.initialize(this,"23fe35801c6ae4f698315d637955bb39");
+        Bmob.initialize(this, "23fe35801c6ae4f698315d637955bb39");
         ButterKnife.bind(this);
         mUserModelImpl = new UserModelImpl();
     }
@@ -56,39 +55,25 @@ public class LoginActivity extends Activity {
                 finish();
                 break;
             case R.id.login_register:
-                Intent intent = new Intent(LoginActivity.this,PhoneValidateActivity.class);
+                Intent intent = new Intent(LoginActivity.this, PhoneValidateActivity.class);
                 startActivity(intent);
                 break;
             case R.id.login_btn:
-                if (!TextUtils.isEmpty(loginUname.getText().toString()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
-                    mUserModelImpl.getUser(loginUname.getText().toString(), loginPass.getText().toString(), new SportModelInter.BaseListener() {
-                        @Override
-                        public void getSuccess(Object o) {
-                            ToastUtil.showLong(LoginActivity.this, "登录成功");
-                            User user = (User) o;
-                            UserLocal userLocal = new UserLocal();
-                            userLocal.setName(user.getName());
-                            userLocal.setObjectId(user.getObjectId());
-                            userLocal.setNumber(user.getNumber());
-                            userLocal.setWeight(user.getWeight());
-                            userLocal.setBirthday(user.getBirthday());
-                            userLocal.setHeight(user.getHeight());
-                            userLocal.setSex(user.getSex());
-                            if (user.getPhoto() != null) {
-                                userLocal.setPhoto(user.getPhoto().getUrl());
-                            }
-                            mUserModelImpl.putUserLocal(userLocal);
-                            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-                            EventBus.getDefault().post(new UserEventBus(userLocal));
-                            finish();
-                        }
+                UserModel.getInstance().login(loginUname.getText().toString(), loginPass.getText
+                        ().toString(), new LogInListener() {
 
-                        @Override
-                        public void getFailure() {
-                            ToastUtil.showLong(LoginActivity.this, "登录失败");
+                    @Override
+                    public void done(Object o, BmobException e) {
+                        if (e == null) {
+                            User user = (User) o;
+                            BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user
+                                    .getObjectId(), user.getUsername(), user.getAvatar()));
+                            startActivity(MainActivity.class, null, true);
+                        } else {
+                            toast(e.getMessage() + "(" + e.getErrorCode() + ")");
                         }
-                    });
-                }
+                    }
+                });
                 break;
         }
     }

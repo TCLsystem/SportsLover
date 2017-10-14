@@ -925,4 +925,41 @@ public final class FileUtil {
         }
     }
 
+    /**
+     * 根据路径创建文件
+     *
+     * @param path 路径
+     * @return 文件
+     */
+    public static File newFile(String path) {
+        try {
+            File file = new File(path);
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            return file;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * 新建目录文件
+     *
+     * @param imageCacheDir 路径
+     * @return 目录文件
+     */
+    public static File newDir(String imageCacheDir) {
+        try {
+            File dir = new File(imageCacheDir);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+            return dir;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

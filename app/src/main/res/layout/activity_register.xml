@@ -56,12 +56,23 @@
             android:background="@drawable/mini_block_item_normal"
             android:drawableLeft="@drawable/my_register_check_name"
             android:drawablePadding="@dimen/normal_space"
-            android:hint="输入用户名"
+            android:hint="@string/register_name_default"
             android:inputType="text"
             android:singleLine="true" />
 
         <EditText
             android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/normal_input_height"
+            android:layout_marginLeft="@dimen/normal_space"
+            android:background="@drawable/mini_block_item_normal"
+            android:drawableLeft="@drawable/my_register_pass"
+            android:drawablePadding="@dimen/normal_space"
+            android:hint="@string/register_upass_default"
+            android:inputType="text"
+            android:singleLine="true" />
+        <EditText
+            android:id="@+id/register_password_again"
             android:layout_width="match_parent"
             android:layout_height="@dimen/normal_input_height"
             android:layout_marginLeft="@dimen/normal_space"

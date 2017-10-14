@@ -7,29 +7,30 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.base.BaseActivity;
+import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.model.UserModel;
 
-public class StartActivity extends AppCompatActivity {
+public class StartActivity extends BaseActivity {
     private static final int MY_PERMISSION_REQUEST_CODE = 100;
     Button btnStart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        boolean isAllGranted = checkPermissionAllGranted(
-                new String[]{
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                }
-        );
+        boolean isAllGranted = checkPermissionAllGranted(new String[]{Manifest.permission
+                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE});
 
         // 如果这3个权限全都拥有, 则直接执行
         if (isAllGranted) {
@@ -41,14 +42,9 @@ public class StartActivity extends AppCompatActivity {
          * 第 2 步: 请求权限
          */
         // 一次请求多个权限, 如果其他有权限是已经授予的将会自动忽略掉
-        ActivityCompat.requestPermissions(
-                this,
-                new String[]{
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE
-                },
-                MY_PERMISSION_REQUEST_CODE
-        );
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
+                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                MY_PERMISSION_REQUEST_CODE);
     }
 
 
@@ -57,7 +53,8 @@ public class StartActivity extends AppCompatActivity {
      */
     private boolean checkPermissionAllGranted(String[] permissions) {
         for (String permission : permissions) {
-            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager
+                    .PERMISSION_GRANTED) {
                 // 只要有一个权限没有被授予, 则直接返回 false
                 return false;
             }
@@ -70,7 +67,8 @@ public class StartActivity extends AppCompatActivity {
      * 第 3 步: 申请权限结果返回处理
      */
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == MY_PERMISSION_REQUEST_CODE) {
@@ -118,14 +116,23 @@ public class StartActivity extends AppCompatActivity {
         builder.show();
     }
 
-    public void btnClick(){
+    public void btnClick() {
         btnStart = (Button) findViewById(R.id.btn_start);
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(StartActivity.this, MainActivity.class);
-                startActivity(intent);
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        User user = UserModel.getInstance().getCurrentUser();
+                        if (user == null) {
+                            startActivity(LoginActivity.class, null, true);
+                        } else {
+                            startActivity(MainActivity.class, null, true);
+                        }
+                    }
+                }, 1000);
             }
         });
     }

@@ -5,24 +5,17 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="start">Start</string>
 
-
     <!-- 注册 -->
     <string name="register_title">register</string>
     <string name="register_phone_default">Please input</string>
     <string name="register_check_num_default">Please input code</string>
     <string name="register_get_check_num">Get check number</string>
-    <string name="register_upass_default">your old password</string>
+    <string name="register_name_default">your name</string>
+    <string name="register_upass_default">your password</string>
     <string name="register_info">I have readed and agree the 《User agreement》of SportsLover</string>
-
 
     <string name="new_friends">newFriends</string>
     <string name="close">close</string>
-
-
-
-
-
-
 
     <string name="help_dialog_text">
     <i>开发者：TCL云创科技有限公司2017届雏鹰</i>
@@ -100,10 +93,40 @@
     <string name="facebook">Facebook</string>
     <string name="tips2">When you bind a third party account,you can login directly</string>
     <string name="logout">Logout</string>
-    
-    
+
+
     <!--添加手机号-->
     <string name="phone_number">Phone Number</string>
     <string name="verification">Verification Code</string>
     <string name="password">Password</string>
+
+    <string name="main_tab_recent">会话</string>
+    <string name="main_tab_contact">Contact</string>
+    <string name="mian_tab_set">Set</string>
+
+    <string name="add_avator">Avator</string>
+    <string name="add_nick">Nick</string>
+    <string name="add_name">Name</string>
+    <string name="agree">Agree</string>
+    <string name="new_friend">New Friend</string>
+
+    <string name="chat">Stranger Chat</string>
+    <string name="add_friend">Add Friend</string>
+
+    <string name="set_notify">Message Notify</string>
+    <string name="set_myinfo">Personal Information</string>
+    <string name="set_blacklist">Black List</string>
+    <string name="set_voice">Voice</string>
+    <string name="set_vibrate">Vibrate</string>
+
+    <string name="longclick_speak">Speak</string>
+    <string name="picture">Picture</string>
+    <string name="camera">Camera</string>
+    <string name="location">Location</string>
+    <string name="voice_up_tips">Cancel Voice Touch Up</string>
+    <string name="voice_cancel_tips">Cancel Voice Touch Release</string>
+    <string name="voice_seconds_tips">Voice Second</string>
+    <string name="voice_short_tips">Voice UnTime </string>
+
+    <string name="title_activity_user_info">UserInfoActivity</string>
 </resources>

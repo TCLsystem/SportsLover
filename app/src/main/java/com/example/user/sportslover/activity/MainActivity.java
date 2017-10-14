@@ -4,19 +4,38 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.user.sportslover.fragment.HomeFragment;
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.fragment.ContactsFragment;
+import com.example.user.sportslover.base.BaseActivity;
+import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.db.NewFriendManager;
+import com.example.user.sportslover.event.RefreshEvent;
+import com.example.user.sportslover.fragment.ContactFragment;
+import com.example.user.sportslover.fragment.HomeFragment;
 import com.example.user.sportslover.fragment.MyPageFragment;
 import com.example.user.sportslover.fragment.SportsEventFragment;
+import com.example.user.sportslover.util.IMMLeaks;
+import com.orhanobut.logger.Logger;
 
-public class MainActivity extends AppCompatActivity implements MainView,View.OnClickListener {
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import butterknife.Bind;
+import cn.bmob.newim.BmobIM;
+import cn.bmob.newim.core.ConnectionStatus;
+import cn.bmob.newim.event.MessageEvent;
+import cn.bmob.newim.event.OfflineMessageEvent;
+import cn.bmob.newim.listener.ConnectListener;
+import cn.bmob.newim.listener.ConnectStatusChangeListener;
+import cn.bmob.newim.notification.BmobNotificationManager;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+
+public class MainActivity extends BaseActivity implements MainView,View.OnClickListener {
 
     private LinearLayout ll_home;
     private LinearLayout ll_contacts;
@@ -38,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
     private Fragment sportsEventFragment;
     private Fragment myPageFragment;
 
+    @Bind(R.id.iv_contact_tips)
+    ImageView iv_contact_tips;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +67,29 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         initView();
         initEvent();
         initFragment(0);
+
+        User user = BmobUser.getCurrentUser(this,User.class);
+        BmobIM.connect(user.getObjectId(), new ConnectListener() {
+            @Override
+            public void done(String uid, BmobException e) {
+                if (e == null) {
+                    Logger.i("connect success");
+                    //服务器连接成功就发送一个更新事件，同步更新会话及主页的小红点
+                    EventBus.getDefault().post(new RefreshEvent());
+                } else {
+                    Logger.e(e.getErrorCode() + "/" + e.getMessage());
+                }
+            }
+        });
+        //监听连接状态，也可通过BmobIM.getInstance().getCurrentStatus()来获取当前的长连接状态
+        BmobIM.getInstance().setOnConnectStatusChangeListener(new ConnectStatusChangeListener() {
+            @Override
+            public void onChange(ConnectionStatus status) {
+                toast("" + status.getMsg());
+            }
+        });
+        //解决leancanary提示InputMethodManager内存泄露的问题
+        IMMLeaks.fixFocusedViewLeak(getApplication());
     }
 
     private void initEvent() {
@@ -54,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         ll_myPage.setOnClickListener(this);
     }
 
-    private void initView() {
+    public void initView() {
 
         this.ll_home = (LinearLayout) findViewById(R.id.ll_home);
         this.ll_contacts = (LinearLayout) findViewById(R.id.ll_contacts);
@@ -111,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
                 break;
             case 1:
                 if (contactsFragment == null) {
-                    contactsFragment = new ContactsFragment();
+                    contactsFragment = new ContactFragment();
                     transaction.add(R.id.fl_content, contactsFragment);
                 } else {
                     transaction.show(contactsFragment);
@@ -197,6 +242,57 @@ public class MainActivity extends AppCompatActivity implements MainView,View.OnC
         iv_myPage.setImageResource(R.drawable.mirror_up);
         tv_myPage.setTextColor(0xff6ee4bc);
         initFragment(3);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //显示小红点
+        checkRedPoint();
+        //进入应用后，通知栏应取消
+        BmobNotificationManager.getInstance(this).cancelNotification();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //清理导致内存泄露的资源
+        BmobIM.getInstance().clear();
+    }
+
+    /**注册消息接收事件
+     * @param event
+     */
+    @Subscribe
+    public void onEventMainThread(MessageEvent event){
+        checkRedPoint();
+    }
+
+    /**注册离线消息接收事件
+     * @param event
+     */
+    @Subscribe
+    public void onEventMainThread(OfflineMessageEvent event){
+        checkRedPoint();
+    }
+
+    /**注册自定义消息接收事件
+     * @param event
+     */
+    @Subscribe
+    public void onEventMainThread(RefreshEvent event){
+        log("---主页接收到自定义消息---");
+        checkRedPoint();
+    }
+
+    private void checkRedPoint(){
+        //是否有好友添加的请求
+        if(NewFriendManager.getInstance(this).hasNewFriendInvitation()){
+            iv_contact_tips.setVisibility(View.VISIBLE);
+        }else{
+            iv_contact_tips.setVisibility(View.GONE);
+        }
     }
 
 }
