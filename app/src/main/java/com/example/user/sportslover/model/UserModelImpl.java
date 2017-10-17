@@ -29,14 +29,14 @@ public class UserModelImpl implements UserModelInter {
     /**
      * 用户登录验证
      *
-     * @param phone
+     * @param name
      * @param passoword
      * @param listener
      */
     @Override
-    public void getUser(String phone, String passoword, final SportModelInter.BaseListener listener) {
+    public void getUser(String name, String passoword, final SportModelInter.BaseListener listener) {
         BmobQuery<User> query = new BmobQuery<User>();
-        query.addWhereEqualTo("Number", phone);
+        query.addWhereEqualTo("UserName", name);
         query.addWhereEqualTo("Password", passoword);
         query.setLimit(1);
         query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
@@ -52,7 +52,28 @@ public class UserModelImpl implements UserModelInter {
 
             @Override
             public void onError(int code, String msg) {
+               ToastUtil.showShort(BaseApplication.getmContext(),msg);
+            }
+        });
+    }
+    public void getUserbyPhone(String number,final SportModelInter.BaseListener listener) {
+        BmobQuery<User> query = new BmobQuery<User>();
+        query.addWhereEqualTo("Number", number);
+        query.setLimit(1);
+        query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
+            @Override
+            public void onSuccess(List<User> object) {
+                if (object != null && object.size() != 0) {
+                    SPUtils.put(BaseApplication.getmContext(), LOGINUSER, object.get(0));
+                    listener.getSuccess(object.get(0));
+                } else {
+                    listener.getFailure();
+                }
+            }
 
+            @Override
+            public void onError(int code, String msg) {
+                ToastUtil.showShort(BaseApplication.getmContext(),msg);
             }
         });
     }
@@ -213,6 +234,20 @@ public class UserModelImpl implements UserModelInter {
             }
         });
     }
+
+    public static User localUsertoUser(UserLocal userLocal)
+    {
+        User user = new User();
+        user.setNumber(userLocal.getNumber());
+        user.setWeight(userLocal.getWeight());
+        user.setSex(userLocal.getSex());
+        user.setBirthday(userLocal.getBirthday());
+        user.setUserName(userLocal.getName());
+        user.setObjectId(userLocal.getObjectId());
+        user.setPassword(userLocal.getPassword());
+        return user;
+    }
+
 
 
 }

@@ -49,12 +49,13 @@ public class DynamicItem extends BmobObject implements Serializable {
 
     public String Area;
 
-    public List<String> ParticipantName;
+    public List<User> ParticipantName;
 
-    public List<String> getParticipantName() {
+
+    public List<User> getParticipantName() {
         return ParticipantName;
     }
-    public void setParticipantName(List<String> participantName) {
+    public void setParticipantName(List<User> participantName) {
         ParticipantName = participantName;
     }
 

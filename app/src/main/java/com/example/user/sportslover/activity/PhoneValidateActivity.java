@@ -10,11 +10,12 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.util.ToastUtil;
 
 import java.util.HashMap;
 
@@ -25,21 +26,26 @@ import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
 public class PhoneValidateActivity extends AppCompatActivity {
-    @Bind(R.id.register_back)
+    @Bind(R.id.iv_register_back)
     ImageView registerBack;
     @Bind(R.id.register_get_check_pass)
     Button registerGetCheckPass;
     @Bind(R.id.register_checknum)
     EditText register_checknum;
-    @Bind(R.id.register_layout)
-    LinearLayout registerLayout;
-    @Bind(R.id.register_btn)
-    Button registerBtn;
-    EventHandler eh;
-    @Bind(R.id.register_phone)
-    EditText registerPhone;
 
+
+
+    @Bind(R.id.phone_tips)
+    TextView phone_tips;
+    EventHandler eh;
+    @Bind(R.id.tv_password)
+    EditText Password;
+    @Bind(R.id.tv_check_password)
+    EditText check_password;
     private UserModelImpl mUserModelImpl = new UserModelImpl();
+    String Phone ;
+
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,30 +54,43 @@ public class PhoneValidateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_phone_validate);
         SMSSDK.initSDK(this, "2128cfa210e50", "28520707ebc842ff5b741911627bf55a");
         ButterKnife.bind(this);
-
+        Intent intent = getIntent();
+        Phone = intent.getStringExtra("phoneNumber");
+        phone_tips.setText("The verification code will be send to +86 " + Phone);
         //注册回调
         SMSSDK.registerEventHandler(eventHandler);
     }
 
-    @OnClick({R.id.register_back, R.id.register_get_check_pass, R.id.register_btn})
+    @OnClick({R.id.iv_register_back, R.id.register_get_check_pass, R.id.btn_verify_phone})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.register_back:
+            case R.id.iv_register_back:
                 finish();
                 break;
             case R.id.register_get_check_pass:
-                String phone = registerPhone.getText().toString().trim();
-                if (TextUtils.isEmpty(phone)) {
-                    Toast.makeText(PhoneValidateActivity.this, "手机号码不能为空", Toast.LENGTH_SHORT).show();
-                } else {
-                    SMSSDK.getVerificationCode("86", phone);
-                    Toast.makeText(PhoneValidateActivity.this, "手机号是：" + phone, Toast.LENGTH_SHORT).show();
-                }
+                SMSSDK.getVerificationCode("86", Phone);
+                phone_tips.setText("The verification code have been sent to +86 " + Phone);
                 break;
 
-            case R.id.register_btn:
-                if (!TextUtils.isEmpty(register_checknum.getText().toString()) && !TextUtils.isEmpty(registerPhone.getText().toString())) {
-                    SMSSDK.submitVerificationCode("86", registerPhone.getText().toString(), register_checknum.getText().toString());
+            case R.id.btn_verify_phone:
+
+                String password = Password.getText().toString();
+                String passwordAgain = check_password.getText().toString();
+                //if (!name.equals("")&& !password.equals("")&&!mPhone.equals("")) {
+                if (!password.equals("") && !passwordAgain.equals("")) {
+                    if (!passwordAgain.equals(password)) {
+                        ToastUtil.showLong(PhoneValidateActivity.this, "密码不一致");
+                    } else {
+                        if (!TextUtils.isEmpty(register_checknum.getText().toString())) {
+                            SMSSDK.submitVerificationCode("86", Phone, register_checknum.getText().toString());
+                        }
+                        else{
+                            ToastUtil.showShort(PhoneValidateActivity.this,"Please input verification code");
+                        }
+                    }
+                }
+                else{
+                    ToastUtil.showShort(PhoneValidateActivity.this,"Please input password");
                 }
                 break;
         }
@@ -97,8 +116,13 @@ public class PhoneValidateActivity extends AppCompatActivity {
                     String country = (String) phoneMap.get("country");
                     String phone = (String) phoneMap.get("phone");
                     Log.d("TAAAAAAA", "提交验证码成功--country=" + country + "--phone" + phone);
+
+                    user.setNumber(Phone);
+                    user.setPassword(Password.getText().toString());
                     Intent intent = new Intent(PhoneValidateActivity.this, RegisterActivity.class);
-                    intent.putExtra("phone",phone);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("User", user);
+                    intent.putExtras(bundle);
                     startActivity(intent);
                     finish();
                 } else if (event == SMSSDK.EVENT_GET_VERIFICATION_CODE) {

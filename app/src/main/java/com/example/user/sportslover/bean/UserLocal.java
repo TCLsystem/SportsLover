@@ -6,6 +6,7 @@ import com.activeandroid.annotation.Table;
 
 import java.io.Serializable;
 
+
 /**
  * Created by user on 17-9-16.
  */
@@ -39,6 +40,10 @@ public class UserLocal extends Model implements Serializable {
 
      @Column(name = "Sex")
     String Sex ;//性别
+
+    String avatar;
+
+
 
 
 
@@ -112,6 +117,15 @@ public class UserLocal extends Model implements Serializable {
 
     public void setPassword(String password) {
         Password = password;
+    }
+
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar1) {
+        avatar = avatar1;
     }
 
 }

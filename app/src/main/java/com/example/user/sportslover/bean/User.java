@@ -4,7 +4,7 @@ import com.example.user.sportslover.db.NewFriend;
 
 import java.io.Serializable;
 
-import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.BmobObject;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
@@ -12,8 +12,10 @@ import cn.bmob.v3.datatype.BmobFile;
  * 博客: http://blog.csdn.net/u014316462
  * 作用：用户表
  */
-public class User extends BmobUser implements Serializable {
+public class User extends BmobObject implements Serializable {
 
+
+   // String objectId;
     //姓名
     String UserName;
     //头像
@@ -33,6 +35,7 @@ public class User extends BmobUser implements Serializable {
 
     public User() {
     }
+
 
     public String getSex() {
         return Sex;
@@ -77,12 +80,12 @@ public class User extends BmobUser implements Serializable {
         Number = number;
     }
 
-    public String getName() {
-        return this.UserName;
+    public String getUserName() {
+        return UserName;
     }
 
-    public void setName(String name) {
-        this.UserName = name;
+    public void setUserName(String name) {
+        UserName = name;
     }
 
     public BmobFile getPhoto() {
@@ -94,15 +97,15 @@ public class User extends BmobUser implements Serializable {
     }
 
     public String getPassword() {
-        return this.Password;
+        return Password;
     }
-
+    public void setPassword(String password){Password = password;}
 
     private String avatar;
 
     public User(NewFriend friend) {
         setObjectId(friend.getUid());
-        setUsername(friend.getName());
+        setUserName(friend.getName());
         setAvatar(friend.getAvatar());
     }
 

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/normal_bg_color">
+    android:background="@color/white"
+    android:weightSum="1">
 
     <LinearLayout
         android:id="@+id/login_layout"
@@ -13,82 +14,116 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
+        <ImageView
+            android:id="@+id/login_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="@null"
+            android:padding="@dimen/normal_space"
+            android:src="@drawable/login_back" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/login_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="center_vertical"
-                android:contentDescription="@null"
-                android:padding="@dimen/normal_space"
-                android:src="@drawable/ic_back_u" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/normal_space"
-                android:text="登录"
-                android:textSize="18dp" />
-
-            <TextView
-                android:id="@+id/login_register"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:padding="@dimen/normal_space"
-                android:text="注册"
-                android:textColor="@color/normal_orange_color" />
-        </LinearLayout>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:text="Login by"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginBottom="@dimen/normal_space"
-            android:background="@color/normal_orange_color" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+          <TextView
+              android:id="@+id/select_password"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Password"
+              android:textSize="18dp" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="1px"
+                android:layout_height="18dp"
+                android:background="@color/black"/>
+            <TextView
+                android:id="@+id/select_number"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#d1cece"
+                android:text="Verification Code"
+                android:textSize="18dp" />
+
+        </LinearLayout>
+
+
+
+        <TextView
+         android:id="@+id/select_login_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+         android:layout_marginLeft="40dp"
+         android:layout_marginTop="30dp"
+        android:text="User Name: "
+        android:textSize="18dp" />
+
 
         <EditText
             android:id="@+id/login_uname"
             android:layout_width="match_parent"
             android:layout_height="@dimen/normal_input_height"
-            android:layout_marginLeft="@dimen/normal_space"
-            android:background="@drawable/mini_block_item_normal"
-            android:drawableLeft="@drawable/login_user"
+            android:layout_marginLeft="40dp"
             android:drawablePadding="@dimen/normal_space"
-            android:hint="手机号"
             android:inputType="text"
             android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/login_pass"
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="40dp"
+        android:padding="@dimen/normal_space"
+        android:text="Password: "
+        android:textSize="18dp" />
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/normal_input_height"
-            android:layout_marginLeft="@dimen/normal_space"
-            android:background="@drawable/mini_block_item_normal"
-            android:drawableLeft="@drawable/login_password"
-            android:drawablePadding="@dimen/normal_space"
-            android:hint="密码"
-            android:inputType="text"
-            android:singleLine="true" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/login_pass"
+                android:layout_width="200dp"
+                android:layout_height="@dimen/normal_input_height"
+                android:layout_marginLeft="40dp"
+                android:drawablePadding="@dimen/normal_space"
+                android:inputType="text"
+                android:singleLine="true" />
+            <Button
+                android:id="@+id/btn_login_getverify_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="get code"
+                android:background="@drawable/btn_get_verification"/>
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="150dp"
         android:id="@+id/login_btn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/normal_space"
-        android:background="@drawable/my_btn_bg_color"
-        android:padding="@dimen/little_space"
-        android:text="登录"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_login"
+        android:text="Login"
         android:textColor="@color/white"
-        android:textSize="@dimen/text_size_defalut" />
+        android:textSize="@dimen/text_size_defalut"
+        android:layout_weight="0.18" />
 </LinearLayout>
 

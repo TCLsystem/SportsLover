@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.user.sportslover">
+    package="com.example.user.sportslover">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- BmobSDK权限 -->
     <!-- 允许联网 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 获取GSM（2g）、WCDMA（联通3g）等网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 获取wifi网络状态的信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- 获取sd卡写的权限，用于文件上传和下载 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <!-- 推送权限 -->
     <!-- 允许读取手机状态 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 允许接收屏幕解锁广播 -->
-    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT"/>
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <!-- 允许接收开机广播 -->
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!-- 其他权限 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
     <application
         android:name=".application.BaseApplication"
@@ -37,115 +37,117 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="e3r1MDaNfYdR11hKwSSXFtCI8gsyGjMz"/>
+            android:value="e3r1MDaNfYdR11hKwSSXFtCI8gsyGjMz" />
 
-        <activity android:name=".activity.StartActivity">
+        <activity android:name=".activity.SplashAnimActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.WeatherActivity"/>
-        <activity android:name=".activity.RegisterActivity"/>
-        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.WeatherActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.LoginActivity" />
 
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote"/>
+            android:process=":remote" />
         <service
             android:name="com.baidu.trace.LBSTraceService"
             android:enabled="true"
             android:exported="true"
-            android:process=":remote"/>
+            android:process=":remote" />
 
         <meta-data
             android:name="AA_DB_NAME"
-            android:value="SportsLover.db"/>
+            android:value="SportsLover.db" />
         <meta-data
             android:name="AA_DB_VERSION"
-            android:value="6"/>
+            android:value="6" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.example.user.sportslover.bean.UserLocal"/>
+            android:value="com.example.user.sportslover.bean.UserLocal" />
 
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
-        <activity android:name=".activity.RouteActivity"/>
-        <activity android:name=".activity.MyDynamicActivity"/>
-        <activity android:name=".activity.MotionRecordActivity"/>
-        <activity android:name=".activity.SendDynamicActivity"/>
-        <activity android:name=".activity.DynamicDetailActivity"/>
-        <activity android:name=".activity.NewFriendActivity"/>
-        <activity android:name=".activity.SettingActivity"/>
-        <activity android:name=".activity.BeginSportActivity"/>
-        <activity android:name=".activity.MotionGoalActivity"/>
-        <activity android:name=".activity.PhoneValidateActivity"/>
-        <activity android:name=".activity.MakeGoal"/>
-        <activity android:name=".activity.PersonalDataActivity"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activity.RouteActivity" />
+        <activity android:name=".activity.MyDynamicActivity" />
+        <activity android:name=".activity.MotionRecordActivity" />
+        <activity android:name=".activity.SendDynamicActivity" />
+        <activity android:name=".activity.DynamicDetailActivity" />
+        <activity android:name=".activity.NewFriendActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.BeginSportActivity" />
+        <activity android:name=".activity.MotionGoalActivity" />
+        <activity android:name=".activity.PhoneValidateActivity" />
+        <activity android:name=".activity.MakeGoal" />
+        <activity android:name=".activity.PersonalDataActivity" />
 
         <service
             android:name=".service.SportTrackService"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
-        <activity android:name=".activity.SetSportTargetActivity"/>
-        <activity android:name=".activity.FinishSportActivity"/>
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.SetSportTargetActivity" />
+        <activity android:name=".activity.FinishSportActivity" />
+        <activity android:name=".activity.MainActivity" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".activity.SendDynamicActivity2"
-            android:configChanges="orientation"/>
-        <activity android:name=".activity.PrivacyActivity"/>
-        <activity android:name=".activity.AccountManagement"/>
-        <activity android:name=".activity.SportsSettings"/>
-        <activity android:name=".activity.SportSettingActivity"/>
-        <activity android:name=".activity.SportMapSettingsActivity"/>
-        <activity android:name=".activity.SportVibrateSettingsActivity"/>
-        <activity android:name=".activity.SportHistoryActivity"/>
-        <activity android:name=".activity.SportRouteSettingActivity"/>
-        <activity android:name=".activity.SportRouteMyRouteActitvity"/>
-        <activity android:name=".activity.SportRouteRecommendedActivity"/>
-
-        <activity android:name=".activity.ConversationActivity"/>
-        <activity android:name=".activity.SearchUserActivity"/>
-        <activity android:name=".activity.UserInfoActivity"/>
+            android:configChanges="orientation" />
+        <activity android:name=".activity.PrivacyActivity" />
+        <activity android:name=".activity.AccountManagement" />
+        <activity android:name=".activity.SportsSettings" />
+        <activity android:name=".activity.SportSettingActivity" />
+        <activity android:name=".activity.SportMapSettingsActivity" />
+        <activity android:name=".activity.SportVibrateSettingsActivity" />
+        <activity android:name=".activity.SportHistoryActivity" />
+        <activity android:name=".activity.SportRouteSettingActivity" />
+        <activity android:name=".activity.SportRouteMyRouteActitvity" />
+        <activity android:name=".activity.SportRouteRecommendedActivity" />
+        <activity android:name=".activity.ConversationActivity" />
+        <activity android:name=".activity.SearchUserActivity" />
+        <activity android:name=".activity.UserInfoActivity" />
         <activity
             android:name=".activity.ChatActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
 
         <!-- bmobim start -->
         <receiver android:name="cn.bmob.newim.core.ConnectChangeReceiver">
             <intent-filter>
-                <action android:name="cn.bmob.action.RECONNECT"/>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.USER_PRESENT"/>
+                <action android:name="cn.bmob.action.RECONNECT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
             </intent-filter>
         </receiver>
 
         <service
             android:name="cn.bmob.newim.core.service.BmobIMService"
-            android:process=":bmobcore"/>
+            android:process=":bmobcore" />
         <service
             android:name="cn.bmob.newim.core.service.NotifyService"
-            android:process=":bmobcore"/>
-        <service android:name="cn.bmob.newim.core.service.ReConnectService"/>
-        <service android:name="cn.bmob.newim.core.service.HeartBeatService"/>
+            android:process=":bmobcore" />
+        <service android:name="cn.bmob.newim.core.service.ReConnectService" />
+        <service android:name="cn.bmob.newim.core.service.HeartBeatService" />
 
         <!-- 设置bmob appkey -->
         <meta-data
             android:name="Bmob_APP_KEY"
-            android:value="23fe35801c6ae4f698315d637955bb39"/>
+            android:value="23fe35801c6ae4f698315d637955bb39" />
         <!-- bmobim end -->
+        <activity android:name=".activity.StartActivity" />
+        <activity android:name=".login.GetPhoneNumber" />
+        <activity android:name=".activity.SplashActivity"></activity>
     </application>
 
 </manifest>

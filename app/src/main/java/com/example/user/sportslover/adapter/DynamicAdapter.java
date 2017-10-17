@@ -110,7 +110,7 @@ public class DynamicAdapter extends BaseAdapter {
             public void getSuccess(Object o) {
                 User user = (User) o;
                 imageLoader.displayImage(user.getPhoto().getUrl(), viewHolder.write_photo, options);
-                viewHolder.write_name.setText(user.getName());
+                viewHolder.write_name.setText(user.getUserName());
             }
             @Override
             public void getFailure() {
@@ -125,8 +125,8 @@ public class DynamicAdapter extends BaseAdapter {
         holder.show_startTime.setText(getTime(dynamicItem.getStartTime()));
      //   holder.show_endTime.setText(getTime(dynamicItem.getEndTime()));
     //    holder.show_mile.setText(dynamicItem.getMeil());
-        holder.show_location.setText(dynamicItem.getArea());
-  //        holder.show_participantCount.setText(dynamicItem.getParticipantName().size());
+         holder.show_location.setText(dynamicItem.getArea());
+         holder.show_participantCount.setText(Integer.toString(dynamicItem.getParticipantName().size()));;
   //      String name = dynamicItem.getUserName();
   //      int nameCount = dynamicItem.getParticipantName().size();
   //      for(int i= 0;i<nameCount;i++) {

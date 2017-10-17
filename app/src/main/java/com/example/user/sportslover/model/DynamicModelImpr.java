@@ -6,6 +6,7 @@ import com.activeandroid.util.Log;
 import com.example.user.sportslover.application.BaseApplication;
 import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.util.ToastUtil;
 
 import java.util.List;
 
@@ -159,6 +160,24 @@ public class DynamicModelImpr implements DynamicModelInter {
                 }
             });
         }
+
+    }
+
+
+    public void  updateDynamicItem(final User user,final DynamicItem dynamicitem){
+        List<User> list =dynamicitem.getParticipantName();
+        list.add(user);
+        dynamicitem.save(BaseApplication.getmContext(), new SaveListener() {
+            @Override
+            public void onSuccess() {
+                ToastUtil.showShort(BaseApplication.getmContext(),"Success");
+            }
+
+            @Override
+            public void onFailure(int i, String s) {
+
+            }
+        });
 
     }
 

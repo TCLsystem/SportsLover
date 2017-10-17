@@ -38,6 +38,7 @@ public class UserModel extends BaseModel {
 
     private UserModel() {
     }
+    private UserModelImpl mUserModel;
 
     /**
      * 登录
@@ -56,17 +57,17 @@ public class UserModel extends BaseModel {
             return;
         }
         final User user = new User();
-        user.setUsername(username);
+        user.setUserName(username);
         user.setPassword(password);
-        user.login(getContext(), new SaveListener() {
+        mUserModel.getUser(username, password, new SportModelInter.BaseListener() {
             @Override
-            public void onSuccess() {
-                listener.done(getCurrentUser(), null);
+            public void getSuccess(Object o) {
+
             }
 
             @Override
-            public void onFailure(int i, String s) {
-                listener.done(user, new BmobException(i, s));
+            public void getFailure() {
+
             }
         });
     }
@@ -107,9 +108,9 @@ public class UserModel extends BaseModel {
             return;
         }
         final User user = new User();
-        user.setUsername(username);
+        user.setUserName(username);
         user.setPassword(password);
-        user.signUp(getContext(), new SaveListener() {
+        user.save(getContext(), new SaveListener() {
             @Override
             public void onSuccess() {
                 listener.done(null, null);
@@ -203,7 +204,7 @@ public class UserModel extends BaseModel {
                 @Override
                 public void done(User s, BmobException e) {
                     if (e == null) {
-                        String name = s.getUsername();
+                        String name = s.getUserName();
                         String avatar = s.getAvatar();
                         Logger.i("query success：" + name + "," + avatar);
                         conversation.setConversationIcon(avatar);
@@ -243,9 +244,9 @@ public class UserModel extends BaseModel {
      *
      * @param listener
      */
-    public void queryFriends(final FindListener<Friend> listener) {
+    public void queryFriends(User user,final FindListener<Friend> listener) {
         BmobQuery<Friend> query = new BmobQuery<>();
-        User user = BmobUser.getCurrentUser(getContext(), User.class);
+      //  User user = BmobUser.getCurrentUser(getContext(), User.class);
         query.addWhereEqualTo("user", user);
         query.include("friendUser");
         query.order("-updatedAt");

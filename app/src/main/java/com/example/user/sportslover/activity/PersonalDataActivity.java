@@ -203,7 +203,7 @@ public class PersonalDataActivity extends AppCompatActivity {
 //                        change_name.setText(Name);
 //                        if(!TextUtils.isEmpty(change_name.getText().toString())) {
 //                            name.setText(change_name.getText());
-                            user.setName(name.getText().toString());
+                            user.setUserName(name.getText().toString());
                             mUserLocal.setName(name.getText().toString());
 //                        }
                     }
@@ -375,11 +375,11 @@ public class PersonalDataActivity extends AppCompatActivity {
                             mLoadingFinishDialog.dismiss();
                         }
                     }, 500);
-                    ToastUtil.showLong(PersonalDataActivity.this, "头像修改成功");
+                    ToastUtil.showLong(PersonalDataActivity.this, "photo update successful");
                     User user = (User) o;
                     imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
                     UserLocal userLocal = new UserLocal();
-                    userLocal.setName(user.getName());
+                    userLocal.setName(user.getUserName());
                     userLocal.setObjectId(user.getObjectId());
                     userLocal.setNumber(user.getNumber());
                     if (user.getPhoto() != null) {

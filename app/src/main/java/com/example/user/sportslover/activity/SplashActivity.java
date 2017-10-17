@@ -7,34 +7,53 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.base.BaseActivity;
-import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.model.UserModel;
+import com.example.user.sportslover.adapter.VPAdapter;
+import com.example.user.sportslover.adapter.ViewPagerIndicator;
+import com.example.user.sportslover.login.GetPhoneNumber;
 
-public class StartActivity extends BaseActivity {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+public class SplashActivity extends AppCompatActivity {
+
+    @Bind(R.id.start_btn_login)
+    Button login;
+    @Bind(R.id.start_btn_join)
+    Button Join;
+
+    private ViewPager vp;
+    private VPAdapter vpAdapter;
+    private LinearLayout ll;
     private static final int MY_PERMISSION_REQUEST_CODE = 100;
-    Button btnStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_splash2);
+
         boolean isAllGranted = checkPermissionAllGranted(new String[]{Manifest.permission
                 .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE});
 
         // 如果这3个权限全都拥有, 则直接执行
         if (isAllGranted) {
-            btnClick();
+            ButterKnife.bind(this);
+            vp = (ViewPager) findViewById(R.id.vp);
+            vpAdapter = new VPAdapter(this);
+            vp.setAdapter(vpAdapter);
+            ll = (LinearLayout) findViewById(R.id.ll);
+            vp.setOnPageChangeListener(new ViewPagerIndicator(this, vp, ll, 3));
             return;
         }
 
@@ -43,8 +62,9 @@ public class StartActivity extends BaseActivity {
          */
         // 一次请求多个权限, 如果其他有权限是已经授予的将会自动忽略掉
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
-                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 MY_PERMISSION_REQUEST_CODE);
+
     }
 
 
@@ -84,7 +104,13 @@ public class StartActivity extends BaseActivity {
 
             if (isAllGranted) {
                 // 如果所有的权限都授予了, 则执行
-                btnClick();
+                ButterKnife.bind(this);
+                vp = (ViewPager) findViewById(R.id.vp);
+                vpAdapter = new VPAdapter(this);
+                vp.setAdapter(vpAdapter);
+                ll = (LinearLayout) findViewById(R.id.ll);
+                vp.setOnPageChangeListener(new ViewPagerIndicator(this, vp, ll, 3));
+
             } else {
                 // 弹出对话框告诉用户需要权限的原因, 并引导用户去应用权限管理中手动打开权限按钮
                 openAppDetails();
@@ -116,25 +142,18 @@ public class StartActivity extends BaseActivity {
         builder.show();
     }
 
-    public void btnClick() {
-        btnStart = (Button) findViewById(R.id.btn_start);
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        User user = UserModel.getInstance().getCurrentUser();
-                        if (user == null) {
-                            startActivity(LoginActivity.class, null, true);
-                        } else {
-                            startActivity(MainActivity.class, null, true);
-                        }
-                    }
-                }, 1000);
-            }
-        });
+
+    @OnClick({R.id.start_btn_login,R.id.start_btn_join})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.start_btn_login:
+            startActivity(new Intent().setClass(SplashActivity.this,LoginActivity.class));
+                break;
+            case R.id.start_btn_join:
+                startActivity(new Intent().setClass(SplashActivity.this,GetPhoneNumber.class));
+              //  startActivity(new Intent().setClass(SplashActivity.this,RegisterActivity.class));
+                break;
+        }
     }
 
 }

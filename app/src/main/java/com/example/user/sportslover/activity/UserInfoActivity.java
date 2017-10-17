@@ -62,9 +62,9 @@ public class UserInfoActivity extends ParentWithNaviActivity {
             btn_chat.setVisibility(View.VISIBLE);
         }
         //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
-        info = new BmobIMUserInfo(user.getObjectId(),user.getUsername(),user.getAvatar());
+        info = new BmobIMUserInfo(user.getObjectId(),user.getUserName(),user.getAvatar());
         ImageLoaderFactory.getLoader().loadAvator(iv_avator,user.getAvatar(), R.mipmap.head);
-        tv_name.setText(user.getUsername());
+        tv_name.setText(user.getUserName());
     }
 
     @OnClick(R.id.btn_add_friend)
@@ -85,7 +85,7 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         User currentUser = BmobUser.getCurrentUser(this,User.class);
         msg.setContent("很高兴认识你，可以加个好友吗?");//给对方的一个留言信息
         Map<String,Object> map =new HashMap<>();
-        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
+        map.put("name", currentUser.getUserName());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
         map.put("avatar",currentUser.getAvatar());//发送者的头像
         map.put("uid",currentUser.getObjectId());//发送者的uid
         msg.setExtraMap(map);

@@ -109,7 +109,7 @@ public class NewFriendAdapter extends BaseRecyclerAdapter<NewFriend> {
         User currentUser = BmobUser.getCurrentUser(context, User.class);
         msg.setContent("我通过了你的好友验证请求，我们可以开始聊天了!");//---这句话是直接存储到对方的消息表中的
         Map<String,Object> map =new HashMap<>();
-        map.put("msg",currentUser.getUsername()+"同意添加你为好友");//显示在通知栏上面的内容
+        map.put("msg",currentUser.getUserName()+"同意添加你为好友");//显示在通知栏上面的内容
         map.put("uid",add.getUid());//发送者的uid-方便请求添加的发送方找到该条添加好友的请求
         map.put("time", add.getTime());//添加好友的请求时间
         msg.setExtraMap(map);

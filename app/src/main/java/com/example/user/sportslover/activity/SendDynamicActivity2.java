@@ -18,8 +18,11 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.adapter.DynamicPhotoChooseAdapter;
 import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.DynamicPhotoItem;
+import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.model.DynamicModelImpr;
 import com.example.user.sportslover.model.SportModelInter;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.widget.DialogBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -56,12 +59,19 @@ public class SendDynamicActivity2  extends AppCompatActivity {
     private Dialog mLoadingFinishDialog;
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private DisplayImageOptions options;
+    private List<User> list = new ArrayList<>();
+    UserLocal mUserLocal;
+    UserModelImpl mUserModelImpl = new UserModelImpl();
+    User userlocal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.publish_second);
+        mUserLocal = mUserModelImpl.getUserLocal();
+        userlocal = UserModelImpl.localUsertoUser(mUserLocal);
+
         ButterKnife.bind(this);
         dynamicItem = (DynamicItem) getIntent().getSerializableExtra("DynamicItem");
      //   mUser = dynamicItem.getWriter();
@@ -114,23 +124,15 @@ public class SendDynamicActivity2  extends AppCompatActivity {
                 break;
             case R.id.send:
                 mLoadingDialog.show();
-           //     DynamicItem dynamicItem2 = new DynamicItem();
-            //    dynamicItem2.setWriter(mUser);
                 List<BmobFile> fileList = new ArrayList<>();
                 ArrayList<DynamicPhotoItem> photoItems = (ArrayList<DynamicPhotoItem>) mDynamicPhotoChooseAdapter.getData();
                 for (int i = 0; i < photoItems.size() - 1; i++) {
                     fileList.add(new BmobFile(new File(photoItems.get(i).getFilePath())));
                 }
-//                dynamicItem.setWriter(dynamicItem.getWriter());
-//                dynamicItem.setSportsType(dynamicItem.getSportsType());
-//                dynamicItem.setMeil(dynamicItem.getMeil());
-//                dynamicItem.setArea(dynamicItem.getArea());
-//                dynamicItem.setPlace(dynamicItem.getPlace());
-//                dynamicItem.setStartTime(dynamicItem.getStartTime());
-//                dynamicItem.setEndtTime(dynamicItem.getEndTime());
-//                dynamicItem.setApplicationDeadline(dynamicItem.getApplicationDeadline());
+                list.add(userlocal);
                 dynamicItem.setTitle(editActivityName.getText().toString());
                 dynamicItem.setDetail(editContent.getText().toString());
+                dynamicItem.setParticipantName(list);
                 dynamicItem.setPhotoList(fileList);
                 new DynamicModelImpr().sendDynamicItem(dynamicItem, new SportModelInter.BaseListener() {
                     @Override

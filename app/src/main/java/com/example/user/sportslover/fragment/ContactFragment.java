@@ -30,9 +30,11 @@ import com.example.user.sportslover.base.ParentWithNaviActivity;
 import com.example.user.sportslover.base.ParentWithNaviFragment;
 import com.example.user.sportslover.bean.Friend;
 import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.customview.SideBar;
 import com.example.user.sportslover.event.RefreshEvent;
 import com.example.user.sportslover.model.UserModel;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.widget.CharacterParser;
 import com.example.user.sportslover.widget.PinyinComparator;
 
@@ -83,6 +85,12 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     private static PinyinComparator pinyinComparator;// 根据拼音来排列ListView里面的数据类
     private List<Friend> sortList = new ArrayList<Friend>();
 
+    //添加
+    UserLocal mUserLocal;
+    UserModelImpl mUserModelImpl = new UserModelImpl();
+    User user = new User();
+
+
     @Override
     protected String title() {
         return "联系人";
@@ -121,6 +129,11 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
+
+
+        mUserLocal = mUserModelImpl.getUserLocal();
+        user = UserModelImpl.localUsertoUser(mUserLocal);
+
         rootView = inflater.inflate(R.layout.fragment_contact, container, false);
         initNaviView();
         //实例化汉字转拼音
@@ -219,13 +232,13 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
             public void onGlobalLayout() {
                 rootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 sw_refresh.setRefreshing(true);
-                query();
+                query(user);
             }
         });
         sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                query();
+                query(user);
             }
         });
         adapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
@@ -236,7 +249,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
                 } else {
                     Friend friend = adapter.getItem(position);
                     User user = friend.getFriendUser();
-                    BmobIMUserInfo info = new BmobIMUserInfo(user.getObjectId(), user.getUsername
+                    BmobIMUserInfo info = new BmobIMUserInfo(user.getObjectId(), user.getUserName
                             (), user.getAvatar());
                     //启动一个会话，实际上就是在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
                     BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info,
@@ -275,7 +288,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     public void onResume() {
         super.onResume();
         sw_refresh.setRefreshing(true);
-        query();
+        query(user);
     }
 
     @Override
@@ -305,8 +318,8 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     /**
      * 查询本地会话
      */
-    public void query() {
-        UserModel.getInstance().queryFriends(new FindListener<Friend>() {
+    public void query(User user) {
+        UserModel.getInstance().queryFriends(user,new FindListener<Friend>() {
             @Override
             public void onSuccess(List<Friend> list) {
                 sortList = getSortedList(list);
@@ -334,7 +347,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         } else {
             filterDateList.clear();
             for (Friend friend : sortList) {
-                String name = friend.getFriendUser().getUsername();
+                String name = friend.getFriendUser().getUserName();
                 String firstSpell = friend.getfirstSpell();
                 if (name.indexOf(s.toString()) != -1 || firstSpell.indexOf(s.toString()) != -1 ||
                         characterParser.getSelling(name).startsWith(s.toString())) {
@@ -375,11 +388,11 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
      */
     private List<Friend> getSortedList(List<Friend> list) {
         for (Friend friend : list) {
-            if (friend != null && friend.getFriendUser().getUsername() != null) {
+            if (friend != null && friend.getFriendUser().getUserName() != null) {
                 String firstSpell = CharacterParser.getFirstSpell(friend.getFriendUser()
-                        .getUsername());
+                        .getUserName());
                 friend.setfirstSpell(firstSpell);
-                String pinyin = characterParser.getSelling(friend.getFriendUser().getUsername());
+                String pinyin = characterParser.getSelling(friend.getFriendUser().getUserName());
                 String sortString = pinyin.substring(0, 1).toUpperCase();
 
                 if ("1".equals(friend.getUsertype())) {// 判断是否是管理员

@@ -11,13 +11,14 @@ import android.widget.TextView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.base.BaseActivity;
-import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.db.NewFriendManager;
 import com.example.user.sportslover.event.RefreshEvent;
 import com.example.user.sportslover.fragment.ContactFragment;
 import com.example.user.sportslover.fragment.HomeFragment;
 import com.example.user.sportslover.fragment.MyPageFragment;
 import com.example.user.sportslover.fragment.SportsEventFragment;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.util.IMMLeaks;
 import com.orhanobut.logger.Logger;
 
@@ -32,7 +33,6 @@ import cn.bmob.newim.event.OfflineMessageEvent;
 import cn.bmob.newim.listener.ConnectListener;
 import cn.bmob.newim.listener.ConnectStatusChangeListener;
 import cn.bmob.newim.notification.BmobNotificationManager;
-import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 
 public class MainActivity extends BaseActivity implements MainView,View.OnClickListener {
@@ -56,6 +56,8 @@ public class MainActivity extends BaseActivity implements MainView,View.OnClickL
     private Fragment contactsFragment;
     private Fragment sportsEventFragment;
     private Fragment myPageFragment;
+    private UserLocal mUserLocal;
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
 
     @Bind(R.id.iv_contact_tips)
     ImageView iv_contact_tips;
@@ -68,8 +70,9 @@ public class MainActivity extends BaseActivity implements MainView,View.OnClickL
         initEvent();
         initFragment(0);
 
-        User user = BmobUser.getCurrentUser(this,User.class);
-        BmobIM.connect(user.getObjectId(), new ConnectListener() {
+        mUserLocal = mUserModelImpl.getUserLocal();
+
+        BmobIM.connect(mUserLocal.getObjectId(), new ConnectListener() {
             @Override
             public void done(String uid, BmobException e) {
                 if (e == null) {
