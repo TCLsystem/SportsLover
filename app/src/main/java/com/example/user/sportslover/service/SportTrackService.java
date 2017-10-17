@@ -10,6 +10,7 @@ import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
@@ -44,6 +45,7 @@ import com.baidu.trace.model.TraceLocation;
 import com.baidu.trace.model.TransportMode;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.application.BaseApplication;
 import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.util.MapUtil;
@@ -71,6 +73,9 @@ public class SportTrackService extends Service {
     private AtomicInteger mSequenceGenerator = new AtomicInteger();
     private Notification notification;
     private NotificationManager manager;
+    private BaseApplication baseApplication;
+    private Vibrator vibrator;
+    private float vibratedDistance = 0;
 
     private UserLocal mUserLocal = new UserLocal();
     private UserModelImpl mUserModelImpl = new UserModelImpl();
@@ -172,6 +177,11 @@ public class SportTrackService extends Service {
                 processOptionLoc.setNeedMapMatch(false);//绑路处理
                 request.setProcessOption(processOptionLoc);//设置参数
                 mClient.queryLatestPoint(request, trackListener);//请求纠偏后的最新点
+                if (baseApplication.getGlobalSportVibrationSetting() > 1f)
+                    if (distance - vibratedDistance > baseApplication.getGlobalSportVibrationSetting()){
+                        vibratedDistance += baseApplication.getGlobalSportVibrationSetting();
+                        vibrator.vibrate(1000);
+                    }
             }
         }
 
@@ -191,6 +201,8 @@ public class SportTrackService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        baseApplication = (BaseApplication) getApplicationContext();
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         mUserLocal = mUserModelImpl.getUserLocal();
         entityName = mUserLocal.getName();
         mTrace = new Trace(serviceId, entityName, true);

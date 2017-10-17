@@ -15,7 +15,6 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.os.Vibrator;
 import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -88,8 +87,8 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private View view1;
     private int currPage;
     private int sportType;
-    private Vibrator vibrator;
     private BaseApplication baseApplication;
+    private boolean backFromKilled = false;
 
     private UserLocal mUserLocal = new UserLocal();
     private UserModelImpl mUserModelImpl = new UserModelImpl();
@@ -151,10 +150,10 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private boolean timerValidFlag = false;
     private long startTime;
     private CircularRingPercentageView progressCircle;
+    private String mapId = null;
     private float target = 0;
     private float weight = 60;
     private int localProgress = 0;
-    private float vibratedDistance = 0;
     private CalculateCaloriesInter calculateCaloriesInter;
     private DecimalFormat textFormat = new DecimalFormat("#0.00");
     private DecimalFormat timeFormat = new DecimalFormat("#0.0");
@@ -224,12 +223,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                     refleshBackgroundColors(localProgress, 0);
                     progressCircle.setProgress(100f);
                 }
-
-                if (baseApplication.getGlobalSportVibrationSetting() > 1f)
-                    if (remoteDistance - vibratedDistance > baseApplication.getGlobalSportVibrationSetting()){
-                        vibratedDistance += baseApplication.getGlobalSportVibrationSetting();
-                        vibrator.vibrate(1000);
-                    }
                 break;
             case 2:
                 rlProgressBar.setVisibility(View.VISIBLE);
@@ -329,7 +322,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 rlCount0.setVisibility(View.GONE);
                 timerValidFlag = true;
                 myVerticalViewPager.setCurrentItem(0);
-                currPage = 0 ;
+                currPage = 0;
                 sportTrackServiceControlBinder.startService();
                 llBeginSportStatus.setVisibility(View.VISIBLE);
                 buttonTarget1.setVisibility(View.GONE);
@@ -412,33 +405,27 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 e.printStackTrace();
             }
         }
-        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         tvSportType = (TextView) findViewById(R.id.sport_type);
         Intent intent = getIntent();
         sportType = intent.getIntExtra("sport_type", -1);
-        if (sportType == -1)
-            sportType = baseApplication.getGlobalSportType();
         switch (sportType){
             case 0:
                 tvSportType.setText("Running");
                 calculateCaloriesInter = new CalculateCaloriesRunningImpl();
                 intentSetSportTarget.putExtra("sport_type", 0);
                 sportInformationItem.setSportType("Running");
-                baseApplication.setGlobalSportType(0);
                 break;
             case 1:
                 tvSportType.setText("Walking");
                 calculateCaloriesInter = new CalculateCaloriesWalkingImpl();
                 intentSetSportTarget.putExtra("sport_type", 1);
                 sportInformationItem.setSportType("Walking");
-                baseApplication.setGlobalSportType(1);
                 break;
             case 2:
                 tvSportType.setText("Riding");
                 calculateCaloriesInter = new CalculateCaloriesRidingImpl();
                 intentSetSportTarget.putExtra("sport_type", 2);
                 sportInformationItem.setSportType("Riding");
-                baseApplication.setGlobalSportType(2);
                 break;
             default:
                 Log.d("Begin Sport", "Invalid sport type");
@@ -560,6 +547,31 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         Intent startSportTrackService = new Intent(this, SportTrackService.class);
         startService(startSportTrackService);
         startTimer();
+        if (backFromKilled){
+            if (mapId != null){
+                RouteControlInter routeFindInter = new RouteControlImpr();
+                routeFindInter.findRouteById(BeginSportActivity.this, mapId, new RouteControlImpr.OnRouteFindListener() {
+                    @Override
+                    public void onSuccess(List<RouteItem> routeItemList) {
+                        targetPoints = routeItemList.get(0).getSportsPath();
+                        target = (float) routeItemList.get(0).getDistance();
+                    }
+                });
+            }
+            timerValidFlag = true;
+            myVerticalViewPager.setCurrentItem(0);
+            currPage = 0;
+            sportTrackServiceControlBinder.startService();
+            llBeginSportStatus.setVisibility(View.VISIBLE);
+            buttonTarget1.setVisibility(View.GONE);
+            ivLock1.setVisibility(View.VISIBLE);
+            buttonRoute1.setVisibility(View.INVISIBLE);
+            buttonStart1.setVisibility(View.GONE);
+            buttonPause0.setVisibility(View.VISIBLE);
+            buttonPause1.setVisibility(View.VISIBLE);
+            ivStrechMap.setVisibility(View.VISIBLE);
+            myVerticalViewPager.setScrollable(true);
+        }
     }
 
     private void remoteLocate(LatLng point){
@@ -732,9 +744,8 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 break;
             case 2:
                 if (resultCode == RESULT_OK){
-                    String id = data.getStringExtra("route_return");
-                    RouteControlInter routeFindInter = new RouteControlImpr();
-                    if (id != null){
+                    mapId = data.getStringExtra("route_return");
+                    if (mapId != null){
                         /*RouteItem routeItem = routeFindInter.findRouteById(id);
                         targetPoints = routeItem.getSportsPath();
                         double toStartPoint = MapUtil.gps2m(sportTrackServiceControlBinder.getCurrentPoint().latitude,
@@ -742,7 +753,8 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                                 targetPoints.get(0).latitude, targetPoints.get(0).longitude);
                         double toStartPoint = 0;
                         target = (float) (toStartPoint + routeItem.getDistance());*/
-                        routeFindInter.findRouteById(BeginSportActivity.this, id, new RouteControlImpr.OnRouteFindListener() {
+                        RouteControlInter routeFindInter = new RouteControlImpr();
+                        routeFindInter.findRouteById(BeginSportActivity.this, mapId, new RouteControlImpr.OnRouteFindListener() {
                             @Override
                             public void onSuccess(List<RouteItem> routeItemList) {
                                 targetPoints = routeItemList.get(0).getSportsPath();
@@ -1025,4 +1037,22 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         return 3;
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putFloat("Target", target);
+        outState.putString("MapId", mapId);
+        outState.putInt("SportType", sportType);
+        outState.putLong("StartTime", startTime);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        target = savedInstanceState.getFloat("Target");
+        mapId = savedInstanceState.getString("MapId", null);
+        sportType = savedInstanceState.getInt("SportType");
+        startTime = savedInstanceState.getLong("StartTime");
+        backFromKilled = true;
+    }
 }
