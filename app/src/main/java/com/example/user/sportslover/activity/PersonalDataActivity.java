@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,7 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,11 +18,11 @@ import com.bigkoo.pickerview.OptionsPickerView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.bean.User;
+import com.example.user.sportslover.bean.UserEventBus;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.UserFragmentPresenter;
-import com.example.user.sportslover.bean.UserEventBus;
-import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.util.ToastUtil;
 import com.example.user.sportslover.widget.DialogBuilder;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -45,7 +45,7 @@ import de.greenrobot.event.EventBus;
 import me.iwf.photopicker.PhotoPickerActivity;
 import me.iwf.photopicker.utils.PhotoPickerIntent;
 
-public class PersonalDataActivity extends AppCompatActivity {
+public class PersonalDataActivity extends Activity {
     @Bind(R.id.iv_Changephoto)
     ImageView UserPhoto;
     @Bind(R.id.personal_back)

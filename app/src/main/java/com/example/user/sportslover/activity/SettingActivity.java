@@ -99,7 +99,7 @@ public class SettingActivity extends AppCompatActivity {
                 break;
             case R.id.sportsSettings:
                 Intent intent2 = new Intent();
-                intent2.setClass(this,SportsSettings.class);
+                intent2.setClass(this,SportSettingActivity.class);
                 startActivity(intent2);
                 break;
 

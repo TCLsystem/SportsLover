@@ -6,11 +6,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-<<<<<<< HEAD
       <root url="jar://$USER_HOME$/Android/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-idling-resource/2.2.1/espresso-idling-resource-2.2.1-sources.jar!/" />
-=======
-      <root url="jar://$USER_HOME$/android_develop_tools/sdk/extras/android/m2repository/com/android/support/test/espresso/espresso-idling-resource/2.2.1/espresso-idling-resource-2.2.1-sources.jar!/" />
->>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
     </SOURCES>
   </library>
 </component>

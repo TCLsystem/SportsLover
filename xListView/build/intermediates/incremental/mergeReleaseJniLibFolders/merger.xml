@@ -1,6 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
 <merger version="3"><dataSet config="main"><source path="/local/Fundation/lvs/SportsLover/xListView/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/local/Fundation/lvs/SportsLover/xListView/src/release/jniLibs"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/src/release/jniLibs"/></dataSet></merger>
->>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c

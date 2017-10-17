@@ -11,17 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.sportslover.R;
-import com.example.user.sportslover.activity.PersonalDataActivity;
-import com.example.user.sportslover.activity.RouteActivity;
-import com.example.user.sportslover.activity.MotionGoalActivity;
-import com.example.user.sportslover.activity.MotionRecordActivity;
-import com.example.user.sportslover.activity.MyDynamicActivity;
-import com.example.user.sportslover.activity.SettingActivity;
-import com.example.user.sportslover.model.UserModelImpl;
-import com.example.user.sportslover.presenter.UserFragmentPresenter;
 import com.example.user.sportslover.activity.LoginActivity;
+import com.example.user.sportslover.activity.MotionGoalActivity;
+import com.example.user.sportslover.activity.MyDynamicActivity;
+import com.example.user.sportslover.activity.PersonalDataActivity;
+import com.example.user.sportslover.activity.SettingActivity;
+import com.example.user.sportslover.activity.SportHistoryActivity;
+import com.example.user.sportslover.activity.SportRouteMyRouteActitvity;
 import com.example.user.sportslover.bean.UserEventBus;
 import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.presenter.UserFragmentPresenter;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -130,12 +130,12 @@ public class MyPageFragment extends Fragment {
                 break;
             //运动记录
             case R.id.motionRecord:
-                startActivity(new Intent(getActivity(), MotionRecordActivity.class));
+                startActivity(new Intent(getActivity(), SportHistoryActivity.class));
 
                 break;
             //我运动过的路线
             case R.id.MyRecordRoute:
-                startActivity(new Intent(getActivity(), RouteActivity.class));
+                startActivity(new Intent(getActivity(), SportRouteMyRouteActitvity.class));
                 break;
             //我的活动
             case R.id.myMotion:
