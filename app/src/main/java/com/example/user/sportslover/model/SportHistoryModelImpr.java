@@ -38,7 +38,7 @@ public class SportHistoryModelImpr implements SportHistoryModelInter {
                         for (int j = 0; j < recordItemList.size(); j++){
                             if (recordItemList.get(j).getSportsTime() > (i==0?(now - days % ONEDAYMILIS):(now - days % ONEDAYMILIS - i * ONEDAYMILIS))){
                                 sportHistoryDataBean.setCalories(sportHistoryDataBean.getCalories() + recordItemList.get(j).getCalories());
-                                sportHistoryDataBean.setCumulativeTime(sportHistoryDataBean.getCumulativeTime() + recordItemList.get(j).getDistance());
+                                sportHistoryDataBean.setCumulativeTime(sportHistoryDataBean.getCumulativeTime() + recordItemList.get(j).getDuration());
                                 sportHistoryDataBean.setDistance(sportHistoryDataBean.getDistance() + recordItemList.get(j).getDistance());
                                 recordItemList.remove(j);
                             }

@@ -52,9 +52,9 @@ public class SportHistoryDataAdapter extends ArrayAdapter<SportHistoryDataBean> 
         }
         viewHolder.tvHistoryMonth.setText(sportHistoryDataBean.getMonth());
         viewHolder.tvHistoryDay.setText(sportHistoryDataBean.getDate());
-        viewHolder.tvHistoryDistance.setText(textFormat1.format(sportHistoryDataBean.getDistance()));
+        viewHolder.tvHistoryDistance.setText(textFormat1.format(sportHistoryDataBean.getDistance()/1000));
         viewHolder.tvHistoryCalories.setText(textFormat2.format(sportHistoryDataBean.getCalories()));
-        viewHolder.tvHistoryCumulativeTime.setText(textFormat1.format(sportHistoryDataBean.getCumulativeTime()));
+        viewHolder.tvHistoryCumulativeTime.setText(textFormat1.format(sportHistoryDataBean.getCumulativeTime()/3600));
         return view;
     }
 
