@@ -1,11 +1,19 @@
 <component name="libraryTable">
   <library name="bmob-sdk-3.4.7-aar">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okhttp-3.2.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/res" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okio-1.7.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okio-1.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okhttp-3.2.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/res" />
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
     </CLASSES>
     <JAVADOC />
     <SOURCES />

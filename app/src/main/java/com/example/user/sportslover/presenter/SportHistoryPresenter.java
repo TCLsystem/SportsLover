@@ -1,6 +1,9 @@
 package com.example.user.sportslover.presenter;
 
+import android.content.Context;
+
 import com.example.user.sportslover.bean.SportHistoryDataBean;
+import com.example.user.sportslover.model.SportHistoryModelImpr;
 
 import java.util.List;
 
@@ -9,5 +12,5 @@ import java.util.List;
  */
 
 public interface SportHistoryPresenter {
-    List<SportHistoryDataBean> loadHistoryData();
+    void loadHistoryData(Context context, SportHistoryModelImpr.OnSportHistoryListener listener);
 }

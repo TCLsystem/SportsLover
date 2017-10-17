@@ -1,8 +1,13 @@
 package com.example.user.sportslover.model;
 
+import android.content.Context;
+
+import com.example.user.sportslover.bean.RecordItem;
 import com.example.user.sportslover.bean.SportHistoryDataBean;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,9 +16,47 @@ import java.util.List;
 
 public class SportHistoryModelImpr implements SportHistoryModelInter {
 
-    List<SportHistoryDataBean> sportHistoryDataBeanList = new ArrayList<>();
+    RecordItemControlInter recordItemControlInter = new RecordItemControlImpr();
+    final static long ONEDAYMILIS = 24*60*60*1000;
+    final static long EIGHTZONE = 8* 60 * 60 *1000;
+    final static String MONTH[] = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"};
 
     @Override
+    public void loadHistoryData(Context context, final int days, String type, final OnSportHistoryListener listener) {
+        final Date date = new Date();
+        final long now = date.getTime() + EIGHTZONE;
+        recordItemControlInter.findRecordItemByTime(context, type, now - (days - 1) * ONEDAYMILIS - days % ONEDAYMILIS, now, new RecordItemControlImpr.OnRecordItemListener() {
+            @Override
+            public void onSuccess(List<RecordItem> recordItemList) {
+                List<SportHistoryDataBean> sportHistoryDataBeanList = new ArrayList<>();
+                for (int i = 0; i < days; i++)
+                    sportHistoryDataBeanList.add(new SportHistoryDataBean("", "", 0, 0, 0));
+                for (int i = 0; i < days; i++){
+                    Date date1 = new Date(now - i * ONEDAYMILIS);
+                    SportHistoryDataBean sportHistoryDataBean = new SportHistoryDataBean(MONTH[date1.getMonth()], Integer.toString(date1.getDate()), 0, 0, 0);
+                    if (recordItemList.size() > 0){
+                        for (int j = 0; j < recordItemList.size(); j++){
+                            if (recordItemList.get(j).getSportsTime() > (i==0?(now - days % ONEDAYMILIS):(now - days % ONEDAYMILIS - i * ONEDAYMILIS))){
+                                sportHistoryDataBean.setCalories(sportHistoryDataBean.getCalories() + recordItemList.get(j).getCalories());
+                                sportHistoryDataBean.setCumulativeTime(sportHistoryDataBean.getCumulativeTime() + recordItemList.get(j).getDuration());
+                                sportHistoryDataBean.setDistance(sportHistoryDataBean.getDistance() + recordItemList.get(j).getDistance());
+                                recordItemList.remove(j);
+                            }
+                        }
+                    }
+                    sportHistoryDataBeanList.set(days - i - 1, sportHistoryDataBean);
+                }
+                listener.onSuccess(sportHistoryDataBeanList);
+                sportHistoryDataBeanList.clear();
+            }
+        });
+    }
+
+    public interface OnSportHistoryListener{
+        void onSuccess(List<SportHistoryDataBean> sportHistoryDataBeanList);
+    }
+
+    /*@Override
     public List<SportHistoryDataBean> loadHistoryData(int seconds, String type) {
         List<SportHistoryDataBean> sportHistoryDataBeanList1 = new ArrayList<>();
         init(type);
@@ -89,5 +132,5 @@ public class SportHistoryModelImpr implements SportHistoryModelInter {
                 sportHistoryDataBeanList.add(sportHistoryDataBean6);
             }
         }
-    }
+    }*/
 }

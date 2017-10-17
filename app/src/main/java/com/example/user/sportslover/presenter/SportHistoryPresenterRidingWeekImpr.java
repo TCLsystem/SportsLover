@@ -1,5 +1,7 @@
 package com.example.user.sportslover.presenter;
 
+import android.content.Context;
+
 import com.example.user.sportslover.bean.SportHistoryDataBean;
 import com.example.user.sportslover.model.SportHistoryModelImpr;
 import com.example.user.sportslover.model.SportHistoryModelInter;
@@ -12,8 +14,8 @@ import java.util.List;
 
 public class SportHistoryPresenterRidingWeekImpr implements SportHistoryPresenter {
     @Override
-    public List<SportHistoryDataBean> loadHistoryData() {
+    public void loadHistoryData(Context context, SportHistoryModelImpr.OnSportHistoryListener listener) {
         SportHistoryModelInter sportHistoryModelInter = new SportHistoryModelImpr();
-        return sportHistoryModelInter.loadHistoryData(7, "riding");
+        sportHistoryModelInter.loadHistoryData(context, 7, "Riding", listener);
     }
 }

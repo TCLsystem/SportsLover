@@ -25,8 +25,13 @@ import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.bean.RouteItem;
 import com.example.user.sportslover.bean.SportInformationItem;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
+import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.presenter.FinishSportPresenter;
+import com.example.user.sportslover.presenter.FinishSportPresenterImpr;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,13 +40,22 @@ import java.text.DecimalFormat;
 
 public class FinishSportActivity extends AppCompatActivity implements View.OnClickListener {
 
+    public SportInformationItem sportInformationItem;
+    public UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
+    public Bitmap bitmap;
+    private FinishSportPresenter finishSportPresenter = new FinishSportPresenterImpr(FinishSportActivity.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_finish_sport);
+        mUserLocal = mUserModelImpl.getUserLocal();
         DecimalFormat textFormat = new DecimalFormat("#0.00");
-        SportInformationItem sportInformationItem = getIntent().getParcelableExtra("sport_information");
+        DecimalFormat caloriesFormat = new DecimalFormat("#0");
+        DecimalFormat timeFormat = new DecimalFormat("#0.0");
+        sportInformationItem = getIntent().getParcelableExtra("sport_information");
         CircularRingPercentageView circularRingPercentageView;
         circularRingPercentageView = (CircularRingPercentageView) findViewById(R.id.finish_sport_progress);
         circularRingPercentageView.setCircleWidth(circularRingPercentageView.getCircleWidth()*2/3);
@@ -57,13 +71,13 @@ public class FinishSportActivity extends AppCompatActivity implements View.OnCli
         html = "<big><big><big>" + sportInformationItem.getAveragePace()/60 + "’</big>" + sportInformationItem.getAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvAveragePace.setText(Html.fromHtml(html));
         TextView tvCalories = (TextView) findViewById(R.id.tv_finish_sport_calories);
-        html = "<big><big><big>" + sportInformationItem.getCalories() +"</big></big></big>KCAL<br>Calories";
+        html = "<big><big><big>" + caloriesFormat.format(sportInformationItem.getCalories()) +"</big></big></big>KCAL<br>Calories";
         tvCalories.setText(Html.fromHtml(html));
         TextView tvCumulativeTime = (TextView) findViewById(R.id.tv_finish_sport_cumulative_time);
-        html = "<big><big><big>" + sportInformationItem.getCumulativeTime()/60/60 +"</big></big></big> h<br>Cumulative<br>time";
+        html = "<big><big><big>" + timeFormat.format(sportInformationItem.getCumulativeTime()/60/60) +"</big></big></big> h<br>Cumulative<br>time";
         tvCumulativeTime.setText(Html.fromHtml(html));
         ImageView ivFinishSportMap = (ImageView) findViewById(R.id.iv_finish_sport_map);
-        Bitmap bitmap = BitmapFactory.decodeFile("/data/data/com.example.user.sportslover/files/test.png");
+        bitmap = BitmapFactory.decodeFile("/data/data/com.example.user.sportslover/files/test.png");
         ivFinishSportMap.setImageBitmap(bitmap);
         Button buttonCollectMap = (Button) findViewById(R.id.finish_sport_collect_map);
         Button buttonFinish = (Button) findViewById(R.id.finish_sport_finish);
@@ -75,8 +89,11 @@ public class FinishSportActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.finish_sport_collect_map:
+                finishSportPresenter.uploadCollectedMap();
                 break;
             case R.id.finish_sport_finish:
+                finishSportPresenter.updateTotalRecord();
+                finishSportPresenter.uploadRecordItem();
                 finish();
                 break;
             default:

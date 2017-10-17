@@ -96,7 +96,7 @@
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:layout_weight="1"
-                android:src="@drawable/lock_screen"
+                android:src="@drawable/lock_screen_white"
                 android:scaleType="centerInside"
                 android:visibility="gone"
                 android:background="@drawable/shape_round_gradient_button"/>
@@ -121,7 +121,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="40dp"
-        android:src="@drawable/ic_scroll_down"
+        android:src="@drawable/ic_scroll_down_down"
         android:visibility="gone"/>
 
 </RelativeLayout>

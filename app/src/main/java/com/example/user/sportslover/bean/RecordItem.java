@@ -14,44 +14,65 @@ public class RecordItem extends BmobObject implements Serializable {
 
     public String UserName;
     public String SportsType;
-    public Date SportsTime;
-    public String Speed;
-    public String Duration;
-    public BmobFile SportPicture;
-    public User    Sportsman;
+    public long SportsTime;
+    public int Speed;
+    public int Duration;
+    public float Distance;
+    public float Calories;
 
-    public String getUserName(){return UserName;}
-    public void setUserName(String userName){
-        UserName = userName;
+    public float getDistance() {
+        return Distance;
     }
 
-    public String getSportsType(){return SportsType;}
-    public void setSportsType(String sportsType){
-        SportsType = sportsType;
+    public void setDistance(float distance) {
+        Distance = distance;
     }
 
-    public Date getSportsTime(){return SportsTime;}
-    public void setSportsTime(Date sportsTime){
-        SportsTime = sportsTime;
+    public int getDuration() {
+        return Duration;
     }
 
-    public String getSpeed(){return Speed;}
-    public void setSpeed(String speed){
-        Speed = speed;
-    }
-
-    public String getDuration(){return Duration;}
-    public void setDuration(String duration){
+    public void setDuration(int duration) {
         Duration = duration;
     }
 
-    public BmobFile getSportPicture(){return SportPicture;}
-    public void setSportPicture(BmobFile sportPicture){
-        SportPicture = sportPicture;
+    public int getSpeed() {
+        return Speed;
     }
 
-    public User getSportsman(){return Sportsman;}
-    public void setSportsman(User sportsman){
-        Sportsman = sportsman;
+    public void setSpeed(int speed) {
+        Speed = speed;
+    }
+
+    public long getSportsTime() {
+        return SportsTime;
+    }
+
+    public void setSportsTime(long sportsTime) {
+        SportsTime = sportsTime;
+    }
+
+    public String getSportsType() {
+        return SportsType;
+    }
+
+    public void setSportsType(String sportsType) {
+        SportsType = sportsType;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public float getCalories() {
+        return Calories;
+    }
+
+    public void setCalories(float calories) {
+        Calories = calories;
     }
 }

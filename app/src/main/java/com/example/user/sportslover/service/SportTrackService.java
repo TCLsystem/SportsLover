@@ -1,11 +1,18 @@
 package com.example.user.sportslover.service;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.os.Vibrator;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 import com.baidu.mapapi.map.OverlayOptions;
@@ -36,8 +43,14 @@ import com.baidu.trace.model.PushMessage;
 import com.baidu.trace.model.SortType;
 import com.baidu.trace.model.TraceLocation;
 import com.baidu.trace.model.TransportMode;
+import com.example.user.sportslover.R;
+import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.application.BaseApplication;
+import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.util.MapUtil;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -55,9 +68,18 @@ public class SportTrackService extends Service {
     private Timer timer = new Timer();
     private TimerTask task;
     private boolean timerValidFlag = false;
-    LBSTraceClient mClient;
-    Trace mTrace;
+    private LBSTraceClient mClient;
+    private Trace mTrace;
     private AtomicInteger mSequenceGenerator = new AtomicInteger();
+    private Notification notification;
+    private NotificationManager manager;
+    private BaseApplication baseApplication;
+    private Vibrator vibrator;
+    private float vibratedDistance = 0;
+
+    private UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
+
     private OnEntityListener entityListener = new OnEntityListener() {
         @Override
         public void onReceiveLocation(TraceLocation traceLocation) {
@@ -155,6 +177,11 @@ public class SportTrackService extends Service {
                 processOptionLoc.setNeedMapMatch(false);//绑路处理
                 request.setProcessOption(processOptionLoc);//设置参数
                 mClient.queryLatestPoint(request, trackListener);//请求纠偏后的最新点
+                if (baseApplication.getGlobalSportVibrationSetting() > 1f)
+                    if (distance - vibratedDistance > baseApplication.getGlobalSportVibrationSetting()){
+                        vibratedDistance += baseApplication.getGlobalSportVibrationSetting();
+                        vibrator.vibrate(1000);
+                    }
             }
         }
 
@@ -162,6 +189,8 @@ public class SportTrackService extends Service {
 
     private long seconds = 0;
     private double distance = 0;
+    private DecimalFormat textFormat = new DecimalFormat("#0.00");
+    private DecimalFormat timeFormat = new DecimalFormat("#0.0");
     private List<LatLng> points = new ArrayList<LatLng>();
     private LatLng currentPoint = null;
     private SportTrackServiceControlBinder mBinder = new SportTrackServiceControlBinder();
@@ -172,7 +201,10 @@ public class SportTrackService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("", "Service Begin");
+        baseApplication = (BaseApplication) getApplicationContext();
+        vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        mUserLocal = mUserModelImpl.getUserLocal();
+        entityName = mUserLocal.getName();
         mTrace = new Trace(serviceId, entityName, true);
         mClient = new LBSTraceClient(getApplicationContext());
         mClient.setLocationMode(LocationMode.High_Accuracy);
@@ -181,7 +213,18 @@ public class SportTrackService extends Service {
         mClient.setInterval(gatherInterval, packInterval);
         mClient.startTrace(mTrace, traceListener);
         mClient.startGather(traceListener);
-        startTime = System.currentTimeMillis()/1000;
+        manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Intent intent = new Intent(this, BeginSportActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        notification = new NotificationCompat.Builder(this)
+                .setContentTitle("Sport Tracking")
+                .setContentText(textFormat.format(distance/1000) + " km is gone. Move! Move!")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
+                .setWhen(System.currentTimeMillis())
+                .setContentIntent(pi)
+                .build();
+        startTime = System.currentTimeMillis();
         startTimer();
         /*HistoryTrackRequest historyTrackRequest = new HistoryTrackRequest();
         ProcessOption processOptionHis = new ProcessOption();//纠偏选项
@@ -276,10 +319,13 @@ public class SportTrackService extends Service {
     public class SportTrackServiceControlBinder extends Binder{
         public void startService(){
             timerValidFlag = true;
+            manager.notify(1, notification);
+
         }
 
         public void pauseService(){
             timerValidFlag = false;
+            manager.cancel(1);
         }
 
         public long getSeconds(){

@@ -53,23 +53,6 @@
 
     </LinearLayout>
 
-    <com.example.user.sportslover.customview.ScrollViewDragHelperWeek
-        android:id="@+id/scroll_view_drag_helper_week"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/px2dp_42"
-        android:paddingRight="@dimen/px2dp_42"
-        android:layout_marginTop="@dimen/px2dp_42"
-        android:background="@color/transparent"
-        android:visibility="gone">
-        
-        <com.example.user.sportslover.customview.ScrollBarPicWeek
-            android:id="@+id/scroll_bar_pic_week"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/px2dp_515"
-            android:background="@color/transparent"/>
-    </com.example.user.sportslover.customview.ScrollViewDragHelperWeek>
-
     <com.example.user.sportslover.customview.ScrollViewDragHelperMonth
         android:id="@+id/scroll_view_drag_helper_month"
         android:layout_width="match_parent"
@@ -86,5 +69,22 @@
             android:background="@color/transparent"
             />
     </com.example.user.sportslover.customview.ScrollViewDragHelperMonth>
+
+    <com.example.user.sportslover.customview.ScrollViewDragHelperWeek
+        android:id="@+id/scroll_view_drag_helper_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/px2dp_42"
+        android:paddingRight="@dimen/px2dp_42"
+        android:layout_marginTop="@dimen/px2dp_42"
+        android:background="@color/transparent"
+        android:visibility="gone">
+
+        <com.example.user.sportslover.customview.ScrollBarPicWeek
+            android:id="@+id/scroll_bar_pic_week"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/px2dp_515"
+            android:background="@color/transparent"/>
+    </com.example.user.sportslover.customview.ScrollViewDragHelperWeek>
 
 </LinearLayout>

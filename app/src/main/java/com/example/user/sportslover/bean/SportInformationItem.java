@@ -21,6 +21,8 @@ public class SportInformationItem implements Parcelable {
     private float calories;
     private List<LatLng> points;
     private Bitmap bitmap;
+    private long startTime;
+    private String sportType;
 
     public SportInformationItem(){}
 
@@ -32,7 +34,8 @@ public class SportInformationItem implements Parcelable {
         calories = in.readFloat();
         points = in.createTypedArrayList(LatLng.CREATOR);
         bitmap = in.readParcelable(Bitmap.class.getClassLoader());
-        //bitmap = Bitmap.CREATOR.createFromParcel(in);
+        startTime = in.readLong();
+        sportType = in.readString();
     }
 
     @Override
@@ -44,7 +47,8 @@ public class SportInformationItem implements Parcelable {
         dest.writeFloat(calories);
         dest.writeTypedList(points);
         dest.writeParcelable(bitmap, flags);
-        //bitmap.writeToParcel(dest, 0);
+        dest.writeLong(startTime);
+        dest.writeString(sportType);
     }
 
     @Override
@@ -118,5 +122,21 @@ public class SportInformationItem implements Parcelable {
 
     public void setTotalMileages(double totalMileages) {
         this.totalMileages = totalMileages;
+    }
+
+    public long getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getSportType() {
+        return sportType;
+    }
+
+    public void setSportType(String sportType) {
+        this.sportType = sportType;
     }
 }

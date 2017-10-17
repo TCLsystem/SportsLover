@@ -72,6 +72,7 @@
 
         <activity
             android:name="cn.bmob.v3.update.UpdateDialogActivity"
+<<<<<<< HEAD
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".activity.RouteActivity" />
         <activity android:name=".activity.MyDynamicActivity" />
@@ -85,6 +86,22 @@
         <activity android:name=".activity.PhoneValidateActivity" />
         <activity android:name=".activity.MakeGoal" />
         <activity android:name=".activity.PersonalDataActivity" />
+=======
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".activity.RouteActivity"/>
+        <activity android:name=".activity.MyDynamicActivity"/>
+        <activity android:name=".activity.MotionRecordActivity"/>
+        <activity android:name=".activity.SendDynamicActivity"/>
+        <activity android:name=".activity.DynamicDetailActivity"/>
+        <activity android:name=".activity.NewFriendActivity"/>
+        <activity android:name=".activity.SettingActivity"/>
+        <activity android:name=".activity.BeginSportActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activity.MotionGoalActivity"/>
+        <activity android:name=".activity.PhoneValidateActivity"/>
+        <activity android:name=".activity.MakeGoal"/>
+        <activity android:name=".activity.PersonalDataActivity"/>
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
 
         <service
             android:name=".service.SportTrackService"

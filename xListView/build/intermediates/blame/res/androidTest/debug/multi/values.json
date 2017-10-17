@@ -1,6 +1,10 @@
 [
     {
+<<<<<<< HEAD
         "outputFile": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+=======
+        "outputFile": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
         "map": [
             {
                 "to": {
@@ -11,7 +15,11 @@
                     "endOffset": 97
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -30,7 +38,11 @@
                     "endOffset": 163
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -49,7 +61,11 @@
                     "endOffset": 225
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -68,7 +84,11 @@
                     "endOffset": 288
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -87,7 +107,11 @@
                     "endOffset": 354
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -106,7 +130,11 @@
                     "endOffset": 416
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -125,7 +153,11 @@
                     "endOffset": 479
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -144,7 +176,11 @@
                     "endOffset": 527
                 },
                 "from": {
+<<<<<<< HEAD
                     "file": "/local/Fundation/lvs/SportsLover/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+=======
+                    "file": "/local/AndroidStudioProjects/SportsLover.2017.10.17.1453.work/xListView/build/intermediates/bundles/debug/res/values/values.xml",
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,

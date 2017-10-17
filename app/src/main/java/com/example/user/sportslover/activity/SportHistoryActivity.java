@@ -31,6 +31,7 @@ import com.example.user.sportslover.customview.ScrollBarPicMonth;
 import com.example.user.sportslover.customview.ScrollBarPicWeek;
 import com.example.user.sportslover.customview.ScrollViewDragHelperMonth;
 import com.example.user.sportslover.customview.ScrollViewDragHelperWeek;
+import com.example.user.sportslover.model.SportHistoryModelImpr;
 import com.example.user.sportslover.presenter.SportHistoryPresenter;
 import com.example.user.sportslover.presenter.SportHistoryPresenterRidingMonthImpr;
 import com.example.user.sportslover.presenter.SportHistoryPresenterRidingWeekImpr;
@@ -40,6 +41,7 @@ import com.example.user.sportslover.presenter.SportHistoryPresenterWalkingMonthI
 import com.example.user.sportslover.presenter.SportHistoryPresenterWalkingWeekImpr;
 import com.example.user.sportslover.widget.MyVerticalViewPager;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,8 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
     private ScrollBarPicWeek scrollBarPicWeek;
     private ScrollBarPicMonth scrollBarPicMonth;
     private ScrollBarBean scrollBarBean = new ScrollBarBean();
+    private ScrollBarBean scrollBarBeanWeek = new ScrollBarBean();
+    private ScrollBarBean scrollBarBeanMonth = new ScrollBarBean();
     private ArrayList<ScrollPerBarBean> lists = new ArrayList<>();
     private List<SportHistoryDataBean> sportHistoryDataBeanList = new ArrayList<>();
     private SportHistoryDataAdapter listviewAdapter;
@@ -77,6 +81,10 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
     private int currSport = 0;
     private int currTimeScale = 1;
 
+
+    private DecimalFormat textFormat = new DecimalFormat("#0.0");
+    private DecimalFormat caloriesFormat = new DecimalFormat("#0");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,14 +105,16 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
         scrollBarPicWeek.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                scrollBarPicWeek.setDatas(scrollBarBean);
+                if (scrollBarBeanWeek.getLists() != null)
+                    scrollBarPicWeek.setDatas(scrollBarBeanWeek);
             }
         });
         scrollBarPicMonth = (ScrollBarPicMonth) view0.findViewById(R.id.scroll_bar_pic_month);
         scrollBarPicMonth.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                scrollBarPicMonth.setDatas(scrollBarBean);
+                if (scrollBarBeanMonth.getLists() != null)
+                    scrollBarPicMonth.setDatas(scrollBarBeanMonth);
             }
         });
         myVerticalViewPager = (MyVerticalViewPager) findViewById(R.id.history_vertical_viewpager);
@@ -159,33 +169,52 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void refleshCharts(){
-        String html;
-        float tempDistance = 0, tempCalories = 0, tempCumulativeTime = 0;
         sportHistoryPresenter = selectPresenter(currSport, currTimeScale);
-        List<SportHistoryDataBean> sportHistoryDataBeanList1 = sportHistoryPresenter.loadHistoryData();
-        sportHistoryDataBeanList.clear();
-        sportHistoryDataBeanList.addAll(sportHistoryDataBeanList1);
-        scrollBarBean.setTotal(100);
-        lists.clear();
-        for (int i = 0; i< sportHistoryDataBeanList.size(); i++){
-            lists.add(new ScrollPerBarBean(sportHistoryDataBeanList.get(i).getMonth() + sportHistoryDataBeanList.get(i).getDate(),
-                    (int)(sportHistoryDataBeanList.get(i).getDistance()/20*100), Float.toString(sportHistoryDataBeanList.get(i).getDistance()) + "km"));
-        }
-        scrollBarBean.setLists(lists);
-        scrollBarPicWeek.invalidate();
-        scrollBarPicMonth.invalidate();
-        for (int i = 0; i < sportHistoryDataBeanList.size(); i++){
-            tempDistance += sportHistoryDataBeanList.get(i).getDistance();
-            tempCalories += sportHistoryDataBeanList.get(i).getCalories();
-            tempCumulativeTime += sportHistoryDataBeanList.get(i).getCumulativeTime();
-        }
-        html = "<big><big><big>" + tempDistance + "</big></big> km</big><br>Distance";
-        tvTotalDistance.setText(Html.fromHtml(html));
-        html = "<big><big><big>" + tempCalories + "</big></big> kcal</big><br>Calories";
-        tvTotalCalories.setText(Html.fromHtml(html));
-        html = "<big><big><big>" + tempCumulativeTime  + "</big></big> h</big><br>Cumulative<br>time";
-        tvTotalCumulativeTime.setText(Html.fromHtml(html));
-        listviewAdapter.notifyDataSetChanged();
+        sportHistoryPresenter.loadHistoryData(getApplicationContext(), new SportHistoryModelImpr.OnSportHistoryListener() {
+            @Override
+            public void onSuccess(List<SportHistoryDataBean> sportHistoryDataBeanList1) {
+                String html;
+                float tempDistance = 0, tempCalories = 0, tempCumulativeTime = 0;
+                sportHistoryDataBeanList.clear();
+                sportHistoryDataBeanList.addAll(sportHistoryDataBeanList1);
+                switch (currTimeScale){
+                    case 0:
+                        scrollBarBeanWeek.setTotal(100);
+                        lists.clear();
+                        for (int i = 0; i< sportHistoryDataBeanList.size(); i++){
+                            lists.add(new ScrollPerBarBean(sportHistoryDataBeanList.get(i).getMonth() + sportHistoryDataBeanList.get(i).getDate(),
+                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/200), Float.toString(sportHistoryDataBeanList.get(i).getDistance()/1000) + "km"));
+                        }
+                        scrollBarBeanWeek.setLists(lists);
+                        scrollBarPicWeek.invalidate();
+                        break;
+                    case 1:
+                        scrollBarBeanMonth.setTotal(100);
+                        lists.clear();
+                        for (int i = 0; i< sportHistoryDataBeanList.size(); i++){
+                            lists.add(new ScrollPerBarBean(sportHistoryDataBeanList.get(i).getMonth() + sportHistoryDataBeanList.get(i).getDate(),
+                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/200), Float.toString(sportHistoryDataBeanList.get(i).getDistance()/1000) + "km"));
+                        }
+                        scrollBarBeanMonth.setLists(lists);
+                        scrollBarPicMonth.invalidate();
+                        break;
+                    default:
+                        break;
+                }
+                for (int i = 0; i < sportHistoryDataBeanList.size(); i++){
+                    tempDistance += sportHistoryDataBeanList.get(i).getDistance();
+                    tempCalories += sportHistoryDataBeanList.get(i).getCalories();
+                    tempCumulativeTime += sportHistoryDataBeanList.get(i).getCumulativeTime();
+                }
+                html = "<big><big><big>" + textFormat.format(tempDistance/1000) + "</big></big> km</big><br>Distance";
+                tvTotalDistance.setText(Html.fromHtml(html));
+                html = "<big><big><big>" + caloriesFormat.format(tempCalories) + "</big></big> kcal</big><br>Calories";
+                tvTotalCalories.setText(Html.fromHtml(html));
+                html = "<big><big><big>" + textFormat.format(tempCumulativeTime/3600)  + "</big></big> h</big><br>Cumulative<br>time";
+                tvTotalCumulativeTime.setText(Html.fromHtml(html));
+                listviewAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override

@@ -6,4 +6,5 @@ package com.example.user.sportslover.model;
 
 public interface CalculateCaloriesInter {
     float calculateCalories(float weight, long time, int averagePace);
+    float calculateCalories(float weight, float distance);
 }

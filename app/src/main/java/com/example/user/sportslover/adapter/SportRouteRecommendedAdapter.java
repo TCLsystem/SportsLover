@@ -14,6 +14,7 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.bean.RouteItem;
 import com.example.user.sportslover.util.ColorUtil;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -26,6 +27,8 @@ public class SportRouteRecommendedAdapter extends RecyclerView.Adapter<SportRout
     private MyItemClickListener myItemClickListener;
     private int clickedPosition = 0;
     private RecyclerView itemViewRes;
+    private DecimalFormat textFormat = new DecimalFormat("#0.00");
+
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         private MyItemClickListener myItemClickListener;
@@ -80,7 +83,7 @@ public class SportRouteRecommendedAdapter extends RecyclerView.Adapter<SportRout
             holder.place.setTextColor(0xff1de3bd);
             holder.completed.setTextColor(0xff1de3bd);
         }
-        holder.distance.setText(routeItem.getDistance() + "m");
+        holder.distance.setText(textFormat.format(routeItem.getDistance()/1000) + "km");
         holder.place.setText(routeItem.getPlace());
         holder.completed.setText("0 people have completed");
         if (routeItemList.get(position).isSelected()){

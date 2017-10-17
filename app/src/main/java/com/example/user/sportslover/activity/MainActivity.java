@@ -66,6 +66,7 @@ public class MainActivity extends BaseActivity implements MainView,View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Bmob.initialize(this,"23fe35801c6ae4f698315d637955bb39");
         initView();
         initEvent();
         initFragment(0);

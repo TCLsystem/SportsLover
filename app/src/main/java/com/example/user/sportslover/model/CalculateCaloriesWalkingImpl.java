@@ -9,4 +9,9 @@ public class CalculateCaloriesWalkingImpl implements CalculateCaloriesInter {
     public float calculateCalories(float weight, long time, int averagePace) {
         return weight*time*720f/averagePace;
     }
+
+    @Override
+    public float calculateCalories(float weight, float distance) {
+        return weight*distance*1.03f;
+    }
 }

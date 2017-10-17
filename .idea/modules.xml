@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/SportsLover.iml" filepath="$PROJECT_DIR$/SportsLover.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/SportsLover.2017.10.17.1453.work.iml" filepath="$PROJECT_DIR$/SportsLover.2017.10.17.1453.work.iml" />
+>>>>>>> 1a6091a01f17168c0d071afc0f1a0bd1becc001c
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/xListView/xListView.iml" filepath="$PROJECT_DIR$/xListView/xListView.iml" />
     </modules>
