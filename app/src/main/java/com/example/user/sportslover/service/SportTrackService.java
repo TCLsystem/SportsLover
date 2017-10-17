@@ -44,6 +44,8 @@ import com.baidu.trace.model.TraceLocation;
 import com.baidu.trace.model.TransportMode;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.util.MapUtil;
 
 import java.text.DecimalFormat;
@@ -69,6 +71,10 @@ public class SportTrackService extends Service {
     private AtomicInteger mSequenceGenerator = new AtomicInteger();
     private Notification notification;
     private NotificationManager manager;
+
+    private UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
+
     private OnEntityListener entityListener = new OnEntityListener() {
         @Override
         public void onReceiveLocation(TraceLocation traceLocation) {
@@ -185,7 +191,8 @@ public class SportTrackService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.d("", "Service Begin");
+        mUserLocal = mUserModelImpl.getUserLocal();
+        entityName = mUserLocal.getName();
         mTrace = new Trace(serviceId, entityName, true);
         mClient = new LBSTraceClient(getApplicationContext());
         mClient.setLocationMode(LocationMode.High_Accuracy);
@@ -199,8 +206,7 @@ public class SportTrackService extends Service {
         PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle("Sport Tracking")
-                .setContentText(timeFormat.format(seconds/3600) + " hours after performing sport.\n"
-                + textFormat.format(distance/1000) + "km is gone. Move! Move!")
+                .setContentText(textFormat.format(distance/1000) + " km is gone. Move! Move!")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                 .setWhen(System.currentTimeMillis())

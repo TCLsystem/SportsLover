@@ -80,7 +80,8 @@
         <activity android:name=".activity.DynamicDetailActivity"/>
         <activity android:name=".activity.NewFriendActivity"/>
         <activity android:name=".activity.SettingActivity"/>
-        <activity android:name=".activity.BeginSportActivity"/>
+        <activity android:name=".activity.BeginSportActivity"
+            android:launchMode="singleTask"/>
         <activity android:name=".activity.MotionGoalActivity"/>
         <activity android:name=".activity.PhoneValidateActivity"/>
         <activity android:name=".activity.MakeGoal"/>
