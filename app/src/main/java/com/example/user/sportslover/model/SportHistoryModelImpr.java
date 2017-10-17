@@ -35,11 +35,13 @@ public class SportHistoryModelImpr implements SportHistoryModelInter {
                     Date date1 = new Date(now - i * ONEDAYMILIS);
                     SportHistoryDataBean sportHistoryDataBean = new SportHistoryDataBean(MONTH[date1.getMonth()], Integer.toString(date1.getDate()), 0, 0, 0);
                     if (recordItemList.size() > 0){
-                        while (recordItemList.get(0).getSportsTime() > (i==0?(now - days % ONEDAYMILIS):(now - days % ONEDAYMILIS - i * ONEDAYMILIS))){
-                            sportHistoryDataBean.setCalories(sportHistoryDataBean.getCalories() + recordItemList.get(0).getCalories());
-                            sportHistoryDataBean.setCumulativeTime(sportHistoryDataBean.getCumulativeTime() + recordItemList.get(0).getDistance());
-                            sportHistoryDataBean.setDistance(sportHistoryDataBean.getDistance() + recordItemList.get(0).getDistance());
-                            recordItemList.remove(0);
+                        for (int j = 0; j < recordItemList.size(); j++){
+                            if (recordItemList.get(j).getSportsTime() > (i==0?(now - days % ONEDAYMILIS):(now - days % ONEDAYMILIS - i * ONEDAYMILIS))){
+                                sportHistoryDataBean.setCalories(sportHistoryDataBean.getCalories() + recordItemList.get(j).getCalories());
+                                sportHistoryDataBean.setCumulativeTime(sportHistoryDataBean.getCumulativeTime() + recordItemList.get(j).getDistance());
+                                sportHistoryDataBean.setDistance(sportHistoryDataBean.getDistance() + recordItemList.get(j).getDistance());
+                                recordItemList.remove(j);
+                            }
                         }
                     }
                     sportHistoryDataBeanList.set(days - i - 1, sportHistoryDataBean);
