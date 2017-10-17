@@ -224,7 +224,7 @@ public class SportTrackService extends Service {
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(pi)
                 .build();
-        startTime = System.currentTimeMillis()/1000;
+        startTime = System.currentTimeMillis();
         startTimer();
         /*HistoryTrackRequest historyTrackRequest = new HistoryTrackRequest();
         ProcessOption processOptionHis = new ProcessOption();//纠偏选项

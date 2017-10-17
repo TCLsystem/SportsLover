@@ -318,7 +318,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 handler.sendEmptyMessageDelayed(9, 1000);
                 break;
             case 9:
-                startTime = System.currentTimeMillis() / 1000;
+                startTime = System.currentTimeMillis();
                 rlCount0.setVisibility(View.GONE);
                 timerValidFlag = true;
                 myVerticalViewPager.setCurrentItem(0);
