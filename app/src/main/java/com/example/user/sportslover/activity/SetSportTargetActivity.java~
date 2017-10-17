@@ -77,8 +77,8 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
         mUserLocal = mUserModelImpl.getUserLocal();
         if (mUserLocal.getWeight()!=null)
             weight = Float.parseFloat(mUserLocal.getWeight());
-        setButtonFromIntent(getIntent().getIntExtra("sport_type", -1));
         refleshView();
+        setButtonFromIntent(getIntent().getIntExtra("sport_type", -1));
     }
 
     private void refleshView(){
