@@ -8,52 +8,7 @@
         optimize="true"
         revision="23.0.2"
         sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/junit-4.12_4c0db06780e8d26dd7d7fb13e637b9b7d51d59c2/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/butterknife-7.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/butterknife-7.0.1_c5316abc66d93f2b53e562192e1bd375b5087701/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.0/a7537446a030da8eb0da4c71424d16c2589f6c4a/glide-3.6.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.6.0_42d993c2ff8ced16d3e36072ed8be61b04130da7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/activeandroid-3.1.0-SNAPSHOT_a68c51a8c75690350769ee392b57d0e95ddbc513/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/MobCommons-2016.0714.1402.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="57eee6c3e8bab2ed4b9a585a7f590808d6518573">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobCommons-2016.0714.1402_14dc7380f7d4d8bf6b47e1e512bad09f4d61abe2/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.github.castorflex.verticalviewpager/library/19.0.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="cac65d41873c63e90b9406c9dbccc05b15113c45">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.castorflex.verticalviewpager-library-19.0.1_d6dfdff91ddd75bf5f5225d2fae6fdf9a1c550b1/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/junit-4.12_4c0db06780e8d26dd7d7fb13e637b9b7d51d59c2/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -62,34 +17,25 @@
         optimize="true"
         revision="23.0.2"
         sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_87b500330dda449e6d5a27a6ff3c6ee4c3eda480/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/library-2.4.0_87b500330dda449e6d5a27a6ff3c6ee4c3eda480/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/filechoose.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/BmobSDK_V3.4.7_0518.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="30877bca7d1d9f09d7bc8b6ec3e6f5cf0fcf27fb">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/filechoose_22cb6425d81a7bd05e5378b11188b79b40854cdd/classes.dex" />
+        sha1="aabd0c041b23f1132baaf5e3c0837870f0e06c4b">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/BmobSDK_V3.4.7_0518_616d62286f15b53acc67cb6a4ccf9031e14ed0bc/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/liji.library.dev/citypickerview/2.0.1/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support.test/exposed-instrumentation-api-publish/0.4.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="afab1ca06a3bf3dfb3cba184a8b08d61d0934f2a">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/liji.library.dev-citypickerview-2.0.1_f400e9f49c7b865a7a6fd319d31753351223e538/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/eventbus-2.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/eventbus-2.4.0_fd51b8434b6520358c7a6bbf70d99ae7aaf345ec/classes.dex" />
+        sha1="e1d90a3498ab7a4b68ea6e936e71cf7f4e95453f">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-exposed-instrumentation-api-publish-0.4.1_5b4123446445a0ebff08df4b61b8681eda902642/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -98,16 +44,25 @@
         optimize="true"
         revision="23.0.2"
         sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.9.0_0cc41e8b8525b8cec2add57289488d3c82ca6be0/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.9.0_0cc41e8b8525b8cec2add57289488d3c82ca6be0/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/pinyin4j-2.5.0.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="4785a3c21320980282f9f33d0d1264a69040538f">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-library-1.3_fe37a7abac58f621858827099179a71644cba3c8/classes.dex" />
+        sha1="ae353005f973da1cd8545b54354504c2503f6865">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/pinyin4j-2.5.0_c3ee5494387ff68246c24f77f5fb6d010801d31e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/xUtils-2.6.14.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/xUtils-2.6.14_f6eb0f107182bc05490c2f16f0c687bc162fc859/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -116,34 +71,16 @@
         optimize="true"
         revision="23.0.2"
         sha1="02780d858273ce1bb90f6b12e1ef0d40f7741fca">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.1_8c5b4006f105c306e8dc3ee01de6aafb7b0dff90/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.1_8c5b4006f105c306e8dc3ee01de6aafb7b0dff90/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/software/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.github.castorflex.verticalviewpager/library/19.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_c9556bb42cf175a7bd3c841fa55607de26f86cee/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/libs/androidasync-2.1.6.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4c88f1359a331cff1ea593267d1f63dca63b364b">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/androidasync-2.1.6_821970e14859ad630bdd0fefdf08cdd0848e897c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_2bffa81f4ae510627a5eadd9201127a1cc1492bf/classes.dex" />
+        sha1="cac65d41873c63e90b9406c9dbccc05b15113c45">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.castorflex.verticalviewpager-library-19.0.1_e2ee903f87cbdf00979e35e177d85209beb50571/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -152,97 +89,25 @@
         optimize="true"
         revision="23.0.2"
         sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/javawriter-2.1.1_e6844c8df73663c9bbee0d2b23b948f13eb47613/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/javawriter-2.1.1_e6844c8df73663c9bbee0d2b23b948f13eb47613/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.contrarywind/Android-PickerView/3.2.5/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okhttp-3.2.0.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="c1def4f6e8a41985b7b7af4d3b5b5d94f61d01b0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.contrarywind-Android-PickerView-3.2.5_5c74a89ed39177ccb75bc5cc55802a33db02b64d/classes.dex" />
+        sha1="4867241d5afab8d9885c3eb51f6cc8ea599d05b3">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_75a03beb4f66beab5093101a48ab90459527f474/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/SMSSDKGUI-2.1.1/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/me.iwf.photopicker/PhotoPicker/0.1.8/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="1f30237972841d767d5fae5674a001348fd6edfa">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-SMSSDKGUI-2.1.1_0293ac857c317c8820f45859c08aaa89a04cf6b3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-22.2.0_b7e225a72a573fb9ef152423854dc6c6fe376ead/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/BmobSDK_V3.4.7_0518.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="aabd0c041b23f1132baaf5e3c0837870f0e06c4b">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/BmobSDK_V3.4.7_0518_d05f193fa45b1dad2ea470f9b197ab07ffcb1d29/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/httpmime-4.1.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ed8b5ee0167cb27dea55851259eb34b609f31df0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/httpmime-4.1.2_8306b937cf9e2aa9d82f972f85e29b8bc34a9dbc/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.orhanobut/logger/1.4/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="109f0ec452925b46b500e8d28ee2cd2d1a0145a9">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.orhanobut-logger-1.4_0d02ce8762a9dd5359da9f8ca3a9d44d2fef1e4e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_8e3f90d3a86e4cad194f2dae80f8ac9429e114ee/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/bos-android-sdk-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4d8935bd82163a43871e2907ebb4ef363ec4ab50">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/bos-android-sdk-1.0.2_6a16e8fd40acf4f7a67c16209f7ed44b2f1762ce/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/MobTools-2016.0714.1402.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="2a583c5b1b67aa1f1b9dbbc658d9e0d185d89dd3">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobTools-2016.0714.1402_b5590b676a72b281c914d6c6f49509c6fb4512c5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_5ad468c6356053ba7abf7c9da44ac1f356bd6d7d/classes.dex" />
+        sha1="eba644a0fa8cb2a0b32765031c9c84e40b774cd0">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/me.iwf.photopicker-PhotoPicker-0.1.8_afa9b2347ea83cf00964590dc72418d37bad97bd/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -251,43 +116,7 @@
         optimize="true"
         revision="23.0.2"
         sha1="381fc1096ba65040d8e80ea43b2e1d9bad02345e">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/logging-interceptor-3.4.1_104e636941e3209030f907ec4e34b52688fda365/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-idling-resource/2.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="83e81537012f1975aa902eedbdb8da5aa515aea5">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test.espresso-espresso-idling-resource-2.2.1_7b27963433c0b4f532982bb923fad077d4788722/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_76ecc48b9673c3c27ba5f53058bccdd40cebcfcb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="479c1e06db31c432330183f5cae684163f186146">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.annotation-api-1.2_3980feb3dc78bad4a79ed122878a023be2ddda5a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/pinyin4j-2.5.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ae353005f973da1cd8545b54354504c2503f6865">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/pinyin4j-2.5.0_12e53055351c582e0ac96dc9ffb5cac1563f9a65/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/logging-interceptor-3.4.1_104e636941e3209030f907ec4e34b52688fda365/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -296,7 +125,7 @@
         optimize="true"
         revision="23.0.2"
         sha1="027293c440d2085cde1d859528aff6e7d3b6ae40">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.1_9e0fcb65d20e3799b0748127f51dd35644cce5f4/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.1_9e0fcb65d20e3799b0748127f51dd35644cce5f4/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -305,232 +134,142 @@
         optimize="true"
         revision="23.0.2"
         sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_acf191bd8093ceb23d8fe4c01579f169231f94e9/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.inject-1_acf191bd8093ceb23d8fe4c01579f169231f94e9/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okio-1.7.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="014ef0504f01d11401d5630d8dbd892e728096bb">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.7.0_51deee7f2dff6f90d0395a8dd83520aab92e91d6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/me.iwf.photopicker/PhotoPicker/0.1.8/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="eba644a0fa8cb2a0b32765031c9c84e40b774cd0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/me.iwf.photopicker-PhotoPicker-0.1.8_ce11130f6e9728de37e420d584d804cfc81195a6/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-22.2.0_77fd2d1e87ea626def740dfb02c43e1accd9079c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/eventbus-3.0.0_694c158a73cd64985889cae6821a0f536792a670/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-core-1.3_2f923636ed2ea5a143ef3138ea6d14f54c678015/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/BaiduTraceSDK_v3_0_4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="01ed122098fe68551bcf851fdc6d16ee2b750f4e">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduTraceSDK_v3_0_4_65eccb2ba3c63d9d5b5e554e989bdfbcb0a99140/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/libs/BmobNewIM_2.0.5_20160601.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="b535a2906149ccebadc4b1cab0126130916842ea">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/BmobNewIM_2.0.5_20160601_cdb06dbc950079a671eec61c1042c9e4acacd4c8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support.test/runner/0.4.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="f607369e68cb756b3f8f523403e3d80433a68aa1">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-runner-0.4.1_8970d3ee25123084a51681389863b54005f9c6c9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.4.1_3d3b706ec6c7e9487cae15023f936049d9763b93/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support.test/exposed-instrumentation-api-publish/0.4.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e1d90a3498ab7a4b68ea6e936e71cf7f4e95453f">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-exposed-instrumentation-api-publish-0.4.1_b18256c78a1f3ffd5ef7e999ffc853620180e604/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="01b7963377019bde2f7c41f54d65af24c282133a">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2e115bd636479b7dbb1b167a34efdda7880fd0b0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okhttp-3.2.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="4867241d5afab8d9885c3eb51f6cc8ea599d05b3">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_e5bede548cf70cdc82a7146cccb8134ea869f486/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-integration/1.3/5de0c73fef18917cd85d0ab70bb23818685e4dfd/hamcrest-integration-1.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5de0c73fef18917cd85d0ab70bb23818685e4dfd">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-integration-1.3_97b727fc2382c719d2a8286c9d6976798cc59c34/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/org.apache.http.legacy.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5320fd78dd7f154e586970d4f02befc9b58432aa">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/org.apache.http.legacy_78f47da04c48c613290df28626297e2150c638a0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/SMSSDK-2.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="d7b3619e58ab2a0fb6fa87a74e1b4802b413749a">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-SMSSDK-2.1.1_9a0ebf5464ad2013de1e45c87a61b1becffbcd9b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/universal-image-loader-1.9.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.5_37ad57d3193e6ff4514e6e957a65813f6d026338/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/jsoup-1.7.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="872693211fd68d1c4e116cf90021603207725e19">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/jsoup-1.7.2_692e953e3a54350e2221b65b3250c6d280d31c1c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="3d76714735345152034fd20b1bec30d3936abca4">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/BmobSDK_V3.4.7_0527_f4f74865e65a5494e9a5a56c7408400c02cc8d4f/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/BmobSDK_V3.4.7_0527_653ee473b47795d0b9d4ada94c804e43aaa56ef4/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/org.apache.http.legacy.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="6e61818680190dec5f17afcbdd5761b85882b768">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/cn.bmob.android-bmob-sdk-3.4.7-aar_f3ce711e0f1427d54b8c82ea233f0fd5bef2ad5c/classes.dex" />
+        sha1="5320fd78dd7f154e586970d4f02befc9b58432aa">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/org.apache.http.legacy_c438d612e7963083cd3d8943c5a60c3e6bdae955/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="352b2eaf3cb70c4b1eb29dd52ca22ee8c05eefc0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_4a752a5115ab93ff0b4d2a8c84a7d11329fb9883/classes.dex" />
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_b1458b91ffc188f2da6ade0a8052cc8ab9f33aeb/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/BaiduLBS_Android.jar"
+        jar="/home/user/android_develop_tools/sdk/extras/android/m2repository/com/android/support/support-annotations/23.4.0/support-annotations-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ffbe55fdb2bb456b1485831706a9eac3300bb6b8">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.4.0_6f635c0a1445673fe487827f252bd637346532c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.4.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e4805433aedef15e73a7eedf7e3496eb4363a583">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-rules-0.4.1_5ecea280358075df0ba5af2ae19c4dcf8b1099f7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-22.2.0_fc6a99dafe6d177b5d43e93cf4d953eb08bf2ffb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/BaiduLBS_Android.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="4134d6e7402c226798df30df66072d27c23aecb2">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduLBS_Android_920cbba530ca7309c1795cdde355d394ba732901/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduLBS_Android_c1e944710ae768f2531543b8604717730debf1d6/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/xUtils-2.6.14.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-idling-resource/2.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="f10c51f3e0732fdeefe6e104279a58e275879b6c">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/xUtils-2.6.14_ccc3b0dee713674d4875a8d9f75a160c7b71f811/classes.dex" />
+        sha1="83e81537012f1975aa902eedbdb8da5aa515aea5">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test.espresso-espresso-idling-resource-2.2.1_7b1ad21212f1e42b8d6f1f0834cb292ffdb38026/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/Bmob_Push_V0.9beta_20160520.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="46b64293efb94feb03e6270d400f95b2664513f6">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/cn.bmob.android-bmob-im-2.0.5_5009e9919c8d3c1242a790928efe1c21aa8cbdb2/classes.dex" />
+        sha1="faef33e869bfbc3949cc789948e4f57ec61a1cab">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/Bmob_Push_V0.9beta_20160520_2ab89b8ac5414835353d139a7a603db16215a704/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/butterknife-7.0.1.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_d8b947a79761e51d89ed5220d256bddc76f8548d/classes.dex" />
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/butterknife-7.0.1_d7e7575aaa1ecba0d515df2f4b3cf71836426aa8/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-core/2.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-multidex-1.0.1_0be8b7b5869ef34277de8e9e848450118cd2bfef/classes.dex" />
+        sha1="25a72389e79fbac13f78412a4a6ffacc1cdb0673">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test.espresso-espresso-core-2.2.1_e7c9c227caed5927e6c9b81ff883c1ab64eaff65/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support.test/runner/0.4.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="f607369e68cb756b3f8f523403e3d80433a68aa1">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-runner-0.4.1_99f50ec0fa679935e5107b0e126f12ba827ffff0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/bos-android-sdk-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4d8935bd82163a43871e2907ebb4ef363ec4ab50">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/bos-android-sdk-1.0.2_54334848eff897fa735511ae2d3f9bd671d4fba9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.4.0_12663230d95f036a6c499d7dd3dd6f2f5c220e07/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/BaiduTraceSDK_v3_0_4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="01ed122098fe68551bcf851fdc6d16ee2b750f4e">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/BaiduTraceSDK_v3_0_4_a54318f768caf7ac591e2f31eb95f1fd9ad4a019/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -539,34 +278,7 @@
         optimize="true"
         revision="23.0.2"
         sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_2f4f5d3ca7ded82f6b2a0317c93c7a71584fe88e/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support.test.espresso/espresso-core/2.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="25a72389e79fbac13f78412a4a6ffacc1cdb0673">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test.espresso-espresso-core-2.2.1_f38761f2043f8db5d8ad8c358af5800d79ea78b8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/libs/Bmob_Push_V0.9beta_20160520.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="faef33e869bfbc3949cc789948e4f57ec61a1cab">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/2/Bmob_Push_V0.9beta_20160520_01db7c0c0df8483c27a85c35bd6650fa9ee6ee55/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/exploded-aar/com.android.support.test/rules/0.4.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e4805433aedef15e73a7eedf7e3496eb4363a583">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support.test-rules-0.4.1_b7e3d05f67d61c622d93f3568045d76cc5f241a9/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/picasso-2.5.2_2f4f5d3ca7ded82f6b2a0317c93c7a71584fe88e/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -575,7 +287,295 @@
         optimize="true"
         revision="23.0.2"
         sha1="02a8e0aa38a2e21cb39e2f5a7d6704cbdc941da0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.8.1_a8b4337f06b0ef4ad301c0d2cf706bfafb206080/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.8.1_a8b4337f06b0ef4ad301c0d2cf706bfafb206080/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/SMSSDK-2.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="d7b3619e58ab2a0fb6fa87a74e1b4802b413749a">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-SMSSDK-2.1.1_9825370cc2b7a13abcb9cdb7213c9f5e7d36f394/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/okio-1.7.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="014ef0504f01d11401d5630d8dbd892e728096bb">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.7.0_8ddd517a95d8faec00f81994b7eef6ce5a81b405/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.6.0/a7537446a030da8eb0da4c71424d16c2589f6c4a/glide-3.6.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a7537446a030da8eb0da4c71424d16c2589f6c4a">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/glide-3.6.0_42d993c2ff8ced16d3e36072ed8be61b04130da7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.michaelpardo/activeandroid/3.1.0-SNAPSHOT/4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08/activeandroid-3.1.0-SNAPSHOT.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4ab7b0182975bc57c49efc5e0b3baa4a10e4ec08">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/activeandroid-3.1.0-SNAPSHOT_a68c51a8c75690350769ee392b57d0e95ddbc513/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/liji.library.dev/citypickerview/2.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="afab1ca06a3bf3dfb3cba184a8b08d61d0934f2a">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/liji.library.dev-citypickerview-2.0.1_21c15cbd0670be240b2baa903eba8801c9075a97/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6e61818680190dec5f17afcbdd5761b85882b768">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/cn.bmob.android-bmob-sdk-3.4.7-aar_029a845500134f1d14c040c362a1b27673138f21/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.orhanobut/logger/1.4/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="109f0ec452925b46b500e8d28ee2cd2d1a0145a9">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.orhanobut-logger-1.4_cb18b0e07d5023afcad1a1af4943fd268a3314fa/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="6803537c70c4187ead5a030f4f5e8c20124ca6ce">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e2d5e917456f62677711078fede156428f8e4ff3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/jsoup-1.7.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="872693211fd68d1c4e116cf90021603207725e19">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/jsoup-1.7.2_4fca331f3f99f215ed0e6ab7c3585430cdae79a8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/SMSSDKGUI-2.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="1f30237972841d767d5fae5674a001348fd6edfa">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/intermediates-exploded-aar-SMSSDKGUI-2.1.1_415826ca5a5c499213dc7c62e44f1e2a96a56cf7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-library/1.3/4785a3c21320980282f9f33d0d1264a69040538f/hamcrest-library-1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4785a3c21320980282f9f33d0d1264a69040538f">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-library-1.3_fe37a7abac58f621858827099179a71644cba3c8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-multidex-1.0.1_4a4a65c75831a189c4bfe203300fc1ed82774075/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="67bd36ee9340ec7c254108936ad16b24bed160cc">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.4.0_670dcf7e1a7d4a7b2ec6dbada788b53c1e86c213/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.4.0_23b11b5d93b44876748d92bf78cc31496d9c8a54/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/javax.annotation/javax.annotation-api/1.2/479c1e06db31c432330183f5cae684163f186146/javax.annotation-api-1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/javax.annotation-api-1.2_3980feb3dc78bad4a79ed122878a023be2ddda5a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/MobTools-2016.0714.1402.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="2a583c5b1b67aa1f1b9dbbc658d9e0d185d89dd3">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobTools-2016.0714.1402_9a20797d43898dd9b0480e6b5009fba6dcea2d61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.greenrobot/eventbus/3.0.0/ddd99896e9569eaababbe81b35d80e1b91c4ad85/eventbus-3.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ddd99896e9569eaababbe81b35d80e1b91c4ad85">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/eventbus-3.0.0_694c158a73cd64985889cae6821a0f536792a670/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-core/1.3/42a25dc3219429f0e5d060061f71acb49bf010a0/hamcrest-core-1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-core-1.3_2f923636ed2ea5a143ef3138ea6d14f54c678015/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5bb7497e0315b4396c872f684232fa5d883df5c5">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_22c59865ce71067f347657f5030969e2254f83c6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/httpmime-4.1.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ed8b5ee0167cb27dea55851259eb34b609f31df0">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/httpmime-4.1.2_614f41ac3d69da222bef062b8e84948aece2dbf9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/libs/BmobNewIM_2.0.5_20160601.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="b535a2906149ccebadc4b1cab0126130916842ea">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/BmobNewIM_2.0.5_20160601_69dec96e8e975019499c535aa2d330af540b0304/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.4.1/c7c4f9e35c2fd5900da24f9872e3971801f08ce0/okhttp-3.4.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c7c4f9e35c2fd5900da24f9872e3971801f08ce0">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.4.1_3d3b706ec6c7e9487cae15023f936049d9763b93/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/libs/androidasync-2.1.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="4c88f1359a331cff1ea593267d1f63dca63b364b">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/androidasync-2.1.6_d8433fab8d0fbbaffb64f377fd7754b76d0f6be6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/user/.gradle/caches/modules-2/files-2.1/org.hamcrest/hamcrest-integration/1.3/5de0c73fef18917cd85d0ab70bb23818685e4dfd/hamcrest-integration-1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5de0c73fef18917cd85d0ab70bb23818685e4dfd">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/hamcrest-integration-1.3_97b727fc2382c719d2a8286c9d6976798cc59c34/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/MobCommons-2016.0714.1402.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="57eee6c3e8bab2ed4b9a585a7f590808d6518573">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/MobCommons-2016.0714.1402_3cad15c476cc5b37bd986552eacbf6d5e6f159e2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="46b64293efb94feb03e6270d400f95b2664513f6">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/cn.bmob.android-bmob-im-2.0.5_84494b1d847f7e748e0efa402b365a659c848028/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.4.0/jars/libs/internal_impl-23.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ea3c07504d2c8f4b13aa17c45c1b68ed9c1c3674">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.4.0_7bfe1ccc03d526c48d2bc7e57122e445effa0582/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/filechoose.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="30877bca7d1d9f09d7bc8b6ec3e6f5cf0fcf27fb">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/filechoose_86e1163cde728ff7e2ba430e700c0230b00692a5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/eventbus-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="ddd166d01b3158d1c00576d29f7ed15c030df719">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/eventbus-2.4.0_ae0d5bf5edc7093079a9f456ad37a7fe0d6a8925/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.2.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="5b37cf49773f7f17aca9830efd3053b0cac56728">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-22.2.0_695294885951270a758bc266147d7ab895effd39/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/exploded-aar/com.contrarywind/Android-PickerView/3.2.5/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="c1def4f6e8a41985b7b7af4d3b5b5d94f61d01b0">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.contrarywind-Android-PickerView-3.2.5_21b11d896dde0722ac2f0fb0e7f6952a4a3bb9fe/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/local/AndroidStudioProjects/SportsLover/app/libs/universal-image-loader-1.9.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="442dbfb517b9ab5cb5c6da7ebf8cc28ec5bd0375">
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/2/universal-image-loader-1.9.5_6252110e78a515b3a59effbd02db1e40114cda88/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -584,7 +584,7 @@
         optimize="true"
         revision="23.0.2"
         sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
-        <dex dex="/local/homework/code/10.13.19.15/SportsLover.upload/app/build/intermediates/transforms/dex/debug/folders/1000/10/jsr305-2.0.1_ad86a59e922baf05a708c3d8243fd251f63ceb1a/classes.dex" />
+        <dex dex="/local/AndroidStudioProjects/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/jsr305-2.0.1_ad86a59e922baf05a708c3d8243fd251f63ceb1a/classes.dex" />
     </item>
 
 </items>

@@ -77,7 +77,7 @@ public class MotionRecordActivity extends AppCompatActivity {
 
             }
         });
-        recordItem.setSportsman(user);
+        //recordItem.setSportsman(user);
 
     }
     @OnClick({R.id.iv_sport_record})
@@ -108,7 +108,7 @@ public class MotionRecordActivity extends AppCompatActivity {
             bmobFile.upload(BaseApplication.getmContext(), new UploadFileListener() {
                 @Override
                 public void onSuccess() {
-                   recordItem.setSportPicture(bmobFile);
+                   //recordItem.setSportPicture(bmobFile);
                     recordItem.save(MotionRecordActivity.this, new SaveListener() {
                         @Override
                         public void onSuccess() {
@@ -121,7 +121,7 @@ public class MotionRecordActivity extends AppCompatActivity {
                                 }
                             }, 500);
                             ToastUtil.showLong(MotionRecordActivity.this, "成功");
-                            imageLoader.displayImage(recordItem.getSportPicture().getUrl(), iv_sport_record, options);
+                            //imageLoader.displayImage(recordItem.getSportPicture().getUrl(), iv_sport_record, options);
                         }
 
                         @Override

@@ -11,96 +11,122 @@ import cn.bmob.v3.BmobObject;
 public class TotalRecord extends BmobObject implements Serializable {
     public String UserName;
 
-    public String RunDistance;
-    public String RunDuration;
-    public String RunSpeed;
-    public String RunTimes;
+    public float RunDistance;
+    public int RunDuration;
+    public int RunSpeed;
+    public int RunTimes;
 
-    public String WalkDistance;
-    public String WalkDuration;
-    public String WalkSpeed;
-    public String WalkTimes;
+    public float WalkDistance;
+    public int WalkDuration;
+    public int WalkSpeed;
+    public int WalkTimes;
 
-    public String RideDistance;
-    public String RideSpeed;
-    public String RideTimes;
-    public String RideDuration;
+    public float RideDistance;
+    public int RideSpeed;
+    public int RideTimes;
+    public int RideDuration;
 
-
-    public String getUserName(){return UserName;}
-    public void setUserName(String userName){
-        UserName = userName;
+    public int getWalkTimes() {
+        return WalkTimes;
     }
 
-
-
-    public String getRunDistance(){return RunDistance;}
-    public void setRunDistance(String runDistance){
-        RunDistance = runDistance;
-    }
-
-    public String getRunDuration(){return RunDuration;}
-    protected void setRunDuration(String runDuration){
-        RunDuration = runDuration;
-    }
-
-    public String getRunSpeed(){return RunSpeed;}
-    public void setRunSpeed(String runSpeed){
-        RunSpeed = runSpeed;
-    }
-
-    public String getRunTimes(){return RunTimes;}
-    public void setRunTimes(String runTimes){
-        RunTimes = runTimes;
-    }
-
-
-
-
-
-    public String getRideDistance(){return RideDistance;}
-    public void setRideDistance(String rideDistance){
-        RideDistance = rideDistance;
-    }
-
-    public String getRideDuration(){return RideDuration;}
-    protected void setRideDuration(String rideDuration){
-        RideDuration = rideDuration;
-    }
-
-    public String getRideSpeed(){return RideSpeed;}
-    public void setRideSpeed(String rideSpeed){
-        RideSpeed = rideSpeed;
-    }
-
-    public String getRideTimes(){return RideTimes;}
-    public void setRideTimes(String rideTimes){
-        RideTimes = rideTimes;
-    }
-
-
-
-
-
-    public String getWalkDistance(){return WalkDistance;}
-    public void setWalkDistance(String walkDistance){
-        WalkDistance = walkDistance;
-    }
-
-    public String getWalkDuration(){return WalkDuration;}
-    protected void setWalkDuration(String walkDuration){
-        WalkDuration = walkDuration;
-    }
-
-    public String getWalkSpeed(){return WalkSpeed;}
-    public void setWalkSpeed(String walkSpeed){
-        WalkSpeed = walkSpeed;
-    }
-
-    public String getWalkTimes(){return WalkTimes;}
-    public void setWalkTimes(String walkTimes){
+    public void setWalkTimes(int walkTimes) {
         WalkTimes = walkTimes;
     }
 
+    public float getRideDistance() {
+        return RideDistance;
+    }
 
+    public void setRideDistance(float rideDistance) {
+        RideDistance = rideDistance;
+    }
+
+    public int getRideDuration() {
+        return RideDuration;
+    }
+
+    public void setRideDuration(int rideDuration) {
+        RideDuration = rideDuration;
+    }
+
+    public int getRideSpeed() {
+        return RideSpeed;
+    }
+
+    public void setRideSpeed(int rideSpeed) {
+        RideSpeed = rideSpeed;
+    }
+
+    public int getRideTimes() {
+        return RideTimes;
+    }
+
+    public void setRideTimes(int rideTimes) {
+        RideTimes = rideTimes;
+    }
+
+    public float getRunDistance() {
+        return RunDistance;
+    }
+
+    public void setRunDistance(float runDistance) {
+        RunDistance = runDistance;
+    }
+
+    public int getRunDuration() {
+        return RunDuration;
+    }
+
+    public void setRunDuration(int runDuration) {
+        RunDuration = runDuration;
+    }
+
+    public int getRunSpeed() {
+        return RunSpeed;
+    }
+
+    public void setRunSpeed(int runSpeed) {
+        RunSpeed = runSpeed;
+    }
+
+    public int getRunTimes() {
+        return RunTimes;
+    }
+
+    public void setRunTimes(int runTimes) {
+        RunTimes = runTimes;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
+    }
+
+    public float getWalkDistance() {
+        return WalkDistance;
+    }
+
+    public void setWalkDistance(float walkDistance) {
+        WalkDistance = walkDistance;
+    }
+
+    public int getWalkDuration() {
+        return WalkDuration;
+    }
+
+    public void setWalkDuration(int walkDuration) {
+        WalkDuration = walkDuration;
+    }
+
+    public int getWalkSpeed() {
+        return WalkSpeed;
+    }
+
+    public void setWalkSpeed(int walkSpeed) {
+        WalkSpeed = walkSpeed;
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.user.sportslover.adapter;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.bean.RouteItem;
+import com.example.user.sportslover.widget.AsyncImageLoader;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 /**
@@ -20,6 +23,9 @@ public class SportRouteMyRouteAdapter extends RecyclerView.Adapter<SportRouteMyR
 
     private List<RouteItem> routeItemList;
     private MyItemClickListener myItemClickListener;
+    private DecimalFormat textFormat = new DecimalFormat("#0.00");
+    private AsyncImageLoader asyncImageLoader = new AsyncImageLoader();
+    private RecyclerView recyclerView;
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView mapImage;
@@ -43,8 +49,9 @@ public class SportRouteMyRouteAdapter extends RecyclerView.Adapter<SportRouteMyR
         }
     }
 
-    public SportRouteMyRouteAdapter(List<RouteItem> routeItemList) {
+    public SportRouteMyRouteAdapter(List<RouteItem> routeItemList, RecyclerView recyclerView) {
         this.routeItemList = routeItemList;
+        this.recyclerView = recyclerView;
     }
 
     @Override
@@ -57,8 +64,25 @@ public class SportRouteMyRouteAdapter extends RecyclerView.Adapter<SportRouteMyR
     @Override
     public void onBindViewHolder(SportRouteMyRouteAdapter.ViewHolder holder, int position) {
         RouteItem routeItem = routeItemList.get(position);
-        holder.mapImage.setImageBitmap(routeItem.getBitmap());
-        holder.mapDescription.setText(routeItem.getDistance() + "m");
+        if (routeItem.getPic() != null){
+            String imageUrl = routeItem.getPic().getUrl();
+            //holder.mapImage.setImageBitmap(routeItem.getBitmap());
+            holder.mapImage.setTag(imageUrl);
+            Drawable cachedImage = asyncImageLoader.loadDrawable(imageUrl, new AsyncImageLoader.ImageCallback() {
+                public void imageLoaded(Drawable imageDrawable, String imageUrl) {
+                    ImageView imageViewByTag = (ImageView) recyclerView.findViewWithTag(imageUrl);
+                    if (imageViewByTag != null) {
+                        imageViewByTag.setImageDrawable(imageDrawable);
+                    }
+                }
+            });
+            if (cachedImage == null) {
+                //holder.mapImage.setImageResource(R.drawable.w);
+            }else{
+                holder.mapImage.setImageDrawable(cachedImage);
+            }
+        }
+        holder.mapDescription.setText(textFormat.format(routeItem.getDistance()/1000) + "km");
     }
 
     @Override

@@ -23,18 +23,33 @@ import com.baidu.location.BDLocation;
 import com.baidu.location.LocationClient;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.BeginSportActivity;
+import com.example.user.sportslover.activity.MainActivity;
 import com.example.user.sportslover.activity.SportHistoryActivity;
 import com.example.user.sportslover.activity.WeatherActivity;
 import com.example.user.sportslover.activity.WeatherView;
 import com.example.user.sportslover.application.BaseApplication;
+import com.example.user.sportslover.bean.RecordItem;
+import com.example.user.sportslover.bean.TotalRecord;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.bean.Weather;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
+import com.example.user.sportslover.model.RecordItemControlImpr;
+import com.example.user.sportslover.model.RecordItemControlInter;
+import com.example.user.sportslover.model.TotalRecordFindImpr;
+import com.example.user.sportslover.model.TotalRecordFindInter;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.HomeRidingPresenterImpr;
 import com.example.user.sportslover.presenter.HomeRunningPresenterImpr;
 import com.example.user.sportslover.presenter.HomeWalkingPresenterImpr;
 import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
+
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
+import cn.bmob.v3.listener.SaveListener;
 
 public class HomeFragment extends Fragment implements View.OnClickListener, HomeView, WeatherView {
 
@@ -80,6 +95,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
     private WeatherPresenterImpl weatherPresenterImpl;
     private BaseApplication baseApplication;
 
+
+    private UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
+
+    private TotalRecord totalRecord = new TotalRecord();
+    private TotalRecordFindInter totalRecordFind = new TotalRecordFindImpr();
+    private RecordItemControlInter recordItemControlInter = new RecordItemControlImpr();
+
+
+    private DecimalFormat textFormat = new DecimalFormat("#0.00");
+    private DecimalFormat timeFormat = new DecimalFormat("#0.0");
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -116,9 +143,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvRidingAveragePace = (TextView) view2.findViewById(R.id.tv_home_riding_average_pace);
         tvRidingCumulativeNumber = (TextView) view2.findViewById(R.id.tv_home_riding_cumulative_number);
         ivRidingWeatherIcon = (ImageView) view2.findViewById(R.id.iv_home_riding_weather_icon);
-        refleshRidingTextViews();
-        refleshWalkingTextViews();
-        refleshRunningTextViews();
+        //initUserData();
+        //refleshRidingTextViews();
+        //refleshWalkingTextViews();
+        //refleshRunningTextViews();
         pageview =new ArrayList<View>();
         pageview.add(view0);
         pageview.add(view1);
@@ -193,11 +221,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
 
     @Override
     public void showResponse(final Weather weather) {
-        baseApplication.setGlobalWeather(weather);
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
                 if ("ok".equals(weather.status)){
+                    baseApplication.setGlobalWeather(weather);
                     refleshWeatherCondition();}
             }
         });
@@ -367,7 +395,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         String html;
         textViewvp0.setTextColor(0xff000000);
         textViewvp1.setTextColor(0xff848484);
-        textViewvp2.setTextColor(0xff848484);
+        textViewvp2.setTextColor(0xff848484);/*
         html = "Today<br><big><big><big><big><big>" + homeRunningPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
         tvRuningTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
@@ -375,6 +403,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         html = "<big><big><big>" + homeRunningPresenterImpr.loadAveragePace()/60 + "’</big>" + homeRunningPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvRuningAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRunningPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvRuningCumulativeNumber.setText(Html.fromHtml(html));*/
+        html = "<big><big><big><big><big>" + textFormat.format(totalRecord.getRunDistance()/1000) + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvRuningTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + timeFormat.format(totalRecord.getRunDuration()/3600) +"</big></big></big> h<br>Cumulative<br>time";
+        tvRuningCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getRunSpeed()/60 + "’</big>" + totalRecord.getRunSpeed()%60 + "”" +"</big></big><br>Average<br>pace";
+        tvRuningAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getRunTimes() +"</big></big></big><br>Cumulative<br>number";
         tvRuningCumulativeNumber.setText(Html.fromHtml(html));
     }
 
@@ -382,7 +418,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         String html;
         textViewvp0.setTextColor(0xff848484);
         textViewvp1.setTextColor(0xff000000);
-        textViewvp2.setTextColor(0xff848484);
+        textViewvp2.setTextColor(0xff848484);/*
         html = "Today<br><big><big><big><big><big>" + homeWalkingPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
         tvWalkingTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
@@ -390,6 +426,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         html = "<big><big><big>" + homeWalkingPresenterImpr.loadAveragePace()/60 + "’</big>" + homeWalkingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvWalkingAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeWalkingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvWalkingCumulativeNumber.setText(Html.fromHtml(html));*/
+        html = "<big><big><big><big><big>" + textFormat.format(totalRecord.getWalkDistance()/1000) + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvWalkingTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + timeFormat.format(totalRecord.getWalkDuration()/3600) +"</big></big></big> h<br>Cumulative<br>time";
+        tvWalkingCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getWalkSpeed()/60 + "’</big>" + totalRecord.getWalkSpeed()%60 + "”" +"</big></big><br>Average<br>pace";
+        tvWalkingAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getWalkTimes() +"</big></big></big><br>Cumulative<br>number";
         tvWalkingCumulativeNumber.setText(Html.fromHtml(html));
     }
 
@@ -397,7 +441,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         String html;
         textViewvp0.setTextColor(0xff848484);
         textViewvp1.setTextColor(0xff848484);
-        textViewvp2.setTextColor(0xff000000);
+        textViewvp2.setTextColor(0xff000000);/*
         html = "Today<br><big><big><big><big><big>" + homeRidingPresenterImpr.loadTotalMileages() + "</big></big></big></big></big>  km<br>Totol mileages";
         tvRidingTotalMileages.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeTime() +"</big></big></big> h<br>Cumulative<br>time";
@@ -405,6 +449,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         html = "<big><big><big>" + homeRidingPresenterImpr.loadAveragePace()/60 + "’</big>" + homeRidingPresenterImpr.loadAveragePace()%60 + "”" +"</big></big><br>Average<br>pace";
         tvRidingAveragePace.setText(Html.fromHtml(html));
         html = "<big><big><big>" + homeRidingPresenterImpr.loadComulativeNumber() +"</big></big></big><br>Cumulative<br>number";
+        tvRidingCumulativeNumber.setText(Html.fromHtml(html));*/
+        html = "<big><big><big><big><big>" + textFormat.format(totalRecord.getRideDistance()/1000) + "</big></big></big></big></big>  km<br>Totol mileages";
+        tvRidingTotalMileages.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + timeFormat.format(totalRecord.getRideDuration()/3600) +"</big></big></big> h<br>Cumulative<br>time";
+        tvRidingCumulativeTime.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getRideSpeed()/60 + "’</big>" + totalRecord.getRideSpeed()%60 + "”" +"</big></big><br>Average<br>pace";
+        tvRidingAveragePace.setText(Html.fromHtml(html));
+        html = "<big><big><big>" + totalRecord.getRideTimes() +"</big></big></big><br>Cumulative<br>number";
         tvRidingCumulativeNumber.setText(Html.fromHtml(html));
     }
 
@@ -412,5 +464,41 @@ public class HomeFragment extends Fragment implements View.OnClickListener, Home
         tvRunningWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
         tvWalkingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
         tvRidingWeatherCondition.setText(baseApplication.getGlobalWeather().now.temperature + "℃\n" + ("Sunny/Clear".equals(baseApplication.getGlobalWeather().now.more.info)?"Sunny":baseApplication.getGlobalWeather().now.more.info));
+    }
+
+
+    private void initUserData() {
+        mUserLocal = mUserModelImpl.getUserLocal();
+        if (mUserLocal != null){
+            totalRecordFind.loadTotalRecord(getActivity(), mUserLocal.getName(), new TotalRecordFindImpr.OnRequestTotalRecordListener(){
+                @Override
+                public void onSuccess(TotalRecord totalRecord1) {
+                    totalRecord = totalRecord1;
+                    refleshRidingTextViews();
+                    refleshWalkingTextViews();
+                    refleshRunningTextViews();
+                }
+            });
+            if (totalRecord == null){
+                getActivity().finish();
+            }
+        } else {
+            Toast.makeText(getActivity(), "Not Login Yet!", Toast.LENGTH_SHORT).show();
+            totalRecordFind.loadTotalRecord(getActivity(), "", new TotalRecordFindImpr.OnRequestTotalRecordListener() {
+                @Override
+                public void onSuccess(TotalRecord totalRecord1) {
+                    totalRecord = totalRecord1;
+                    refleshRidingTextViews();
+                    refleshWalkingTextViews();
+                    refleshRunningTextViews();
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initUserData();
     }
 }

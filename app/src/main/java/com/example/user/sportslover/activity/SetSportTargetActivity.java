@@ -14,8 +14,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.user.sportslover.R;
+import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
 import com.example.user.sportslover.customview.TuneWheelView;
+import com.example.user.sportslover.model.CalculateCaloriesInter;
+import com.example.user.sportslover.model.CalculateCaloriesRidingImpl;
+import com.example.user.sportslover.model.CalculateCaloriesRunningImpl;
+import com.example.user.sportslover.model.CalculateCaloriesWalkingImpl;
+import com.example.user.sportslover.model.UserModelImpl;
+
+import java.text.DecimalFormat;
 
 public class SetSportTargetActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -29,6 +37,13 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
     private Drawable drawableClicked;
     private Drawable drawableUnclicked;
     private float target;
+    private CalculateCaloriesInter calculateCaloriesInter;
+    private float weight = 60;
+
+    private UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
+
+    private DecimalFormat textFormat = new DecimalFormat("#0.0");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +74,16 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
         drawableClicked = buttonRunning.getBackground();
         drawableUnclicked = buttonWalking.getBackground();
         tvTarget = (TextView) findViewById(R.id.tv_target);
+        mUserLocal = mUserModelImpl.getUserLocal();
+        if (mUserLocal.getWeight()!=null)
+            weight = Float.parseFloat(mUserLocal.getWeight());
         refleshView();
         setButtonFromIntent(getIntent().getIntExtra("sport_type", -1));
     }
 
     private void refleshView(){
-        String html ="0.0calories<br><big><big><big><big><big>" + target/1000 + "</big></big>  km</big></big></big><br>Totol mileages";
+        String html = textFormat.format(calculateCaloriesInter.calculateCalories(weight, target/1000)) + "KCAL<br><big><big><big><big><big>"
+                + textFormat.format(target/1000) + "</big></big>  km</big></big></big><br>Totol mileages";
         tvTarget.setText(Html.fromHtml(html));
     }
 
@@ -140,6 +159,7 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
                 buttonRunning.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 buttonRunning.setTextColor(Color.BLACK);
                 tuneWheel.setMaxValue(100);
+                calculateCaloriesInter = new CalculateCaloriesRunningImpl();
                 break;
             case 1:
                 initButtons();
@@ -149,6 +169,7 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
                 buttonWalking.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 buttonWalking.setTextColor(Color.BLACK);
                 tuneWheel.setMaxValue(100);
+                calculateCaloriesInter = new CalculateCaloriesWalkingImpl();
                 break;
             case 2:
                 initButtons();
@@ -158,6 +179,7 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
                 buttonRiding.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 15);
                 buttonRiding.setTextColor(Color.BLACK);
                 tuneWheel.setMaxValue(200);
+                calculateCaloriesInter = new CalculateCaloriesRidingImpl();
                 break;
             default:
                 break;

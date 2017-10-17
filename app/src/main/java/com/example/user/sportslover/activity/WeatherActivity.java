@@ -14,6 +14,7 @@ import com.example.user.sportslover.bean.Weather;
 import com.example.user.sportslover.presenter.WeatherPresenterImpl;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class WeatherActivity extends AppCompatActivity implements View.OnClickListener, WeatherView {

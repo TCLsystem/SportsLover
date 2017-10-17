@@ -2,6 +2,7 @@ package com.example.user.sportslover.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +17,12 @@ import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.adapter.SportRouteMyRouteAdapter;
 import com.example.user.sportslover.bean.RouteItem;
-import com.example.user.sportslover.model.RouteFindImpr;
-import com.example.user.sportslover.model.RouteFindInter;
+import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.model.RouteControlImpr;
+import com.example.user.sportslover.model.RouteControlInter;
 import com.example.user.sportslover.model.SportHistoryModelInter;
+import com.example.user.sportslover.model.UserModelImpl;
+import com.example.user.sportslover.util.BitmapUtil;
 import com.example.user.sportslover.util.MapUtil;
 import com.nostra13.universalimageloader.utils.L;
 
@@ -30,23 +34,25 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
     private List<RouteItem> routeItemsList = new ArrayList<>();
     private LatLng point;
     private int positionOnSelect;
+    SportRouteMyRouteAdapter adapter;
+
+    private UserLocal mUserLocal = new UserLocal();
+    private UserModelImpl mUserModelImpl = new UserModelImpl();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sport_route_my_route);
+        mUserLocal = mUserModelImpl.getUserLocal();
         point = getIntent().getParcelableExtra("current_position");
         ImageView ivBack = (ImageView) findViewById(R.id.sport_route_my_route_back);
         ImageView ivSetting = (ImageView) findViewById(R.id.sport_route_my_route_setting);
         ivBack.setOnClickListener(this);
         ivSetting.setOnClickListener(this);
-        RouteFindInter routeFindInter = new RouteFindImpr();
-        for (int i=0; i < 3; i++)
-            routeItemsList.add(routeFindInter.findRouteById(i));
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sport_route_my_route_recycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        SportRouteMyRouteAdapter adapter = new SportRouteMyRouteAdapter(routeItemsList);
+        adapter = new SportRouteMyRouteAdapter(routeItemsList, recyclerView);
         recyclerView.setAdapter(adapter);
         adapter.setItemClickListener(new SportRouteMyRouteAdapter.MyItemClickListener() {
             @Override
@@ -56,7 +62,7 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
                         routeItemsList.get(position).getSportsPath().get(0).longitude);
                 positionOnSelect = position;
                 AlertDialog.Builder dialog = new AlertDialog.Builder(SportRouteMyRouteActitvity.this);
-                dialog.setMessage("You are" + (int) distance + "m from the starting point.\nDo you choose this Route?");
+                dialog.setMessage("You are " + (int) distance + "m from the starting point.\nDo you choose this Route?");
                 dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -73,6 +79,18 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
                     }
                 });
                 dialog.show();
+            }
+        });
+        final RouteControlInter routeControlInter = new RouteControlImpr();
+        routeControlInter.findRouteByUsername(SportRouteMyRouteActitvity.this, mUserLocal.getName(), new RouteControlImpr.OnRouteFindListener() {
+            @Override
+            public void onSuccess(List<RouteItem> routeItemList) {
+                /*for (int i = 0; i < routeItemList.size(); i++){
+                    routeItemList.get(i).setBitmap(BitmapUtil.returnBitMap(routeItemList.get(i).getPic().getUrl()));
+                }*/
+                routeItemsList.clear();
+                routeItemsList.addAll(routeItemList);
+                adapter.notifyDataSetChanged();
             }
         });
     }

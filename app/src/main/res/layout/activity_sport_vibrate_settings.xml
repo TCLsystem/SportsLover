@@ -84,7 +84,7 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:drawablePadding="@dimen/normal_space"
-            android:drawableRight="@drawable/arrow_normal"
+            android:drawableRight="@drawable/select"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:gravity="center_vertical"

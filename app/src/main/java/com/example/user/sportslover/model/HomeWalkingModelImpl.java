@@ -1,5 +1,7 @@
 package com.example.user.sportslover.model;
 
+import com.example.user.sportslover.activity.MainActivity;
+
 /**
  * Created by user on 17-9-26.
  */

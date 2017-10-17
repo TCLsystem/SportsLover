@@ -10,12 +10,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import cn.bmob.v3.BmobObject;
+import cn.bmob.v3.datatype.BmobFile;
 
 /**
  * Created by user on 17-9-30.
  */
 
-public class RouteItem extends BmobObject implements Parcelable {
+public class RouteItem extends BmobObject implements Serializable {
 
     public int id;
     public String UserName;
@@ -27,52 +28,10 @@ public class RouteItem extends BmobObject implements Parcelable {
     public List<LatLng> SportsPath;
     public Bitmap bitmap;
     public boolean isSelected;
+    public BmobFile pic;
+    public String filePath;
 
     public RouteItem(){}
-
-    protected RouteItem(Parcel in) {
-        id = in.readInt();
-        UserName = in.readString();
-        SportsType = in.readString();
-        Place = in.readString();
-        StartPoint = in.readParcelable(LatLng.class.getClassLoader());
-        EndPoint = in.readParcelable(LatLng.class.getClassLoader());
-        Distance = in.readDouble();
-        SportsPath = in.createTypedArrayList(LatLng.CREATOR);
-        bitmap = in.readParcelable(Bitmap.class.getClassLoader());
-        isSelected = in.readByte() != 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(UserName);
-        dest.writeString(SportsType);
-        dest.writeString(Place);
-        dest.writeParcelable(StartPoint, flags);
-        dest.writeParcelable(EndPoint, flags);
-        dest.writeDouble(Distance);
-        dest.writeTypedList(SportsPath);
-        dest.writeParcelable(bitmap, flags);
-        dest.writeByte((byte) (isSelected ? 1 : 0));
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    public static final Creator<RouteItem> CREATOR = new Creator<RouteItem>() {
-        @Override
-        public RouteItem createFromParcel(Parcel in) {
-            return new RouteItem(in);
-        }
-
-        @Override
-        public RouteItem[] newArray(int size) {
-            return new RouteItem[size];
-        }
-    };
 
     public String getUserName(){return UserName;}
     public void setUserName(String userName){
@@ -128,5 +87,21 @@ public class RouteItem extends BmobObject implements Parcelable {
     }
     public void setSelected(boolean selected) {
         isSelected = selected;
+    }
+
+    public BmobFile getPic() {
+        return pic;
+    }
+
+    public void setPic(BmobFile pic) {
+        this.pic = pic;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 }

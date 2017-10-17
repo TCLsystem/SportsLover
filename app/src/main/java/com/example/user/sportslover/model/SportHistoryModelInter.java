@@ -1,5 +1,7 @@
 package com.example.user.sportslover.model;
 
+import android.content.Context;
+
 import com.example.user.sportslover.bean.SportHistoryDataBean;
 
 import java.util.List;
@@ -10,6 +12,6 @@ import java.util.List;
 
 public interface SportHistoryModelInter {
 
-    public List<SportHistoryDataBean> loadHistoryData(int seconds, String type);
+    void loadHistoryData(Context context, int days, String type, SportHistoryModelImpr.OnSportHistoryListener listener);
 
 }
