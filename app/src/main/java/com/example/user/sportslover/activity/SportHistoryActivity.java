@@ -183,7 +183,7 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
                         lists.clear();
                         for (int i = 0; i< sportHistoryDataBeanList.size(); i++){
                             lists.add(new ScrollPerBarBean(sportHistoryDataBeanList.get(i).getMonth() + sportHistoryDataBeanList.get(i).getDate(),
-                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/20*100), Float.toString(sportHistoryDataBeanList.get(i).getDistance()) + "km"));
+                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/200), Float.toString(sportHistoryDataBeanList.get(i).getDistance()/1000) + "km"));
                         }
                         scrollBarBeanWeek.setLists(lists);
                         scrollBarPicWeek.invalidate();
@@ -193,7 +193,7 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
                         lists.clear();
                         for (int i = 0; i< sportHistoryDataBeanList.size(); i++){
                             lists.add(new ScrollPerBarBean(sportHistoryDataBeanList.get(i).getMonth() + sportHistoryDataBeanList.get(i).getDate(),
-                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/20*100), Float.toString(sportHistoryDataBeanList.get(i).getDistance()) + "km"));
+                                    (int)(sportHistoryDataBeanList.get(i).getDistance()/200), Float.toString(sportHistoryDataBeanList.get(i).getDistance()/1000) + "km"));
                         }
                         scrollBarBeanMonth.setLists(lists);
                         scrollBarPicMonth.invalidate();
@@ -206,11 +206,11 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
                     tempCalories += sportHistoryDataBeanList.get(i).getCalories();
                     tempCumulativeTime += sportHistoryDataBeanList.get(i).getCumulativeTime();
                 }
-                html = "<big><big><big>" + textFormat.format(tempDistance) + "</big></big> km</big><br>Distance";
+                html = "<big><big><big>" + textFormat.format(tempDistance/1000) + "</big></big> km</big><br>Distance";
                 tvTotalDistance.setText(Html.fromHtml(html));
                 html = "<big><big><big>" + caloriesFormat.format(tempCalories) + "</big></big> kcal</big><br>Calories";
                 tvTotalCalories.setText(Html.fromHtml(html));
-                html = "<big><big><big>" + textFormat.format(tempCumulativeTime)  + "</big></big> h</big><br>Cumulative<br>time";
+                html = "<big><big><big>" + textFormat.format(tempCumulativeTime/3600)  + "</big></big> h</big><br>Cumulative<br>time";
                 tvTotalCumulativeTime.setText(Html.fromHtml(html));
                 listviewAdapter.notifyDataSetChanged();
             }

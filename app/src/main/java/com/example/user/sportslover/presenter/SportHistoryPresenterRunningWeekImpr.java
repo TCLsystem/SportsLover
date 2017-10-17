@@ -16,6 +16,6 @@ public class SportHistoryPresenterRunningWeekImpr implements SportHistoryPresent
     @Override
     public void loadHistoryData(Context context, SportHistoryModelImpr.OnSportHistoryListener listener) {
         SportHistoryModelInter sportHistoryModelInter = new SportHistoryModelImpr();
-        sportHistoryModelInter.loadHistoryData(context, 7, "Walking", listener);
+        sportHistoryModelInter.loadHistoryData(context, 7, "Running", listener);
     }
 }

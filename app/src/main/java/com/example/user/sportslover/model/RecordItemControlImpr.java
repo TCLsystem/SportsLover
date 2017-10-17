@@ -40,7 +40,7 @@ public class RecordItemControlImpr implements RecordItemControlInter {
         BmobQuery<RecordItem> query = new BmobQuery<>();
         query.addWhereGreaterThan("SportsTime", beginSecond);
         query.addWhereLessThanOrEqualTo("SportsTime", endSecond);
-        query.addWhereEqualTo("SportType", sportType);
+        query.addWhereEqualTo("SportsType", sportType);
         query.findObjects(context, new FindListener<RecordItem>() {
             @Override
             public void onSuccess(List<RecordItem> list) {
