@@ -402,6 +402,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         mLocationClient.registerLocationListener(myListener);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_begin_sport);
+        baseApplication = (BaseApplication) getApplicationContext();
         mUserLocal = mUserModelImpl.getUserLocal();
         mUserLocal.setWeight("60");
         if (mUserLocal != null){
@@ -415,27 +416,33 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         tvSportType = (TextView) findViewById(R.id.sport_type);
         Intent intent = getIntent();
         sportType = intent.getIntExtra("sport_type", -1);
+        if (sportType == -1)
+            sportType = baseApplication.getGlobalSportType();
         switch (sportType){
             case 0:
                 tvSportType.setText("Running");
                 calculateCaloriesInter = new CalculateCaloriesRunningImpl();
                 intentSetSportTarget.putExtra("sport_type", 0);
                 sportInformationItem.setSportType("Running");
+                baseApplication.setGlobalSportType(0);
                 break;
             case 1:
                 tvSportType.setText("Walking");
                 calculateCaloriesInter = new CalculateCaloriesWalkingImpl();
                 intentSetSportTarget.putExtra("sport_type", 1);
                 sportInformationItem.setSportType("Walking");
+                baseApplication.setGlobalSportType(1);
                 break;
             case 2:
                 tvSportType.setText("Riding");
                 calculateCaloriesInter = new CalculateCaloriesRidingImpl();
                 intentSetSportTarget.putExtra("sport_type", 2);
                 sportInformationItem.setSportType("Riding");
+                baseApplication.setGlobalSportType(2);
                 break;
             default:
                 Log.d("Begin Sport", "Invalid sport type");
+                break;
         }
         view0 = getLayoutInflater().inflate(R.layout.item_cicular_viewpager, null);
         view1 = getLayoutInflater().inflate(R.layout.item_baidu_map_viewpager, null);
@@ -471,7 +478,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         myVerticalViewPager.setCurrentItem(1);
         myVerticalViewPager.setScrollable(false);
         myVerticalViewPager.setOnPageChangeListener(new MyOnPageChangeListener());
-        baseApplication = (BaseApplication) getApplicationContext();
         llBeginSportStatus = (LinearLayout) findViewById(R.id.ll_begin_sport_status);
         ivLock0 = (ImageView) view0.findViewById(R.id.iv_lock0);
         ivLock1 = (ImageView) view1.findViewById(R.id.iv_lock1);

@@ -25,6 +25,7 @@ public class BaseApplication extends com.activeandroid.app.Application {
     private Weather globalWeather = null;
     private float globalSportVibrationSetting = 0;
     private int globalSportMapSetting = 0;
+    private int globalSportType = -1;
 
     public static Context getmContext() {
         return sContext;
@@ -99,6 +100,14 @@ public class BaseApplication extends com.activeandroid.app.Application {
 
     public float getGlobalSportVibrationSetting() {
         return globalSportVibrationSetting;
+    }
+
+    public int getGlobalSportType() {
+        return globalSportType;
+    }
+
+    public void setGlobalSportType(int globalSportType) {
+        this.globalSportType = globalSportType;
     }
 
     /**
