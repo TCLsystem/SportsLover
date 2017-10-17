@@ -67,7 +67,7 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
-                        intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getId());
+                        intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getObjectId());
                         setResult(RESULT_OK, intent);
                         finish();
                     }

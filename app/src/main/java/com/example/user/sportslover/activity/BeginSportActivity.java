@@ -174,7 +174,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
                 remotePoints = sportTrackServiceControlBinder.getPoints();
 
-                if (targetPoints.size() > 2){
+                if (targetPoints.size() >= 2){
                     OverlayOptions ooPolylineTarget = new PolylineOptions().width(15).color(0xAA00ff00).points(targetPoints);
                     baiduMap.addOverlay(ooPolylineTarget);
                 }
@@ -189,8 +189,8 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
                 tvHours.setText(Html.fromHtml(html));
                 remoteDistance = sportTrackServiceControlBinder.getDistance();
-                if (target > 100){
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ target/1000 +"km<br>Totol mileages";
+                if (target > 1){
+                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ textFormat.format(target/1000) +"km<br>Totol mileages";
                 } else {
                     html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
                 }
@@ -210,7 +210,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                         tvCalories.setText(Html.fromHtml(html));
                         break;
                     case 1:
-                        html = "<big><big><big>" + timeFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
+                        html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
                         tvCalories.setText(Html.fromHtml(html));
                         break;
                     default:

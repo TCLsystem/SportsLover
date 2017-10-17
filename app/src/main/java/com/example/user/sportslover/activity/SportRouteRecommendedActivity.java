@@ -57,6 +57,7 @@ public class SportRouteRecommendedActivity extends AppCompatActivity implements 
             @Override
             public void onItemClick(View view, int position) {
                 //ivMap.setImageBitmap(routeItemsList.get(position).getBitmap());
+                positionOnSelect = position;
                 ImageView ivOnSelect = (ImageView) view.findViewById(R.id.sport_route_recommended_selected);
                 ivOnSelect.setVisibility(View.VISIBLE);
                 if (routeItemsList.get(position).getPic() != null){
@@ -104,7 +105,7 @@ public class SportRouteRecommendedActivity extends AppCompatActivity implements 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent();
-                        intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getId());
+                        intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getObjectId());
                         setResult(RESULT_OK, intent);
                         finish();
                     }

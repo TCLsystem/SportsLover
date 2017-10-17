@@ -61,7 +61,7 @@ public class SportRouteSettingActivity extends AppCompatActivity implements View
             case 2:
                 if (resultCode == RESULT_OK){
                     Intent intent = new Intent();
-                    intent.putExtra("route_return", data.getIntExtra("route_return", -1));
+                    intent.putExtra("route_return", data.getStringExtra("route_return"));
                     setResult(RESULT_OK, intent);
                     finish();
                 }
