@@ -323,6 +323,7 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 timerValidFlag = true;
                 myVerticalViewPager.setCurrentItem(0);
                 currPage = 0;
+                sportTrackServiceControlBinder.setSportType(sportType);
                 sportTrackServiceControlBinder.startService();
                 llBeginSportStatus.setVisibility(View.VISIBLE);
                 buttonTarget1.setVisibility(View.GONE);
@@ -406,31 +407,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
             }
         }
         tvSportType = (TextView) findViewById(R.id.sport_type);
-        Intent intent = getIntent();
-        sportType = intent.getIntExtra("sport_type", -1);
-        switch (sportType){
-            case 0:
-                tvSportType.setText("Running");
-                calculateCaloriesInter = new CalculateCaloriesRunningImpl();
-                intentSetSportTarget.putExtra("sport_type", 0);
-                sportInformationItem.setSportType("Running");
-                break;
-            case 1:
-                tvSportType.setText("Walking");
-                calculateCaloriesInter = new CalculateCaloriesWalkingImpl();
-                intentSetSportTarget.putExtra("sport_type", 1);
-                sportInformationItem.setSportType("Walking");
-                break;
-            case 2:
-                tvSportType.setText("Riding");
-                calculateCaloriesInter = new CalculateCaloriesRidingImpl();
-                intentSetSportTarget.putExtra("sport_type", 2);
-                sportInformationItem.setSportType("Riding");
-                break;
-            default:
-                Log.d("Begin Sport", "Invalid sport type");
-                break;
-        }
         view0 = getLayoutInflater().inflate(R.layout.item_cicular_viewpager, null);
         view1 = getLayoutInflater().inflate(R.layout.item_baidu_map_viewpager, null);
         pageview =new ArrayList<View>();
@@ -544,6 +520,31 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
             requestLocation();
         }
         refleshBackgroundColors(0, 0);
+        Intent intent = getIntent();
+        sportType = intent.getIntExtra("sport_type", -1);
+        switch (sportType){
+            case 0:
+                tvSportType.setText("Running");
+                calculateCaloriesInter = new CalculateCaloriesRunningImpl();
+                intentSetSportTarget.putExtra("sport_type", 0);
+                sportInformationItem.setSportType("Running");
+                break;
+            case 1:
+                tvSportType.setText("Walking");
+                calculateCaloriesInter = new CalculateCaloriesWalkingImpl();
+                intentSetSportTarget.putExtra("sport_type", 1);
+                sportInformationItem.setSportType("Walking");
+                break;
+            case 2:
+                tvSportType.setText("Riding");
+                calculateCaloriesInter = new CalculateCaloriesRidingImpl();
+                intentSetSportTarget.putExtra("sport_type", 2);
+                sportInformationItem.setSportType("Riding");
+                break;
+            default:
+                Log.d("Begin Sport", "Invalid sport type");
+                break;
+        }
         Intent startSportTrackService = new Intent(this, SportTrackService.class);
         startService(startSportTrackService);
         startTimer();
@@ -1041,7 +1042,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     protected void onSaveInstanceState(Bundle outState) {
         outState.putFloat("Target", target);
         outState.putString("MapId", mapId);
-        outState.putInt("SportType", sportType);
         outState.putLong("StartTime", startTime);
         super.onSaveInstanceState(outState);
     }
@@ -1051,7 +1051,6 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
         super.onRestoreInstanceState(savedInstanceState);
         target = savedInstanceState.getFloat("Target");
         mapId = savedInstanceState.getString("MapId", null);
-        sportType = savedInstanceState.getInt("SportType");
         startTime = savedInstanceState.getLong("StartTime");
         backFromKilled = true;
     }

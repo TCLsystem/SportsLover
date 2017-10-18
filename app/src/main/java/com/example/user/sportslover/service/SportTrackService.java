@@ -76,6 +76,7 @@ public class SportTrackService extends Service {
     private BaseApplication baseApplication;
     private Vibrator vibrator;
     private float vibratedDistance = 0;
+    private int sportType;
 
     private UserLocal mUserLocal = new UserLocal();
     private UserModelImpl mUserModelImpl = new UserModelImpl();
@@ -215,7 +216,8 @@ public class SportTrackService extends Service {
         mClient.startGather(traceListener);
         manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent intent = new Intent(this, BeginSportActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, 0);
+        intent.putExtra("sport_type", sportType);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         notification = new NotificationCompat.Builder(this)
                 .setContentTitle("Sport Tracking")
                 .setContentText(textFormat.format(distance/1000) + " km is gone. Move! Move!")
@@ -224,6 +226,7 @@ public class SportTrackService extends Service {
                 .setWhen(System.currentTimeMillis())
                 .setContentIntent(pi)
                 .build();
+        notification.flags |= Notification.FLAG_NO_CLEAR;
         startTime = System.currentTimeMillis();
         startTimer();
         /*HistoryTrackRequest historyTrackRequest = new HistoryTrackRequest();
@@ -341,5 +344,7 @@ public class SportTrackService extends Service {
         }
 
         public LatLng getCurrentPoint() { return currentPoint; }
+
+        public void setSportType(int sportType1) { sportType = sportType1; }
     }
 }
