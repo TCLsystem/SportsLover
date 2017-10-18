@@ -35,7 +35,7 @@ public class MakeGoal extends AppCompatActivity {
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvDay.setText("每周运动天数为"+progress+"天");
+                tvDay.setText("Everyweek: "+progress+" day");
                 day=progress;
 
             }
@@ -55,7 +55,7 @@ public class MakeGoal extends AppCompatActivity {
         seekBar2.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                tvTime.setText("每周运动时间为"+progress+"分钟");
+                tvTime.setText("Everyday: "+progress+" min");
                 time=progress;
             }
 
@@ -75,7 +75,7 @@ public class MakeGoal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MakeGoal.this, MotionGoalActivity.class);
-                intent.putExtra("goal","目标"+day+"天,每天运动"+time+"分钟");
+                intent.putExtra("goal","Gaol "+day+" days , ervrey day "+time+" min");
                 startActivity(intent);
             }
         });

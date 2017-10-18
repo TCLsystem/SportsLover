@@ -58,11 +58,7 @@ public class MyDynamicActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
     }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        ButterKnife.unbind(this);
-    }
+
 
     @OnClick({R.id.tv_my_posted, R.id.tv_my_apply,R.id.tv_dynamic_edit})
     public void onClick(View view) {
@@ -88,7 +84,6 @@ public class MyDynamicActivity extends AppCompatActivity {
                             }
                         });
                     }
-
                     @Override
                     public void getFailure() {
 
@@ -109,6 +104,11 @@ public class MyDynamicActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
 }

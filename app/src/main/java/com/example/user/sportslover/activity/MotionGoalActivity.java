@@ -29,6 +29,7 @@ public class MotionGoalActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         goal = getIntent().getStringExtra("goal");
         tvGoalAll.setText(goal);
+        tvGoalDay.setText(goal.charAt(6)+" days");
     }
 
     @OnClick({R.id.tvGoalday, R.id.tvGoalAll, R.id.btnGoal})

@@ -13,6 +13,7 @@ public interface IDynamicFragment {
 
         //下拉刷新
         void onRefresh(List<DynamicItem> list);
+        void onRefreshByType(List<DynamicItem> list);
     }
 
 

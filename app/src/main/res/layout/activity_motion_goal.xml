@@ -5,38 +5,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.user.sportslover.activity.MotionGoalActivity">
-   <RelativeLayout
-       android:layout_width="200dp"
-       android:layout_height="200dp"
-       android:id="@+id/round"
-       android:layout_marginLeft="100dp"
-       android:layout_marginTop="100dp"
-       android:background="@drawable/design_round">
-       <TextView
-           android:id="@+id/tvGoalday"
-           android:text="0天"
-           android:gravity="center"
-           android:layout_above="@+id/tvGoalAll"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
-       <TextView
-           android:id="@+id/tvGoalAll"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="目标3天，每天35分钟"
-           android:layout_centerInParent="true" />
+    tools:context="com.example.user.sportslover.activity.MotionGoalActivity"
+    android:weightSum="1">
 
-       <Button
-           android:id="@+id/btnGoal"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_below="@+id/tvGoalAll"
-           android:layout_centerHorizontal="true"
-           android:background="#0fb3ff"
-           android:text="调整目标"/>
+    <RelativeLayout
+        android:layout_width="272dp"
+        android:layout_height="250dp"
+        android:id="@+id/round"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/design_round">
+        <TextView
+            android:id="@+id/tvGoalday"
+            android:text="0 day"
+            android:gravity="center"
+            android:layout_above="@+id/tv_black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_black"
+            android:layout_above="@+id/tvGoalAll"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp" />
+        <TextView
+            android:id="@+id/tvGoalAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 days ， 35 min/day"
+            android:layout_centerInParent="true" />
 
-   </RelativeLayout>
+        <Button
+            android:id="@+id/btnGoal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/start_register"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Adjust"
+            android:textColor="@color/white"
+            android:layout_below="@id/tvGoalAll"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,37 +118,37 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周日"
+                android:text="SUN"
                 android:layout_marginLeft="60dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周一"
+                android:text="MON"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周二"
+                android:text="TUE"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周三"
+                android:text="WED"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周四"
+                android:text="THU"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周五"
+                android:text="FRI"
                 android:layout_marginLeft="10dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="周六"
+                android:text="STA"
                 android:layout_marginLeft="10dp"/>
 
         </LinearLayout>

@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.DynamicDetailActivity;
@@ -22,6 +23,7 @@ import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.DynamicFragmentPresenter;
 import com.example.user.sportslover.util.NetUtil;
+import com.example.user.sportslover.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +44,9 @@ import me.maxwin.view.XListView;
 public class SportsEventFragment extends Fragment implements IDynamicFragment, XListView.IXListViewListener {
         @Bind(R.id.publish)
         ImageView publish;
-//        @Bind(R.id.title)
-//        TextView title;
-
-//        @Bind(R.id.publish)
-//        ImageButton publish;
-        @Bind(R.id.xListView)
+        @Bind(R.id.myspinner)
+         Spinner mySpinner;
+        @Bind(R.id.xListView1)
         XListView xListView;
         @Bind(R.id.loading)
         RelativeLayout loading;
@@ -68,33 +67,146 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sports_event, container, false);
         ButterKnife.bind(this, view);
-        mPresenter = new DynamicFragmentPresenter(this);
-        mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
-        xListView.setAdapter(mAdapter);
-        xListView.setPullRefreshEnable(true);
-        xListView.setPullLoadEnable(false);
-        xListView.setXListViewListener(this);
-        mPresenter.onRefresh();
-        if (NetUtil.checkNet(getActivity())) {
-            mPresenter.onRefresh();
-        } else {
-            loading.setVisibility(View.GONE);
-            tip.setVisibility(View.VISIBLE);
-            xListView.setVisibility(View.GONE);
-        }
-        xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DynamicItem item = mDynamicList.get(position-1);
-                Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
-                Bundle bundle = new Bundle();
-                item.getCreatedAt();
-                bundle.putSerializable("DYNAMIC", item);
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
+        mySpinner.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    public void onItemSelected(AdapterView<?> parent,
+                                               View view, int position, long id) {
+                        if (id == 0) {
+                            ToastUtil.showShort(SportsEventFragment.this.getContext(),"id = "+ id);
+                            xListView.setAdapter(null);
+                            mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
+                            mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
+                            xListView.setAdapter(mAdapter);
+                            xListView.setPullRefreshEnable(true);
+                            xListView.setPullLoadEnable(false);
+                            xListView.setXListViewListener(SportsEventFragment.this);
+                            mPresenter.onRefresh();
+                            if (NetUtil.checkNet(getActivity())) {
+                                mPresenter.onRefresh();
+                            } else {
+                                loading.setVisibility(View.GONE);
+                                tip.setVisibility(View.VISIBLE);
+                                xListView.setVisibility(View.GONE);
+                            }
+                            xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    DynamicItem item = mDynamicList.get(position-1);
+                                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    item.getCreatedAt();
+                                    bundle.putSerializable("DYNAMIC", item);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                            });
+
+
+                        }else if(id == 1){
+                            ToastUtil.showShort(SportsEventFragment.this.getContext(),"id = "+ id);
+                            mList.clear();
+                            mAdapter.notifyDataSetChanged();
+                            mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
+                            mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
+                            xListView.setAdapter(mAdapter);
+                            xListView.setPullRefreshEnable(true);
+                            xListView.setPullLoadEnable(false);
+                            xListView.setXListViewListener(SportsEventFragment.this);
+                            mPresenter.onRefreshbyType("Running");
+                            if (NetUtil.checkNet(getActivity())) {
+                                mPresenter.onRefreshbyType("Running");
+                            } else {
+                                loading.setVisibility(View.GONE);
+                                tip.setVisibility(View.VISIBLE);
+                                xListView.setVisibility(View.GONE);
+                            }
+                            xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    DynamicItem item = mDynamicList.get(position-1);
+                                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    item.getCreatedAt();
+                                    bundle.putSerializable("DYNAMIC", item);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                            });
+
+                        }else if(id == 2){
+                            ToastUtil.showShort(SportsEventFragment.this.getContext(),"id = "+ id);
+                            mList.clear();
+                            mAdapter.notifyDataSetChanged();
+                            xListView.setAdapter(null);
+                            mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
+                            mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
+                            xListView.setAdapter(mAdapter);
+                            xListView.setPullRefreshEnable(true);
+                            xListView.setPullLoadEnable(false);
+                            xListView.setXListViewListener(SportsEventFragment.this);
+                            mPresenter.onRefreshbyType("Walking");
+                            if (NetUtil.checkNet(getActivity())) {
+                                mPresenter.onRefreshbyType("Walking");
+                            } else {
+                                loading.setVisibility(View.GONE);
+                                tip.setVisibility(View.VISIBLE);
+                                xListView.setVisibility(View.GONE);
+                            }
+                            xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    DynamicItem item = mDynamicList.get(position-1);
+                                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    item.getCreatedAt();
+                                    bundle.putSerializable("DYNAMIC", item);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                            });
+                        }else if(id == 3){
+                            ToastUtil.showShort(SportsEventFragment.this.getContext(),"id = "+ id);
+                            mList.clear();
+                            mAdapter.notifyDataSetChanged();
+                            xListView.setAdapter(null);
+                            mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
+                            mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
+                            xListView.setAdapter(mAdapter);
+                            xListView.setPullRefreshEnable(true);
+                            xListView.setPullLoadEnable(false);
+                            xListView.setXListViewListener(SportsEventFragment.this);
+                            mPresenter.onRefreshbyType("Riding");
+                            if (NetUtil.checkNet(getActivity())) {
+                                mPresenter.onRefreshbyType("Riding");
+                            } else {
+                                loading.setVisibility(View.GONE);
+                                tip.setVisibility(View.VISIBLE);
+                                xListView.setVisibility(View.GONE);
+                            }
+                            xListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                    DynamicItem item = mDynamicList.get(position-1);
+                                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                                    Bundle bundle = new Bundle();
+                                    item.getCreatedAt();
+                                    bundle.putSerializable("DYNAMIC", item);
+                                    intent.putExtras(bundle);
+                                    startActivity(intent);
+                                }
+                            });
+                        }
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
         return view;
+
     }
 
     @Override
@@ -128,6 +240,12 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
 
     }
 
+
+    @Override
+    public void onRefreshByType(List<DynamicItem> list) {
+
+    }
+
     @Override
     public void onRefresh(List<DynamicItem> list) {
         mDynamicList = list;
@@ -138,12 +256,27 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
         mAdapter.setDatas(list);
         mAdapter.notifyDataSetChanged();
     }
+//
+//    @Override
+//    public void onRefreshByType(List<DynamicItem> list) {
+//        mDynamicList = list;
+//        loading.setVisibility(View.GONE);
+//        tip.setVisibility(View.GONE);
+//        xListView.setVisibility(View.VISIBLE);
+//        xListView.stopRefresh();
+//        mAdapter.setDatas(list);
+//        mAdapter.notifyDataSetChanged();
+//    }
 
     @Override
     public void onRefresh() {
         mPresenter.onRefresh();
     }
 
+    public void onRefreshbyType(String type)
+    {
+        mPresenter.onRefreshbyType(type);
+    }
     @Override
     public void onLoadMore() {
 

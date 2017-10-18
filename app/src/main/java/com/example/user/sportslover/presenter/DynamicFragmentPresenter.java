@@ -32,6 +32,20 @@ public class DynamicFragmentPresenter {
         });
     }
 
+    public void onRefreshbyType(String type){
+        mDynamicModelImpr.getDynamicItemByType(type,new SportModelInter.BaseListener() {
+            @Override
+            public void getSuccess(Object o) {
+                List<DynamicItem> list= (List<DynamicItem>) o;
+                mView.onRefresh(list);
+            }
+            @Override
+            public void getFailure() {
+            }
+        });
+    }
+
+
     public void onLoadMore(){
 
     }

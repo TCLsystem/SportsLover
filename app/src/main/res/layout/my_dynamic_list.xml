@@ -5,29 +5,49 @@
     android:layout_height="400dp"
     android:background="@drawable/dynamic_edit_background">
 
+
     <LinearLayout
     android:id="@+id/dynamicItem"
-    android:layout_width="377dp"
+    android:layout_width="453dp"
     android:layout_height="286dp"
-    android:layout_marginLeft="20dp"
     android:layout_marginBottom="20dp"
     android:background="@drawable/dynamic_example"
-    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical"
-        android:weightSum="1">
-
+        android:layout_weight="2.17">
+    <!--android:weightSum="1"-->
+    <!--android:layout_weight="3.44"-->
+    <!--android:descendantFocusability="blocksDescendants"-->
         <LinearLayout
-            android:layout_marginTop="160dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="120dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:orientation="vertical">
-                <LinearLayout
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Writer Name:"
+                    android:layout_gravity="center" />
+                <TextView
+                    android:layout_marginLeft="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_dynamic_writer_name"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:orientation="horizontal">
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Activity Name:"
                         android:layout_gravity="center" />
@@ -39,7 +59,7 @@
                         android:layout_gravity="center"
                         />
                 </LinearLayout>
-                <LinearLayout
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:orientation="horizontal">
@@ -57,16 +77,6 @@
                         android:layout_gravity="center"
                         />
                 </LinearLayout>
-            </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_marginTop="2dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -85,7 +95,6 @@
                     android:text="2017/9/12 19:08"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -98,58 +107,34 @@
 
                 <TextView
                     android:layout_marginLeft="40dp"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/my_dynamic_location"
                     android:layout_gravity="center"
                     />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Publish Time:"
-                    android:layout_gravity="center" />
-
-                <TextView
-                    android:layout_marginLeft="40dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/my_dynamic_publishTime"
-                    android:layout_gravity="center"
-                    />
+                    android:layout_height="30dp"
+                    android:orientation="horizontal"
+                    android:layout_weight="0.09">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/participant"/>
+                    <TextView
+                        android:layout_marginLeft="20dp"
+                        android:id="@+id/my_dynamic_participantCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="32"
+                        android:layout_gravity="center"/>
+                </LinearLayout>
             </LinearLayout>
 
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_weight="0.09">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:src="@drawable/participant"/>
-            <TextView
-                android:layout_marginLeft="40dp"
-                android:id="@+id/my_dynamic_participantCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="32"
-                android:layout_gravity="center"/>
-        </LinearLayout>
-
+            </LinearLayout>
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
@@ -172,4 +157,29 @@
             android:layout_height="wrap_content"
             android:text="Cancle"/>
     </LinearLayout>
-    </LinearLayout>
+
+
+</LinearLayout>
+    <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="horizontal">-->
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Publish Time:"-->
+                    <!--android:layout_gravity="center" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_marginLeft="40dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:id="@+id/my_dynamic_publishTime"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--/>-->
+
+
+
+
+
+

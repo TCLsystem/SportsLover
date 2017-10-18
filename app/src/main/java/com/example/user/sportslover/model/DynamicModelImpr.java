@@ -71,6 +71,7 @@ public class DynamicModelImpr implements DynamicModelInter {
         });
     }
 
+
     /**
      * 上传动态
      *
@@ -180,6 +181,27 @@ public class DynamicModelImpr implements DynamicModelInter {
         });
 
     }
+
+    public void getDynamicItemByType(final String type,final SportModelInter.BaseListener listener) {
+        BmobQuery<DynamicItem> query = new BmobQuery<DynamicItem>();
+        query.addWhereEqualTo("SportsType",type);
+        query.findObjects(BaseApplication.getmContext(), new FindListener<DynamicItem>() {
+            @Override
+            public void onSuccess(List<DynamicItem> object) {
+                if (object != null && object.size() != 0) {
+                    listener.getSuccess(object);
+                }
+            }
+
+            @Override
+            public void onError(int code, String msg) {
+
+            }
+        });
+    }
+
+
+
 
 }
 
