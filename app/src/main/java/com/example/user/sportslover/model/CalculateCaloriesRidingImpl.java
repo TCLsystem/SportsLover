@@ -7,7 +7,7 @@ package com.example.user.sportslover.model;
 public class CalculateCaloriesRidingImpl implements CalculateCaloriesInter {
     @Override
     public float calculateCalories(float weight, long time, int averagePace) {
-        return weight*time*1.05f/averagePace;
+        return weight*time*0.5f/averagePace;
     }
 
     @Override

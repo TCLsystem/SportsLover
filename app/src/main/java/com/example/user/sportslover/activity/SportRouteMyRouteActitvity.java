@@ -32,7 +32,7 @@ import java.util.List;
 public class SportRouteMyRouteActitvity extends AppCompatActivity implements View.OnClickListener {
 
     private List<RouteItem> routeItemsList = new ArrayList<>();
-    private LatLng point;
+    private LatLng point = null;
     private int positionOnSelect;
     SportRouteMyRouteAdapter adapter;
 
@@ -54,33 +54,35 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
         recyclerView.setLayoutManager(layoutManager);
         adapter = new SportRouteMyRouteAdapter(routeItemsList, recyclerView);
         recyclerView.setAdapter(adapter);
-        adapter.setItemClickListener(new SportRouteMyRouteAdapter.MyItemClickListener() {
-            @Override
-            public void onItemClick(View view, final int position) {
-                double distance = MapUtil.gps2m(point.latitude, point.longitude,
-                        routeItemsList.get(position).getSportsPath().get(0).latitude,
-                        routeItemsList.get(position).getSportsPath().get(0).longitude);
-                positionOnSelect = position;
-                AlertDialog.Builder dialog = new AlertDialog.Builder(SportRouteMyRouteActitvity.this);
-                dialog.setMessage("You are " + (int) distance + "m from the starting point.\nDo you choose this Route?");
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent();
-                        intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getObjectId());
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                });
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+        if (point != null){
+            adapter.setItemClickListener(new SportRouteMyRouteAdapter.MyItemClickListener() {
+                @Override
+                public void onItemClick(View view, final int position) {
+                    double distance = MapUtil.gps2m(point.latitude, point.longitude,
+                            routeItemsList.get(position).getSportsPath().get(0).latitude,
+                            routeItemsList.get(position).getSportsPath().get(0).longitude);
+                    positionOnSelect = position;
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(SportRouteMyRouteActitvity.this);
+                    dialog.setMessage("You are " + (int) distance + "m from the starting point.\nDo you choose this Route?");
+                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent();
+                            intent.putExtra("route_return", routeItemsList.get(positionOnSelect).getObjectId());
+                            setResult(RESULT_OK, intent);
+                            finish();
+                        }
+                    });
+                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
-                dialog.show();
-            }
-        });
+                        }
+                    });
+                    dialog.show();
+                }
+            });
+        }
         final RouteControlInter routeControlInter = new RouteControlImpr();
         routeControlInter.findRouteByUsername(SportRouteMyRouteActitvity.this, mUserLocal.getName(), new RouteControlImpr.OnRouteFindListener() {
             @Override
