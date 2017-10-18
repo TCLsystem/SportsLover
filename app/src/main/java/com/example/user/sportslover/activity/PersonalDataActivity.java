@@ -398,22 +398,12 @@ public class PersonalDataActivity extends Activity {
 
 
 
-
-
-
-
-
-
-
-
-
     @Override
     protected void onStop() {
         super.onStop();
         user.update(PersonalDataActivity.this,mUserLocal.getObjectId(), new UpdateListener() {
             @Override
             public void onSuccess() {
-
             }
             @Override
             public void onFailure(int i, String s) {
