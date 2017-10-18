@@ -75,7 +75,7 @@ public class MakeGoal extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MakeGoal.this, MotionGoalActivity.class);
-                intent.putExtra("goal","Gaol "+day+" days , ervrey day "+time+" min");
+                intent.putExtra("goal","Gaol "+day+" days,ervrey day "+time+" min");
                 startActivity(intent);
             }
         });

@@ -40,6 +40,7 @@ public class AccountManagement extends AppCompatActivity {
                 UserLocal item = UserLocal.load(UserLocal.class, mUserLocal.getId());
                 item.delete();
              startActivity(new Intent().setClass(AccountManagement.this,SplashActivity.class));
+                finish();
                 break;
 
         }

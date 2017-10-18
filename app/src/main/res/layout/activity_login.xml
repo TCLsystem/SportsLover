@@ -75,7 +75,7 @@
 
         <EditText
             android:id="@+id/login_uname"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="@dimen/normal_input_height"
             android:layout_marginLeft="40dp"
             android:drawablePadding="@dimen/normal_space"
@@ -107,7 +107,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="get code"
-                android:background="@drawable/btn_get_verification"/>
+                android:textColor="@color/white"
+                android:background="@drawable/shape_rectanglar_gradient_button"/>
         </LinearLayout>
 
 
@@ -120,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/btn_login"
+        android:background="@drawable/shape_rectanglar_gradient_button"
         android:text="Login"
         android:textColor="@color/white"
         android:textSize="@dimen/text_size_defalut"

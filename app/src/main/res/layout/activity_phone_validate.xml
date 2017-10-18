@@ -12,9 +12,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:id="@+id/iv_register_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/login_back"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="@null"
+        android:padding="@dimen/normal_space"
+        android:src="@drawable/login_back" />
+
 
     <TextView
         android:layout_marginTop="20dp"
@@ -45,7 +49,7 @@
 
               <EditText
                   android:layout_marginLeft="20dp"
-                  android:layout_width="250dp"
+                  android:layout_width="200dp"
                   android:layout_height="wrap_content"
                   android:id="@+id/register_checknum"
                   android:layout_marginRight="20dp"
@@ -57,12 +61,12 @@
 
               <Button
               android:id="@+id/register_get_check_pass"
-              android:layout_width="80dp"
+              android:layout_width="100dp"
               android:layout_height="40dp"
               android:gravity="center"
               android:textColor="@color/white"
               android:layout_gravity="center_vertical"
-              android:background="@drawable/submit"
+              android:background="@drawable/shape_rectanglar_gradient_button"
               android:text="get code" />
 
           </LinearLayout>
@@ -113,7 +117,7 @@
         android:gravity="center"
         android:textSize="20dp"
         android:textColor="@color/white"
-        android:background="@drawable/backgroud_next"
+        android:background="@drawable/shape_rectanglar_gradient_button"
         android:id="@+id/btn_verify_phone"/>
 
 </LinearLayout>

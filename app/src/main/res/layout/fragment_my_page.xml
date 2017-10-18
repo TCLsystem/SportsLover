@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="@dimen/normal_space"
-                android:text="个人中心"
+                android:text="Personal"
                 android:textSize="18dp" />
 
             <ImageView
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
-                android:text="运动等级"
+                android:text="class"
                 android:textSize="16dp" />
             <ProgressBar
                 android:layout_width="match_parent"

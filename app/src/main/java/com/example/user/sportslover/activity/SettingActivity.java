@@ -111,17 +111,20 @@ public class SettingActivity extends AppCompatActivity {
                         // TODO Auto-generated method stub
                         if(isChecked){
                             //选中的情况下，将下一个布局显示为可改变
+                            Lnotification.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    initTimePicker(tv_notifyTime,"Set Time");
+                                    pvTime.show();
+                                }
+                            });
                         }else{
                             //未选中
-                            Lnotification.setAlpha((float) 0.3);
+                            Lnotification.setAlpha((float) 0.2);
                             Lnotification.setOnClickListener(null);  //只需如此设置，即可达到效果
                         }
                     }
                 });// 添加监听事件
-
-            case R.id.Lnotification:
-                 initTimePicker(tv_notifyTime,"Set Time");
-                 pvTime.show();
 
             case R.id.cache://清除缓存;
                 new AlertDialog.Builder(this)

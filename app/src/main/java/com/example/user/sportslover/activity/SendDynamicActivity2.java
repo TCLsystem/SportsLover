@@ -152,75 +152,9 @@ public class SendDynamicActivity2  extends AppCompatActivity {
 
                     }
                 });
+
                 break;
         }
     }
 }
 
-
-
-//
-//
-//    @OnClick({R.id.cancel,R.id.iv_send_poster, R.id.send})
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.cancel:
-//                finish();
-//                break;
-//            case R.id.iv_send_poster:
-//
-//                final PhotoPickerIntent intent = new PhotoPickerIntent(SendDynamicActivity2.this);
-//                intent.setPhotoCount(1);
-//                intent.setShowCamera(true);
-//                startActivityForResult(intent, REQUEST_CODE);
-//
-//            case R.id.send:
-//                dynamicItem.save(SendDynamicActivity2.this, new SaveListener() {
-//                    @Override
-//                    public void onSuccess() {
-//                        ToastUtil.showShort(SendDynamicActivity2.this, "上传成功");
-//                    }
-//
-//                    @Override
-//                    public void onFailure(int i, String s) {
-//                        ToastUtil.showShort(SendDynamicActivity2.this,"上传失败");
-//                    }
-//                });
-//
-//                break;
-//        }
-//    }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        // 选择结果回调
-//        if (requestCode == REQUEST_CODE && data != null) {
-//            dynamicItem.setWriter(dynamicItem.getWriter());
-//            dynamicItem.setSportsType(dynamicItem.getSportsType());
-//            dynamicItem.setMeil(dynamicItem.getMeil());
-//            dynamicItem.setArea(dynamicItem.getArea());
-//            dynamicItem.setPlace(dynamicItem.getPlace());
-//            dynamicItem.setStartTime(dynamicItem.getStartTime());
-//            dynamicItem.setEndtTime(dynamicItem.getEndTime());
-//            dynamicItem.setApplicationDeadline(dynamicItem.getApplicationDeadline());
-//            dynamicItem.setTitle(editActivityName.getText().toString());
-//            dynamicItem.setDetail(editContent.getText().toString());
-//            Log.d("BBBBBB", dynamicItem.getArea() + dynamicItem.getDetail() + dynamicItem.getTitle() + dynamicItem.getStartTime());
-//            List<String> pathList = data.getStringArrayListExtra(PhotoPickerActivity.KEY_SELECTED_PHOTOS);
-//            new DynamicModelImpr().sendDynamicItem(pathList.get(0), dynamicItem, new SportModelInter.BaseListener() {
-//                @Override
-//                public void getSuccess(Object o) {
-//                    ToastUtil.showShort(SendDynamicActivity2.this,"上传成功");
-//                }
-//
-//                @Override
-//                public void getFailure() {
-//
-//                }
-//            });
-//        }
-//
-//    }
-//
-//}

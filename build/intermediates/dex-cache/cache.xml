@@ -106,7 +106,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="6b73c4d3dcd3a90c228241e626e92a0f73cdec67">
+        sha1="2cada8271df57c65602bc120b6474aeae73cb37a">
         <dex dex="/local/Fundation/lvs/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2d315d938c16a3b16304e2f89e4933ee8e3900a9/classes.dex" />
     </item>
     <item
@@ -475,7 +475,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="d2a28e64e036fdd8ee76063849ddbac44ba817b2">
+        sha1="32dc77a3700ac86dc449047fb16c28cf7dbeef17">
         <dex dex="/local/Fundation/lvs/SportsLover/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_6be39d88ef6bf04590c75490620d0b99bfec9d0b/classes.dex" />
     </item>
     <item

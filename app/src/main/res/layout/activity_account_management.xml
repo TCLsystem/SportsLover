@@ -39,7 +39,7 @@
         android:drawablePadding="@dimen/normal_space"
         android:gravity="center_vertical"
         android:padding="@dimen/normal_space"
-        android:text="@string/tide"
+        android:text="Change your phone number"
         android:textSize="16dp" />
 
     <LinearLayout
@@ -57,7 +57,7 @@
             android:drawablePadding="@dimen/normal_space"
             android:gravity="center_vertical"
             android:padding="@dimen/normal_space"
-            android:text="@string/Cellphone"
+            android:hint="@string/Cellphone"
             android:textSize="16dp"  />
 
         <Button
