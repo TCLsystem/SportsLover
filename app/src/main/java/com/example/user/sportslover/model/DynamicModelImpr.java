@@ -14,6 +14,7 @@ import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.UpdateListener;
 import cn.bmob.v3.listener.UploadBatchListener;
 
 /**
@@ -168,15 +169,15 @@ public class DynamicModelImpr implements DynamicModelInter {
     public void  updateDynamicItem(final User user,final DynamicItem dynamicitem){
         List<User> list =dynamicitem.getParticipantName();
         list.add(user);
-        dynamicitem.save(BaseApplication.getmContext(), new SaveListener() {
+        dynamicitem.update(BaseApplication.getmContext(), dynamicitem.getObjectId(), new UpdateListener() {
             @Override
             public void onSuccess() {
-                ToastUtil.showShort(BaseApplication.getmContext(),"Success");
+                ToastUtil.showShort(BaseApplication.getmContext(),"enter the activity Success");
             }
 
             @Override
             public void onFailure(int i, String s) {
-
+             ToastUtil.showShort(BaseApplication.getmContext(),i+"   "+s);
             }
         });
 
