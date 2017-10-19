@@ -167,14 +167,13 @@
 
     <FrameLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/sw_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_10"
-            >
+            android:layout_marginTop="@dimen/margin_10">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/sports_friend_member"
@@ -186,6 +185,13 @@
                 android:fadingEdge="none"
                 android:listSelector="@color/transparent"
                 android:scrollbars="none"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/sw_refresh2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_10">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/sports_crew_member"
@@ -197,7 +203,7 @@
                 android:fadingEdge="none"
                 android:listSelector="@color/transparent"
                 android:scrollbars="none"
-                android:visibility="gone"/>
+                />
         </android.support.v4.widget.SwipeRefreshLayout>
 
         <TextView
@@ -218,5 +224,4 @@
             android:layout_gravity="right|center"/>
 
     </FrameLayout>
-
 </LinearLayout>

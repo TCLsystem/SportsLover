@@ -62,6 +62,7 @@ public class LoginActivity extends BaseActivity {
         setContentView(R.layout.activity_login);
         Bmob.initialize(this, "23fe35801c6ae4f698315d637955bb39");
         ButterKnife.bind(this);
+        verifycode.setVisibility(View.GONE);
         mUserModelImpl = new UserModelImpl();
     }
 
@@ -72,6 +73,7 @@ public class LoginActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.select_number:
+                verifycode.setVisibility(View.GONE);
                 verifycode.setVisibility(View.VISIBLE);
                 select_login_stytle.setText("Phone Number");
                 select_number.setTextColor(0xff000000);
@@ -79,6 +81,7 @@ public class LoginActivity extends BaseActivity {
                 flag = 1;
                 break;
             case R.id.select_password:
+                verifycode.setVisibility(View.VISIBLE);
                 select_name.setTextColor(0xff000000);
                 verifycode.setVisibility(View.INVISIBLE);
                 select_number.setTextColor(0xffb4b3b3);

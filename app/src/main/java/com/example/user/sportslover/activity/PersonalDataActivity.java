@@ -20,6 +20,7 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.bean.UserEventBus;
 import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.customview.RoundImageView;
 import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.UserFragmentPresenter;
@@ -47,7 +48,7 @@ import me.iwf.photopicker.utils.PhotoPickerIntent;
 
 public class PersonalDataActivity extends Activity {
     @Bind(R.id.iv_Changephoto)
-    ImageView UserPhoto;
+    RoundImageView UserPhoto;
     @Bind(R.id.personal_back)
     ImageView back;
     @Bind(R.id.tv_name)
@@ -108,6 +109,7 @@ public class PersonalDataActivity extends Activity {
                 .cacheOnDisc().displayer(new RoundedBitmapDisplayer(20))
                 .displayer(new FadeInBitmapDisplayer(300)).build();
         if (mUserLocal != null) {
+            UserPhoto.setBackgroundResource(R.color.white);
             imageLoader.displayImage(mUserLocal.getPhoto(), UserPhoto, options);
             name.setText(mUserLocal.getName());
         }

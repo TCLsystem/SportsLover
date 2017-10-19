@@ -24,7 +24,6 @@ import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.presenter.DynamicFragmentPresenter;
 import com.example.user.sportslover.util.NetUtil;
-import com.example.user.sportslover.util.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +74,7 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
         mySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (id == 0) {
-                    ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
+                   // ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
                     xListView.setAdapter(null);
                     mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
                     mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);
@@ -84,6 +83,10 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
                     xListView.setPullLoadEnable(false);
                     xListView.setXListViewListener(SportsEventFragment.this);
                     mPresenter.onRefresh();
+
+                   // View ts = xListView.getChildAt(1);
+                    //TextView    textView = (TextView)ts.findViewById(R.id.show_activity_Name);
+
                     if (NetUtil.checkNet(getActivity())) {
                         mPresenter.onRefresh();
                     } else {
@@ -107,7 +110,7 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
 
 
                 } else if (id == 1) {
-                    ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
+                  //  ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
                     mPresenter = new DynamicFragmentPresenter(SportsEventFragment.this);
@@ -139,7 +142,7 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
                     });
 
                 } else if (id == 2) {
-                    ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
+                   // ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
                     xListView.setAdapter(null);
@@ -171,7 +174,7 @@ public class SportsEventFragment extends Fragment implements IDynamicFragment, X
                         }
                     });
                 } else if (id == 3) {
-                    ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
+                   // ToastUtil.showShort(SportsEventFragment.this.getContext(), "id = " + id);
                     mList.clear();
                     mAdapter.notifyDataSetChanged();
                     xListView.setAdapter(null);

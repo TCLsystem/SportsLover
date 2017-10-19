@@ -22,19 +22,24 @@ import android.widget.TextView;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.activity.ChatActivity;
 import com.example.user.sportslover.activity.ConversationActivity;
+import com.example.user.sportslover.activity.DynamicDetailActivity;
 import com.example.user.sportslover.activity.NewFriendActivity;
 import com.example.user.sportslover.activity.SearchUserActivity;
 import com.example.user.sportslover.adapter.ContactAdapter;
+import com.example.user.sportslover.adapter.DynamicSimpleAdapter;
 import com.example.user.sportslover.adapter.OnRecyclerViewListener;
 import com.example.user.sportslover.adapter.base.IMutlipleItem;
 import com.example.user.sportslover.base.ParentWithNaviActivity;
 import com.example.user.sportslover.base.ParentWithNaviFragment;
+import com.example.user.sportslover.bean.DynamicItem;
 import com.example.user.sportslover.bean.Friend;
 import com.example.user.sportslover.bean.GroupInfo;
 import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.customview.SideBar;
 import com.example.user.sportslover.event.RefreshEvent;
 import com.example.user.sportslover.model.BaseModel;
+import com.example.user.sportslover.model.DynamicModelImpr;
+import com.example.user.sportslover.model.SportModelInter;
 import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.widget.CharacterParser;
 import com.example.user.sportslover.widget.PinyinComparator;
@@ -57,7 +62,7 @@ import cn.bmob.v3.listener.DeleteListener;
 import cn.bmob.v3.listener.FindListener;
 
 public class ContactFragment extends ParentWithNaviFragment implements SideBar
-        .OnTouchingLetterChangedListener, View.OnClickListener/*,IDynamicFragment*/ {
+        .OnTouchingLetterChangedListener, View.OnClickListener/*, IDynamicFragment*/ {
 
     @Bind(R.id.rl_new_friend)
     RelativeLayout rl_new_friend;
@@ -73,12 +78,15 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     ImageView scrollbarType;
     @Bind(R.id.sports_friend_member)
     RecyclerView rc_view;
-    /* @Bind(R.id.sports_crew_member)
-     XListView sports_crew_member;*/
+    @Bind(R.id.sports_crew_member)
+    RecyclerView sports_crew_member;
     @Bind(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
+    @Bind(R.id.sw_refresh2)
+    SwipeRefreshLayout sw_refresh2;
     ContactAdapter adapter;
     LinearLayoutManager layoutManager;
+    LinearLayoutManager layoutManager2;
     private static int currIndex = 0;
     private static int preIndex = 0;
     private int offset = 0;
@@ -88,12 +96,9 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     private static PinyinComparator pinyinComparator;// 根据拼音来排列ListView里面的数据类
     private List<Friend> sortList = new ArrayList<Friend>();
 
-/*
-
-    private DynamicFragmentPresenter mPresenter;
-    private DynamicAdapter mAdapter;
+    private DynamicSimpleAdapter mAdapter;
     private List<DynamicItem> mList = new ArrayList<>();
-*/
+    private DynamicModelImpr mDynamicModelImpr = new DynamicModelImpr();
 
     @Override
     protected String title() {
@@ -172,7 +177,39 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         rc_view.setAdapter(adapter);
         layoutManager = new LinearLayoutManager(getActivity());
         rc_view.setLayoutManager(layoutManager);
+
+        IMutlipleItem<DynamicItem> mutlipleDynamicItem = new IMutlipleItem<DynamicItem>() {
+
+            @Override
+            public int getItemViewType(int postion, DynamicItem dynamicItemrew) {
+                if (postion == 0) {
+                    return DynamicSimpleAdapter.TYPE_NEW_FRIEND;
+                } else {
+                    return DynamicSimpleAdapter.TYPE_ITEM;
+                }
+            }
+
+            @Override
+            public int getItemLayoutId(int viewtype) {
+                if (viewtype == DynamicSimpleAdapter.TYPE_NEW_FRIEND) {
+                    return R.layout.header_new_friend;
+                } else {
+                    return R.layout.item_contact;
+                }
+            }
+
+            @Override
+            public int getItemCount(List<DynamicItem> list) {
+                return list.size() + 1;
+            }
+        };
+        mAdapter = new DynamicSimpleAdapter(getActivity(), mutlipleDynamicItem, null);
+        sports_crew_member.setAdapter(mAdapter);
+        layoutManager2 = new LinearLayoutManager(getActivity());
+        sports_crew_member.setLayoutManager(layoutManager2);
+
         sw_refresh.setEnabled(true);
+        sw_refresh2.setEnabled(true);
         setListener();
         //好友/运动团切换动画
         int bmpW = BitmapFactory.decodeResource(getResources(), R.drawable.bar).getWidth();
@@ -189,29 +226,26 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         mSideBar.setTextView(mDialog);
         mSideBar.setOnTouchingLetterChangedListener(this);
 
-       /* mPresenter = new DynamicFragmentPresenter(this);
-        mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);*/
-        // sports_crew_member.setAdapter(new SportsEventFragment().xListView.getAdapter());
+        sports_crew_member.setVisibility(View.GONE);
 
         return rootView;
     }
 
-    /*@Override
+ /*   @Override
     public void onLoadMore(List<DynamicItem> list) {
 
     }
+
     @Override
     public void onRefresh(List<DynamicItem> list) {
-      *//*  mDynamicList = list;
-        loading.setVisibility(View.GONE);
-        tip.setVisibility(View.GONE);
-        xListView.setVisibility(View.VISIBLE);
-        xListView.stopRefresh();
-        mAdapter.setDatas(list);
-        mAdapter.notifyDataSetChanged();*//*
+        mAdapter.notifyDataSetChanged();
     }
 
-*/
+    @Override
+    public void onRefreshByType(List<DynamicItem> list) {
+
+    }*/
+
     @OnClick(R.id.rl_new_friend)
     public void showNewFriend() {
         startActivity(NewFriendActivity.class, null);
@@ -223,10 +257,12 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
             case R.id.tab_myFriend:
                 preIndex = 0;
                 rc_view.setVisibility(View.VISIBLE);
+                sports_crew_member.setVisibility(View.GONE);
                 break;
             case R.id.tab_myCrew:
                 preIndex = 1;
                 rc_view.setVisibility(View.GONE);
+                sports_crew_member.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;
@@ -272,13 +308,21 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
             public void onGlobalLayout() {
                 rootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 sw_refresh.setRefreshing(true);
+                sw_refresh2.setRefreshing(true);
                 query();
+                queryCrew();
             }
         });
         sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 query();
+            }
+        });
+        sw_refresh2.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                queryCrew();
             }
         });
         adapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
@@ -322,13 +366,36 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
                 return true;
             }
         });
+
+        mAdapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
+            @Override
+            public void onItemClick(int position) {
+                if (position == 0) {
+                } else {
+                    DynamicItem item = mAdapter.getItem(position);
+                    Intent intent = new Intent(getActivity(), DynamicDetailActivity.class);
+                    Bundle bundle = new Bundle();
+                    item.getCreatedAt();
+                    bundle.putSerializable("DYNAMIC", item);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public boolean onItemLongClick(final int position) {
+                return true;
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
         sw_refresh.setRefreshing(true);
+        sw_refresh2.setRefreshing(true);
         query();
+        queryCrew();
     }
 
     @Override
@@ -374,6 +441,29 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
                 adapter.bindDatas(null);
                 adapter.notifyDataSetChanged();
                 sw_refresh.setRefreshing(false);
+            }
+        });
+    }
+
+    /**
+     * 查询本地会话
+     */
+    public void queryCrew() {
+        mDynamicModelImpr.getDynamicItem(new SportModelInter.BaseListener() {
+            @Override
+            public void getSuccess(Object o) {
+                List<DynamicItem> list = (List<DynamicItem>) o;
+                mList = list;
+                mAdapter.bindDatas(list);
+                mAdapter.notifyDataSetChanged();
+                sw_refresh2.setRefreshing(false);
+            }
+
+            @Override
+            public void getFailure() {
+                adapter.bindDatas(null);
+                adapter.notifyDataSetChanged();
+                sw_refresh2.setRefreshing(false);
             }
         });
     }

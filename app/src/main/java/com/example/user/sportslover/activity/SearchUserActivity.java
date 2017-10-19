@@ -39,11 +39,11 @@ public class SearchUserActivity extends ParentWithNaviActivity {
 
     @Override
     protected String title() {
-           if (getIntent().getIntExtra("type", 0) == 0) {
+         /*  if (getIntent().getIntExtra("type", 0) == 0) {*/
             return "Search Friend";
-        } else {
+       /* } else {
             return "Search Crew";
-        }
+        }*/
 
     }
 

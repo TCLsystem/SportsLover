@@ -15,35 +15,36 @@ public class NewFriendConversation extends Conversation {
 
     NewFriend lastFriend;
 
-    public NewFriendConversation(NewFriend friend){
-        this.lastFriend=friend;
-        this.cName="New Friend";
+    public NewFriendConversation(NewFriend friend) {
+        this.lastFriend = friend;
+        this.cName = "New Friend";
     }
 
     @Override
     public String getLastMessageContent() {
-        if(lastFriend!=null){
-            Integer status =lastFriend.getStatus();
+        if (lastFriend != null) {
+            Integer status = lastFriend.getStatus();
             String name = lastFriend.getName();
-            if(TextUtils.isEmpty(name)){
+            if (TextUtils.isEmpty(name)) {
                 name = lastFriend.getUid();
             }
             //目前的好友请求都是别人发给我的
-            if(status==null || status== Config.STATUS_VERIFY_NONE||status == Config.STATUS_VERIFY_READED){
-                return name+"请求添加好友";
-            }else{
-                return "already add"+name;
+            if (status == null || status == Config.STATUS_VERIFY_NONE || status == Config
+                    .STATUS_VERIFY_READED) {
+                return name + " want to be friend with you";
+            } else {
+                return "you have already added " + name;
             }
-        }else{
+        } else {
             return "";
         }
     }
 
     @Override
     public long getLastMessageTime() {
-        if(lastFriend!=null){
+        if (lastFriend != null) {
             return lastFriend.getTime();
-        }else{
+        } else {
             return 0;
         }
     }
