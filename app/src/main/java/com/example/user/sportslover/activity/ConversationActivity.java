@@ -32,11 +32,6 @@ import cn.bmob.newim.bean.BmobIMConversation;
 import cn.bmob.newim.event.MessageEvent;
 import cn.bmob.newim.event.OfflineMessageEvent;
 
-/**会话界面
- * @author :smile
- * @project:ConversationFragment
- * @date :2016-01-25-18:23
- */
 public class ConversationActivity extends ParentWithNaviActivity {
 
     @Bind(R.id.ll_root)
@@ -50,12 +45,13 @@ public class ConversationActivity extends ParentWithNaviActivity {
 
     @Override
     protected String title() {
-        return "会话";
+        return "Conversation";
     }
 
     @Override
     public Object right() {
-        return R.drawable.base_action_bar_add_bg_selector;
+          /* return R.drawable.base_action_bar_add_bg_selector;*/
+        return null;
     }
 
     @Override
@@ -63,7 +59,7 @@ public class ConversationActivity extends ParentWithNaviActivity {
         return new ParentWithNaviActivity.ToolBarListener() {
             @Override
             public void clickLeft() {
-
+ finish();
             }
 
             @Override

@@ -5,20 +5,17 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
 import com.example.user.sportslover.application.Config;
-import com.example.user.sportslover.bean.UserLocal;
+import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.db.dao.DaoMaster;
 import com.example.user.sportslover.db.dao.DaoSession;
 import com.example.user.sportslover.db.dao.NewFriendDao;
-import com.example.user.sportslover.model.UserModelImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import cn.bmob.v3.BmobUser;
 
-/**
- * Created by Administrator on 2016/4/27.
- */
 public class NewFriendManager {
 
     private DaoMaster.DevOpenHelper openHelper;
@@ -26,18 +23,13 @@ public class NewFriendManager {
     String uid=null;
     private static HashMap<String, NewFriendManager> daoMap = new HashMap<>();
 
-
-//    /**获取DB实例
-//     * @param context
-//     * @return
-//     */
+    /**获取DB实例
+     * @param context
+     * @return
+     */
     public static NewFriendManager getInstance(Context context) {
-//        User user = BmobUser.getCurrentUser(, User.class);
-//        String loginId=user.getObjectId();
-        UserLocal mUserLocal;
-         UserModelImpl mUserModelImpl = new UserModelImpl();
-        mUserLocal = mUserModelImpl.getUserLocal();
-        String loginId=mUserLocal.getObjectId();
+        User user = BmobUser.getCurrentUser(context, User.class);
+        String loginId=user.getObjectId();
         if(TextUtils.isEmpty(loginId)){
             throw new RuntimeException("you must login.");
         }

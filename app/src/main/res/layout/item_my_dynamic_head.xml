@@ -1,49 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:background="@drawable/mybackground">
+              android:layout_width="match_parent"
+              android:layout_height="40dp"
+              android:background="@drawable/mybackground"
+              android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:orientation="horizontal"
         >
+
         <ImageView
             android:id="@+id/iv_myDynamic_back"
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/ic_back"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/base_action_bar_back_bg_selector"/>
 
-    <TextView
-        android:layout_marginLeft="30dp"
-        android:id="@+id/tv_my_posted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Posted"
-        android:textSize="18dp"
-        android:layout_gravity="center"
-        />
+        <TextView
+            android:id="@+id/tv_my_posted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="30dp"
+            android:text="Posted"
+            android:textColor="@color/base_color_text_white"
+            android:textSize="18dp"
+            />
+
         <TextView
             android:id="@+id/tv_my_apply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apply"
-            android:textSize="18dp"
-            android:layout_marginLeft="80dp"
             android:layout_gravity="center"
-         />
+            android:layout_marginLeft="80dp"
+            android:text="Apply"
+            android:textColor="@color/base_color_text_white"
+            android:textSize="18dp"
+            />
+
         <TextView
             android:id="@+id/tv_dynamic_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit"
-            android:textSize="18dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="80dp"/>
+            android:layout_marginLeft="80dp"
+            android:text="Edit"
+            android:textColor="@color/base_color_text_white"
+            android:textSize="18dp"/>
 
     </LinearLayout>
 

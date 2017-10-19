@@ -14,10 +14,6 @@ import com.nostra13.universalimageloader.core.imageaware.ImageAware;
 import com.nostra13.universalimageloader.core.imageaware.ImageViewAware;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-/**
- * 使用UIL图片框架加载图片，后续方便扩展其他图片框架，比如glide或fresco
- * Created by Administrator on 2016/5/24.
- */
 public class UniversalImageLoader implements ILoader {
 
     public UniversalImageLoader() {

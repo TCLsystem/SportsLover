@@ -13,10 +13,6 @@ import com.example.user.sportslover.util.TimeUtil;
 
 import java.util.Collection;
 
-/**
- * 使用进一步封装的Conversation,教大家怎么自定义会话列表
- * @author smile
- */
 public class ConversationAdapter extends BaseRecyclerAdapter<Conversation> {
 
     public ConversationAdapter(Context context, IMutlipleItem<Conversation> items, Collection<Conversation> datas) {

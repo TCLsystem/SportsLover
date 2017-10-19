@@ -11,7 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
-import android.os.Environment;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -20,14 +20,11 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
-import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,26 +48,24 @@ import com.baidu.mapapi.map.PolylineOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.application.BaseApplication;
+import com.example.user.sportslover.bean.MyOrientationListener;
 import com.example.user.sportslover.bean.RouteItem;
+import com.example.user.sportslover.bean.SportInformationItem;
 import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.customview.CircularRingPercentageView;
 import com.example.user.sportslover.customview.LongClickButton;
-import com.example.user.sportslover.model.RouteControlImpr;
-import com.example.user.sportslover.model.RouteControlInter;
-import com.example.user.sportslover.model.UserModelImpl;
-import com.example.user.sportslover.util.ToastUtil;
-import com.example.user.sportslover.widget.MyVerticalViewPager;
-import com.example.user.sportslover.bean.SportInformationItem;
-import com.example.user.sportslover.bean.MyOrientationListener;
 import com.example.user.sportslover.model.CalculateCaloriesInter;
 import com.example.user.sportslover.model.CalculateCaloriesRidingImpl;
 import com.example.user.sportslover.model.CalculateCaloriesRunningImpl;
 import com.example.user.sportslover.model.CalculateCaloriesWalkingImpl;
+import com.example.user.sportslover.model.RouteControlImpr;
+import com.example.user.sportslover.model.RouteControlInter;
+import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.service.SportTrackService;
 import com.example.user.sportslover.util.ColorUtil;
 import com.example.user.sportslover.util.MapUtil;
+import com.example.user.sportslover.widget.MyVerticalViewPager;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -163,94 +158,94 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
     private Handler handler = new Handler() {
 
         public void handleMessage(Message msg) {
-        String html;
-        switch (msg.what){
-            case 1:
-                baiduMap.clear();
-                if (sportTrackServiceControlBinder.getCurrentPoint() != null){
-                    remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
-                }
-                //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
-                remotePoints = sportTrackServiceControlBinder.getPoints();
+            String html;
+            switch (msg.what){
+                case 1:
+                    baiduMap.clear();
+                    if (sportTrackServiceControlBinder.getCurrentPoint() != null){
+                        remoteLocate(sportTrackServiceControlBinder.getCurrentPoint());
+                    }
+                    //OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(points);
+                    remotePoints = sportTrackServiceControlBinder.getPoints();
 
-                if (targetPoints.size() >= 2){
-                    OverlayOptions ooPolylineTarget = new PolylineOptions().width(15).color(0xAA00ff00).points(targetPoints);
-                    baiduMap.addOverlay(ooPolylineTarget);
-                }
+                    if (targetPoints.size() >= 2){
+                        OverlayOptions ooPolylineTarget = new PolylineOptions().width(15).color(0xAA00ff00).points(targetPoints);
+                        baiduMap.addOverlay(ooPolylineTarget);
+                    }
 
-                if (remotePoints.size() > 2){
-                    OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
-                    baiduMap.addOverlay(ooPolyline);
-                }
+                    if (remotePoints.size() > 2){
+                        OverlayOptions ooPolyline = new PolylineOptions().width(13).color(0xAAFF0000).points(remotePoints);
+                        baiduMap.addOverlay(ooPolyline);
+                    }
 
-                mLocationClient.requestLocation();
-                remoteSeconds = sportTrackServiceControlBinder.getSeconds();
-                html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
-                tvHours.setText(Html.fromHtml(html));
-                remoteDistance = sportTrackServiceControlBinder.getDistance();
-                if (target > 1){
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ textFormat.format(target/1000) +"km<br>Totol mileages";
-                } else {
-                    html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
-                }
-                tvDistance.setText(Html.fromHtml(html));
-                //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
+                    mLocationClient.requestLocation();
+                    remoteSeconds = sportTrackServiceControlBinder.getSeconds();
+                    html = "<big><big><big>" + timeFormat.format((float)remoteSeconds/60.0/60.0) +"</big></big></big> h<br>Cumulative<br>time";
+                    tvHours.setText(Html.fromHtml(html));
+                    remoteDistance = sportTrackServiceControlBinder.getDistance();
+                    if (target > 1){
+                        html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>in "+ textFormat.format(target/1000) +"km<br>Totol mileages";
+                    } else {
+                        html = "<big><big><big><big><big>" + textFormat.format(remoteDistance/1000f) + "</big></big>  km</big></big></big><br>Totol mileages";
+                    }
+                    tvDistance.setText(Html.fromHtml(html));
+                    //tvDistance.setText("现在走过的距离是："+textFormat.format(sum_distance)+"米");
 
-                averagePace = (int)(remoteSeconds/remoteDistance*1000);
-                if (remoteDistance <= 0 || averagePace >= 599940){
-                    averagePace = 599940;
-                }
-                html = "<big><big><big>" + averagePace/60 + "’</big>" + averagePace%60 + "”" +"</big></big><br>Average<br>pace";
-                tvSportAveragePace.setText(Html.fromHtml(html));
+                    averagePace = (int)(remoteSeconds/remoteDistance*1000);
+                    if (remoteDistance <= 0 || averagePace >= 599940){
+                        averagePace = 599940;
+                    }
+                    html = "<big><big><big>" + averagePace/60 + "’</big>" + averagePace%60 + "”" +"</big></big><br>Average<br>pace";
+                    tvSportAveragePace.setText(Html.fromHtml(html));
 
-                switch (currPage){
-                    case 0:
-                        html = "<big><big><big>" + timeFormat.format(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
-                        tvCalories.setText(Html.fromHtml(html));
-                        break;
-                    case 1:
-                        html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
-                        tvCalories.setText(Html.fromHtml(html));
-                        break;
-                    default:
-                        break;
-                }
+                    switch (currPage){
+                        case 0:
+                            html = "<big><big><big>" + timeFormat.format(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace)) +"</big></big></big>KCAL<br>Calories";
+                            tvCalories.setText(Html.fromHtml(html));
+                            break;
+                        case 1:
+                            html = "<big><big><big>" + textFormat.format(remoteDistance/1000f) +"</big></big></big>Km<br>Total Mileages";
+                            tvCalories.setText(Html.fromHtml(html));
+                            break;
+                        default:
+                            break;
+                    }
 
-                if (target >= 100){
-                    progressCircle.setProgress((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                    refleshBackgroundColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                } else {
-                    refleshBackgroundColors(localProgress, 0);
-                    progressCircle.setProgress(100f);
-                }
-                break;
-            case 2:
-                rlProgressBar.setVisibility(View.VISIBLE);
-                timerValidFlag = false;
-                sportTrackServiceControlBinder.pauseService();
-                Intent stopSportTrackService = new Intent(BeginSportActivity.this, SportTrackService.class);
-                stopService(stopSportTrackService);
-                task.cancel();
-                timer.cancel();
-                buttonStart1.setVisibility(View.VISIBLE);
-                buttonPause0.setVisibility(View.GONE);
-                buttonPause1.setVisibility(View.GONE);
-                buttonResume0.setVisibility(View.GONE);
-                buttonResume1.setVisibility(View.GONE);
-                buttonStop0.setVisibility(View.GONE);
-                buttonStop1.setVisibility(View.GONE);
-                sportInformationItem.setAveragePace(averagePace);
-                sportInformationItem.setCalories(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace));
-                sportInformationItem.setCumulativeTime(remoteSeconds);
-                sportInformationItem.setSportProgress((remoteDistance/target > 1 || target < 100)?100f:((float)remoteDistance/target*100f));
-                sportInformationItem.setTotalMileages(remoteDistance);
-                sportInformationItem.setPoints(remotePoints);
-                sportInformationItem.setStartTime(startTime);
-                if (target >= 100){
-                    refleshFinishColors(0, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                } else {
-                    refleshFinishColors(0, 0);
-                }
+                    if (target >= 100){
+                        progressCircle.setProgress((remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                        refleshBackgroundColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                    } else {
+                        refleshBackgroundColors(localProgress, 0);
+                        progressCircle.setProgress(100f);
+                    }
+                    break;
+                case 2:
+                    rlProgressBar.setVisibility(View.VISIBLE);
+                    timerValidFlag = false;
+                    sportTrackServiceControlBinder.pauseService();
+                    Intent stopSportTrackService = new Intent(BeginSportActivity.this, SportTrackService.class);
+                    stopService(stopSportTrackService);
+                    task.cancel();
+                    timer.cancel();
+                    buttonStart1.setVisibility(View.VISIBLE);
+                    buttonPause0.setVisibility(View.GONE);
+                    buttonPause1.setVisibility(View.GONE);
+                    buttonResume0.setVisibility(View.GONE);
+                    buttonResume1.setVisibility(View.GONE);
+                    buttonStop0.setVisibility(View.GONE);
+                    buttonStop1.setVisibility(View.GONE);
+                    sportInformationItem.setAveragePace(averagePace);
+                    sportInformationItem.setCalories(calculateCaloriesInter.calculateCalories(weight, remoteSeconds, averagePace));
+                    sportInformationItem.setCumulativeTime(remoteSeconds);
+                    sportInformationItem.setSportProgress((remoteDistance/target > 1 || target < 100)?100f:((float)remoteDistance/target*100f));
+                    sportInformationItem.setTotalMileages(remoteDistance);
+                    sportInformationItem.setPoints(remotePoints);
+                    sportInformationItem.setStartTime(startTime);
+                    if (target >= 100){
+                        refleshFinishColors(0, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                    } else {
+                        refleshFinishColors(0, 0);
+                    }
 
                 /*List<LatLng> fake = new ArrayList<>();
                 fake.add(new LatLng(23.035529,114.357632));
@@ -262,106 +257,106 @@ public class BeginSportActivity extends AppCompatActivity implements View.OnClic
                 for (int i=0;i<fake.size()-1;i++){
                     fakedistance += MapUtil.gps2m(fake.get(i).latitude, fake.get(i).longitude, fake.get(i+1).latitude, fake.get(i+1).longitude);
                 }*/
-                baiduMap.clear();
-                if (remotePoints.size()>1){
-                    OverlayOptions ooPolylineTarget = new PolylineOptions().width(15).color(0xAA00ff00).points(remotePoints);
-                    baiduMap.addOverlay(ooPolylineTarget);
-                }
-                //autoZoom(fake);
+                    baiduMap.clear();
+                    if (remotePoints.size()>1){
+                        OverlayOptions ooPolylineTarget = new PolylineOptions().width(15).color(0xAA00ff00).points(remotePoints);
+                        baiduMap.addOverlay(ooPolylineTarget);
+                    }
+                    //autoZoom(fake);
 
-                autoZoom(remotePoints);
-                baiduMap.setMyLocationEnabled(false);
-                handler.sendEmptyMessageDelayed(10, 2000);
-                break;
-            case 3:
-                localProgress += 15;
-                if (localProgress < 100){
-                    if (target >= 100){
-                        refleshFinishColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
-                    } else {
-                        refleshFinishColors(localProgress, 0);
-                    }
-                }else {
-                    handler.sendEmptyMessageDelayed(2, 50);
-                }
-                break;
-            case 4:
-                if (localProgress > 3)
-                    localProgress -= 3;
-                else
-                    localProgress = 0;
-                if (localProgress < 100) {
-                    if (target >= 100) {
-                        refleshFinishColors(localProgress, (remoteDistance / target > 1) ? 100f : ((float) remoteDistance / target * 100f));
-                    } else {
-                        refleshFinishColors(localProgress, 0);
-                    }
-                }
-                break;
-            case 5:
-                rlCount3.setVisibility(View.VISIBLE);
-                handler.sendEmptyMessageDelayed(6, 1000);
-                break;
-            case 6:
-                rlCount2.setVisibility(View.VISIBLE);
-                rlCount3.setVisibility(View.GONE);
-                handler.sendEmptyMessageDelayed(7, 1000);
-                break;
-            case 7:
-                rlCount1.setVisibility(View.VISIBLE);
-                rlCount2.setVisibility(View.GONE);
-                handler.sendEmptyMessageDelayed(8, 1000);
-                break;
-            case 8:
-                rlCount0.setVisibility(View.VISIBLE);
-                rlCount1.setVisibility(View.GONE);
-                handler.sendEmptyMessageDelayed(9, 1000);
-                break;
-            case 9:
-                startTime = System.currentTimeMillis();
-                rlCount0.setVisibility(View.GONE);
-                timerValidFlag = true;
-                myVerticalViewPager.setCurrentItem(0);
-                currPage = 0;
-                sportTrackServiceControlBinder.setSportType(sportType);
-                sportTrackServiceControlBinder.startService();
-                llBeginSportStatus.setVisibility(View.VISIBLE);
-                buttonTarget1.setVisibility(View.GONE);
-                ivLock1.setVisibility(View.VISIBLE);
-                buttonRoute1.setVisibility(View.INVISIBLE);
-                buttonStart1.setVisibility(View.GONE);
-                buttonPause0.setVisibility(View.VISIBLE);
-                buttonPause1.setVisibility(View.VISIBLE);
-                ivStrechMap.setVisibility(View.VISIBLE);
-                myVerticalViewPager.setScrollable(true);
-                break;
-            case 10:
-                mapView.getMap().snapshot(new BaiduMap.SnapshotReadyCallback() {
-                    @Override
-                    public void onSnapshotReady(Bitmap bitmap) {
-                        //sportInformationItem.setBitmap(bitmap);
-                        FileOutputStream out;
-                        try {
-                            out = openFileOutput("test.png", MODE_PRIVATE);
-                            if (bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)) {
-                                out.flush();
-                                out.close();
-                            }
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                    autoZoom(remotePoints);
+                    baiduMap.setMyLocationEnabled(false);
+                    handler.sendEmptyMessageDelayed(10, 2000);
+                    break;
+                case 3:
+                    localProgress += 15;
+                    if (localProgress < 100){
+                        if (target >= 100){
+                            refleshFinishColors(localProgress, (remoteDistance/target>1)?100f:((float)remoteDistance/target*100f));
+                        } else {
+                            refleshFinishColors(localProgress, 0);
                         }
-                        Intent intent1 = new Intent(BeginSportActivity.this, FinishSportActivity.class);
-                        intent1.putExtra("sport_information", sportInformationItem);
-                        startActivity(intent1);
-                        rlProgressBar.setVisibility(View.GONE);
-                        finish();
+                    }else {
+                        handler.sendEmptyMessageDelayed(2, 50);
                     }
-                });
-            default:
-                break;
-        }
+                    break;
+                case 4:
+                    if (localProgress > 3)
+                        localProgress -= 3;
+                    else
+                        localProgress = 0;
+                    if (localProgress < 100) {
+                        if (target >= 100) {
+                            refleshFinishColors(localProgress, (remoteDistance / target > 1) ? 100f : ((float) remoteDistance / target * 100f));
+                        } else {
+                            refleshFinishColors(localProgress, 0);
+                        }
+                    }
+                    break;
+                case 5:
+                    rlCount3.setVisibility(View.VISIBLE);
+                    handler.sendEmptyMessageDelayed(6, 1000);
+                    break;
+                case 6:
+                    rlCount2.setVisibility(View.VISIBLE);
+                    rlCount3.setVisibility(View.GONE);
+                    handler.sendEmptyMessageDelayed(7, 1000);
+                    break;
+                case 7:
+                    rlCount1.setVisibility(View.VISIBLE);
+                    rlCount2.setVisibility(View.GONE);
+                    handler.sendEmptyMessageDelayed(8, 1000);
+                    break;
+                case 8:
+                    rlCount0.setVisibility(View.VISIBLE);
+                    rlCount1.setVisibility(View.GONE);
+                    handler.sendEmptyMessageDelayed(9, 1000);
+                    break;
+                case 9:
+                    startTime = System.currentTimeMillis();
+                    rlCount0.setVisibility(View.GONE);
+                    timerValidFlag = true;
+                    myVerticalViewPager.setCurrentItem(0);
+                    currPage = 0;
+                    sportTrackServiceControlBinder.setSportType(sportType);
+                    sportTrackServiceControlBinder.startService();
+                    llBeginSportStatus.setVisibility(View.VISIBLE);
+                    buttonTarget1.setVisibility(View.GONE);
+                    ivLock1.setVisibility(View.VISIBLE);
+                    buttonRoute1.setVisibility(View.INVISIBLE);
+                    buttonStart1.setVisibility(View.GONE);
+                    buttonPause0.setVisibility(View.VISIBLE);
+                    buttonPause1.setVisibility(View.VISIBLE);
+                    ivStrechMap.setVisibility(View.VISIBLE);
+                    myVerticalViewPager.setScrollable(true);
+                    break;
+                case 10:
+                    mapView.getMap().snapshot(new BaiduMap.SnapshotReadyCallback() {
+                        @Override
+                        public void onSnapshotReady(Bitmap bitmap) {
+                            //sportInformationItem.setBitmap(bitmap);
+                            FileOutputStream out;
+                            try {
+                                out = openFileOutput("test.png", MODE_PRIVATE);
+                                if (bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)) {
+                                    out.flush();
+                                    out.close();
+                                }
+                            } catch (FileNotFoundException e) {
+                                e.printStackTrace();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                            Intent intent1 = new Intent(BeginSportActivity.this, FinishSportActivity.class);
+                            intent1.putExtra("sport_information", sportInformationItem);
+                            startActivity(intent1);
+                            rlProgressBar.setVisibility(View.GONE);
+                            finish();
+                        }
+                    });
+                default:
+                    break;
+            }
         }
 
     };

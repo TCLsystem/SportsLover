@@ -67,15 +67,15 @@ public class PrivateConversation extends Conversation {
             if(lastMsg.getMsgType().equals(BmobIMMessageType.TEXT.getType()) || lastMsg.getMsgType().equals("agree")){
                 return content;
             }else if(lastMsg.getMsgType().equals(BmobIMMessageType.IMAGE.getType())){
-                return "[图片]";
+                return "[image]";
             }else if(lastMsg.getMsgType().equals(BmobIMMessageType.VOICE.getType())){
-                return "[语音]";
+                return "[voice]";
             }else if(lastMsg.getMsgType().equals(BmobIMMessageType.LOCATION.getType())){
-                return"[位置]";
+                return"[location]";
             }else if(lastMsg.getMsgType().equals(BmobIMMessageType.VIDEO.getType())){
-                return "[视频]";
+                return "[video]";
             }else{//开发者自定义的消息类型，需要自行处理
-                return "[未知]";
+                return "[unknown]";
             }
         }else{//防止消息错乱
             return "";

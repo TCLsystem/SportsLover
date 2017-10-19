@@ -43,7 +43,7 @@ public class ReceiveVideoHolder extends BaseViewHolder {
   @Override
   public void bindData(Object o) {
     final BmobIMMessage message = (BmobIMMessage)o;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     String time = dateFormat.format(message.getCreateTime());
     tv_time.setText(time);
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
@@ -53,7 +53,7 @@ public class ReceiveVideoHolder extends BaseViewHolder {
     iv_avatar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        toast("点击" + info.getName() + "的头像");
+  /*toast("点击" + info.getName() + "的头像");*/
       }
     });
 

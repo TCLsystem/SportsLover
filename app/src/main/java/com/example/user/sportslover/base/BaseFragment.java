@@ -12,11 +12,6 @@ import android.widget.Toast;
 import com.example.user.sportslover.application.Config;
 import com.orhanobut.logger.Logger;
 
-/**基类
- * @author :smile
- * @project:BaseActivity
- * @date :2016-01-15-18:23
- */
 public class BaseFragment extends Fragment {
 
     protected void runOnMain(Runnable runnable) {

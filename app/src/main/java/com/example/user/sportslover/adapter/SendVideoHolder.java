@@ -53,7 +53,7 @@ public class SendVideoHolder extends BaseViewHolder implements View.OnClickListe
   @Override
   public void bindData(Object o) {
     final BmobIMMessage message = (BmobIMMessage)o;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     final BmobIMUserInfo info = message.getBmobIMUserInfo();
     ImageLoaderFactory.getLoader().loadAvator(iv_avatar,info != null ? info.getAvatar() : null, R.mipmap.head);
 
@@ -110,7 +110,7 @@ public class SendVideoHolder extends BaseViewHolder implements View.OnClickListe
           public void done(BmobIMMessage msg, BmobException e) {
             if(e==null){
               tv_send_status.setVisibility(View.VISIBLE);
-              tv_send_status.setText("已发送");
+              tv_send_status.setText("success");
               iv_fail_resend.setVisibility(View.GONE);
               progress_load.setVisibility(View.GONE);
             }else{

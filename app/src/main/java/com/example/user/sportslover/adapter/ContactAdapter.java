@@ -13,14 +13,6 @@ import com.example.user.sportslover.db.NewFriendManager;
 
 import java.util.Collection;
 
-/**
- * 联系人
- * 一种简洁的Adapter实现方式，可用于多种Item布局的recycleView实现，不用再写ViewHolder啦
- *
- * @author :smile
- * @project:ContactNewAdapter
- * @date :2016-04-27-14:18
- */
 public class ContactAdapter extends BaseRecyclerAdapter<Friend> {
 
     public static final int TYPE_NEW_FRIEND = 0;
@@ -38,7 +30,7 @@ public class ContactAdapter extends BaseRecyclerAdapter<Friend> {
             holder.setImageView(user == null ? null : user.getAvatar(), R.mipmap.head, R.id
                     .iv_recent_avatar);
             //好友名称
-            holder.setText(R.id.tv_recent_name, user == null ? "未知" : user.getUserName());
+                holder.setText(R.id.tv_recent_name, user == null ? "未知" : user.getUsername());
         } else if (holder.layoutId == R.layout.header_new_friend) {
             if (NewFriendManager.getInstance(context).hasNewFriendInvitation()) {
                 holder.setVisible(R.id.iv_msg_tips, View.VISIBLE);

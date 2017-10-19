@@ -45,7 +45,7 @@ public class UserInfoActivity extends ParentWithNaviActivity {
     BmobIMUserInfo info;
     @Override
     protected String title() {
-        return "个人资料";
+        return "Person Info";
     }
 
     @Override
@@ -62,9 +62,9 @@ public class UserInfoActivity extends ParentWithNaviActivity {
             btn_chat.setVisibility(View.VISIBLE);
         }
         //构造聊天方的用户信息:传入用户id、用户名和用户头像三个参数
-        info = new BmobIMUserInfo(user.getObjectId(),user.getUserName(),user.getAvatar());
+        info = new BmobIMUserInfo(user.getObjectId(),user.getUsername(),user.getAvatar());
         ImageLoaderFactory.getLoader().loadAvator(iv_avator,user.getAvatar(), R.mipmap.head);
-        tv_name.setText(user.getUserName());
+        tv_name.setText(user.getUsername());
     }
 
     @OnClick(R.id.btn_add_friend)
@@ -83,9 +83,9 @@ public class UserInfoActivity extends ParentWithNaviActivity {
         BmobIMConversation conversation = BmobIMConversation.obtain(BmobIMClient.getInstance(), c);
         AddFriendMessage msg =new AddFriendMessage();
         User currentUser = BmobUser.getCurrentUser(this,User.class);
-        msg.setContent("很高兴认识你，可以加个好友吗?");//给对方的一个留言信息
+        msg.setContent("happy to meet you,could we be friends?");//给对方的一个留言信息
         Map<String,Object> map =new HashMap<>();
-        map.put("name", currentUser.getUserName());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
+        map.put("name", currentUser.getUsername());//发送者姓名，这里只是举个例子，其实可以不需要传发送者的信息过去
         map.put("avatar",currentUser.getAvatar());//发送者的头像
         map.put("uid",currentUser.getObjectId());//发送者的uid
         msg.setExtraMap(map);
@@ -93,9 +93,9 @@ public class UserInfoActivity extends ParentWithNaviActivity {
             @Override
             public void done(BmobIMMessage msg, BmobException e) {
                 if (e == null) {//发送成功
-                    toast("好友请求发送成功，等待验证");
+                    toast("wait verify");
                 } else {//发送失败
-                    toast("发送失败:" + e.getMessage());
+                    toast("add error" /*+ e.getMessage()*/);
                 }
             }
         });

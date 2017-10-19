@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/local/Fundation/lvs/SportsLover/xListView/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/local/Fundation/lvs/SportsLover/xListView/src/release/jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/local/homework/code/10.19.16.00/SportsLover/xListView/src/main/jniLibs"/></dataSet><dataSet config="release"><source path="/local/homework/code/10.19.16.00/SportsLover/xListView/src/release/jniLibs"/></dataSet></merger>

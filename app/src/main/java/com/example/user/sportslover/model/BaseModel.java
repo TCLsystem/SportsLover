@@ -4,11 +4,6 @@ import android.content.Context;
 
 import com.example.user.sportslover.application.BaseApplication;
 
-/**
- * @author :smile
- * @project:BaseModel
- * @date :2016-01-23-10:37
- */
 public abstract class BaseModel {
 
     public int CODE_NULL=1000;

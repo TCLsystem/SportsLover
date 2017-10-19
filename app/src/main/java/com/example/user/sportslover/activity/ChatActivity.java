@@ -1,17 +1,25 @@
 package com.example.user.sportslover.activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -56,9 +64,11 @@ import com.orhanobut.logger.Logger;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.Bind;
@@ -252,13 +262,6 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
         initRecordManager();
     }
 
-    /**
-     * 初始化语音动画资源
-     *
-     * @param
-     * @return void
-     * @Title: initVoiceAnimRes
-     */
     private void initVoiceAnimRes() {
         drawable_Anims = new Drawable[]{getResources().getDrawable(R.mipmap.chat_icon_voice2),
                 getResources().getDrawable(R.mipmap.chat_icon_voice3), getResources().getDrawable
@@ -455,9 +458,9 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
 
     @OnClick(R.id.tv_location)
     public void onLocationClick(View view) {
-       /* Intent locationIntent = new Intent(this, MapActivity.class);
-        startActivityForResult(locationIntent, Constant.REQUEST_MAP);
-        sendLocationMessage();*/
+         /*Intent locationIntent = new Intent(this, MapActivity.class);
+        startActivityForResult(locationIntent, 3);*/
+        sendLocationMessage();
     }
 
     /**
@@ -502,7 +505,7 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
     private void sendMessage() {
         String text = edit_msg.getText().toString();
         if (TextUtils.isEmpty(text.trim())) {
-            toast("请输入内容");
+            toast("please input message");
             return;
         }
         BmobIMTextMessage msg = new BmobIMTextMessage();
@@ -566,13 +569,103 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
      * 发送地理位置
      */
     public void sendLocationMessage() {
-        //测试数据，真实数据需要从地图SDK中获取
-        BmobIMLocationMessage location = new BmobIMLocationMessage("广州番禺区", 23.5, 112.0);
-        Map<String, Object> map = new HashMap<>();
-        map.put("from", "百度地图");
-        location.setExtraMap(map);
-        c.sendMessage(location, listener);
+      String locationProvider = "";
+        LocationManager locationManager = (LocationManager) getSystemService(Context
+                .LOCATION_SERVICE);
+        //获取可用位置提供器
+        List<String> providers = locationManager.getProviders(true);
+        if (providers.contains(LocationManager.GPS_PROVIDER)) {
+            //GPS
+            locationProvider = LocationManager.GPS_PROVIDER;
+        } else if (providers.contains(LocationManager.NETWORK_PROVIDER)) {
+            //Network
+            locationProvider = LocationManager.NETWORK_PROVIDER;
+        } else {
+            Toast.makeText(this, "no location provider", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            return;
+        }
+        //获取Location
+        Location locationInit = locationManager.getLastKnownLocation(locationProvider);
+        // locationManager.requestLocationUpdates(locationProvider, 3000, 1, locationListener);
+        if (locationInit != null) {
+            Geocoder geocoder = new Geocoder(ChatActivity.this, Locale.getDefault());
+            try {
+                List<Address> addresses = geocoder.getFromLocation(locationInit.getLatitude(),
+                        locationInit.getLongitude(), 1);
+                StringBuilder sb = new StringBuilder();
+                if (addresses.size() > 0) {
+                    Address address = addresses.get(0);
+                    for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                        sb.append(address.getAddressLine(i)).append("-");
+                    }
+                    sb.append(address.getLocality()).append(" ");
+                    sb.append(address.getSubLocality());
+                }
+                BmobIMLocationMessage location = new BmobIMLocationMessage(sb.toString().split("-" +
+                        "")[0], locationInit.getLatitude(), locationInit.getLongitude());
+                Map<String, Object> map = new HashMap<>();
+                map.put("from", "百度地图");
+                location.setExtraMap(map);
+                c.sendMessage(location, listener);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+    public final LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location locationInit) {
+            if (locationInit != null) {
+                Geocoder geocoder = new Geocoder(ChatActivity.this, Locale.getDefault());
+                try {
+                    List<Address> addresses = geocoder.getFromLocation(locationInit.getLatitude()
+                            , locationInit.getLongitude(), 1);
+                    StringBuilder sb = new StringBuilder();
+                    if (addresses.size() > 0) {
+                        Address address = addresses.get(0);
+                        for (int i = 0; i < address.getMaxAddressLineIndex(); i++) {
+                            sb.append(address.getAddressLine(i)).append(" ");
+                        }
+                        sb.append(address.getLocality()).append(" ");
+                        sb.append(address.getSubLocality());
+                    }
+                    BmobIMLocationMessage location = new BmobIMLocationMessage(sb.toString(),
+                            locationInit.getLatitude(), locationInit.getLongitude());
+                    Intent intent = new Intent(ChatActivity.this, BeginSportActivity.class);
+                    intent.putExtra("sport_type", 0);
+                    startActivity(intent);
+                    Map<String, Object> map = new HashMap<>();
+                    map.put("from", "百度地图");
+                    location.setExtraMap(map);
+                    c.sendMessage(location, listener);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
+    };
+
 
     public void pickPhoto(Activity activity, int requestCodePickPhoto) {
         Intent intent = new Intent();

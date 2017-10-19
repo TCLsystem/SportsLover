@@ -31,7 +31,7 @@ public class AgreeHolder extends BaseViewHolder implements View.OnClickListener,
   @Override
   public void bindData(Object o) {
     final BmobIMMessage message = (BmobIMMessage)o;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     String time = dateFormat.format(message.getCreateTime());
     String content = message.getContent();
     tv_message.setText(content);

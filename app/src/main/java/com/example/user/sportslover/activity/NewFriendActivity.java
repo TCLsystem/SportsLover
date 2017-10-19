@@ -34,7 +34,7 @@ public class NewFriendActivity extends ParentWithNaviActivity {
 
     @Override
     protected String title() {
-        return "新朋友";
+        return "New Friend";
     }
 
     @Override

@@ -96,7 +96,7 @@ public class SendDynamicActivity extends Activity {
         setContentView(R.layout.activity_send_dynamic);
         mUser = (User) getIntent().getSerializableExtra("User");
         dynamicItem.setWriter(mUser);
-        dynamicItem.setUserName(mUser.getUserName());
+        dynamicItem.setUserName(mUser.getUsername());
         ButterKnife.bind(this);
     }
 

@@ -60,7 +60,7 @@ public class SendImageHolder extends BaseViewHolder {
         final BmobIMUserInfo info = msg.getBmobIMUserInfo();
         ImageLoaderFactory.getLoader().loadAvator(iv_avatar, info != null ? info.getAvatar() :
                 null, R.mipmap.head);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
         String time = dateFormat.format(msg.getCreateTime());
         tv_time.setText(time);
         //
@@ -77,7 +77,7 @@ public class SendImageHolder extends BaseViewHolder {
             tv_send_status.setVisibility(View.INVISIBLE);
         } else {
             tv_send_status.setVisibility(View.VISIBLE);
-            tv_send_status.setText("已发送");
+            tv_send_status.setText("success");
             iv_fail_resend.setVisibility(View.GONE);
             progress_load.setVisibility(View.GONE);
         }
@@ -125,7 +125,7 @@ public class SendImageHolder extends BaseViewHolder {
                     public void done(BmobIMMessage msg, BmobException e) {
                         if (e == null) {
                             tv_send_status.setVisibility(View.VISIBLE);
-                            tv_send_status.setText("已发送");
+                            tv_send_status.setText("success");
                             iv_fail_resend.setVisibility(View.GONE);
                             progress_load.setVisibility(View.GONE);
                         } else {

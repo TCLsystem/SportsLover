@@ -87,7 +87,7 @@ public class DynamicDetailActivity extends AppCompatActivity {
             public void getSuccess(Object o) {
                 final User user = (User) o;
                 imageLoader.displayImage(user.getPhoto().getUrl(), write_photo, options);
-                write_name.setText(user.getUserName());
+                write_name.setText(user.getUsername());
                 write_date.setText(dynamicItem.getCreatedAt());
                 imageLoader.displayImage(dynamicItem.getPhotoList().get(0).getUrl(), dynamic_photo, options);
                 dynamic_text.setText(dynamicItem.getDetail());
@@ -100,7 +100,7 @@ public class DynamicDetailActivity extends AppCompatActivity {
                 show_participantCount.setText(Integer.toString(dynamicItem.getParticipantName().size()));
                 Log.d("DETAILS",write_date.getText().toString()+ "  "+ show_mile.getText().toString());
 
-                if(user.getUserName() != mUserLocal.getName()){
+                if(user.getUsername() != mUserLocal.getName()){
                  enter.setVisibility(View.VISIBLE);
                     enter.setOnClickListener(new View.OnClickListener() {
                         @Override

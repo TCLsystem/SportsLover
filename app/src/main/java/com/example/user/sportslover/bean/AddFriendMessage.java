@@ -11,11 +11,6 @@ import org.json.JSONObject;
 import cn.bmob.newim.bean.BmobIMExtraMessage;
 import cn.bmob.newim.bean.BmobIMMessage;
 
-/**添加好友请求
- * @author :smile
- * @project:AddFriendMessage
- * @date :2016-01-30-17:28
- */
 public class AddFriendMessage extends BmobIMExtraMessage {
 
     public AddFriendMessage(){}
@@ -40,7 +35,7 @@ public class AddFriendMessage extends BmobIMExtraMessage {
                 add.setAvatar(avatar);
                 add.setUid(json.getString("uid"));
             }else{
-                Logger.i("AddFriendMessage的extra为空");
+                Logger.i("AddFriendMessage'extra is null");
             }
         } catch (Exception e) {
             e.printStackTrace();

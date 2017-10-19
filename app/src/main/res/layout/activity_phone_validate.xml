@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_phone_validate"
-    tools:context="com.example.user.sportslover.activity.PhoneValidateActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    android:weightSum="1">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/activity_phone_validate"
+              tools:context="com.example.user.sportslover.activity.PhoneValidateActivity"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:weightSum="1">
     <ImageView
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
@@ -37,58 +37,58 @@
         android:layout_height="wrap_content"
         android:text="@string/verification" />
 
-          <LinearLayout
-              android:id="@+id/verify"
-              android:layout_marginTop="2dp"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="horizontal"
-              android:background="@color/white">
+    <LinearLayout
+        android:id="@+id/verify"
+        android:layout_marginTop="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white">
 
 
 
-              <EditText
-                  android:layout_marginLeft="20dp"
-                  android:layout_width="200dp"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/register_checknum"
-                  android:layout_marginRight="20dp"
-                  android:layout_gravity="center"
-                  android:hint="@string/register_check_num_default"
-                  android:inputType="text"
-                  android:singleLine="true" />
+        <EditText
+            android:layout_marginLeft="20dp"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/register_checknum"
+            android:layout_marginRight="20dp"
+            android:layout_gravity="center"
+            android:hint="@string/register_check_num_default"
+            android:inputType="text"
+            android:singleLine="true" />
 
 
-              <Button
-              android:id="@+id/register_get_check_pass"
-              android:layout_width="100dp"
-              android:layout_height="40dp"
-              android:gravity="center"
-              android:textColor="@color/white"
-              android:layout_gravity="center_vertical"
-              android:background="@drawable/shape_rectanglar_gradient_button"
-              android:text="get code" />
+        <Button
+            android:id="@+id/register_get_check_pass"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/shape_rectanglar_gradient_button"
+            android:text="get code" />
 
-          </LinearLayout>
+    </LinearLayout>
 
 
-              <TextView
-                  android:layout_marginTop="20dp"
-                  android:layout_marginLeft="20dp"
-                  android:textSize="18dp"
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="Password" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password" />
 
-              <EditText
-                  android:layout_width="250dp"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/tv_password"
-                  android:layout_marginRight="20dp"
-                  android:layout_gravity="center"
-                  android:inputType="text"
-                  android:hint="At least six figures"
-                  android:singleLine="true" />
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_password"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center"
+        android:inputType="text"
+        android:hint="At least six figures"
+        android:singleLine="true" />
 
     <TextView
         android:layout_marginTop="20dp"
@@ -109,7 +109,7 @@
         android:singleLine="true" />
 
 
-       <Button
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Next"

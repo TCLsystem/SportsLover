@@ -17,6 +17,7 @@ import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.bean.UserEventBus;
 import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.model.SportModelInter;
+import com.example.user.sportslover.model.UserModel;
 import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.util.ToastUtil;
 
@@ -28,6 +29,7 @@ import cn.bmob.newim.bean.BmobIMUserInfo;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.BmobSMS;
 import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.RequestSMSCodeListener;
 import cn.bmob.v3.listener.VerifySMSCodeListener;
 import de.greenrobot.event.EventBus;
@@ -61,8 +63,6 @@ public class LoginActivity extends BaseActivity {
         Bmob.initialize(this, "23fe35801c6ae4f698315d637955bb39");
         ButterKnife.bind(this);
         mUserModelImpl = new UserModelImpl();
-        verifycode.setVisibility(View.INVISIBLE);
-
     }
 
     @OnClick({R.id.login_back,R.id.login_btn,R.id.select_number,R.id.select_password,R.id.btn_login_getverify_code})
@@ -73,19 +73,21 @@ public class LoginActivity extends BaseActivity {
                 break;
             case R.id.select_number:
                 verifycode.setVisibility(View.VISIBLE);
-                select_login_stytle.setText("Phone Number:");
+                select_login_stytle.setText("Phone Number");
                 select_number.setTextColor(0xff000000);
                 select_name.setTextColor(0xffb4b3b3);
                 flag = 1;
                 break;
             case R.id.select_password:
-                select_login_stytle.setText("User Name:");
                 select_name.setTextColor(0xff000000);
                 verifycode.setVisibility(View.INVISIBLE);
                 select_number.setTextColor(0xffb4b3b3);
                 flag = 0;
                 break;
-
+//            case R.id.login_register:
+//                Intent intent = new Intent(LoginActivity.this, PhoneValidateActivity.class);
+//                startActivity(intent);
+//                break;
             case R.id.btn_login_getverify_code:
                 flag = 1;
                 BmobSMS.requestSMSCode(LoginActivity.this, loginUname.getText().toString(), "KeepFit", new RequestSMSCodeListener() {
@@ -136,13 +138,13 @@ public class LoginActivity extends BaseActivity {
 
                 if (!TextUtils.isEmpty(loginUname.getText().toString()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
                     if (flag == 0) {
-                        mUserModelImpl.getUser(loginUname.getText().toString(), loginPass.getText().toString(), new SportModelInter.BaseListener() {
+                /*        mUserModelImpl.getUser(loginUname.getText().toString(), loginPass.getText().toString(), new SportModelInter.BaseListener() {
                             @Override
                             public void getSuccess(Object o) {
                                 ToastUtil.showLong(LoginActivity.this, "登录成功");
                                 User user = (User) o;
                                 UserLocal userLocal = new UserLocal();
-                                userLocal.setName(user.getUserName());
+                                userLocal.setName(user.getUsername());
                                 userLocal.setObjectId(user.getObjectId());
                                 userLocal.setNumber(user.getNumber());
                                 userLocal.setWeight(user.getWeight());
@@ -155,7 +157,7 @@ public class LoginActivity extends BaseActivity {
                                 }
                                 mUserModelImpl.putUserLocal(userLocal);
                                 BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user
-                                        .getObjectId(), user.getUserName(), user.getAvatar()));
+                                        .getObjectId(), user.getUsername(), user.getAvatar()));
                                 startActivity(MainActivity.class, null, true);
                                 EventBus.getDefault().post(new UserEventBus(userLocal));
                                 finish();
@@ -164,6 +166,37 @@ public class LoginActivity extends BaseActivity {
                             @Override
                             public void getFailure() {
                                 ToastUtil.showLong(LoginActivity.this, "登录失败");
+                            }
+                        });*/
+                        UserModel.getInstance().login(loginUname.getText().toString(), loginPass
+                                .getText().toString(), new LogInListener() {
+                            @Override
+                            public void done(Object o, BmobException e) {
+                                if (e == null) {
+                                    ToastUtil.showLong(LoginActivity.this, "登录成功");
+                                    User user = (User) o;
+                                    UserLocal userLocal = new UserLocal();
+                                    userLocal.setName(user.getUsername());
+                                    userLocal.setObjectId(user.getObjectId());
+                                    userLocal.setNumber(user.getNumber());
+                                    userLocal.setWeight(user.getWeight());
+                                    userLocal.setBirthday(user.getBirthday());
+                                    userLocal.setHeight(user.getHeight());
+                                    userLocal.setSex(user.getSex());
+                                    userLocal.setAvatar(user.getAvatar());
+                                    if (user.getPhoto() != null) {
+                                        userLocal.setPhoto(user.getPhoto().getUrl());
+                                    }
+                                    mUserModelImpl.putUserLocal(userLocal);
+                                    BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user
+                                            .getObjectId(), user.getUsername(), user.getAvatar()));
+                                    startActivity(MainActivity.class, null, true);
+                                    EventBus.getDefault().post(new UserEventBus(userLocal));
+                                    finish();
+                                } else {
+                                    //toast(e.getMessage() + "(" + e.getErrorCode() + ")");
+                                    ToastUtil.showLong(LoginActivity.this, "登录失败");
+                                }
                             }
                         });
                     } else if (flag == 1) {
@@ -178,7 +211,7 @@ public class LoginActivity extends BaseActivity {
                                         ToastUtil.showLong(LoginActivity.this, "登录成功");
                                         User user = (User) o;
                                         UserLocal userLocal = new UserLocal();
-                                        userLocal.setName(user.getUserName());
+                                        userLocal.setName(user.getUsername());
                                         userLocal.setObjectId(user.getObjectId());
                                         userLocal.setNumber(user.getNumber());
                                         userLocal.setWeight(user.getWeight());
@@ -191,7 +224,7 @@ public class LoginActivity extends BaseActivity {
                                         }
                                         mUserModelImpl.putUserLocal(userLocal);
                                         BmobIM.getInstance().updateUserInfo(new BmobIMUserInfo(user
-                                                .getObjectId(), user.getUserName(), user.getAvatar()));
+                                                .getObjectId(), user.getUsername(), user.getAvatar()));
                                         startActivity(MainActivity.class, null, true);
                                         EventBus.getDefault().post(new UserEventBus(userLocal));
                                         finish();

@@ -4,19 +4,16 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import com.example.user.sportslover.adapter.base.BaseViewHolder;
+import com.example.user.sportslover.bean.GroupInfo;
 import com.example.user.sportslover.bean.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author :smile
- * @project:SearchUserAdapter
- * @date :2016-01-22-14:18
- */
 public class SearchUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     private List<User> users = new ArrayList<>();
+    private List<GroupInfo> groupInfos = new ArrayList<>();
 
     public SearchUserAdapter() {
     }
@@ -27,6 +24,13 @@ public class SearchUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             users.addAll(list);
         }
     }
+    public void setGroupDatas(List<GroupInfo> list) {
+        groupInfos.clear();
+        if (null != list) {
+            groupInfos.addAll(list);
+        }
+    }
+
 
     /**获取用户
      * @param position

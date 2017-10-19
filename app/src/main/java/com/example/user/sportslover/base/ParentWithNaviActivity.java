@@ -14,11 +14,6 @@ import com.example.user.sportslover.bean.User;
 
 import cn.bmob.v3.BmobUser;
 
-/**封装了导航条的类均需继承该类
- * @author :smile
- * @project:ParentWithNaviActivity
- * @date :2015-08-18-11:29
- */
 public abstract class ParentWithNaviActivity extends BaseActivity {
 
     public ToolBarListener listener;

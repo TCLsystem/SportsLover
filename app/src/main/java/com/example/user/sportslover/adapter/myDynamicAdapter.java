@@ -83,7 +83,7 @@ public class myDynamicAdapter  extends BaseAdapter {
             @Override
             public void getSuccess(Object o) {
                 User user = (User) o;
-                viewHolder.write_name.setText(user.getUserName());
+                viewHolder.write_name.setText(user.getUsername());
             }
             @Override
             public void getFailure() {

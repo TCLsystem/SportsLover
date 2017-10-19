@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_setting"
-    tools:context="com.example.user.sportslover.activity.SettingActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/normal_bg_color"
-    android:orientation="vertical">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/activity_setting"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/normal_bg_color"
+              android:orientation="vertical"
+              tools:context="com.example.user.sportslover.activity.SettingActivity">
 
 
     <LinearLayout
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/mybackground"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -29,7 +30,7 @@
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@null"
                 android:padding="@dimen/normal_space"
-                android:src="@drawable/ic_back" />
+                android:src="@drawable/base_action_bar_back_bg_selector"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -38,57 +39,60 @@
                 android:gravity="center_horizontal"
                 android:padding="@dimen/normal_space"
                 android:text="@string/settings"
-                android:textSize="@dimen/title_text_size" />
+                android:textColor="@color/base_color_text_white"
+                android:textSize="@dimen/title_text_size"/>
         </LinearLayout>
     </LinearLayout>
+
     <TextView
-        android:layout_marginTop="10dp"
         android:id="@+id/accountManagement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:background="@color/white"
         android:drawablePadding="@dimen/normal_space"
         android:drawableRight="@drawable/arrow_normal"
         android:gravity="center_vertical"
         android:padding="@dimen/normal_space"
         android:text="@string/account"
-        android:textSize="16dp" />
+        android:textSize="16dp"/>
 
     <TextView
-        android:layout_marginTop="1dp"
         android:id="@+id/personal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@color/white"
         android:drawablePadding="@dimen/normal_space"
         android:drawableRight="@drawable/arrow_normal"
         android:gravity="center_vertical"
         android:padding="@dimen/normal_space"
         android:text="@string/privacySettings"
-        android:textSize="16dp" />
+        android:textSize="16dp"/>
 
 
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/sportsSettings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:drawablePadding="@dimen/normal_space"
-            android:drawableRight="@drawable/arrow_normal"
-            android:gravity="center_vertical"
-            android:padding="@dimen/normal_space"
-            android:text="@string/sportsSettings"
-            android:textSize="16dp" />
+    <TextView
+        android:id="@+id/sportsSettings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:drawablePadding="@dimen/normal_space"
+        android:drawableRight="@drawable/arrow_normal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/normal_space"
+        android:text="@string/sportsSettings"
+        android:textSize="16dp"/>
 
 
     <LinearLayout
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="1dp"
         android:background="@color/white"
+        android:orientation="horizontal"
         android:weightSum="1">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,27 +101,27 @@
             android:gravity="center_vertical"
             android:padding="@dimen/normal_space"
             android:text="@string/informExercise"
-            android:textSize="16dp"  />
+            android:textSize="16dp"/>
 
         <ToggleButton
             android:id="@+id/mTogBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="80dp"
             android:background="@android:color/transparent"
             android:button="@drawable/switch_button"
-            android:checked="false"
-            android:layout_marginLeft="80dp" />
+            android:checked="false"/>
     </LinearLayout>
 
 
     <LinearLayout
         android:id="@+id/Lnotification"
-        android:layout_marginTop="1dp"
         android:layout_width="match_parent"
         android:layout_height="130px"
-        android:orientation="horizontal"
-        android:background="@color/white">
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -129,68 +133,67 @@
             android:textSize="16dp"/>
 
         <TextView
+            android:id="@+id/tv_notifyTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_notifyTime"
-            android:text="19:00"
-            android:layout_marginLeft="160dp"/>
+            android:layout_marginLeft="160dp"
+            android:text="19:00"/>
 
     </LinearLayout>
 
 
-
-
-<LinearLayout
-    android:layout_marginTop="10dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:background="@color/white"
-    android:id="@+id/cache">
-    <TextView
-        android:layout_marginTop="1dp"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/cache"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawablePadding="@dimen/normal_space"
-        android:gravity="center_vertical"
-        android:padding="@dimen/normal_space"
-        android:text="@string/clean"
-        android:textSize="16dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cacheSize"
-        android:text="0M"
-        android:layout_marginLeft="160dp"/>
-</LinearLayout>
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:drawablePadding="@dimen/normal_space"
+            android:gravity="center_vertical"
+            android:padding="@dimen/normal_space"
+            android:text="@string/clean"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/cacheSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="160dp"
+            android:text="0M"/>
+    </LinearLayout>
 
 
     <TextView
-        android:layout_marginTop="1dp"
         android:id="@+id/about"
         android:layout_width="match_parent"
         android:layout_height="63dp"
+        android:layout_marginTop="1dp"
         android:background="@color/white"
         android:drawablePadding="@dimen/normal_space"
         android:drawableRight="@drawable/arrow_normal"
         android:gravity="center_vertical"
         android:padding="@dimen/normal_space"
         android:text="@string/about"
-        android:textSize="16dp" />
+        android:textSize="16dp"/>
 
     <TextView
-        android:layout_marginTop="1dp"
         android:id="@+id/update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:background="@color/white"
         android:drawablePadding="@dimen/normal_space"
         android:drawableRight="@drawable/arrow_normal"
         android:gravity="center_vertical"
         android:padding="@dimen/normal_space"
         android:text="@string/updates"
-        android:textSize="16dp" />
-
+        android:textSize="16dp"/>
 
 
 </LinearLayout>

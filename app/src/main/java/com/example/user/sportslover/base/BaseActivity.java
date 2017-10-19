@@ -20,11 +20,6 @@ import org.greenrobot.eventbus.Subscribe;
 
 import butterknife.ButterKnife;
 
-/**基类
- * @author :smile
- * @project:BaseActivity
- * @date :2016-01-15-18:23
- */
 public class BaseActivity extends FragmentActivity {
 
     @Override

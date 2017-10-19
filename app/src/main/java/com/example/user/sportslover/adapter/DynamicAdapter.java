@@ -110,7 +110,7 @@ public class DynamicAdapter extends BaseAdapter {
             public void getSuccess(Object o) {
                 User user = (User) o;
                 imageLoader.displayImage(user.getPhoto().getUrl(), viewHolder.write_photo, options);
-                viewHolder.write_name.setText(user.getUserName());
+                viewHolder.write_name.setText(user.getUsername());
             }
             @Override
             public void getFailure() {

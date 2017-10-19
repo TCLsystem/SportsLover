@@ -114,10 +114,10 @@ public class PersonalDataActivity extends Activity {
         mLoadingDialog = DialogBuilder.createLoadingDialog(this, "正在上传图片");
         mLoadingFinishDialog = DialogBuilder.createLoadingfinishDialog(this, "上传完成");
 
-       birthday.setText(mUserLocal.getBirthday());
-       height.setText(mUserLocal.getHeight());
-       weight.setText(mUserLocal.getWeight());
-       gender.setText(mUserLocal.getSex());
+        birthday.setText(mUserLocal.getBirthday());
+        height.setText(mUserLocal.getHeight());
+        weight.setText(mUserLocal.getWeight());
+        gender.setText(mUserLocal.getSex());
     }
 
     @OnClick({R.id.personal_back, R.id.iv_Changephoto, R.id.Lname, R.id.Lgender, R.id.Lheight, R.id.Lweight, R.id.Lbirthday})
@@ -127,13 +127,13 @@ public class PersonalDataActivity extends Activity {
                 finish();
                 break;
             case R.id.iv_Changephoto:
-                    final PhotoPickerIntent intent = new PhotoPickerIntent(PersonalDataActivity.this);
-                    intent.setPhotoCount(1);
-                    intent.setShowCamera(true);
-                    startActivityForResult(intent, REQUEST_CODE);
+                final PhotoPickerIntent intent = new PhotoPickerIntent(PersonalDataActivity.this);
+                intent.setPhotoCount(1);
+                intent.setShowCamera(true);
+                startActivityForResult(intent, REQUEST_CODE);
                 break;
             case R.id.Lname:
-               editeName();
+                editeName();
                 //mUserLocal.setName(name.getText().toString());
                 break;
             case R.id.Lgender:
@@ -142,18 +142,18 @@ public class PersonalDataActivity extends Activity {
             case R.id.Lheight:
                 initHeightOptionPicker();
                 heightPvOptions.show();
-              //  mUserLocal.setHeight(height.getText().toString());
+                //  mUserLocal.setHeight(height.getText().toString());
                 break;
             case R.id.Lweight:
                 initOptionPicker();
                 pvOptions.show();
-              //  mUserLocal.setWeight(weight.getText().toString());
+                //  mUserLocal.setWeight(weight.getText().toString());
                 break;
             //运动记录
             case R.id.Lbirthday:
                 initTimePicker();
                 pvTime.show();
-             //   mUserLocal.setBirthday(birthday.getText().toString());
+                //   mUserLocal.setBirthday(birthday.getText().toString());
                 break;
 
         }
@@ -203,8 +203,8 @@ public class PersonalDataActivity extends Activity {
 //                        change_name.setText(Name);
 //                        if(!TextUtils.isEmpty(change_name.getText().toString())) {
 //                            name.setText(change_name.getText());
-                            user.setUserName(name.getText().toString());
-                            mUserLocal.setName(name.getText().toString());
+                        user.setUsername(name.getText().toString());
+                        mUserLocal.setName(name.getText().toString());
 //                        }
                     }
                 }).
@@ -218,7 +218,7 @@ public class PersonalDataActivity extends Activity {
                 create();
         alertDialog.show();
 
-}
+    }
 
 
     private void initTimePicker() {
@@ -379,7 +379,7 @@ public class PersonalDataActivity extends Activity {
                     User user = (User) o;
                     imageLoader.displayImage(user.getPhoto().getUrl(), UserPhoto, options);
                     UserLocal userLocal = new UserLocal();
-                    userLocal.setName(user.getUserName());
+                    userLocal.setName(user.getUsername());
                     userLocal.setObjectId(user.getObjectId());
                     userLocal.setNumber(user.getNumber());
                     if (user.getPhoto() != null) {

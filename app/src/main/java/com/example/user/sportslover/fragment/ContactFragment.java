@@ -1,5 +1,6 @@
 package com.example.user.sportslover.fragment;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -29,12 +30,12 @@ import com.example.user.sportslover.adapter.base.IMutlipleItem;
 import com.example.user.sportslover.base.ParentWithNaviActivity;
 import com.example.user.sportslover.base.ParentWithNaviFragment;
 import com.example.user.sportslover.bean.Friend;
+import com.example.user.sportslover.bean.GroupInfo;
 import com.example.user.sportslover.bean.User;
-import com.example.user.sportslover.bean.UserLocal;
 import com.example.user.sportslover.customview.SideBar;
 import com.example.user.sportslover.event.RefreshEvent;
+import com.example.user.sportslover.model.BaseModel;
 import com.example.user.sportslover.model.UserModel;
-import com.example.user.sportslover.model.UserModelImpl;
 import com.example.user.sportslover.widget.CharacterParser;
 import com.example.user.sportslover.widget.PinyinComparator;
 
@@ -56,7 +57,7 @@ import cn.bmob.v3.listener.DeleteListener;
 import cn.bmob.v3.listener.FindListener;
 
 public class ContactFragment extends ParentWithNaviFragment implements SideBar
-        .OnTouchingLetterChangedListener, View.OnClickListener {
+        .OnTouchingLetterChangedListener, View.OnClickListener/*,IDynamicFragment*/ {
 
     @Bind(R.id.rl_new_friend)
     RelativeLayout rl_new_friend;
@@ -72,6 +73,8 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     ImageView scrollbarType;
     @Bind(R.id.sports_friend_member)
     RecyclerView rc_view;
+    /* @Bind(R.id.sports_crew_member)
+     XListView sports_crew_member;*/
     @Bind(R.id.sw_refresh)
     SwipeRefreshLayout sw_refresh;
     ContactAdapter adapter;
@@ -85,25 +88,26 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     private static PinyinComparator pinyinComparator;// 根据拼音来排列ListView里面的数据类
     private List<Friend> sortList = new ArrayList<Friend>();
 
-    //添加
-    UserLocal mUserLocal;
-    UserModelImpl mUserModelImpl = new UserModelImpl();
-    User user = new User();
+/*
 
+    private DynamicFragmentPresenter mPresenter;
+    private DynamicAdapter mAdapter;
+    private List<DynamicItem> mList = new ArrayList<>();
+*/
 
     @Override
     protected String title() {
-        return "联系人";
+        return "Contacts";
     }
 
     @Override
     public Object right() {
-        return R.mipmap.icon_message_press;
+        return R.mipmap.icon_message;
     }
 
     @Override
     public Object left() {
-        return R.drawable.contact_add;
+        return R.drawable.base_action_bar_add_bg_selector;
     }
 
     @Override
@@ -111,7 +115,11 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         return new ParentWithNaviActivity.ToolBarListener() {
             @Override
             public void clickLeft() {
-                startActivity(SearchUserActivity.class, null);
+                Intent intent = new Intent(getActivity(), SearchUserActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("type", currIndex);
+                intent.putExtras(bundle);
+                getActivity().startActivity(intent);
             }
 
             @Override
@@ -129,11 +137,6 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
             savedInstanceState) {
-
-
-        mUserLocal = mUserModelImpl.getUserLocal();
-        user = UserModelImpl.localUsertoUser(mUserLocal);
-
         rootView = inflater.inflate(R.layout.fragment_contact, container, false);
         initNaviView();
         //实例化汉字转拼音
@@ -186,9 +189,29 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         mSideBar.setTextView(mDialog);
         mSideBar.setOnTouchingLetterChangedListener(this);
 
+       /* mPresenter = new DynamicFragmentPresenter(this);
+        mAdapter = new DynamicAdapter(getActivity(), R.layout.item_dynamic_list, mList);*/
+        // sports_crew_member.setAdapter(new SportsEventFragment().xListView.getAdapter());
+
         return rootView;
     }
 
+    /*@Override
+    public void onLoadMore(List<DynamicItem> list) {
+
+    }
+    @Override
+    public void onRefresh(List<DynamicItem> list) {
+      *//*  mDynamicList = list;
+        loading.setVisibility(View.GONE);
+        tip.setVisibility(View.GONE);
+        xListView.setVisibility(View.VISIBLE);
+        xListView.stopRefresh();
+        mAdapter.setDatas(list);
+        mAdapter.notifyDataSetChanged();*//*
+    }
+
+*/
     @OnClick(R.id.rl_new_friend)
     public void showNewFriend() {
         startActivity(NewFriendActivity.class, null);
@@ -199,9 +222,11 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         switch (view.getId()) {
             case R.id.tab_myFriend:
                 preIndex = 0;
+                rc_view.setVisibility(View.VISIBLE);
                 break;
             case R.id.tab_myCrew:
                 preIndex = 1;
+                rc_view.setVisibility(View.GONE);
                 break;
             default:
                 break;
@@ -223,6 +248,21 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
             animation.setDuration(100);
             scrollbarType.startAnimation(animation);
         }
+        if (currIndex == 1) {
+            UserModel.getInstance().queryCrew("a", BaseModel.DEFAULT_LIMIT, new
+                    FindListener<GroupInfo>() {
+                @Override
+                public void onSuccess(List<GroupInfo> list) {
+                    list.size();
+                }
+
+                @Override
+                public void onError(int i, String s) {
+                }
+            });
+
+        }
+
     }
 
     private void setListener() {
@@ -232,13 +272,13 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
             public void onGlobalLayout() {
                 rootView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
                 sw_refresh.setRefreshing(true);
-                query(user);
+                query();
             }
         });
         sw_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                query(user);
+                query();
             }
         });
         adapter.setOnRecyclerViewListener(new OnRecyclerViewListener() {
@@ -249,7 +289,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
                 } else {
                     Friend friend = adapter.getItem(position);
                     User user = friend.getFriendUser();
-                    BmobIMUserInfo info = new BmobIMUserInfo(user.getObjectId(), user.getUserName
+                    BmobIMUserInfo info = new BmobIMUserInfo(user.getObjectId(), user.getUsername
                             (), user.getAvatar());
                     //启动一个会话，实际上就是在本地数据库的会话列表中先创建（如果没有）与该用户的会话信息，且将用户信息存储到本地的用户表中
                     BmobIMConversation c = BmobIM.getInstance().startPrivateConversation(info,
@@ -268,17 +308,17 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
                 }
                 UserModel.getInstance().deleteFriend(adapter.getItem(position), new
                         DeleteListener() {
-                            @Override
-                            public void onSuccess() {
-                                toast("好友删除成功");
-                                adapter.remove(position);
-                            }
+                    @Override
+                    public void onSuccess() {
+                        toast("好友删除成功");
+                        adapter.remove(position);
+                    }
 
-                            @Override
-                            public void onFailure(int i, String s) {
-                                toast("好友删除失败：" + i + ",s =" + s);
-                            }
-                        });
+                    @Override
+                    public void onFailure(int i, String s) {
+                        toast("好友删除失败：" + i + ",s =" + s);
+                    }
+                });
                 return true;
             }
         });
@@ -288,7 +328,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     public void onResume() {
         super.onResume();
         sw_refresh.setRefreshing(true);
-        query(user);
+        query();
     }
 
     @Override
@@ -318,8 +358,8 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
     /**
      * 查询本地会话
      */
-    public void query(User user) {
-        UserModel.getInstance().queryFriends(user,new FindListener<Friend>() {
+    public void query() {
+        UserModel.getInstance().queryFriends(new FindListener<Friend>() {
             @Override
             public void onSuccess(List<Friend> list) {
                 sortList = getSortedList(list);
@@ -347,7 +387,7 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
         } else {
             filterDateList.clear();
             for (Friend friend : sortList) {
-                String name = friend.getFriendUser().getUserName();
+                String name = friend.getFriendUser().getUsername();
                 String firstSpell = friend.getfirstSpell();
                 if (name.indexOf(s.toString()) != -1 || firstSpell.indexOf(s.toString()) != -1 ||
                         characterParser.getSelling(name).startsWith(s.toString())) {
@@ -388,11 +428,11 @@ public class ContactFragment extends ParentWithNaviFragment implements SideBar
      */
     private List<Friend> getSortedList(List<Friend> list) {
         for (Friend friend : list) {
-            if (friend != null && friend.getFriendUser().getUserName() != null) {
+            if (friend != null && friend.getFriendUser().getUsername() != null) {
                 String firstSpell = CharacterParser.getFirstSpell(friend.getFriendUser()
-                        .getUserName());
+                        .getUsername());
                 friend.setfirstSpell(firstSpell);
-                String pinyin = characterParser.getSelling(friend.getFriendUser().getUserName());
+                String pinyin = characterParser.getSelling(friend.getFriendUser().getUsername());
                 String sortString = pinyin.substring(0, 1).toUpperCase();
 
                 if ("1".equals(friend.getUsertype())) {// 判断是否是管理员

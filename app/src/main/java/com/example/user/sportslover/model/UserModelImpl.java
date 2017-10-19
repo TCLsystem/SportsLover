@@ -242,7 +242,7 @@ public class UserModelImpl implements UserModelInter {
         user.setWeight(userLocal.getWeight());
         user.setSex(userLocal.getSex());
         user.setBirthday(userLocal.getBirthday());
-        user.setUserName(userLocal.getName());
+        user.setUsername(userLocal.getName());
         user.setObjectId(userLocal.getObjectId());
         user.setPassword(userLocal.getPassword());
         return user;

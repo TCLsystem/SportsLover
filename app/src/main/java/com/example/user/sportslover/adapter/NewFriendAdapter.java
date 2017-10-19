@@ -29,11 +29,6 @@ import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-/**
- * @author :smile
- * @project:NewFriendAdapter
- * @date :2016-04-27-14:18
- */
 public class NewFriendAdapter extends BaseRecyclerAdapter<NewFriend> {
 
     public NewFriendAdapter(Context context, IMutlipleItem<NewFriend> items, Collection<NewFriend> datas) {
@@ -48,7 +43,7 @@ public class NewFriendAdapter extends BaseRecyclerAdapter<NewFriend> {
         Integer status =add.getStatus();
         Logger.i("bindData:"+status+","+add.getUid()+","+add.getTime());
         if(status==null || status== Config.STATUS_VERIFY_NONE||status ==Config.STATUS_VERIFY_READED){//未添加/已读未添加
-            holder.setText(R.id.btn_aggree,"接受");
+            holder.setText(R.id.btn_aggree,"agree");
             holder.setEnabled(R.id.btn_aggree,true);
             holder.setOnClickListener(R.id.btn_aggree,new View.OnClickListener() {
                 @Override
@@ -56,20 +51,20 @@ public class NewFriendAdapter extends BaseRecyclerAdapter<NewFriend> {
                     agreeAdd(add, new SaveListener() {
                         @Override
                         public void onSuccess() {
-                            holder.setText(R.id.btn_aggree,"已添加");
+                            holder.setText(R.id.btn_aggree,"added");
                             holder.setEnabled(R.id.btn_aggree,false);
                         }
 
                         @Override
                         public void onFailure(int i, String s) {
                             holder.setEnabled(R.id.btn_aggree,true);
-                            toast("添加好友失败:" + s);
+                            toast("fail to add friend:" + s);
                         }
                     });
                 }
             });
         }else{
-            holder.setText(R.id.btn_aggree,"已添加");
+            holder.setText(R.id.btn_aggree,"added");
             holder.setEnabled(R.id.btn_aggree,false);
         }
     }
@@ -107,9 +102,9 @@ public class NewFriendAdapter extends BaseRecyclerAdapter<NewFriend> {
         //而AgreeAddFriendMessage的isTransient设置为false，表明我希望在对方的会话数据库中保存该类型的消息
         AgreeAddFriendMessage msg =new AgreeAddFriendMessage();
         User currentUser = BmobUser.getCurrentUser(context, User.class);
-        msg.setContent("我通过了你的好友验证请求，我们可以开始聊天了!");//---这句话是直接存储到对方的消息表中的
+        msg.setContent("verify success,let's chat");//---这句话是直接存储到对方的消息表中的
         Map<String,Object> map =new HashMap<>();
-        map.put("msg",currentUser.getUserName()+"同意添加你为好友");//显示在通知栏上面的内容
+            map.put("msg",currentUser.getUsername()+" agree to add you as a friend");//显示在通知栏上面的内容
         map.put("uid",add.getUid());//发送者的uid-方便请求添加的发送方找到该条添加好友的请求
         map.put("time", add.getTime());//添加好友的请求时间
         msg.setExtraMap(map);

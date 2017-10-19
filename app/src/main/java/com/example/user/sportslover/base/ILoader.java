@@ -4,10 +4,6 @@ import android.widget.ImageView;
 
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-/**
- * 抽象的图片加载接口
- * @author smile
- */
 public interface ILoader {
 
     /**

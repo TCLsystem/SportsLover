@@ -128,13 +128,13 @@ public final class DateUtil {
         long todayStartTime = today.getTimeInMillis();
 
         if (time >= todayStartTime && time < todayStartTime + oneDay) { // today
-            return "今天";
+            return "Today";
         } else if (time >= todayStartTime - oneDay && time < todayStartTime) { // yesterday
-            return "昨天";
+            return "Yesterday";
         } else if (time >= todayStartTime - oneDay * 2 && time < todayStartTime - oneDay) { // the day before yesterday
-            return "前天";
+            return "Day before yesterday";
         } else if (time > todayStartTime + oneDay) { // future
-            return "将来某一天";
+            return "Someday in future";
         } else {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Date date = new Date(time);
@@ -167,7 +167,7 @@ public final class DateUtil {
                 }
                 return m + "分钟前";
             } else {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("今天 HH:mm");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("Today HH:mm");
                 Date date = new Date(time * 1000);
                 String dateStr = dateFormat.format(date);
                 if (!TextUtils.isEmpty(dateStr) && dateStr.contains(" 0")) {
@@ -177,7 +177,7 @@ public final class DateUtil {
             }
         } else {
             if (time < todayStartTime && time > todayStartTime - oneDay) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("昨天 HH:mm");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("Yesterday HH:mm");
                 Date date = new Date(time * 1000);
                 String dateStr = dateFormat.format(date);
                 if (!TextUtils.isEmpty(dateStr) && dateStr.contains(" 0")) {
@@ -186,7 +186,7 @@ public final class DateUtil {
                 }
                 return dateStr;
             } else if (time < todayStartTime - oneDay && time > todayStartTime - 2 * oneDay) {
-                SimpleDateFormat dateFormat = new SimpleDateFormat("前天 HH:mm");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("Day before yesterday HH:mm");
                 Date date = new Date(time * 1000);
                 String dateStr = dateFormat.format(date);
                 if (!TextUtils.isEmpty(dateStr) && dateStr.contains(" 0")) {

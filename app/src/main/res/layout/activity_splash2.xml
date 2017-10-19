@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_splash2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.user.sportslover.activity.SplashActivity">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_splash2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context="com.example.user.sportslover.activity.SplashActivity">
 
     <android.support.v4.view.ViewPager
-    android:id="@+id/vp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -28,13 +28,13 @@
 
 
     <Button
-    android:id="@+id/start_btn_join"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/btn_start_register"
-    android:textColor="@color/white"
-    android:textSize="20dp"
-    android:text="JOIN NOW"
+        android:id="@+id/start_btn_join"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_start_register"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:text="JOIN NOW"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 

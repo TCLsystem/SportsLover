@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.user.sportslover.activity.LoginActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white"
-    android:weightSum="1">
+              xmlns:tools="http://schemas.android.com/tools"
+              tools:context="com.example.user.sportslover.activity.LoginActivity"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@color/white"
+              android:weightSum="1">
 
     <LinearLayout
         android:id="@+id/login_layout"
@@ -38,12 +38,12 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:orientation="horizontal">
-          <TextView
-              android:id="@+id/select_password"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:text="Password"
-              android:textSize="18dp" />
+            <TextView
+                android:id="@+id/select_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textSize="18dp" />
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_width="1px"
@@ -63,14 +63,14 @@
 
 
         <TextView
-         android:id="@+id/select_login_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-         android:layout_marginLeft="40dp"
-         android:layout_marginTop="30dp"
-        android:text="User Name: "
-        android:textSize="18dp" />
+            android:id="@+id/select_login_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"
+            android:text="User Name: "
+            android:textSize="18dp" />
 
 
         <EditText
@@ -83,13 +83,13 @@
             android:singleLine="true" />
 
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginLeft="40dp"
-        android:padding="@dimen/normal_space"
-        android:text="Password: "
-        android:textSize="18dp" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="40dp"
+            android:padding="@dimen/normal_space"
+            android:text="Password: "
+            android:textSize="18dp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

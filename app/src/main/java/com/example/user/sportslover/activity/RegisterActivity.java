@@ -106,7 +106,7 @@ public class RegisterActivity extends Activity {
                 //if (!name.equals("")&& !password.equals("")&&!mPhone.equals("")) {
                 if (!name.equals("") && !(upload_photo.getDrawable() == null)) {
                         User   usercurrent = new User();
-                        usercurrent.setUserName(name);
+                        usercurrent.setUsername(name);
                         usercurrent.setNumber(phone);
                         usercurrent.setPassword(password);
                         usercurrent.setPhoto(user.getPhoto());

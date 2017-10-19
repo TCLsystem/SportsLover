@@ -1,10 +1,5 @@
 package com.example.user.sportslover.application;
 
-/**
- * @author :smile
- * @project:Config
- * @date :2016-01-15-18:23
- */
 public class Config {
     /**
      * Bmob应用key
@@ -25,5 +20,10 @@ public class Config {
     public static final int STATUS_VERIFY_REFUSE = 3;
     //好友请求：我发出的好友请求-暂未存储到本地数据库中
     public static final int STATUS_VERIFY_ME_SEND = 4;
+    //消息发送状态
+    public static final int SEND_STATUS_SUCCESS = 5;
+    public static final int SEND_STATUS_FAILED = 6;
+    public static final int SEND_STATUS_SENDING = 7;
+    public static final int SEND_STATUS_START = 8;
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="45dp"
-    android:orientation="vertical"
-    android:background="@drawable/mybackground"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:background="@drawable/mybackground"
+              android:orientation="vertical"
     >
 
     <RelativeLayout
@@ -13,22 +13,23 @@
         >
 
         <Spinner
-           android:layout_marginLeft="120px"
+            android:id="@+id/myspinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/myspinner"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="120px"
             android:entries="@array/spingarr"
+            android:gravity="center"
             />
+
         <ImageView
             android:id="@+id/publish"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="20dp"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="12dp"
             android:layout_centerVertical="true"
+            android:layout_marginRight="12dp"
             android:src="@drawable/publish"
             />
 

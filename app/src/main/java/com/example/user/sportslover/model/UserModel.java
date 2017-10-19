@@ -3,6 +3,7 @@ package com.example.user.sportslover.model;
 import android.text.TextUtils;
 
 import com.example.user.sportslover.bean.Friend;
+import com.example.user.sportslover.bean.GroupInfo;
 import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.i.QueryUserListener;
 import com.example.user.sportslover.model.i.UpdateCacheListener;
@@ -23,11 +24,6 @@ import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.LogInListener;
 import cn.bmob.v3.listener.SaveListener;
 
-/**
- * @author :smile
- * @project:UserModel
- * @date :2016-01-22-18:09
- */
 public class UserModel extends BaseModel {
 
     private static UserModel ourInstance = new UserModel();
@@ -38,7 +34,6 @@ public class UserModel extends BaseModel {
 
     private UserModel() {
     }
-    private UserModelImpl mUserModel;
 
     /**
      * 登录
@@ -57,17 +52,17 @@ public class UserModel extends BaseModel {
             return;
         }
         final User user = new User();
-        user.setUserName(username);
+        user.setUsername(username);
         user.setPassword(password);
-        mUserModel.getUser(username, password, new SportModelInter.BaseListener() {
+        user.login(getContext(), new SaveListener() {
             @Override
-            public void getSuccess(Object o) {
-
+            public void onSuccess() {
+                listener.done(getCurrentUser(), null);
             }
 
             @Override
-            public void getFailure() {
-
+            public void onFailure(int i, String s) {
+                listener.done(user, new BmobException(i, s));
             }
         });
     }
@@ -108,9 +103,9 @@ public class UserModel extends BaseModel {
             return;
         }
         final User user = new User();
-        user.setUserName(username);
+        user.setUsername(username);
         user.setPassword(password);
-        user.save(getContext(), new SaveListener() {
+        user.signUp(getContext(), new SaveListener() {
             @Override
             public void onSuccess() {
                 listener.done(null, null);
@@ -204,7 +199,7 @@ public class UserModel extends BaseModel {
                 @Override
                 public void done(User s, BmobException e) {
                     if (e == null) {
-                        String name = s.getUserName();
+                        String name = s.getUsername();
                         String avatar = s.getAvatar();
                         Logger.i("query success：" + name + "," + avatar);
                         conversation.setConversationIcon(avatar);
@@ -244,9 +239,9 @@ public class UserModel extends BaseModel {
      *
      * @param listener
      */
-    public void queryFriends(User user,final FindListener<Friend> listener) {
+    public void queryFriends(final FindListener<Friend> listener) {
         BmobQuery<Friend> query = new BmobQuery<>();
-      //  User user = BmobUser.getCurrentUser(getContext(), User.class);
+        User user = BmobUser.getCurrentUser(getContext(), User.class);
         query.addWhereEqualTo("user", user);
         query.include("friendUser");
         query.order("-updatedAt");
@@ -256,7 +251,7 @@ public class UserModel extends BaseModel {
                 if (list != null && list.size() > 0) {
                     listener.onSuccess(list);
                 } else {
-                    listener.onError(0, "暂无联系人");
+                    listener.onError(0, "user not found");
                 }
             }
 
@@ -277,4 +272,34 @@ public class UserModel extends BaseModel {
         Friend friend = new Friend();
         friend.delete(getContext(), f.getObjectId(), listener);
     }
+
+    /**
+     * 查询运动圈
+     *
+     * @param crewName
+     * @param limit
+     * @param listener
+     */
+    public void queryCrew(String crewName, int limit, final FindListener<GroupInfo> listener) {
+        BmobQuery<GroupInfo> query = new BmobQuery<>();
+        query.addWhereContains("groupName", crewName);
+        query.setLimit(limit);
+        query.order("createdTime");
+        query.findObjects(getContext(), new FindListener<GroupInfo>() {
+            @Override
+            public void onSuccess(List<GroupInfo> list) {
+                if (list != null && list.size() > 0) {
+                    listener.onSuccess(list);
+                } else {
+                    listener.onError(CODE_NULL, "crew not found");
+                }
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                listener.onError(i, s);
+            }
+        });
+    }
+
 }

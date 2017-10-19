@@ -9,11 +9,6 @@ import android.widget.TextView;
 import com.example.user.sportslover.R;
 import com.example.user.sportslover.base.ParentWithNaviActivity.ToolBarListener;
 
-/**封装了导航条的Fragment类均需继承该类
- * @author :smile
- * @project:ParentWithNaviFragment
- * @date :2015-08-18-14:19
- */
 public abstract class ParentWithNaviFragment extends BaseFragment {
 
     protected View rootView = null;

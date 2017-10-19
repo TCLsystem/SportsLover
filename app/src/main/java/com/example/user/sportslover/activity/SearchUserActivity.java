@@ -13,6 +13,7 @@ import com.example.user.sportslover.R;
 import com.example.user.sportslover.adapter.OnRecyclerViewListener;
 import com.example.user.sportslover.adapter.SearchUserAdapter;
 import com.example.user.sportslover.base.ParentWithNaviActivity;
+import com.example.user.sportslover.bean.GroupInfo;
 import com.example.user.sportslover.bean.User;
 import com.example.user.sportslover.model.BaseModel;
 import com.example.user.sportslover.model.UserModel;
@@ -23,11 +24,6 @@ import butterknife.Bind;
 import butterknife.OnClick;
 import cn.bmob.v3.listener.FindListener;
 
-/**搜索好友
- * @author :smile
- * @project:SearchUserActivity
- * @date :2016-01-25-18:23
- */
 public class SearchUserActivity extends ParentWithNaviActivity {
 
     @Bind(R.id.et_find_name)
@@ -43,7 +39,72 @@ public class SearchUserActivity extends ParentWithNaviActivity {
 
     @Override
     protected String title() {
-        return "搜索好友";
+           if (getIntent().getIntExtra("type", 0) == 0) {
+            return "Search Friend";
+        } else {
+            return "Search Crew";
+        }
+
+    }
+
+    @Override
+    public Object right() {
+        /*return R.drawable.contact_add;*/
+        return null;
+    }
+
+    @Override
+    public ParentWithNaviActivity.ToolBarListener setToolBarListener() {
+        return new ParentWithNaviActivity.ToolBarListener() {
+            @Override
+            public void clickLeft() {
+                finish();
+            }
+
+            @Override
+            public void clickRight() {
+               /* View crewView = LayoutInflater.from(SearchUserActivity.this).inflate(R.layout
+                        .item_new_crew, null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(SearchUserActivity.this);
+                builder.setView(crewView);
+                final AlertDialog alertDialog = new AlertDialog.Builder(SearchUserActivity.this).
+                        setTitle("Create Crew").setView(crewView).create();
+                final EditText crew_name = (EditText) crewView.findViewById(R.id.crew_name);
+                final EditText crew_des = (EditText) crewView.findViewById(R.id.crew_des);
+                Button btn_sure = (Button) crewView.findViewById(R.id.btn_sure);
+                Button btn_cancel = (Button) crewView.findViewById(R.id.btn_cancel);
+                btn_sure.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (!crew_name.getText().toString().equals("")) {
+                            GroupManager.getInstance().sendCreateGroupMessage(crew_name.getText()
+                                    .toString(), crew_des.getText().toString(), new SaveListener() {
+                                @Override
+                                public void onSuccess() {
+                                    toast("success");
+                                    alertDialog.dismiss();
+                                }
+
+                                @Override
+                                public void onFailure(int i, String s) {
+                                    alertDialog.dismiss();
+                                    toast("error:" + s + i);
+                                }
+                            });
+                        } else {
+                            toast("error: please input crew name");
+                        }
+                    }
+                });
+                btn_cancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog.show();*/
+            }
+        };
     }
 
     @Override
@@ -78,16 +139,21 @@ public class SearchUserActivity extends ParentWithNaviActivity {
         });
     }
 
-    @OnClick(R.id.btn_search)
-    public void onSearchClick(View view){
+      @OnClick(R.id.btn_search)
+    public void onSearchClick(View view) {
+        Integer intExtra = getIntent().getIntExtra("type", 0);
         sw_refresh.setRefreshing(true);
-        query();
+        if (intExtra == 0) {
+            query();
+        } else {
+            queryCrew();
+        }
     }
 
     public void query(){
         String name =et_find_name.getText().toString();
         if(TextUtils.isEmpty(name)){
-            toast("请填写用户名");
+            toast("please input name");
             sw_refresh.setRefreshing(false);
             return;
         }
@@ -103,6 +169,32 @@ public class SearchUserActivity extends ParentWithNaviActivity {
             public void onError(int i, String s) {
                 sw_refresh.setRefreshing(false);
                 adapter.setDatas(null);
+                adapter.notifyDataSetChanged();
+                toast(s + "(" + i + ")");
+            }
+        });
+    }
+
+    public void queryCrew() {
+        String name = et_find_name.getText().toString();
+        if (TextUtils.isEmpty(name)) {
+            toast("please input crewName");
+            sw_refresh.setRefreshing(false);
+            return;
+        }
+        UserModel.getInstance().queryCrew(name, BaseModel.DEFAULT_LIMIT, new
+                FindListener<GroupInfo>() {
+            @Override
+            public void onSuccess(List<GroupInfo> list) {
+                sw_refresh.setRefreshing(false);
+                adapter.setGroupDatas(list);
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onError(int i, String s) {
+                sw_refresh.setRefreshing(false);
+                adapter.setGroupDatas(null);
                 adapter.notifyDataSetChanged();
                 toast(s + "(" + i + ")");
             }

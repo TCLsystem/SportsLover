@@ -44,7 +44,9 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash2);
 
         boolean isAllGranted = checkPermissionAllGranted(new String[]{Manifest.permission
-                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE});
+                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest
+                .permission.RECORD_AUDIO, Manifest.permission.ACCESS_FINE_LOCATION, Manifest
+                .permission.ACCESS_COARSE_LOCATION});
 
         // 如果这3个权限全都拥有, 则直接执行
         if (isAllGranted) {
@@ -62,8 +64,9 @@ public class SplashActivity extends AppCompatActivity {
          */
         // 一次请求多个权限, 如果其他有权限是已经授予的将会自动忽略掉
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission
-                        .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                MY_PERMISSION_REQUEST_CODE);
+                .READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest
+                .permission.RECORD_AUDIO, Manifest.permission.ACCESS_FINE_LOCATION, Manifest
+                .permission.ACCESS_COARSE_LOCATION}, MY_PERMISSION_REQUEST_CODE);
 
     }
 

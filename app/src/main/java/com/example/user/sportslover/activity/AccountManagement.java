@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class AccountManagement extends AppCompatActivity {
-   @Bind(R.id.logout)
+    @Bind(R.id.logout)
     Button logout;
     @Bind(R.id.account_settings_back)
     ImageView back;
@@ -39,12 +39,12 @@ public class AccountManagement extends AppCompatActivity {
                 mUserLocal = mUserModelImpl.getUserLocal();
                 UserLocal item = UserLocal.load(UserLocal.class, mUserLocal.getId());
                 item.delete();
-             startActivity(new Intent().setClass(AccountManagement.this,SplashActivity.class));
+                startActivity(new Intent().setClass(AccountManagement.this,SplashActivity.class));
                 finish();
                 break;
 
         }
-        }
+    }
 
     @Override
     protected void onDestroy() {

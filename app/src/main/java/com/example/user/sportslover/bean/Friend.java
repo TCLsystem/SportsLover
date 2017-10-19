@@ -2,11 +2,6 @@ package com.example.user.sportslover.bean;
 
 import cn.bmob.v3.BmobObject;
 
-/**好友表
- * @author smile
- * @project Friend
- * @date 2016-04-26
- */
 public class Friend extends BmobObject {
 
     private User user;

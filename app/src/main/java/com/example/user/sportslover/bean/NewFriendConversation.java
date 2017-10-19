@@ -11,17 +11,13 @@ import com.example.user.sportslover.application.Config;
 import com.example.user.sportslover.db.NewFriend;
 import com.example.user.sportslover.db.NewFriendManager;
 
-/**
- * 新朋友会话
- * Created by Administrator on 2016/5/25.
- */
 public class NewFriendConversation extends Conversation {
 
     NewFriend lastFriend;
 
     public NewFriendConversation(NewFriend friend){
         this.lastFriend=friend;
-        this.cName="新朋友";
+        this.cName="New Friend";
     }
 
     @Override
@@ -36,7 +32,7 @@ public class NewFriendConversation extends Conversation {
             if(status==null || status== Config.STATUS_VERIFY_NONE||status == Config.STATUS_VERIFY_READED){
                 return name+"请求添加好友";
             }else{
-                return "我已添加"+name;
+                return "already add"+name;
             }
         }else{
             return "";

@@ -42,7 +42,7 @@ public class ReceiveLocationHolder extends BaseViewHolder {
     final BmobIMUserInfo info = msg.getBmobIMUserInfo();
     //加载头像
     ImageLoaderFactory.getLoader().loadAvator(iv_avatar,info != null ? info.getAvatar() : null, R.mipmap.head);
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     String time = dateFormat.format(msg.getCreateTime());
     tv_time.setText(time);
     //
@@ -71,7 +71,7 @@ public class ReceiveLocationHolder extends BaseViewHolder {
     iv_avatar.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        toast("点击"+info.getName()+"头像");
+           /*toast("点击"+info.getName()+"头像");*/
       }
     });
   }

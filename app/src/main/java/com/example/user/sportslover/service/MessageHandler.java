@@ -34,11 +34,6 @@ import cn.bmob.newim.notification.BmobNotificationManager;
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
 
-/**消息接收器
- * @author smile
- * @project MessageHandler
- * @date 2016-03-08-17:37
- */
 public class MessageHandler extends BmobIMMessageHandler {
 
     private Context context;

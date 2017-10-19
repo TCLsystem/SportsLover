@@ -53,7 +53,7 @@ public class SendDynamicActivity2  extends AppCompatActivity {
 
     private DynamicPhotoChooseAdapter mDynamicPhotoChooseAdapter;
     private final String LOGINUSER = "loginuser";
-   // private User mUser;
+    // private User mUser;
     DynamicItem dynamicItem;
     private Dialog mLoadingDialog;
     private Dialog mLoadingFinishDialog;
@@ -74,7 +74,7 @@ public class SendDynamicActivity2  extends AppCompatActivity {
 
         ButterKnife.bind(this);
         dynamicItem = (DynamicItem) getIntent().getSerializableExtra("DynamicItem");
-     //   mUser = dynamicItem.getWriter();
+        //   mUser = dynamicItem.getWriter();
         Log.d("AAAAAA", dynamicItem.getSportsType() + "   " + dynamicItem.getStartTime() + "    " + dynamicItem.getArea());
         ButterKnife.bind(this);
         init();

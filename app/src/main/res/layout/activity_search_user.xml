@@ -18,7 +18,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1.0"
             android:background="@drawable/button_normal_shape"
-            android:hint="输入姓名"
+            android:hint="input name"
             android:paddingLeft="5dp"
             android:singleLine="true"
             android:textColorHint="#b3b3b3"
@@ -32,7 +32,7 @@
             android:layout_margin="10dp"
             android:layout_marginRight="11dp"
             android:background="@drawable/btn_login_selector"
-            android:text="搜索"
+            android:text="Search"
             android:textSize="14sp" />
     </LinearLayout>
 

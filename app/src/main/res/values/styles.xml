@@ -116,4 +116,11 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="Custom_scroll_view"
+           parent="@android:style/Widget.ScrollView">
+        <item name="android:scrollbarThumbVertical">@drawable/nim_scrollbar_handle_holo_dark</item>
+        <item name="android:scrollbarThumbHorizontal">@drawable/nim_scrollbar_handle_holo_dark
+        </item>
+    </style>
+
 </resources>
