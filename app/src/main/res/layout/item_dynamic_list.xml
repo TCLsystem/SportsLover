@@ -55,14 +55,15 @@
 
         <ImageView
             android:id="@+id/dynamic_photo"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="166dp"
             android:src="@drawable/mybackground"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:horizontalSpacing="3dp"
-            android:verticalSpacing="3dp"/>
+            android:verticalSpacing="3dp"
+            android:scaleType="fitXY"/>
 
         <LinearLayout
             android:layout_marginTop="20dp"

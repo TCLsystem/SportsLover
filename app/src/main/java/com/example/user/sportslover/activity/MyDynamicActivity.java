@@ -68,7 +68,7 @@ public class MyDynamicActivity extends AppCompatActivity {
                 break;
             case R.id.tv_my_posted:
               //  myApply.setOnClickListener(null);
-                mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
+                mUserModel.getUser(mUserModel.getUserLocal().getName(), new SportModelInter.BaseListener() {
                     @Override
                     public void getSuccess(Object o) {
                         User user = (User) o;

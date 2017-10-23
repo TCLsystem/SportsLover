@@ -6,68 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a0c6a0a8-19ec-4e05-86db-621072b5531a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/crew_head.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Android_PickerView_3_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/BaiduLBS_Android.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/BaiduTraceSDK_v3_0_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Bmob_Push_V0_9beta_20160520.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/MobCommons_2016_0714_1402.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/MobTools_2016_0714_1402.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Native_Libs2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/PhotoPicker_0_1_8.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/SMSSDKGUI_2_1_1_.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/SMSSDK_2_1_1_.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/activeandroid_3_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_23_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bmob_im_2_0_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bmob_sdk_3_4_7_aar.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bos_android_sdk_1_0_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/butterknife_7_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/citypickerview_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/converter_gson_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/eventbus_2_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/eventbus_3_0_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/filechoose.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/glide_3_6_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_8_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_integration_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_library_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/httpmime_4_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javawriter_2_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javax_annotation_api_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/javax_inject_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jsoup_1_7_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/jsr305_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_19_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/library_2_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/logger_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/logging_interceptor_3_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okhttp_3_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/okio_1_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/org_apache_http_legacy.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_5_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/pinyin4j_2_5_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/retrofit_2_0_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/rules_0_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/runner_0_4_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_23_4_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/universal_image_loader_1_9_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/xUtils_2_6_14.xml" afterPath="" />
+    <list default="true" id="198342ae-25ea-4b3a-a8f4-1e788092b2a6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
@@ -77,22 +16,46 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_app_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileDebugJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileDebugJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/tasks/_xListView_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-23.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="$PROJECT_DIR$/xListView/build/intermediates/res/resources-debug-androidTest.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/outputs/aar/xListView-debug.aar" afterPath="$PROJECT_DIR$/xListView/build/outputs/aar/xListView-debug.aar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/outputs/aar/xListView-release.aar" afterPath="$PROJECT_DIR$/xListView/build/outputs/aar/xListView-release.aar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/Android_PickerView_3_2_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Android_PickerView_3_2_5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/PhotoPicker_0_1_8.xml" afterPath="$PROJECT_DIR$/.idea/libraries/PhotoPicker_0_1_8.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SMSSDKGUI_2_1_1_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SMSSDKGUI_2_1_1_.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/SMSSDK_2_1_1_.xml" afterPath="$PROJECT_DIR$/.idea/libraries/SMSSDK_2_1_1_.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_23_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/bmob_im_2_0_5.xml" afterPath="$PROJECT_DIR$/.idea/libraries/bmob_im_2_0_5.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/bmob_sdk_3_4_7_aar.xml" afterPath="$PROJECT_DIR$/.idea/libraries/bmob_sdk_3_4_7_aar.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/citypickerview_2_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/citypickerview_2_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/design_22_2_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_core_2_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/espresso_idling_resource_2_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/exposed_instrumentation_api_publish_0_4_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/multidex_instrumentation_1_0_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_2_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_22_2_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/rules_0_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/rules_0_4_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/runner_0_4_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/runner_0_4_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_4_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_23_4_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_23_4_0.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/PersonalDataActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/PersonalDataActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/NewFriendConversation.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/NewFriendConversation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SplashAnimActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SplashAnimActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/local.properties" afterPath="$PROJECT_DIR$/local.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/multi/values.json" afterPath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/multi/values.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" afterPath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/single/drawable-hdpi-v4.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/single/drawable-ldpi-v4.json" afterPath="$PROJECT_DIR$/xListView/build/intermediates/blame/res/androidTest/debug/single/drawable-ldpi-v4.json" />
@@ -101,6 +64,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugAssets/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeDebugShaders/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeReleaseAssets/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeReleaseAssets/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/mergeReleaseJniLibFolders/merger.xml" />
@@ -109,8 +73,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageDebugResources/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageDebugResources/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageReleaseResources/compile-file-map.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageReleaseResources/merger.xml" afterPath="$PROJECT_DIR$/xListView/build/intermediates/incremental/packageReleaseResources/merger.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xListView/xListView.iml" afterPath="$PROJECT_DIR$/xListView/xListView.iml" />
     </list>
-    <ignored path="SportsLover.iws" />
+    <ignored path="sp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -130,125 +95,119 @@
     </projectState>
   </component>
   <component name="FavoritesManager">
-    <favorites_list name="SportsLover" />
+    <favorites_list name="sp" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="261" column="5" selection-start-line="261" selection-start-column="5" selection-end-line="261" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SportsEventFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="204" column="50" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
+            <state relative-caret-position="405">
+              <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_sports_event.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sports_event.xml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SearchUserActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
               <folding>
-                <element signature="e#1260#1265#0" expanded="false" />
-                <element signature="e#2213#2222#0" expanded="false" />
-                <element signature="e#3548#3585#0" expanded="false" />
-                <element signature="method#onNothingSelected#0;class#2738:10618" expanded="false" />
-                <element signature="method#onDestroyView#0;class#SportsEventFragment#0" expanded="false" />
-                <element signature="method#onClick#0;class#SportsEventFragment#0" expanded="false" />
-                <element signature="class#10898:11436" expanded="false" />
-                <element signature="method#getSuccess#0;class#10898:11436" expanded="false" />
-                <element signature="method#getFailure#0;class#10898:11436" expanded="false" />
-                <element signature="method#onLoadMore#0;class#SportsEventFragment#0" expanded="false" />
-                <element signature="method#onRefreshByType#0;class#SportsEventFragment#0" expanded="false" />
-                <element signature="method#onRefresh#0;class#SportsEventFragment#0" expanded="false" />
-                <element signature="method#onLoadMore#1;class#SportsEventFragment#0" expanded="false" />
+                <element signature="e#1799#1800#0" expanded="true" />
+                <element signature="e#1839#1840#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersonalDataActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/PersonalDataActivity.java">
+      <file leaf-file-name="MyDynamicActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="111" column="59" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+            <state relative-caret-position="193">
+              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java">
+      <file leaf-file-name="DynamicModelImpr.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/DynamicModelImpr.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+            <state relative-caret-position="328">
+              <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_login.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
+      <file leaf-file-name="DynamicItem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/DynamicItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="105" column="57" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="57" />
+            <state relative-caret-position="195">
+              <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity_personal_data.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_personal_data.xml">
+      <file leaf-file-name="UserModelImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="48" column="63" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="63" />
-              <folding />
+            <state relative-caret-position="223">
+              <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding>
+                <element signature="e#2010#2016#0" expanded="true" />
+                <element signature="e#2990#2996#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_contact.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml">
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3720">
-              <caret line="186" column="43" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ContactFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7080">
-              <caret line="374" column="55" selection-start-line="374" selection-start-column="55" selection-end-line="374" selection-end-column="55" />
+            <state relative-caret-position="90">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#13943#13944#0" expanded="true" />
-                <element signature="e#13986#13987#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DynamicSimpleAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java">
+      <file leaf-file-name="BmobUser.class" pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/cn/bmob/v3/BmobUser.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1508420178888" expanded="false" signature="2301:2312" ph=" { " />
-                <marker date="1508420178888" expanded="false" signature="2331:2337" ph=" }" />
-                <marker date="1508420178888" expanded="false" signature="2387:2398" ph=" { " />
-                <marker date="1508420178888" expanded="false" signature="2425:2431" ph=" }" />
-                <marker date="1508420178888" expanded="false" signature="2597:2608" ph=" { " />
-                <marker date="1508420178888" expanded="false" signature="2629:2635" ph=" }" />
-                <marker date="1508420178888" expanded="false" signature="2690:2701" ph=" { " />
-                <marker date="1508420178888" expanded="false" signature="2729:2735" ph=" }" />
-                <marker date="1508420178888" expanded="false" signature="2790:2801" ph=" { " />
-                <marker date="1508420178888" expanded="false" signature="2817:2823" ph=" }" />
-              </folding>
+            <state relative-caret-position="-930">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -264,7 +223,7 @@
         <entry>
           <key>
             <ExternalProjectPojo>
-              <option name="name" value="SportsLover" />
+              <option name="name" value="sp" />
               <option name="path" value="$PROJECT_DIR$" />
             </ExternalProjectPojo>
           </key>
@@ -275,7 +234,7 @@
                 <option name="path" value="$PROJECT_DIR$/app" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
-                <option name="name" value="SportsLover" />
+                <option name="name" value="sp" />
                 <option name="path" value="$PROJECT_DIR$" />
               </ExternalProjectPojo>
               <ExternalProjectPojo>
@@ -293,7 +252,7 @@
           <value>
             <list>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'SportsLover'." />
+                <option name="description" value="Displays the sub-projects of root project 'sp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
               </ExternalTaskPojo>
@@ -379,7 +338,7 @@
                 <option name="name" value="compileDebugAndroidTestJavaWithJavac" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by root project 'SportsLover'. [incubating]" />
+                <option name="description" value="Displays the components produced by root project 'sp'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="components" />
               </ExternalTaskPojo>
@@ -466,11 +425,6 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="mergeReleaseJniLibFolders" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare SportsLover:xListView:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareSportsLoverXListViewUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -666,7 +620,7 @@
                 <option name="name" value="generateDebugAssets" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in root project 'SportsLover'." />
+                <option name="description" value="Displays all buildscript dependencies declared in root project 'sp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildEnvironment" />
               </ExternalTaskPojo>
@@ -790,12 +744,12 @@
                 <option name="name" value="bundleRelease" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'SportsLover'. [incubating]" />
+                <option name="description" value="Displays the configuration model of root project 'sp'. [incubating]" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="model" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'SportsLover' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 'sp' (some of the displayed tasks may belong to subprojects)." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -817,7 +771,7 @@
                 <option name="name" value="incrementalDebugJavaCompilationSafeguard" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in root project 'SportsLover'." />
+                <option name="description" value="Displays all dependencies declared in root project 'sp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencies" />
               </ExternalTaskPojo>
@@ -889,7 +843,7 @@
                 <option name="name" value="prepareReleaseDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in root project 'SportsLover'." />
+                <option name="description" value="Displays the insight into a specific dependency in root project 'sp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="dependencyInsight" />
               </ExternalTaskPojo>
@@ -961,6 +915,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="compileDebugUnitTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare sp:xListView:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="prepareSpXListViewUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1114,7 +1073,7 @@
                 <option name="name" value="packageDebugAndroidTest" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of root project 'SportsLover'." />
+                <option name="description" value="Displays the properties of root project 'sp'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="properties" />
               </ExternalTaskPojo>
@@ -1380,11 +1339,6 @@
                 <option name="name" value="prepareReleaseDependencies" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare SportsLover:xListView:unspecified" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
-                <option name="name" value="prepareSportsLoverXListViewUnspecifiedLibrary" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="processReleaseResources" />
               </ExternalTaskPojo>
@@ -1545,6 +1499,11 @@
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
                 <option name="name" value="compileDebugUnitTestSources" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Prepare sp:xListView:unspecified" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
+                <option name="name" value="prepareSpXListViewUnspecifiedLibrary" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/app" />
@@ -2502,7 +2461,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6033619393236" />
+        <entry key="$PROJECT_DIR$" value="6035038141724" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2853,15 +2812,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/NewFriendConversation.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list_simple.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/PersonalDataActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SplashAnimActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java" />
       </list>
     </option>
   </component>
@@ -2896,18 +2854,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane />
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2921,7 +2883,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2939,7 +2901,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2949,7 +2911,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2963,7 +2925,7 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -2981,7 +2943,51 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="SportsLover" />
+              <option name="myItemId" value="sp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sportslover" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sportslover" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bean" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sp" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -3001,31 +3007,34 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane" />
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/sdk/sdk" />
+    <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="android.sdk.path" value="$USER_HOME$/software/sdk" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="device.picker.selection" value="59Y9OFPNOZNBORO7" />
     <property name="UI_DESIGNER_EDITOR_MODE.NlPaletteManager-NlPreviewForm.SHOW" value="false" />
-    <property name="device.picker.selection" value="RWGYE6SWHMAQZTSG" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.user.sportslover.adapter" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
-    </key>
   </component>
   <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
@@ -3323,11 +3332,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a0c6a0a8-19ec-4e05-86db-621072b5531a" name="Default" comment="" />
-      <created>1508405236152</created>
+      <changelist id="198342ae-25ea-4b3a-a8f4-1e788092b2a6" name="Default" comment="" />
+      <created>1508759594525</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1508405236152</updated>
+      <updated>1508759594525</updated>
     </task>
     <servers />
   </component>
@@ -3344,9 +3353,9 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3847185" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2600536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -3368,40 +3377,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="combo" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994638" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24983165" sideWeight="0.5" order="6" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -3410,51 +3385,69 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java</url>
-          <line>209</line>
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>77</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>89</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>83</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>74</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>70</line>
+          <properties />
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java</url>
+          <line>87</line>
+          <properties method="getFailure" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="33" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="app">
-        <watch expression="xListView.getCount()" language="JAVA" custom="" />
-        <watch expression="xListView.getChildCount()" language="JAVA" custom="" />
-        <watch expression="xListView.getChildAt(1)" language="JAVA" custom="" />
-        <watch expression="mList" language="JAVA" custom="" />
-        <watch expression="sports_crew_member.getChildCount()" language="JAVA" custom="" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3280">
-          <caret line="204" column="50" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
+        <state relative-caret-position="3885">
+          <caret line="261" column="5" selection-start-line="261" selection-start-column="5" selection-end-line="261" selection-end-column="5" />
           <folding>
-            <element signature="e#1260#1265#0" expanded="false" />
-            <element signature="e#2213#2222#0" expanded="false" />
-            <element signature="e#3548#3585#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#2738:10618" expanded="false" />
-            <element signature="method#onDestroyView#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onClick#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="class#10898:11436" expanded="false" />
-            <element signature="method#getSuccess#0;class#10898:11436" expanded="false" />
-            <element signature="method#getFailure#0;class#10898:11436" expanded="false" />
-            <element signature="method#onLoadMore#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefreshByType#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefresh#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onLoadMore#1;class#SportsEventFragment#0" expanded="false" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="186" column="43" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
+        <state relative-caret-position="720">
+          <caret line="79" column="85" selection-start-line="79" selection-start-column="85" selection-end-line="79" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="36" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -3462,308 +3455,116 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7080">
-          <caret line="374" column="55" selection-start-line="374" selection-start-column="55" selection-end-line="374" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13943#13944#0" expanded="true" />
-            <element signature="e#13986#13987#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508420178888" expanded="false" signature="2301:2312" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2331:2337" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2387:2398" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2425:2431" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2597:2608" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2629:2635" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2690:2701" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2729:2735" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2790:2801" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2817:2823" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sports_event.xml">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1260#1265#0" expanded="false" />
-            <element signature="e#2213#2222#0" expanded="false" />
-            <element signature="e#3548#3585#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#2738:10618" expanded="false" />
-            <element signature="method#onDestroyView#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onClick#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="class#10898:11436" expanded="false" />
-            <element signature="method#getSuccess#0;class#10898:11436" expanded="false" />
-            <element signature="method#getFailure#0;class#10898:11436" expanded="false" />
-            <element signature="method#onLoadMore#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefreshByType#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefresh#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onLoadMore#1;class#SportsEventFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="186" column="43" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7080">
-          <caret line="374" column="55" selection-start-line="374" selection-start-column="55" selection-end-line="374" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#13943#13944#0" expanded="true" />
-            <element signature="e#13986#13987#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508420178888" expanded="false" signature="2301:2312" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2331:2337" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2387:2398" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2425:2431" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2597:2608" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2629:2635" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2690:2701" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2729:2735" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2790:2801" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2817:2823" ph=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/NewFriendConversation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xListView/src/main/java/me/maxwin/view/XListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="357" column="16" selection-start-line="357" selection-start-column="16" selection-end-line="357" selection-end-column="16" />
-          <folding>
-            <element signature="e#10261#10262#0" expanded="true" />
-            <element signature="e#10289#10290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../software/sdk/sources/android-24/android/os/Looper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="203" column="0" selection-start-line="203" selection-start-column="0" selection-end-line="203" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/SportModelInter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="243" column="50" selection-start-line="243" selection-start-column="50" selection-end-line="243" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../software/sdk/sources/android-24/android/widget/AdapterView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="928" column="0" selection-start-line="928" selection-start-column="0" selection-end-line="928" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../software/sdk/extras/android/m2repository/com/android/support/support-v4/23.4.0/support-v4-23.4.0-sources.jar!/android/support/v4/app/Fragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="618" column="34" selection-start-line="618" selection-start-column="34" selection-end-line="618" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_contact.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="49" selection-end-column="17" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list_simple.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="103" column="18" selection-start-line="103" selection-start-column="18" selection-end-line="103" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/base/IMutlipleItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/IDynamicFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/DynamicItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="75" column="18" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/../../../../software/sdk/extras/android/m2repository/com/android/support/recyclerview-v7/22.2.0/recyclerview-v7-22.2.0-sources.jar!/android/support/v7/widget/RecyclerView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="921" column="16" selection-start-line="921" selection-start-column="16" selection-end-line="921" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/DynamicModelImpr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="44" column="0" selection-start-line="32" selection-start-column="7" selection-end-line="44" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/apt/debug/com/example/user/sportslover/fragment/ContactFragment$$ViewBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/my_dynamic_list.xml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
         </state>
       </provider>
       <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/DynamicDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="44" column="30" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="85" column="52" selection-start-line="85" selection-start-column="52" selection-end-line="85" selection-end-column="52" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dynamic_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="117" column="60" selection-start-line="117" selection-start-column="41" selection-end-line="117" selection-end-column="60" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build/generated/source/r/debug/com/example/user/sportslover/R.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="2714" column="32" selection-start-line="2714" selection-start-column="32" selection-end-line="2714" selection-end-column="32" />
+        <state relative-caret-position="600">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/crew_head.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        <state relative-caret-position="570">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="e#1799#1800#0" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
+        <state relative-caret-position="15">
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/presenter/DynamicFragmentPresenter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SplashAnimActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="35" />
+        <state relative-caret-position="1230">
+          <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/ContactAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="390">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/base/BaseRecyclerAdapter.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3086">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+        <state relative-caret-position="315">
+          <caret line="38" column="48" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+          <folding>
+            <element signature="e#2010#2016#0" expanded="true" />
+            <element signature="e#2990#2996#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_contact.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3720">
-          <caret line="186" column="43" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
+        <state relative-caret-position="353">
+          <caret line="56" column="16" selection-start-line="56" selection-start-column="16" selection-end-line="56" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/cn/bmob/v3/BmobQuery.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="500" column="16" selection-start-line="500" selection-start-column="16" selection-end-line="500" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="135" column="83" selection-start-line="135" selection-start-column="83" selection-end-line="135" selection-end-column="83" />
+          <folding>
+            <element signature="e#3553#4166#0" expanded="false" />
+            <element signature="e#4165#4166#0" expanded="false" />
+            <element signature="e#8211#10210#0" expanded="false" />
+            <element signature="e#10209#10210#0" expanded="false" />
+            <element signature="e#10403#12756#0" expanded="false" />
+            <element signature="e#12755#12756#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_set.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="-585">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_my_page.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -3771,102 +3572,183 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/adapter/DynamicSimpleAdapter.java">
+    <entry file="file://$USER_HOME$/Android/sdk/sources/android-23/android/graphics/Canvas.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="12" column="49" selection-start-line="12" selection-start-column="49" selection-end-line="12" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1508420178888" expanded="false" signature="2301:2312" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2331:2337" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2387:2398" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2425:2431" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2597:2608" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2629:2635" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2690:2701" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2729:2735" ph=" }" />
-            <marker date="1508420178888" expanded="false" signature="2790:2801" ph=" { " />
-            <marker date="1508420178888" expanded="false" signature="2817:2823" ph=" }" />
-          </folding>
+        <state relative-caret-position="238">
+          <caret line="1167" column="16" selection-start-line="1167" selection-start-column="16" selection-end-line="1167" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/ContactFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/customview/RoundImageView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7080">
-          <caret line="374" column="55" selection-start-line="374" selection-start-column="55" selection-end-line="374" selection-end-column="55" />
+        <state relative-caret-position="735">
+          <caret line="78" column="0" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_my_dynamic_head.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SplashAnimActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="100" column="13" selection-start-line="100" selection-start-column="13" selection-end-line="100" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-im/2.0.5/res/values/values.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_dynamic_list.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="62" column="43" selection-start-line="62" selection-start-column="43" selection-end-line="62" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="261" column="5" selection-start-line="261" selection-start-column="5" selection-end-line="261" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#13943#13944#0" expanded="true" />
-            <element signature="e#13986#13987#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/fragment/SportsEventFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="204" column="50" selection-start-line="204" selection-start-column="50" selection-end-line="204" selection-end-column="50" />
-          <folding>
-            <element signature="e#1260#1265#0" expanded="false" />
-            <element signature="e#2213#2222#0" expanded="false" />
-            <element signature="e#3548#3585#0" expanded="false" />
-            <element signature="method#onNothingSelected#0;class#2738:10618" expanded="false" />
-            <element signature="method#onDestroyView#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onClick#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="class#10898:11436" expanded="false" />
-            <element signature="method#getSuccess#0;class#10898:11436" expanded="false" />
-            <element signature="method#getFailure#0;class#10898:11436" expanded="false" />
-            <element signature="method#onLoadMore#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefreshByType#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onRefresh#0;class#SportsEventFragment#0" expanded="false" />
-            <element signature="method#onLoadMore#1;class#SportsEventFragment#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_personal_data.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="48" column="63" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/PersonalDataActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="111" column="59" selection-start-line="111" selection-start-column="59" selection-end-line="111" selection-end-column="59" />
+        <state relative-caret-position="405">
+          <caret line="79" column="74" selection-start-line="79" selection-start-column="74" selection-end-line="79" selection-end-column="91" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/shape_rectanglar_gradient_button.xml">
-      <provider selected="true" editor-type-id="text-editor">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_sports_event.xml">
+      <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="332">
-          <caret line="105" column="57" selection-start-line="105" selection-start-column="33" selection-end-line="105" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
+      <provider selected="true" editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/LoginActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/SearchUserActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="71" column="33" selection-start-line="71" selection-start-column="33" selection-end-line="71" selection-end-column="33" />
+        <state relative-caret-position="480">
+          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding>
+            <element signature="e#1799#1800#0" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/SportModelInter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="30" column="14" selection-start-line="30" selection-start-column="14" selection-end-line="30" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/cn/bmob/v3/listener/FindListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.bmob.android/bmob-sdk/3.4.7-aar/jars/libs/BmobSDK_V3.4.7_0527.jar!/cn/bmob/v3/BmobUser.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-930">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/UserModelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="e#2010#2016#0" expanded="true" />
+            <element signature="e#2990#2996#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/bean/DynamicItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/activity/MyDynamicActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/user/sportslover/model/DynamicModelImpr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
           <folding />
         </state>
       </provider>

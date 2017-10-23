@@ -13,7 +13,6 @@ import java.util.List;
 
 import cn.bmob.v3.BmobQuery;
 import cn.bmob.v3.datatype.BmobFile;
-import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UpdateListener;
@@ -36,7 +35,7 @@ public class UserModelImpl implements UserModelInter {
     @Override
     public void getUser(String name, String passoword, final SportModelInter.BaseListener listener) {
         BmobQuery<User> query = new BmobQuery<User>();
-        query.addWhereEqualTo("UserName", name);
+        query.addWhereEqualTo("Username", name);
         query.addWhereEqualTo("Password", passoword);
         query.setLimit(1);
         query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
@@ -58,7 +57,7 @@ public class UserModelImpl implements UserModelInter {
     }
     public void getUserbyPhone(String number,final SportModelInter.BaseListener listener) {
         BmobQuery<User> query = new BmobQuery<User>();
-        query.addWhereEqualTo("Number", number);
+        query.addWhereEqualTo("mobilePhoneNumber", number);
         query.setLimit(1);
         query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
             @Override
@@ -81,24 +80,15 @@ public class UserModelImpl implements UserModelInter {
     /**
      * 根据objectId获取User
      *
-     * @param objectId
+     * @param name
      * @param listener
      */
     @Override
-    public void getUser(String objectId, final SportModelInter.BaseListener listener) {
+    public void getUser(String name, final SportModelInter.BaseListener listener) {
         BmobQuery<User> query = new BmobQuery<User>();
-        query.addWhereEqualTo("objectId", objectId);
-        query.setLimit(1);
+        query.addWhereEqualTo("username",name);
+        //query.setLimit(1);
         query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
-
-            public void done(List<User> object, BmobException e) {
-                if (object != null && object.size() != 0) {
-                    SPUtils.put(BaseApplication.getmContext(), LOGINUSER, object.get(0));
-                    listener.getSuccess(object.get(0));
-                } else {
-                    listener.getFailure();
-                }
-            }
 
             @Override
             public void onSuccess(List<User> object) {

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/local/homework/code/10.19.17.00/SportsLover/xListView/src/main/assets"/><source path="/local/homework/code/10.19.17.00/SportsLover/xListView/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/local/homework/code/10.19.17.00/SportsLover/xListView/src/release/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/local/sp/xListView/src/main/assets"/><source path="/local/sp/xListView/build/generated/assets/shaders/release"/></dataSet><dataSet config="release"><source path="/local/sp/xListView/src/release/assets"/></dataSet></merger>

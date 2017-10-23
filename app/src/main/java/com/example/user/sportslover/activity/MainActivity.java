@@ -1,9 +1,12 @@
 package com.example.user.sportslover.activity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -299,4 +302,47 @@ public class MainActivity extends BaseActivity implements MainView,View.OnClickL
         }
     }
 
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if (keyCode == KeyEvent.KEYCODE_BACK )
+        {
+            // 创建退出对话框
+            AlertDialog isExit = new AlertDialog.Builder(this).create();
+            // 设置对话框标题
+            isExit.setTitle("warning");
+            // 设置对话框消息
+            isExit.setMessage("\r\n"+"     Confirm to exit ?");
+            // 添加选择按钮并注册监听
+            isExit.setButton("sure", listener);
+            isExit.setButton2("cancle", listener);
+            // 显示对话框
+            isExit.show();
+
+        }
+
+        return false;
+
+    }
+    /**监听对话框里面的button点击事件*/
+    DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener()
+    {
+        public void onClick(DialogInterface dialog, int which)
+        {
+            switch (which)
+            {
+                case AlertDialog.BUTTON_POSITIVE:// "确认"按钮退出程序
+                    finish();
+                    break;
+                case AlertDialog.BUTTON_NEGATIVE:// "取消"第二个按钮取消对话框
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 }
+
+
+

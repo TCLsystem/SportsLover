@@ -93,7 +93,7 @@ public class LoginActivity extends BaseActivity {
 //                break;
             case R.id.btn_login_getverify_code:
                 flag = 1;
-                BmobSMS.requestSMSCode(LoginActivity.this, loginUname.getText().toString(), "KeepFit", new RequestSMSCodeListener() {
+                BmobSMS.requestSMSCode(LoginActivity.this, loginUname.getText().toString().trim(), "KeepFit", new RequestSMSCodeListener() {
                     @Override
                     public void done(Integer integer, BmobException e) {
                         if (e == null) {//验证码发送成功
@@ -109,7 +109,7 @@ public class LoginActivity extends BaseActivity {
 
                 break;
             case R.id.login_btn:
-//                UserModel.getInstance().login(loginUname.getText().toString(), loginPass.getText
+//                UserModel.getInstance().login(loginUname.getText().toString().trim(), loginPass.getText
 //                        ().toString(), new LogInListener() {
 //
 //                    @Override
@@ -139,9 +139,9 @@ public class LoginActivity extends BaseActivity {
 //                });
 
 
-                if (!TextUtils.isEmpty(loginUname.getText().toString()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
+                if (!TextUtils.isEmpty(loginUname.getText().toString().trim()) && !TextUtils.isEmpty(loginPass.getText().toString())) {
                     if (flag == 0) {
-                /*        mUserModelImpl.getUser(loginUname.getText().toString(), loginPass.getText().toString(), new SportModelInter.BaseListener() {
+                /*        mUserModelImpl.getUser(loginUname.getText().toString().trim(), loginPass.getText().toString().trim(), new SportModelInter.BaseListener() {
                             @Override
                             public void getSuccess(Object o) {
                                 ToastUtil.showLong(LoginActivity.this, "登录成功");
@@ -171,7 +171,7 @@ public class LoginActivity extends BaseActivity {
                                 ToastUtil.showLong(LoginActivity.this, "登录失败");
                             }
                         });*/
-                        UserModel.getInstance().login(loginUname.getText().toString(), loginPass
+                        UserModel.getInstance().login(loginUname.getText().toString().trim(), loginPass
                                 .getText().toString(), new LogInListener() {
                             @Override
                             public void done(Object o, BmobException e) {
@@ -198,20 +198,20 @@ public class LoginActivity extends BaseActivity {
                                     finish();
                                 } else {
                                     //toast(e.getMessage() + "(" + e.getErrorCode() + ")");
-                                    ToastUtil.showLong(LoginActivity.this, "登录失败");
+                                    ToastUtil.showLong(LoginActivity.this, "login fail");
                                 }
                             }
                         });
                     } else if (flag == 1) {
 
-                        BmobSMS.verifySmsCode(LoginActivity.this, loginUname.getText().toString(), loginPass.getText().toString(), new VerifySMSCodeListener() {
+                        BmobSMS.verifySmsCode(LoginActivity.this, loginUname.getText().toString().trim(), loginPass.getText().toString().trim(), new VerifySMSCodeListener() {
                             @Override
                             public void done(BmobException e) {
 
-                                mUserModelImpl.getUserbyPhone(loginUname.getText().toString(), new SportModelInter.BaseListener() {
+                                mUserModelImpl.getUserbyPhone(loginUname.getText().toString().trim(), new SportModelInter.BaseListener() {
                                     @Override
                                     public void getSuccess(Object o) {
-                                        ToastUtil.showLong(LoginActivity.this, "登录成功");
+                                        ToastUtil.showLong(LoginActivity.this, "login success");
                                         User user = (User) o;
                                         UserLocal userLocal = new UserLocal();
                                         userLocal.setName(user.getUsername());
@@ -235,7 +235,7 @@ public class LoginActivity extends BaseActivity {
 
                                     @Override
                                     public void getFailure() {
-                                        ToastUtil.showLong(LoginActivity.this, "登录失败");
+                                        ToastUtil.showLong(LoginActivity.this, "login fail");
                                     }
                                 });
                             }
