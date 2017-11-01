@@ -57,7 +57,7 @@ public class DynamicDetailActivity extends AppCompatActivity {
     TextView show_location;
     @Bind(R.id.show_participantCount2)
     TextView show_participantCount;
-//    @Bind(R.id.show_participant2)
+    //    @Bind(R.id.show_participant2)
 //    TextView show_participant;
     @Bind(R.id.btn_enterfor)
     Button enter;
@@ -101,7 +101,7 @@ public class DynamicDetailActivity extends AppCompatActivity {
                 Log.d("DETAILS",write_date.getText().toString()+ "  "+ show_mile.getText().toString());
 
                 if(user.getUsername() != mUserLocal.getName()){
-                 enter.setVisibility(View.VISIBLE);
+                    enter.setVisibility(View.VISIBLE);
                     enter.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -132,8 +132,8 @@ public class DynamicDetailActivity extends AppCompatActivity {
             case R.id.detail_back:
                 finish();
                 break;
-          default:
-              break;
+            default:
+                break;
 
         }
 
@@ -143,6 +143,7 @@ public class DynamicDetailActivity extends AppCompatActivity {
         return format.format(date);
     }
 }
+
 
 
 

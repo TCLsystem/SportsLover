@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/local/sp/xListView/src/main/assets"/><source path="/local/sp/xListView/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/local/sp/xListView/src/debug/assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/local/Joy Sports/xListView/src/main/assets"/><source path="/local/Joy Sports/xListView/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/local/Joy Sports/xListView/src/debug/assets"/></dataSet></merger>

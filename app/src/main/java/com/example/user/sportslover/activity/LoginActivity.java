@@ -176,7 +176,7 @@ public class LoginActivity extends BaseActivity {
                             @Override
                             public void done(Object o, BmobException e) {
                                 if (e == null) {
-                                    ToastUtil.showLong(LoginActivity.this, "登录成功");
+                                    ToastUtil.showLong(LoginActivity.this, "login success");
                                     User user = (User) o;
                                     UserLocal userLocal = new UserLocal();
                                     userLocal.setName(user.getUsername());

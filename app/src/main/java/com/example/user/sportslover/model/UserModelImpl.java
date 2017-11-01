@@ -80,13 +80,13 @@ public class UserModelImpl implements UserModelInter {
     /**
      * 根据objectId获取User
      *
-     * @param name
+     * @param objectId
      * @param listener
      */
     @Override
-    public void getUser(String name, final SportModelInter.BaseListener listener) {
+    public void getUser(String objectId, final SportModelInter.BaseListener listener) {
         BmobQuery<User> query = new BmobQuery<User>();
-        query.addWhereEqualTo("username",name);
+        query.addWhereEqualTo("objectId",objectId);
         //query.setLimit(1);
         query.findObjects(BaseApplication.getmContext(), new FindListener<User>() {
 

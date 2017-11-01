@@ -50,13 +50,13 @@ public class DynamicModelImpr implements DynamicModelInter {
     /**
      * 获取当前用户的所有动态
      *
-     * @param user
+     * @param username
      * @param listener
      */
     @Override
-    public void getDynamicItemByPhone(User user, final SportModelInter.BaseListener listener) {
+    public void getDynamicItemByPhone(String username, final SportModelInter.BaseListener listener) {
         BmobQuery<DynamicItem> query = new BmobQuery<DynamicItem>();
-        query.addWhereEqualTo("Writer", user);
+        query.addWhereEqualTo("UserName", username);
         query.findObjects(BaseApplication.getmContext(), new FindListener<DynamicItem>() {
             @Override
             public void onSuccess(List<DynamicItem> object) {

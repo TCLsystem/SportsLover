@@ -34,10 +34,10 @@ public class MyDynamicActivity extends AppCompatActivity {
      ListView listview;
     @Bind(R.id.tv_my_posted)
     TextView myPosted;
-    @Bind(R.id.tv_my_apply)
-    TextView myApply;
-    @Bind(R.id.tv_dynamic_edit)
-    TextView edit;
+//    @Bind(R.id.tv_my_apply)
+//    TextView myApply;
+//    @Bind(R.id.tv_dynamic_edit)
+//    TextView edit;
     @Bind(R.id.iv_myDynamic_back)
     ImageView back;
 
@@ -56,50 +56,71 @@ public class MyDynamicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_dynamic);
         ButterKnife.bind(this);
-
-    }
-
-
-    @OnClick({R.id.tv_my_posted, R.id.tv_my_apply,R.id.tv_dynamic_edit})
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.iv_myDynamic_back:
-                finish();
-                break;
-            case R.id.tv_my_posted:
-              //  myApply.setOnClickListener(null);
-                mUserModel.getUser(mUserModel.getUserLocal().getName(), new SportModelInter.BaseListener() {
+        mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
+            @Override
+            public void getSuccess(Object o) {
+                User user = (User) o;
+                mDynamicModel.getDynamicItemByPhone(user.getUsername(), new SportModelInter.BaseListener() {
                     @Override
                     public void getSuccess(Object o) {
-                        User user = (User) o;
-                        mDynamicModel.getDynamicItemByPhone(user, new SportModelInter.BaseListener() {
-                            @Override
-                            public void getSuccess(Object o) {
-                                List<DynamicItem> list = (List<DynamicItem>) o;
-                                listview.setAdapter(new DynamicAdapter(MyDynamicActivity.this, R.layout.item_dynamic_list, list));
-                            }
-                            @Override
-                            public void getFailure() {
-
-                            }
-                        });
+                        List<DynamicItem> list = (List<DynamicItem>) o;
+                        listview.setAdapter(new DynamicAdapter(MyDynamicActivity.this, R.layout.item_dynamic_list, list));
                     }
                     @Override
                     public void getFailure() {
 
                     }
                 });
+            }
+            @Override
+            public void getFailure() {
 
+            }
+        });
+
+    }
+
+
+    @OnClick({R.id.tv_my_posted,R.id.iv_myDynamic_back})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.iv_myDynamic_back:
+                finish();
                 break;
-            case R.id.tv_my_apply:
-
-
-
-                break;
-            case R.id.tv_dynamic_edit:
-
-
-                break;
+ //           case R.id.tv_my_posted:
+              //  myApply.setOnClickListener(null);
+//                mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {
+//                    @Override
+//                    public void getSuccess(Object o) {
+//                        User user = (User) o;
+//                        mDynamicModel.getDynamicItemByPhone(user.getUsername(), new SportModelInter.BaseListener() {
+//                            @Override
+//                            public void getSuccess(Object o) {
+//                                List<DynamicItem> list = (List<DynamicItem>) o;
+//                                listview.setAdapter(new DynamicAdapter(MyDynamicActivity.this, R.layout.item_dynamic_list, list));
+//                            }
+//                            @Override
+//                            public void getFailure() {
+//
+//                            }
+//                        });
+//                    }
+//                    @Override
+//                    public void getFailure() {
+//
+//                    }
+//                });
+//
+//                break;
+//            case R.id.tv_my_apply:
+//
+//
+//
+//                break;
+//            case R.id.tv_dynamic_edit:
+//
+//
+//                break;
             default:
                 break;
         }
