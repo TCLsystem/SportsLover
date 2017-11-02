@@ -1,6 +1,7 @@
 package com.example.user.sportslover.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -88,6 +89,7 @@ public class SportHistoryActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sport_history);
         view0 = getLayoutInflater().inflate(R.layout.item_chart_viewpager, null);
         view1 = getLayoutInflater().inflate(R.layout.item_listview_viewpager, null);

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -160,6 +161,7 @@ public class ChatActivity extends ParentWithNaviActivity implements ObseverListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_chat);
         c = BmobIMConversation.obtain(BmobIMClient.getInstance(), (BmobIMConversation) getBundle
                 ().getSerializable("c"));

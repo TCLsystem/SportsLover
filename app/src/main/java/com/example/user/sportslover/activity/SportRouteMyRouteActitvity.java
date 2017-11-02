@@ -2,6 +2,7 @@ package com.example.user.sportslover.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.BitmapFactory;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
@@ -42,6 +43,7 @@ public class SportRouteMyRouteActitvity extends AppCompatActivity implements Vie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sport_route_my_route);
         mUserLocal = mUserModelImpl.getUserLocal();
         point = getIntent().getParcelableExtra("current_position");

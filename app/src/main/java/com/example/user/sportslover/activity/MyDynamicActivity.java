@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -54,6 +55,7 @@ public class MyDynamicActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_my_dynamic);
         ButterKnife.bind(this);
         mUserModel.getUser(mUserModel.getUserLocal().getObjectId(), new SportModelInter.BaseListener() {

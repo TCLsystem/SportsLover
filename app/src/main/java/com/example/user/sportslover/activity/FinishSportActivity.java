@@ -1,6 +1,7 @@
 package com.example.user.sportslover.activity;
 
 import android.annotation.TargetApi;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -49,6 +50,7 @@ public class FinishSportActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         SDKInitializer.initialize(getApplicationContext());
         setContentView(R.layout.activity_finish_sport);
         mUserLocal = mUserModelImpl.getUserLocal();

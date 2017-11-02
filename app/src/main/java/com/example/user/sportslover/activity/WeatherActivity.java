@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.content.pm.ActivityInfo;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_weather);
         tvWeatherCondition = (TextView) findViewById(R.id.tv_weather_basic_condition);
         tvTemperature = (TextView) findViewById(R.id.tv_weather_basic_temperature);

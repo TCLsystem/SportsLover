@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class SportVibrateSettingsActivity extends AppCompatActivity implements V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sport_vibrate_settings);
         baseApplication = (BaseApplication) getApplicationContext();
         tglVibration = (ToggleButton) findViewById(R.id.tgl_vibration_switch);

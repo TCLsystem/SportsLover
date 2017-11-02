@@ -1,6 +1,7 @@
 package com.example.user.sportslover.login;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -18,6 +19,7 @@ public class GetPhoneNumber extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_get_phone_number);
         et_number = (EditText) findViewById(R.id.et_get_phoneNumber) ;
         Button phoneNumber = (Button)findViewById(R.id.btn_get_phoneNumber);

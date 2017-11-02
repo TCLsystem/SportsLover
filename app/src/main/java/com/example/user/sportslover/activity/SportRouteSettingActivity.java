@@ -1,6 +1,7 @@
 package com.example.user.sportslover.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ public class SportRouteSettingActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sport_route_setting);
         point = getIntent().getParcelableExtra("current_position");
         TextView tvMyRoute = (TextView) findViewById(R.id.tv_sport_route_my_route);

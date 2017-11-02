@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,6 +73,7 @@ public class ConversationActivity extends ParentWithNaviActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_conversation);
         initNaviView();
         //单一布局

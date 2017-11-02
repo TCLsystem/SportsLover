@@ -1,5 +1,6 @@
 package com.example.user.sportslover.activity;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -21,6 +22,7 @@ public class PrivacyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_privacy);
     }
     @OnClick({R.id.privacy_back,R.id.mTogBtn2,R.id.mTogBtn3})

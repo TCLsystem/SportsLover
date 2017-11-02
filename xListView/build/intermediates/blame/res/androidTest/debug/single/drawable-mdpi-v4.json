@@ -2,5 +2,9 @@
     {
         "merged": "/local/Joy Sports/xListView/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_launcher.png",
         "source": "/local/Joy Sports/xListView/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
+    },
+    {
+        "merged": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/res/merged/androidTest/debug/drawable-mdpi-v4/ic_launcher.png",
+        "source": "/local/AndroidStudioProjects/SportsLover/xListView/build/intermediates/bundles/debug/res/drawable-mdpi-v4/ic_launcher.png"
     }
 ]

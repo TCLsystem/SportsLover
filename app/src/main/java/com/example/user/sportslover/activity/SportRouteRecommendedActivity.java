@@ -2,6 +2,7 @@ package com.example.user.sportslover.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.support.v7.app.AlertDialog;
@@ -38,6 +39,7 @@ public class SportRouteRecommendedActivity extends AppCompatActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_sport_route_recommended);
         point = getIntent().getParcelableExtra("current_position");
         ImageView ivBack = (ImageView) findViewById(R.id.sport_route_recommended_back);

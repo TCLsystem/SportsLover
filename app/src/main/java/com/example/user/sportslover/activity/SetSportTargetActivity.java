@@ -1,6 +1,7 @@
 package com.example.user.sportslover.activity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
@@ -48,6 +49,7 @@ public class SetSportTargetActivity extends AppCompatActivity implements View.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_set_sport_target);
         tuneWheel = (TuneWheelView) findViewById(R.id.ruler);
         tuneWheel.setMaxValue(100);
